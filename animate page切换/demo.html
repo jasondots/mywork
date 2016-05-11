@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>HTML5-页面切换动画</title>
+  <link href="animations.css" rel="stylesheet" type="text/css">
+  <style>
+  .main{ position:fixed; top:0; left:0; height:360px; width:100%; background:#efefef}
+	#viewsWrapper {
+		top:0px;
+		left:0px;
+		width:800px;
+		margin:0 auto;
+		height:200px;
+		border:1px solid #ccc;
+		position:relative;
+		overflow: hidden;
+	}
+	#viewsWrapper div{ line-height:200px; font-size:50px; text-align:center; font-weight:bold; color:#fff; text-shadow:2px 2px 2px #000}
+		
+	#view1 {background:#dddd00}
+	#view2 {background:#ff00ff}
+	#view3 {background:#cc00ff}
+	#view4 {background:#00cccc}
+  
+	.pt-page {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		visibility: hidden;
+		overflow: hidden;
+		-webkit-backface-visibility: hidden;
+		-moz-backface-visibility: hidden;
+		backface-visibility: hidden;
+		-webkit-transform: translate3d(0, 0, 0);
+		-moz-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+		-webkit-transform-style: preserve-3d;
+		-moz-transform-style: preserve-3d;
+		transform-style: preserve-3d;
+	}
+	.pt-page-current,
+	.no-js .pt-page {
+		visibility: visible;
+		z-index: 1;
+	}
+	input{ vertical-align:middle}
+	#radiosDiv{ margin-top:400px}
+	#radiosDiv label{ display:inline-block; width:800px;cursor:pointer; padding:5px}
+	#radiosDiv .ac{ background:red; color:#fff}
+  </style>
+  
+  <!--Modernizr是一个开源的JS库，它使得那些基于访客浏览器的不同（指对新标准支持性的差异）而开发不同级别体验的设计师的工作变得更为简单。-->
+  <script src="modernizr.custom.js"></script>
+  <script src="jquery-1.8.0.min.js"></script>
+  <script>
+	//当前页面移动完毕
+	var endCurrPage = false;
+	
+	//后续页面移动完毕
+	var endNextPage = false;
+	
+	//入场动画和出场动画
+	var	outClass = '';
+	var inClass = '';
+
+	
+	var animEndEventNames = {
+			'WebkitAnimation' : 'webkitAnimationEnd',
+			'OAnimation' : 'oAnimationEnd',
+			'msAnimation' : 'MSAnimationEnd',
+			'animation' : 'animationend'
+		};
+	// Modernizr.prefixed 针对不同浏览器，将时间名称进行修正
+	var animEndEventName = animEndEventNames[ Modernizr.prefixed( 'animation' ) ];
+	
+	
+	$(function() {
+	    //保存各个View的默认class
+		$(".pt-page").each( function() {
+			var $page = $( this );
+			$page.data( 'originalClassList', $page.attr( 'class' ) );
+		} );
+		
+		//设置默认页面
+		$(".pt-page").eq(0).addClass( 'pt-page-current' );
+		
+		//选择当前效果
+		$('#radiosDiv label').click(function(){
+			$(this).addClass('ac').siblings().removeClass('ac');
+		});
+	});
+	
+	
+	//View切换
+	function changeView(newView){
+		//设置动画效果	
+		var animationType = $('input:radio[name="myAnimation"]:checked:eq(0)').val();
+		getAnimationClass(parseInt(animationType));
+		
+		$currPage = $(".pt-page-current").eq(0);
+		$nextPage = $(newView);
+		
+		//清除原来添加的动画，层级等样式(正常动画结束时会自动清除，这样做防止用户在动画结束前就点击切换其他的)
+		$(".pt-page").each( function() {
+			$(this).attr( 'class', $(this).data( 'originalClassList' ) );
+		});
+		$currPage.addClass("pt-page-current");
+		$nextPage.addClass("pt-page-current");
+				
+		
+		//如果就是当页则不切换
+		if($currPage.attr("id") == $nextPage.attr("id")){
+			return;
+		};
+		
+		//新页面入场
+		$currPage.addClass(outClass).on( animEndEventName, function() {
+			$currPage.off(animEndEventName);
+			endCurrPage = true;
+			if( endNextPage ) {
+				onEndAnimation( $currPage, $nextPage );
+			}
+		});
+
+		//旧页面出场
+		$nextPage.addClass(inClass).on(animEndEventName, function() {
+			$nextPage.off(animEndEventName );
+			endNextPage = true;
+			if( endCurrPage ) {
+				onEndAnimation( $currPage, $nextPage );
+			}
+		});
+	}
+	
+	
+	
+	
+	//所有动画都结束后
+	function onEndAnimation( $outpage, $inpage ) {
+		endCurrPage = false;
+		endNextPage = false;
+		//resetPage( $outpage, $inpage );
+		//isAnimating = false;
+		$outpage.attr( 'class', $outpage.data( 'originalClassList' ) );
+		$inpage.attr( 'class', $inpage.data( 'originalClassList' ) + ' pt-page-current' );
+	};
+		
+	
+	function getAnimationClass(animationType) {
+		switch(animationType) {
+			case 1:		
+				outClass = 'pt-page-moveToLeft';
+				inClass = 'pt-page-moveFromRight';
+				break;
+			case 2:
+				outClass = 'pt-page-moveToRight';
+				inClass = 'pt-page-moveFromLeft';
+				break;
+			case 3:
+				outClass = 'pt-page-moveToTop';
+				inClass = 'pt-page-moveFromBottom';
+				break;
+			case 4:
+				outClass = 'pt-page-moveToBottom';
+				inClass = 'pt-page-moveFromTop';
+				break;
+			case 5:
+				outClass = 'pt-page-fade';
+				inClass = 'pt-page-moveFromRight pt-page-ontop';
+				break;
+			case 6:
+				outClass = 'pt-page-fade';
+				inClass = 'pt-page-moveFromLeft pt-page-ontop';
+				break;
+			case 7:
+				outClass = 'pt-page-fade';
+				inClass = 'pt-page-moveFromBottom pt-page-ontop';
+				break;
+			case 8:
+				outClass = 'pt-page-fade';
+				inClass = 'pt-page-moveFromTop pt-page-ontop';
+				break;
+			case 9:
+				outClass = 'pt-page-moveToLeftFade';
+				inClass = 'pt-page-moveFromRightFade';
+				break;
+			case 10:
+				outClass = 'pt-page-moveToRightFade';
+				inClass = 'pt-page-moveFromLeftFade';
+				break;
+			case 11:
+				outClass = 'pt-page-moveToTopFade';
+				inClass = 'pt-page-moveFromBottomFade';
+				break;
+			case 12:
+				outClass = 'pt-page-moveToBottomFade';
+				inClass = 'pt-page-moveFromTopFade';
+				break;
+			case 13:
+				outClass = 'pt-page-moveToLeftEasing pt-page-ontop';
+				inClass = 'pt-page-moveFromRight';
+				break;
+			case 14:
+				outClass = 'pt-page-moveToRightEasing pt-page-ontop';
+				inClass = 'pt-page-moveFromLeft';
+				break;
+			case 15:
+				outClass = 'pt-page-moveToTopEasing pt-page-ontop';
+				inClass = 'pt-page-moveFromBottom';
+				break;
+			case 16:
+				outClass = 'pt-page-moveToBottomEasing pt-page-ontop';
+				inClass = 'pt-page-moveFromTop';
+				break;
+			case 17:
+				outClass = 'pt-page-scaleDown';
+				inClass = 'pt-page-moveFromRight pt-page-ontop';
+				break;
+			case 18:
+				outClass = 'pt-page-scaleDown';
+				inClass = 'pt-page-moveFromLeft pt-page-ontop';
+				break;
+			case 19:
+				outClass = 'pt-page-scaleDown';
+				inClass = 'pt-page-moveFromBottom pt-page-ontop';
+				break;
+			case 20:
+				outClass = 'pt-page-scaleDown';
+				inClass = 'pt-page-moveFromTop pt-page-ontop';
+				break;
+			case 21:
+				outClass = 'pt-page-scaleDown';
+				inClass = 'pt-page-scaleUpDown pt-page-delay300';
+				break;
+			case 22:
+				outClass = 'pt-page-scaleDownUp';
+				inClass = 'pt-page-scaleUp pt-page-delay300';
+				break;
+			case 23:
+				outClass = 'pt-page-moveToLeft pt-page-ontop';
+				inClass = 'pt-page-scaleUp';
+				break;
+			case 24:
+				outClass = 'pt-page-moveToRight pt-page-ontop';
+				inClass = 'pt-page-scaleUp';
+				break;
+			case 25:
+				outClass = 'pt-page-moveToTop pt-page-ontop';
+				inClass = 'pt-page-scaleUp';
+				break;
+			case 26:
+				outClass = 'pt-page-moveToBottom pt-page-ontop';
+				inClass = 'pt-page-scaleUp';
+				break;
+			case 27:
+				outClass = 'pt-page-scaleDownCenter';
+				inClass = 'pt-page-scaleUpCenter pt-page-delay400';
+				break;
+			case 28:
+				outClass = 'pt-page-rotateRightSideFirst';
+				inClass = 'pt-page-moveFromRight pt-page-delay200 pt-page-ontop';
+				break;
+			case 29:
+				outClass = 'pt-page-rotateLeftSideFirst';
+				inClass = 'pt-page-moveFromLeft pt-page-delay200 pt-page-ontop';
+				break;
+			case 30:
+				outClass = 'pt-page-rotateTopSideFirst';
+				inClass = 'pt-page-moveFromTop pt-page-delay200 pt-page-ontop';
+				break;
+			case 31:
+				outClass = 'pt-page-rotateBottomSideFirst';
+				inClass = 'pt-page-moveFromBottom pt-page-delay200 pt-page-ontop';
+				break;
+			case 32:
+				outClass = 'pt-page-flipOutRight';
+				inClass = 'pt-page-flipInLeft pt-page-delay500';
+				break;
+			case 33:
+				outClass = 'pt-page-flipOutLeft';
+				inClass = 'pt-page-flipInRight pt-page-delay500';
+				break;
+			case 34:
+				outClass = 'pt-page-flipOutTop';
+				inClass = 'pt-page-flipInBottom pt-page-delay500';
+				break;
+			case 35:
+				outClass = 'pt-page-flipOutBottom';
+				inClass = 'pt-page-flipInTop pt-page-delay500';
+				break;
+			case 36:
+				outClass = 'pt-page-rotateFall pt-page-ontop';
+				inClass = 'pt-page-scaleUp';
+				break;
+			case 37:
+				outClass = 'pt-page-rotateOutNewspaper';
+				inClass = 'pt-page-rotateInNewspaper pt-page-delay500';
+				break;
+			case 38:
+				outClass = 'pt-page-rotatePushLeft';
+				inClass = 'pt-page-moveFromRight';
+				break;
+			case 39:
+				outClass = 'pt-page-rotatePushRight';
+				inClass = 'pt-page-moveFromLeft';
+				break;
+			case 40:
+				outClass = 'pt-page-rotatePushTop';
+				inClass = 'pt-page-moveFromBottom';
+				break;
+			case 41:
+				outClass = 'pt-page-rotatePushBottom';
+				inClass = 'pt-page-moveFromTop';
+				break;
+			case 42:
+				outClass = 'pt-page-rotatePushLeft';
+				inClass = 'pt-page-rotatePullRight pt-page-delay180';
+				break;
+			case 43:
+				outClass = 'pt-page-rotatePushRight';
+				inClass = 'pt-page-rotatePullLeft pt-page-delay180';
+				break;
+			case 44:
+				outClass = 'pt-page-rotatePushTop';
+				inClass = 'pt-page-rotatePullBottom pt-page-delay180';
+				break;
+			case 45:
+				outClass = 'pt-page-rotatePushBottom';
+				inClass = 'pt-page-rotatePullTop pt-page-delay180';
+				break;
+			case 46:
+				outClass = 'pt-page-rotateFoldLeft';
+				inClass = 'pt-page-moveFromRightFade';
+				break;
+			case 47:
+				outClass = 'pt-page-rotateFoldRight';
+				inClass = 'pt-page-moveFromLeftFade';
+				break;
+			case 48:
+				outClass = 'pt-page-rotateFoldTop';
+				inClass = 'pt-page-moveFromBottomFade';
+				break;
+			case 49:
+				outClass = 'pt-page-rotateFoldBottom';
+				inClass = 'pt-page-moveFromTopFade';
+				break;
+			case 50:
+				outClass = 'pt-page-moveToRightFade';
+				inClass = 'pt-page-rotateUnfoldLeft';
+				break;
+			case 51:
+				outClass = 'pt-page-moveToLeftFade';
+				inClass = 'pt-page-rotateUnfoldRight';
+				break;
+			case 52:
+				outClass = 'pt-page-moveToBottomFade';
+				inClass = 'pt-page-rotateUnfoldTop';
+				break;
+			case 53:
+				outClass = 'pt-page-moveToTopFade';
+				inClass = 'pt-page-rotateUnfoldBottom';
+				break;
+			case 54:
+				outClass = 'pt-page-rotateRoomLeftOut pt-page-ontop';
+				inClass = 'pt-page-rotateRoomLeftIn';
+				break;
+			case 55:
+				outClass = 'pt-page-rotateRoomRightOut pt-page-ontop';
+				inClass = 'pt-page-rotateRoomRightIn';
+				break;
+			case 56:
+				outClass = 'pt-page-rotateRoomTopOut pt-page-ontop';
+				inClass = 'pt-page-rotateRoomTopIn';
+				break;
+			case 57:
+				outClass = 'pt-page-rotateRoomBottomOut pt-page-ontop';
+				inClass = 'pt-page-rotateRoomBottomIn';
+				break;
+			case 58:
+				outClass = 'pt-page-rotateCubeLeftOut pt-page-ontop';
+				inClass = 'pt-page-rotateCubeLeftIn';
+				break;
+			case 59:
+				outClass = 'pt-page-rotateCubeRightOut pt-page-ontop';
+				inClass = 'pt-page-rotateCubeRightIn';
+				break;
+			case 60:
+				outClass = 'pt-page-rotateCubeTopOut pt-page-ontop';
+				inClass = 'pt-page-rotateCubeTopIn';
+				break;
+			case 61:
+				outClass = 'pt-page-rotateCubeBottomOut pt-page-ontop';
+				inClass = 'pt-page-rotateCubeBottomIn';
+				break;
+			case 62:
+				outClass = 'pt-page-rotateCarouselLeftOut pt-page-ontop';
+				inClass = 'pt-page-rotateCarouselLeftIn';
+				break;
+			case 63:
+				outClass = 'pt-page-rotateCarouselRightOut pt-page-ontop';
+				inClass = 'pt-page-rotateCarouselRightIn';
+				break;
+			case 64:
+				outClass = 'pt-page-rotateCarouselTopOut pt-page-ontop';
+				inClass = 'pt-page-rotateCarouselTopIn';
+				break;
+			case 65:
+				outClass = 'pt-page-rotateCarouselBottomOut pt-page-ontop';
+				inClass = 'pt-page-rotateCarouselBottomIn';
+				break;
+			case 66:
+				outClass = 'pt-page-rotateSidesOut';
+				inClass = 'pt-page-rotateSidesIn pt-page-delay200';
+				break;
+			case 67:
+				outClass = 'pt-page-rotateSlideOut';
+				inClass = 'pt-page-rotateSlideIn';
+				break;
+		}
+	}
+  </script>
+</head>
+<body>
+	
+	<div class="main">
+    	<h1 style="text-align:center">page切换</h1>
+    	<div id="viewsWrapper">
+            <div id="view1" class="pt-page">第 1 页</div>
+            <div id="view2" class="pt-page">第 2 页</div>
+            <div id="view3" class="pt-page">第 3 页</div>
+            <div id="view4" class="pt-page">第 4 页</div>
+        </div>
+        <br/>
+        <div style="text-align:center">
+        	<input type="button" onclick="changeView('#view1')" value="切换页面1"/>
+        	<input type="button" onclick="changeView('#view2')" value="切换页面2"/>
+        	<input type="button" onclick="changeView('#view3')" value="切换页面3"/>
+        	<input type="button" onclick="changeView('#view4')" value="切换页面4"/>
+        </div>
+	</div>    
+
+    <div id="radiosDiv" style=" padding-left:50px">
+        <label  class="ac">01 <input type="radio" name="myAnimation" value="1" checked>pt-page-moveToLeft / pt-page-moveToRight</label>
+        <label>02 <input type="radio" name="myAnimation" value="2">pt-page-moveToRight / pt-page-moveFromLeft</label>
+        <label>03 <input type="radio" name="myAnimation" value="3">pt-page-moveToTop / pt-page-moveFromBottom</label>
+        <label>04 <input type="radio" name="myAnimation" value="4">pt-page-moveToBottom / pt-page-moveFromTop</label>
+        <label>05 <input type="radio" name="myAnimation" value="5">pt-page-fade / pt-page-moveFromRight pt-page-ontop</label>
+        <label>06 <input type="radio" name="myAnimation" value="6">pt-page-fade / pt-page-moveFromLeft pt-page-ontop</label>
+        <label>07 <input type="radio" name="myAnimation" value="7">pt-page-fade / pt-page-moveFromBottom pt-page-ontop</label>
+        <label>08 <input type="radio" name="myAnimation" value="8">pt-page-fade / pt-page-moveFromTop pt-page-ontop</label>
+        <label>09 <input type="radio" name="myAnimation" value="9">pt-page-moveToLeftFade / pt-page-moveFromRightFade</label>
+        <label>10 <input type="radio" name="myAnimation" value="10">pt-page-moveToRightFade / pt-page-moveFromLeftFade</label>
+        <label>11 <input type="radio" name="myAnimation" value="11">pt-page-moveToTopFade / pt-page-moveFromBottomFade</label>
+        <label>12 <input type="radio" name="myAnimation" value="12">pt-page-moveToBottomFade / pt-page-moveFromTopFade</label>
+        <label>13 <input type="radio" name="myAnimation" value="13">pt-page-moveToLeftEasing pt-page-ontop / pt-page-moveFromRight</label>
+        <label>14 <input type="radio" name="myAnimation" value="14">pt-page-moveToRightEasing pt-page-ontop / pt-page-moveFromLeft</label>
+        <label>15 <input type="radio" name="myAnimation" value="15">pt-page-moveToTopEasing pt-page-ontop / pt-page-moveFromBotto</label>
+        <label>16 <input type="radio" name="myAnimation" value="16">pt-page-moveToBottomEasing pt-page-ontop / pt-page-moveFromTop</label>
+        <label>17 <input type="radio" name="myAnimation" value="17">pt-page-scaleDown / pt-page-moveFromRight pt-page-ontop</label>
+        <label>18 <input type="radio" name="myAnimation" value="18">pt-page-scaleDown / pt-page-moveFromLeft pt-page-ontop</label>
+        <label>19 <input type="radio" name="myAnimation" value="19">pt-page-scaleDown / pt-page-moveFromBottom pt-page-ontop</label>
+        <label>20 <input type="radio" name="myAnimation" value="20">pt-page-scaleDown / pt-page-moveFromTop pt-page-ontop</label>
+        <label>21 <input type="radio" name="myAnimation" value="21">pt-page-scaleDown / pt-page-scaleUpDown pt-page-delay300</label>
+        <label>22 <input type="radio" name="myAnimation" value="22">pt-page-scaleDownUp / pt-page-scaleUp pt-page-delay300</label>
+        <label>23 <input type="radio" name="myAnimation" value="23">pt-page-moveToLeft pt-page-ontop / pt-page-scaleUp</label>
+        <label>24 <input type="radio" name="myAnimation" value="24">pt-page-moveToRight pt-page-ontop / pt-page-scaleUp</label>
+        <label>25 <input type="radio" name="myAnimation" value="25">pt-page-moveToTop pt-page-onto / pt-page-scaleUp</label>
+        <label>26 <input type="radio" name="myAnimation" value="26">pt-page-moveToBottom pt-page-onto / pt-page-scaleUp</label>
+        <label>27 <input type="radio" name="myAnimation" value="27">pt-page-scaleDownCenter / pt-page-scaleUpCenter pt-page-delay400</label>
+        <label>28 <input type="radio" name="myAnimation" value="28">pt-page-rotateRightSideFirst / pt-page-moveFromRight pt-page-delay200 pt-page-onto</label>
+        <label>29 <input type="radio" name="myAnimation" value="29">pt-page-rotateLeftSideFirst / pt-page-moveFromLeft pt-page-delay200 pt-page-ontop</label>
+        <label>30 <input type="radio" name="myAnimation" value="30">pt-page-rotateTopSideFirst / pt-page-moveFromTop pt-page-delay200 pt-page-ontop</label>
+        <label>31 <input type="radio" name="myAnimation" value="31">pt-page-rotateBottomSideFirst / pt-page-moveFromBottom pt-page-delay200 pt-page-ontop</label>
+        <label>32 <input type="radio" name="myAnimation" value="32">pt-page-flipOutRight / pt-page-flipInLeft pt-page-delay500</label>
+        <label>33 <input type="radio" name="myAnimation" value="33">pt-page-flipOutLeft / pt-page-flipInRight pt-page-delay500</label>
+        <label>34 <input type="radio" name="myAnimation" value="34">pt-page-flipOutTop / pt-page-flipInBottom pt-page-delay500</label>
+        <label>35 <input type="radio" name="myAnimation" value="35">pt-page-flipOutBottom / pt-page-flipInTop pt-page-delay500</label>
+        <label>36 <input type="radio" name="myAnimation" value="36">pt-page-rotateFall pt-page-ontop / pt-page-scaleUp</label>
+        <label>37 <input type="radio" name="myAnimation" value="37">pt-page-rotateOutNewspaper / pt-page-rotateInNewspaper pt-page-delay500</label>
+        <label>38 <input type="radio" name="myAnimation" value="38">pt-page-rotatePushLeft / pt-page-moveFromRight</label>
+        <label>39 <input type="radio" name="myAnimation" value="39">pt-page-rotatePushRight / pt-page-moveFromLeft</label>
+        <label>40 <input type="radio" name="myAnimation" value="40">pt-page-rotatePushTop / pt-page-moveFromBottom</label>
+        <label>41 <input type="radio" name="myAnimation" value="41">pt-page-rotatePushBottom / pt-page-moveFromTop</label>
+        <label>42 <input type="radio" name="myAnimation" value="42">pt-page-rotatePushLeft / pt-page-rotatePullRight pt-page-delay180</label>
+        <label>43 <input type="radio" name="myAnimation" value="43">pt-page-rotatePushRight / pt-page-rotatePullLeft pt-page-delay180</label>
+        <label>44 <input type="radio" name="myAnimation" value="44">pt-page-rotatePushTop / pt-page-rotatePullBottom pt-page-delay180</label>
+        <label>45 <input type="radio" name="myAnimation" value="45">pt-page-rotatePushBottom / pt-page-rotatePullTop pt-page-delay18</label>
+        <label>46 <input type="radio" name="myAnimation" value="46">pt-page-rotateFoldLeft / pt-page-moveFromRightFade</label>
+        <label>47 <input type="radio" name="myAnimation" value="47">pt-page-rotateFoldRight / pt-page-moveFromLeftFade</label>
+        <label>48 <input type="radio" name="myAnimation" value="48">pt-page-rotateFoldTop / pt-page-moveFromBottomFade</label>
+        <label>49 <input type="radio" name="myAnimation" value="49">pt-page-rotateFoldBottom / pt-page-moveFromTopFade</label>
+        <label>50 <input type="radio" name="myAnimation" value="50">pt-page-moveToRightFade / pt-page-rotateUnfoldLef</label>
+        <label>51 <input type="radio" name="myAnimation" value="51">pt-page-moveToLeftFade / pt-page-rotateUnfoldRight</label>
+        <label>52 <input type="radio" name="myAnimation" value="52">pt-page-moveToBottomFade / pt-page-rotateUnfoldTop</label>
+        <label>53 <input type="radio" name="myAnimation" value="53">pt-page-moveToTopFade / pt-page-rotateUnfoldBottom</label>
+        <label>54 <input type="radio" name="myAnimation" value="54">pt-page-rotateRoomLeftOut pt-page-ontop / pt-page-rotateRoomLeftIn</label>
+        <label>55 <input type="radio" name="myAnimation" value="55">pt-page-rotateRoomRightOut pt-page-ontop / pt-page-rotateRoomRightIn</label>
+        <label>56 <input type="radio" name="myAnimation" value="56">pt-page-rotateRoomTopOut pt-page-ontop / pt-page-rotateRoomTopIn</label>
+        <label>57 <input type="radio" name="myAnimation" value="57">pt-page-rotateRoomBottomOut pt-page-ontop / pt-page-rotateRoomBottomIn</label>
+        <label>58 <input type="radio" name="myAnimation" value="58">pt-page-rotateCubeLeftOut pt-page-ontop / pt-page-rotateCubeLeftIn</label>
+        <label>59 <input type="radio" name="myAnimation" value="59">pt-page-rotateCubeRightOut pt-page-ontop / pt-page-rotateCubeRightIn</label>
+        <label>60 <input type="radio" name="myAnimation" value="60">pt-page-rotateCubeTopOut pt-page-ontop / pt-page-rotateCubeTopIn</label>
+        <label>61 <input type="radio" name="myAnimation" value="61">pt-page-rotateCubeBottomOut pt-page-ontop / pt-page-rotateCubeBottomIn</label>
+        <label>62 <input type="radio" name="myAnimation" value="62">pt-page-rotateCarouselLeftOut pt-page-ontop / pt-page-rotateCarouselLeftIn</label>
+        <label>63 <input type="radio" name="myAnimation" value="63">pt-page-rotateCarouselRightOut pt-page-ontop / pt-page-rotateCarouselRightIn</label>
+        <label>64 <input type="radio" name="myAnimation" value="64">pt-page-rotateCarouselTopOut pt-page-ontop / pt-page-rotateCarouselTopIn</label>
+        <label>65 <input type="radio" name="myAnimation" value="65">pt-page-rotateCarouselBottomOut pt-page-ontop / pt-page-rotateCarouselBottomIn</label>
+        <label>66 <input type="radio" name="myAnimation" value="66">pt-page-rotateSidesOut / pt-page-rotateSidesIn pt-page-delay200</label>
+        <label>67 <input type="radio" name="myAnimation" value="67">pt-page-rotateSlideOut / pt-page-rotateSlideIn</label>
+    </div>
+
+	
+</body>
+</html>
