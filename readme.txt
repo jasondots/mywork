@@ -1,5 +1,10 @@
-start 2016/5/11
+test发顺风顺丰舒服啥地方舒服舒服sdf
 
+$ mkdir runoob
+$ cd runoob/
+$ git init    /Initialized empty Git repository in /Users/tianqixin/www/runoob/.git/
+
+# 在 /www/runoob/.git/ 目录初始化空 Git 仓库完毕。
 Git常用操作命令：
 1) 远程仓库相关命令
 检出仓库：$ git clone git://github.com/jQuery/jquery.git
