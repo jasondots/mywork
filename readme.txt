@@ -139,6 +139,9 @@ target
 bin
 *.db
 
+
+work01∑÷÷ß≤‚ ‘
+
  
 
  
