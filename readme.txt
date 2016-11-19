@@ -1,7 +1,19 @@
-test发顺风顺丰舒服啥地方舒服舒服sdf
 
-$ mkdir runoob
-$ cd runoob/
+git快速手册
+
+-------------------------------------------------------------------
+安装 （略）
+
+-------------------------------------------------------------------
+创建git目录
+
+//首先，在硬盘上创建一个目录，
+
+
+$ mkdir mywork   // mywork为目录名，可以随便取
+
+$ cd runoob     //进入目录
+
 $ git init    /Initialized empty Git repository in /Users/tianqixin/www/runoob/.git/
 
 # 在 /www/runoob/.git/ 目录初始化空 Git 仓库完毕。
