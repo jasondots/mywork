@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0}
+.box{ height:260px; width:400px; position:relative}
+.mask{ position:absolute; height:100%; width:100%; top:0; left:0; background:#000; opacity:.3; display:none}
+.sub{ position:absolute;top:0; left:0; padding:20px; color:#fff; font-size:16px; line-height:2; display:none}
+.txtShow .mask,.txtShow .sub{ display:block;}
+</style>
+
+<script>
+window.onload=function(){
+	var oDiv=document.getElementById('imgBox');
+	var mask=document.getElementsByTagName('div')[1];
+	var oP=document.getElementsByTagName('p');
+	
+	oDiv.onmousemove=function(){
+		this.className='box txtShow';
+	};
+	oDiv.onmouseout=function(){
+		this.className='box';
+	}
+
+}
+</script>
+</head>
+
+<body>
+
+<div id="imgBox" class="box">
+	<img src="02.jpg">
+    <div class="mask"></div>
+    <p class="sub">《鼠来宝》是蒂姆·希尔执导的福克斯鼠来宝电影系列第一部，杰森·李、大卫·克洛斯等主演的动画影片。2007年12月14日在美国上映。</p>
+</div>
+
+</body>
+</html>

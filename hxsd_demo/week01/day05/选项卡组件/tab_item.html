@@ -1,0 +1,64 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>自动播放的选项卡</title>
+<style>
+*{ margin:0; padding:0}
+ul{ list-style:none}
+a{ text-decoration:none}
+.hide{ display:none;}
+.wrap{ width:500px; margin:50px}
+.tab{ margin-bottom:30px;}
+.tab .tabList{ height:40px;}
+.tab .tabList li{ float:left;}
+.tab .tabList li a{ display:block;height:40px; line-height:40px; padding:0 20px}
+.tab .tabList .ac a{ background:#ccc; color:#fff}
+.tab .tabItem{min-height:200px; border:1px solid #ccc;padding:20px}
+</style>
+
+<script>
+window.onload=function(){
+	var arr=['1111111','2222222','3333333','4444444']
+	
+	var oTab=document.getElementById('tab1');
+	var oUl=oTab.getElementsByClassName('tabList')[0];
+	var aLi=oUl.getElementsByTagName('li');
+	var tabItem=oTab.getElementsByClassName('tabItem')[0];
+	
+	tabItem.innerHTML=arr[0];
+
+	//选项卡
+	for(var i=0;i<aLi.length;i++){
+		aLi[i].index=i;
+		aLi[i].onclick=function(){
+			for(var i=0;i<aLi.length;i++){
+				aLi[i].className='';	
+			};		
+			this.className='ac';
+			tabItem.innerHTML=arr[this.index];
+		};	
+	};
+	
+	
+};
+</script>
+</head>
+
+<body>
+<div class="wrap">
+    <div id="tab1" class="tab">
+        <ul class="tabList">
+            <li class="ac"><a href="javascript:;">itemA</a></li>
+            <li><a href="javascript:;">itemB</a></li>
+            <li><a href="javascript:;">itemC</a></li>
+            <li><a href="javascript:;">itemD</a></li>
+        </ul>
+        <div class="tabCont">
+            <div class="tabItem"></div>
+       </div>
+   </div>
+</div>
+
+</body>
+</html>

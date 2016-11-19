@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0}
+ul{ list-style:none}
+.imgList li{ height:260px; width:400px; position:relative; float:left; margin-right:20px}
+.mask{ position:absolute; height:100%; width:100%; top:0; left:0; background:#000; opacity:.3; display:none}
+.sub{ position:absolute;top:0; left:0; padding:20px; color:#fff; font-size:16px; line-height:2; display:none}
+.txtShow .mask,.txtShow .sub{ display:block;}
+</style>
+
+<script>
+window.onload=function(){
+	var oul=document.getElementsByTagName('ul')[0];
+	var aLi=oul.getElementsByTagName('li');
+	var timer=null;
+	
+
+	
+	for(var i=0; i<aLi.length; i++){
+		
+		aLi[i].onmouseover=function(ev){
+			//this.className="txtShow";
+			var _this=this;
+			timer=setTimeout(function(){
+				_this.className="txtShow";
+			},300);
+		};
+		
+		aLi[i].onmouseout=function(ev){
+			clearTimeout(timer);
+			this.className="";
+		};
+		
+		//--------------------------------------------
+		/*aLi[i].onmouseenter=function(ev){
+			var _this=this;
+			timer=setTimeout(function(){
+				_this.className="txtShow";
+			},300);
+			
+		};
+		
+		aLi[i].onmouseleave=function(ev){
+			clearTimeout(timer);
+			this.className="";
+		};*/
+
+	};
+	
+
+}
+</script>
+</head>
+
+<body>
+<ul class="imgList">
+	<li>
+        <img src="02.jpg">
+        <div class="mask"></div>
+        <p class="sub">《鼠来宝》是蒂姆·希尔执导的福克斯鼠来宝电影系列第一部，杰森·李、大卫·克洛斯等主演的动画影片。2007年12月14日在美国上映。</p>
+    </li>
+    <li>
+        <img src="03.jpg">
+        <div class="mask"></div>
+        <p class="sub">《鼠来宝》是蒂姆·希尔执导的福克斯鼠来宝电影系列第一部，杰森·李、大卫·克洛斯等主演的动画影片。2007年12月14日在美国上映。</p>
+    </li>
+    <li>
+        <img src="04.jpg">
+        <div class="mask"></div>
+        <p class="sub">《鼠来宝》是蒂姆·希尔执导的福克斯鼠来宝电影系列第一部，杰森·李、大卫·克洛斯等主演的动画影片。2007年12月14日在美国上映。</p>
+    </li>
+</ul>
+
+
+</body>
+</html>

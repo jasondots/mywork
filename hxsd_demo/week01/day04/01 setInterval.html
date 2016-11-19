@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{  margin:0; padding:0}
+ul{ list-style:none}
+li{ width:200px; height:40px; line-height:40px; background:red; margin-bottom:20px; color:#fff; padding-left:20px;}
+button{ height:30px; padding:0 20px; border:none}
+
+</style>
+
+<script>
+window.onload=function(){
+	var arr=['鱼香肉丝','宫保鸡丁','糖醋鲤鱼','红烧肉','尖椒肉丝','麻辣鸡丝','葱爆羊肉'];
+	var aLi=document.getElementsByTagName('li');
+	var oBtn=document.getElementsByTagName('button')[0];
+	
+	oBtn.onclick=function(){
+		var i=0;
+		
+		var timer=setInterval(function(){
+			
+			aLi[i].innerHTML=arr[i];
+			i++;
+			if(i==aLi.length){
+				alert('添加完毕');
+				clearInterval(timer);
+			}
+			
+			/*if(i<aLi.length){//不用再判断范围了
+				aLi[i].innerHTML=arr[i];
+				i++;
+				if(i==aLi.length){
+					alert('添加完毕');
+					clearInterval(timer);
+				}
+			}*/
+			
+			
+			
+		},1000)
+	
+	};
+	
+	
+	
+}
+
+
+</script>
+
+
+
+</head>
+
+<body>
+<ul>
+	<li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<button type="button">自动间隔插入菜品</button>
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+Uncaught TypeError: undefined is not a function
+
+错误类型为TypeError（类型错误）;
+错误产生：你希望调用一个函数，这个值却不是一个函数。
+错误修复：确保函数名正确。这个错误中，错误行号能正确指示。
+---------------------------------------------------------------------
+
+Uncaught ReferenceError: Invalid left-hand side in assignment
+相关错误： Uncaught exception: ReferenceError: Cannot assign to ‘functionCall()’,
+------------------------------------------------------------------------------
+
+Uncaught exception: ReferenceError: Cannot assign to ‘this’
+错误产生：你试图给某某赋值，但是赋值不成功时产生错误。
+
+这种情况经常发生在if语句中，例如下面的案例，开发者不小心把==写成了=，而且等号左侧的东西不能被赋值，于是产生了错误。
+
+if(doSomething() = 'somevalue')
+
+错误修复：确保不向函数、this关键字赋值。
+-----------------------------------------------------------------------------
+Uncaught TypeError: Converting circular structure to JSON
+
+TypeError: cyclic object value, Circular reference in value argument not supported
+
+错误产生：产生了环形引用，然后再进行JSON转换（JSON.stringify）时产生错误，如下面代码所示，a和b进行了相互引用，因此不能转换为JSON。
+
+
+var a = { };
+var b = { a: a };
+a.b = b;
+JSON.stringify(a);
+错误修复：去除任何欲转换为JSON的对象中的环形引用。
+
+-----------------------------------------------------------------------
+Unexpected token ;
+
+相关错误：Expected ),
+
+missing ) after argument list，
+
+Unexpected token ]
+
+错误产生：JS编译器需要点什么，代码里却没有。通常是忘记了匹配的)、]、}、;等。
+
+错误修复：编译器有时不能正确指出错误行号，比较难以修复。
+
+
+An error with [ ] { } ( ) ----主要是没有正常匹配而致，错误行号往往不对。
+
+
+Unexpected /----正则表达式相关错误，错误行号往往是正确的。
+
+
+Unexpected ; ----往往是多了一个分号，例如在对象里、数字字面值、函数调用参数里等，错误行号是正确的。
+-----------------------------------------------------------------------------------------------------
+
+Uncaught SyntaxError: Unexpected token ILLEGAL    未知的语法错误
+
+相关错误：Unterminated String Literal,
+
+Invalid Line Terminator
+
+错误产生：字符串缺少关闭的引号。
+
+错误修复：确保所有的字符串使用正确的引号。
+----------------------------------------------------------------------------------------------
+
+Uncaught TypeError: Cannot read property ‘foo’ of null,Uncaught TypeError: Cannot read property ‘foo’ of undefined
+
+相关错误：TypeError: someVal is null，
+
+Unable to get property ‘foo’ of undefined or null reference
+
+Cannot set property ‘foo’ of null,
+
+Cannot set property ‘foo’ of undefined
+
+错误产生：试图将null或undefined当做对象读取属性时，产生错误，如下面代码所示。
+
+var someVal = null;
+console.log(someVal.foo);
+错误修复：一般为拼写错误，好好检查错误行号周边变量的拼写，确保正确。
+-----------------------------------------------------------------------------------
+Uncaught RangeError: Maximum call stack size exceeded
+
+相关错误：  Uncaught exception: RangeError: Maximum recursion depth exceeded，
+
+too much recursion，
+
+Stack overflow
+
+错误产生： 由程序逻辑bug造成的无限循环调用函数，无限递归调用函数。
+
+错误修复：检查循环部分，清除造成无限循环的bug。
+
+-------------------------------------------------------------------------
+Uncaught URIError: URI malformed
+相关错误：  URIError: malformed URI sequence
+
+错误产生： 错误的URL解析请求所致
+
+错误修复：找见错误行号，修正URL请求。
+
+----------------------------------------------------------------------------------
+XMLHttpRequest cannot load http://some/url/. No ‘Access-Control-Allow-Origin’ header is present on the requested resource
+
+相关错误：  Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at http://some/url/
+
+错误产生： 使用XMLHttpRequest时url有误所致。
+
+错误修复：确保URL正确，并且保证遵循 same-origin policy （同源策略），解决问题的最佳方案是找到错误提示中的URL，并修正错误。
+
+InvalidStateError: An attempt was made to use an object that is not, or is no longer, usable
+
+相关错误： InvalidStateError，
+
+
+DOMException code 11
+
+错误产生： 在不能调用一个函数的时候调用一个函数。经常发生在使用XMLHttpRequest时，函数没有准备好时试图调用触发错误。
+
+var xhr = new XMLHttpRequest();
+xhr.setRequestHeader('Some-Header', 'val');
+上面代码将报出一个错误，setRequestHeader函数只有在xhr.open之后才可以调用。
+
+
+错误修复：找到提示的错误行，确保代码在正确的时刻运行，或者在改代码前加上必要的方法（例如上面代码的xhr.open）。

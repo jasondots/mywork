@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0;  padding:0}
+body{ padding:20px}
+.slide div{ width:400px; height:260px; border:1px solid #ccc; margin-bottom:10px}    
+button{ border:none; background:#ccc; width:30px; height:30px; margin-left:10px}
+.ac{ background:red; color:#fff;}
+.hide{ display:none}
+</style>
+<script>
+window.onload=function(){
+	var oBox=document.getElementById('box');
+	var aBtn=document.getElementsByTagName('button');
+	var aImg=document.getElementsByTagName('img');
+	var n=0;
+	var timer=null;
+	//---------------------------------------
+	for(var i=0;i<aBtn.length; i++){
+		aBtn[i].index=i;
+		aBtn[i].onclick=function(){
+			for(var i=0; i<aBtn.length; i++){
+				aBtn[i].className="";
+				aImg[i].style.display="none";
+			};
+		this.className="ac";
+		aImg[this.index].style.display="block";
+		n=this.index;//计数器
+		}
+	};
+	//--------------------------------------------
+	function change(n){//切换函数
+		for(var i=0; i<aBtn.length; i++){
+			aBtn[i].className="";
+			aImg[i].style.display="none";
+		};
+		aBtn[n].className="ac";
+		aImg[n].style.display="block";
+	};
+	
+	function run(){//封装的定时器
+		timer=setInterval(function(){
+			n++;//先++，否则会从0开始
+			if(n==aBtn.length){
+				n=0;
+			}
+			change(n);
+		},1000);
+	};
+	run();//先调用一次
+	//---------------------------
+	oBox.onmouseover=function(){
+		clearInterval(timer);
+	};
+	oBox.onmouseout=function(){
+		run();//再次调用
+	}
+}
+	
+	
+	
+	
+</script>
+
+</head>
+
+<body>
+<div id="box" class="slide">
+	<div>
+        <img src="01.jpg">
+        <img class="hide" src="02.jpg">
+        <img class="hide" src="03.jpg">
+    </div>
+<button class="ac" type="button">1</button><button type="button">2</button><button type="button">3</button>
+
+</div>
+
+
+</body>
+</html>

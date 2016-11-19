@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0; font-size:14px;}
+ul,li,ol{ list-style:none}
+a{ text-decoration:none;}
+.nav{ height:40px; background:#3A5998;}
+.nav li{ float:left; position:relative}
+.nav li a{ display:block; height:40px; line-height:40px; padding:0 20px; color:#fff;}
+.nav .ac a{ background:red; color:#fff;}
+.nav li .subMenu{ position:absolute; top:40px; left:20px; border-bottom:1px solid #ccc; display:none}
+.nav li .subMenu li a{ width:100px; height:30px; background:#6E93DD; line-height:30px; border:1px solid #ccc; border-bottom:none; font-size:12px;}
+.nav li .subMenu li a:hover{background:#3A5998;}
+
+.hasSubMenu{ padding-right:0}
+.arrow{ border:5px solid transparent; font-size:0px; border-top-color:#fff; position:absolute; top:18px; right:0;}
+</style>
+
+<script>
+window.onload=function(){
+	var oNav=document.getElementById('mainNav');
+	var product_list=document.getElementById('product_list');
+	var product_list_subMenu=document.getElementById('product_list_subMenu');
+	var news_list=document.getElementById('news_list');
+	var news_list_subMenu=document.getElementById('news_list_subMenu');
+
+		product_list.onmouseover=function(){
+			product_list_subMenu.style.display='block';
+		};
+		product_list.onmouseout=function(){
+			product_list_subMenu.style.display='none';
+		};
+		
+		news_list.onmouseover=function(){
+			news_list_subMenu.style.display='block';
+		};
+		news_list.onmouseout=function(){
+			news_list_subMenu.style.display='none';
+		};
+}
+</script>
+
+
+</head>
+
+<body>
+    <ul id="mainNav" class="nav">
+    	<li><a href="#">首页</a></li>
+        <li id="product_list"  class="hasSubMenu">
+        	<a href="#">产品列表</a><span class="arrow"></span>
+        	<ul id="product_list_subMenu" class="subMenu">
+            	<li><a href="#">冰箱</a></li>
+                <li><a href="#">彩电</a></li>
+                <li><a href="#">洗衣机</a></li>
+                <li><a href="#">小家电</a></li>
+            </ul>
+        </li>
+        <li id="news_list" class="hasSubMenu">
+        	<a href="#">新闻列表</a><span class="arrow"></span>
+        	<ul id="news_list_subMenu" class="subMenu">
+            	<li><a href="#">最新动态</a></li>
+                <li><a href="#">企业文化</a></li>
+                <li><a href="#">内部活动</a></li>
+                <li><a href="#">客户活动</a></li>
+            </ul>
+        </li>
+        <li><a href="#">内部管理</a></li>
+        <li><a href="#">关于我们</a></li>
+    </ul>
+</body>
+</html>

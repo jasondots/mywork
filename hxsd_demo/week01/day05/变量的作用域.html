@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+/*
+js变量作用域(scope chain)可分为："全局变量"和"局部变量"
+"全局变量"：申明在函数之外的变量
+"局部变量"：申明在函数体中的变量，并且只能在当前函数体内访问，如：function(){var a = 0;}
+注：在申明变量是凡是没有var关键字，而直接赋值的变量均为全局变量
+*/
+function test() {  
+	a = 30; 
+	var b = 20;
+}
+test();
+console.log("a="+a); //这里很明显，a为全局变量
+console.log("b="+b);//b为局部变量，故在函数test外调用是，提示未定义
+
+//--------------------------------------------------------------
+/*
+函数中声明的变量在整个函数中都有定义。
+如果函数内部有定义变量，即使在定义之前输出但会先执行后面定义语句，
+然后判断输出结果，所以说声明的变量在整个函数中都是起作用的。*/
+a=10;
+function run(){
+	alert(a);//undefined
+	var a=30;
+	
+};
+run();
+
+//------------------------------------------------
+
+var d;
+function fun() {
+	d = "global";
+} 
+console.log(d);//输出undefined 
+
+var f;
+function fun() {
+	f = "global";
+} 
+fun();
+console.log(f);//输出 global
+//---------------------------------
+/*函数域优先于全局域，故局部变量a会覆盖掉全局变量a*/
+
+var ss=1;
+function main(){
+	var ss=2;//局部变量
+	console.log(ss);//2
+} 
+main();
+console.log(ss);//1
+//-----------------------------------------
+/*javascript没有块级作用域*/
+function test(){
+   for(var i = 0 ; i < 3 ; i++){
+          //i=0,1,2,最后执行到i=3时退出循环
+   }
+   console.log(i);//3
+}
+test();
+
+/*相当于*/
+function test(){
+ var i;
+   for(i = 0; i < 3; i++){
+          //i=0,1,2,最后执行到i=3时退出循环
+   }
+   console.log(i);//3
+}
+test();
+
+
+</script>
+</head>
+
+<body>
+<div id="box"></div>
+</body>
+</html>

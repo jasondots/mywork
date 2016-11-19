@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+
+function change_week(week_num){
+	switch(week_num){
+		case 0:
+		alert('星期日');
+		break;
+		case 1:
+		alert('星期一');
+		break;
+		case 2:
+		alert('星期二');
+		break;
+		case 3:
+		alert('星期三');
+		break;
+		case 4:
+		alert('星期四');
+		break;
+		case 5:
+		alert('星期五');
+		break;
+		case 6:
+		alert('星期六');
+		break;
+		default:
+		alert('请输入0-6之间的数字');
+	};
+}
+
+change_week("ewr");
+
+//if 与 switch的用法区别-----------------------
+
+/*
+如果分数小于60，则评定为不及格；
+如果分数在60～75（不包含75）之间，则评定为合格；
+如果分数在75～85（不包含85）之间，则评定为良好；
+如果分数在85～100之间，则评定为优秀。
+针对这种情况，表达式的值是连续的线性判断，显然使用if结构会更合适一些。
+*/
+
+if(score<60){
+	alert("不及格");
+}
+else if(60<=score<75){
+	alert("合格");
+}
+else if(75<=score<85){
+	alert("良好");
+}
+else if(85<=score<=100){
+	alert("优秀");
+};
+
+/*
+如果使用switch结构，则需要枚举100种可能，
+如果分数值还包括小数，情况就更加复杂了，此时使用switch结构就不是明智之举。
+但是，对于有限制的枚举数据，比如性别，使用switch结构会更高效，例如：
+*/
+switch(sex){
+	case "女":
+	alert("女士");
+	break;
+
+	case "男":
+	alert("先生");
+	break;
+
+	default:
+	alert("请选择性别");
+}
+
+
+</script>
+</head>
+
+<body>
+</body>
+</html>

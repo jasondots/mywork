@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+
+
+</head>
+
+<body id="body">
+<div id="box" style=" width:400px; height:400px; background:#ccc;">
+	<div id="sub" style=" width:200px; height:200px; background:red;">
+    
+    </div>
+</div>
+</body>
+</html>
+<script>
+	var oDiv=document.getElementById('box');
+	oDiv.onmouseover=function(){
+		console.log('in')
+	};
+	 
+	oDiv.onmouseout=function(ev){
+		console.log('out')
+	}
+
+
+</script>

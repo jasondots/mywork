@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+window.onload=function(){
+	var oDiv=document.getElementById('div01');
+	function run(){
+		oDiv.style.backgroundColor="blue";
+	};
+	/*oDiv.onmouseover=function(){
+		setTimeout(run,2000);
+	};*/
+	oDiv.onmouseover=function(){
+		var _this=this;
+		setTimeout(function(){
+			_this.style.backgroundColor="blue";
+		},2000);
+	}
+
+
+
+}
+
+
+</script>
+</head>
+
+<body>
+<div id="div01" style="height:100px;width:100px;background:red"></div>
+
+</body>
+</html>

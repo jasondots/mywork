@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0;  padding:0}
+body{ padding:20px}
+#box{ width:400px; height:260px; border:1px solid #ccc; margin-bottom:10px} 
+.imgBar{ margin-bottom:10px}   
+button{ border:none; background:#ccc; width:30px; height:30px; margin-left:10px}
+img{ display:block}
+.ac{ background:red; color:#fff;}
+.hide{ display:none}    
+</style>
+</head>
+
+<body>
+<div id="box">
+	<div class="imgBar">
+        <img id="img1" src="01.jpg">
+        <img id="img2" class="hide" src="02.jpg">
+        <img id="img3" class="hide" src="03.jpg">
+    </div>
+    <button id="btn1" class="ac" type="button">1</button><button id="btn2" type="button">2</button><button id="btn3" type="button">3</button>
+</div>
+
+
+<script>
+	var btn1=document.getElementById('btn1');
+	var btn2=document.getElementById('btn2');
+	var btn3=document.getElementById('btn3');
+	var img1=document.getElementById('img1');
+	var img2=document.getElementById('img2');
+	var img3=document.getElementById('img3');
+	
+	function show_img1(){
+		btn1.className="ac";
+		btn2.className="";
+		btn3.className="";
+		img1.style.display="block";
+		img2.style.display="none";
+		img3.style.display="none";
+	};
+	function show_img2(){
+		btn1.className="";
+		btn2.className="ac";
+		btn3.className="";
+		img1.style.display="none";
+		img2.style.display="block";
+		img3.style.display="none";
+	};
+	function show_img3(){
+		btn1.className="";
+		btn2.className="";
+		btn3.className="ac";
+		img1.style.display="none";
+		img2.style.display="none";
+		img3.style.display="block";
+	};
+	btn1.onclick=show_img1;
+	btn2.onclick=show_img2;
+	btn3.onclick=show_img3;
+</script>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>子元素over</title>
+<style>
+div{ background:#ccc;width:400px;height:400px;}
+h1{height:50px; background:yellow}
+</style>
+<script>
+function mouseenter(obj,fn){
+	function isParent(oParent,obj){
+		while(obj){
+			if(obj==oParent)return true;
+			obj=obj.parentNode;
+		}	
+		return false;
+	};
+	obj.onmouseover=function(ev){
+		var oEv=ev||window.event;
+		var formElm=oEv.formElm||oEv.relatedTarget;
+		if( isParent(this,formElm) ) return;
+		fn && fn();
+	};
+};
+
+function mouseleave(obj,fn){
+	function isParent(oParent,obj){
+		while(obj){
+			if(obj==oParent)return true;
+			obj=obj.parentNode;
+		}	
+		return false;
+	};
+	obj.onmouseout=function(ev){
+		var oEv=ev||window.event;// 事件对象
+		var toElm=oEv.toElm||oEv.relatedTarget;
+		if( isParent(this,toElm) ) return;
+		fn && fn();
+	};
+}
+
+
+
+window.onload=function(){
+
+	var oBox=document.getElementById('box');
+	
+	mouseleave(oBox,function(){
+	alert('离开了')
+	
+	});
+	mouseenter(oBox,function(){
+	alert('进来了')
+	
+	})
+	
+	
+};
+
+
+</script>
+
+
+</head>
+
+<body>
+<div id="box">
+	<h1>sdfsfdafasdf</h1>
+</div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>选项卡图片</title>
+<style>
+*{ margin:0;  padding:0}
+body{ padding:20px}
+#box{ width:400px; height:260px; border:1px solid #ccc; margin-bottom:10px}    
+button{ border:none; background:#ccc; width:30px; height:30px; margin-left:10px}
+.ac{ background:red; color:#fff;}
+.hide{ display:none}    
+</style>
+</head>
+
+<body>
+<div id="box">
+	<img src="01.jpg">
+    <img class="hide" src="02.jpg">
+    <img class="hide" src="03.jpg">
+</div>
+<button class="ac" type="button">1</button><button type="button">2</button><button type="button">3</button>
+
+<script>
+	var aBtn=document.getElementsByTagName('button');
+	var aImg=document.getElementsByTagName('img');
+	
+	function show_img(index){
+		for(var i=0; i<aBtn.length; i++){
+			aBtn[i].className="";
+			aImg[i].style.display="none";
+		};
+		aBtn[index].className="ac";
+		aImg[index].style.display="block";
+	};
+	aBtn[0].onclick=function(){
+		show_img(0);
+	}
+	aBtn[1].onclick=function(){
+		show_img(1);
+	}
+	aBtn[2].onclick=function(){
+		show_img(2);
+	}
+</script>
+
+</body>
+</html>

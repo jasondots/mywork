@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<div></div>
+</body>
+</html>
+<script>
+var arr=['北','京','火','星','时','代','实','训','基','地'];
+var oDiv=document.getElementsByTagName('div')[0];
+var n=0;
+var timer;
+var html='';
+timer=setInterval(function(){
+	html+=arr[n];
+	oDiv.innerHTML=html;
+	n++;
+	if(n==arr.length){
+		clearInterval(timer)
+	}
+},1000)
+
+
+
+</script>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>五星评价</title>
+<style>
+a{ display:inline-block; height:30px; width:30px; background:#ddd; margin-right:10px}
+.ac{ background:red;}
+
+</style>
+</head>
+
+<body>
+<a></a><a></a><a></a><a></a><a></a>
+
+
+<script>
+	var aA=document.getElementsByTagName('a');
+		
+	for(var i=0; i<aA.length; i++){
+		aA[i].index=i;//用“点”语法自定义索引属性
+		
+		aA[i].onmouseover=function(){//绑定鼠标事件
+			console.log(this.index);
+			
+			for(var j=0; j<aA.length; j++){//循环判断
+				if(j<=this.index){
+					aA[j].className="ac";
+				}
+				else{
+					aA[j].className="";
+				}
+			}		
+		};
+	}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0}
+ul{ list-style:none; margin:100px}
+ul li{ height:40px;  width:100px; margin-right:20px; background:#ccc; float:left}
+ul .ac,ul li:hover{ background:red}
+
+
+</style>
+
+</head>
+
+<body>
+<ul>
+	<li class="ac"></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<script>
+var aLi=document.getElementsByTagName('li');
+var old;
+for(var i=0; i<aLi.length; i++){
+	aLi[i].onmouseover=function(){
+		for(var j=0; j<aLi.length;j++){
+			if(aLi[j].className=="ac"){
+				old=aLi[j];
+			};
+			aLi[j].className="";
+		};
+		this.className="ac";
+	};
+	aLi[i].onmouseout=function(){
+		this.className="";
+		old.className="ac";
+	};
+
+}
+
+
+</script>
+
+</body>
+</html>

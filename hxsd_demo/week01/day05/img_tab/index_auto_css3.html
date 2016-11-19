@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>css3自动滚动</title>
+<style>
+*{ margin:0; padding:0}
+body{ padding:20px}
+.slide .imgBar{ width:400px; height:260px; border:1px solid #ccc; margin-bottom:10px; overflow:hidden}    
+.slide .imgBar img{ float:left}
+.slide .imgBar .wrap{transition:.5s transform}
+button{ border:none; background:#ccc; width:30px; height:30px; margin-left:10px}
+.ac{ background:red; color:#fff;}
+</style>
+<script>
+window.onload=function(){
+	var oBox=document.getElementById('box');
+	//var aBtn=oBox.getElementsByTagName('button');
+	var aImg=oBox.getElementsByTagName('img');
+	var oP=oBox.getElementsByClassName('wrap');
+	
+	var img_w=aImg[0].width;
+	
+	
+	var n=0;
+	var timer=null;
+	
+	var html='';
+	
+	//插入按钮---------------------------------
+	for(var i=0; i<aImg.length; i++){
+		html+='<button type="button">'+(i+1)+'</button>';
+	};
+	oBox.innerHTML+=html;
+	var aBtn=oBox.getElementsByTagName('button');
+	aBtn[0].className='ac';
+	
+	oP[0].style.width=img_w*aImg.length+'px';//设定p的宽度
+	//---------------------------------------
+	for(var i=0;i<aImg.length; i++){
+				
+		aBtn[i].index=i;
+		aBtn[i].onclick=function(){
+			for(var i=0; i<aImg.length; i++){
+				aBtn[i].className="";
+			};
+		this.className="ac";
+		oP[0].style.transform="translateX("+(-img_w*this.index)+"px)";
+		n=this.index;//计数器
+		}
+	};
+	//--------------------------------------------
+	function change(n){//切换函数
+		for(var i=0; i<aImg.length; i++){
+			aBtn[i].className="";
+		};
+		aBtn[n].className="ac";
+		oP[0].style.transform="translateX("+(-img_w*n)+"px)";
+	};
+	
+	function run(){//封装的定时器
+		timer=setInterval(function(){
+			n++;//先++，否则会从0开始，时间延迟（应该从1开始）
+			if(n==aBtn.length){
+				n=0;
+			}
+			change(n);
+		},1500);
+	};
+	run();//先调用一次
+	//---------------------------
+	oBox.onmouseover=function(){
+		clearInterval(timer);
+	};
+	oBox.onmouseout=function(){
+		run();//再次调用
+	}
+}
+	
+	
+	
+	
+</script>
+
+</head>
+
+<body>
+<div id="box" class="slide">
+	<div class="imgBar">
+    	<div class="wrap">
+        	<img src="01.jpg">
+        	<img src="02.jpg">
+        	<img src="03.jpg">
+        </div>
+       
+    </div>
+<!--<button class="ac" type="button">1</button><button type="button">2</button><button type="button">3</button>-->
+
+</div>
+
+
+</body>
+</html>
