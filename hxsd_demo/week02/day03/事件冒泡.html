@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+#main{ width:200px; height:200px; background:#ccc;}
+#subBox{ width:100px; height:100px; background:red;}
+
+</style>
+<script>
+window.onload=function(){
+	var main=document.getElementById('main');
+	var subDiv=document.getElementById('subBox');
+	var input_text=document.getElementById('input_text');
+	
+	main.onkeyup=function(){
+		console.log('main onkeyup 事件');
+	};
+	main.onkeydown=function(){
+		console.log('main onkeydown 事件');
+	};
+	
+	input_text.onkeypress=function(){
+		console.log('input onkeypress 事件');
+	};
+	
+	
+	main.onclick=function(){
+		console.log('main onclick 事件');
+	};
+	
+	
+	main.onmousedown=function(){
+		console.log('main onmousedown事件');
+	};
+	
+	main.onmouseup=function(){
+		console.log('main onmouseup事件');
+	};
+	
+	
+	subDiv.onclick=function(ev){
+		ev=ev || window.event;
+		console.log('subDiv onclick事件');
+		ev.cancelBubble=true;
+		
+		/*if(window.event){//判断是不是ie
+			oEv.cancelBubble=true;// ie下阻止冒泡
+		
+		}else{
+			oEv.stopPropagation();// w3c下阻止冒泡  Propagation:传播 传送
+		}*/
+		
+		
+		
+	};
+	
+	/*subDiv.onmousedown=function(ev){
+		ev=ev || window.event;
+		console.log('subDiv onclick事件');
+		ev.cancelBubble=true;
+	}
+*/
+}
+
+
+</script>
+</head>
+
+<body>
+<div id="main">
+	<div id="subBox"></div>
+    <input id="input_text" type="text">
+
+</div>
+</body>
+</html>

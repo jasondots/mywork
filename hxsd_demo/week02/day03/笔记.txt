@@ -1,0 +1,34 @@
+事件冒泡
+
+在一个对象上触发某类事件（比如单击onclick事件）
+
+这个事件会向这个对象的父级对象传播，从里到外
+
+父级对象所有同类事件都将被激活
+
+直到到达了对象层次的最顶层，即document对象
+
+
+onclick 会冒泡onmousedown onmouseup事件  要分别进行阻止
+onkeypress 会冒泡 onkeydown onkeyup事件
+
+--------------------------------------------------------------------
+默认事件
+
+html元素默认的行为，比如：
+a标签，点击后有跳转动作；
+form表单中的submit类型的input有一个默认提交跳转事件；
+reset类型的input有重置表单行为
+
+如果你想阻止这些浏览器默认行为，JavaScript为你提供了方法。
+
+return false;
+
+ev.returnValue = false; //ie 阻止默认事件
+
+ev.preventDefault();//阻止默认事件 w3c
+
+
+既然return false 和 ev.preventDefault()都是一样的效果，那它们有区别吗？当然有。
+
+仅仅是在HTML事件属性 和 DOM0级事件处理方法中才能通过返回 return false 的形式组织事件宿主的默认行为。

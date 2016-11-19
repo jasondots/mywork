@@ -1,0 +1,16 @@
+
+操作DOM元素
+
+
+创建元素 createElement
+
+删除元素 removeChild    父级（要删除对象）
+
+插入元素 appendChild  父级（对象）
+
+替换元素 replaceChild 父级（替换对象，被替换对象）
+
+前部插入 insertBefore 父级（对象，被插入对象（该对象之前）   ）
+
+
+注：appendChild  replaceChild  insertBefore 都具有移动对象的功能

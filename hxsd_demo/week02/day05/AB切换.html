@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<style type="text/css">
+*{margin:0;padding:0}
+ul{list-style:none;}
+a{text-decoration:none;}
+li{border-bottom: 3px solid #eee; padding:10px;}
+button{width:100px;height:50px;font-size: 30px; margin-bottom:10px}
+div{width:300px;font-size: 30px;height:100px;background-color: #999; /*display:none*/}
+.subA{ background:#ddd}
+.subB{ background:#ccc}
+</style>
+<script>
+	window.onload=function(){
+		
+					
+		var box=document.getElementById('box');
+		
+		var btn=box.getElementsByTagName('button');
+		var oDiv=box.getElementsByTagName('div');
+		
+		for(var i=0;i<btn.length;i++){
+			oDiv[i].style.display='none';//必须设置行内样式，否则后面无法判断
+			btn[i].index=i;
+			btn[i].onclick=function(){				
+				if(oDiv[this.index].style.display=='none'){
+					for(var j=0;j<btn.length;j++){
+						oDiv[j].style.display='none';
+					};
+					oDiv[this.index].style.display='block';
+				}else{					
+					for(var j=0;j<btn.length;j++){
+						oDiv[j].style.display='none';
+					};					
+				}
+			}	
+			
+			
+			
+		}
+	}
+</script>
+</head>
+<body>
+	<ul id='box'>
+		<li >
+			<button type='button'>A</button>
+			<button type='button'>B</button>
+			<div class="subA">a</div>
+			<div class="subB">b</div>
+		</li>
+		<li >
+			<button type='button'>A</button>
+			<button type='button'>B</button>
+			<div class="subA">a</div>
+			<div class="subB">b</div>
+		</li>
+		<li >
+			<button type='button'>A</button>
+			<button type='button'>B</button>
+			<div class="subA">a</div>
+			<div class="subB">b</div>
+		</li>
+	</ul>
+
+</body>
+</html>

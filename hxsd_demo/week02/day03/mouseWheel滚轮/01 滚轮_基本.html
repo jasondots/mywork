@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<p>
+  <label for="wheelDelta"> 滚动值:</label>
+  (IE/Opera)
+  <input type="text" id="wheelDelta" />
+</p>
+2
+<p>
+  <label for="detail"> 滚动值:(Firefox)</label>
+  <input type="text" id="detail" />
+</p>
+</body>
+</html>
+<script type="text/javascript">
+/*
+五大浏览器:IE、Opera、Safari、Firefox、Chrome
+
+Firefox : detail   值：↑-3  ↓ 3
+
+IE、Opera、Safari、Chromewheel: Delta   值：↑120  ↓ -120
+
+*/
+
+
+var oTxt=document.getElementById("txt");
+var t1=document.getElementById("wheelDelta");
+var t2=document.getElementById("detail");
+
+var scrollFn=function(ev){
+	var oEv=ev ||window.event;
+	if(oEv.wheelDelta){//IE/Opera/Chrome
+		t1.value=oEv.wheelDelta;
+	};
+	if(oEv.detail){//Firefox
+		t2.value=oEv.detail;
+	}
+}
+ /*注册事件*/
+if(document.addEventListener){
+	document.addEventListener('DOMMouseScroll',scrollFn,false);
+}//Firefox
+
+document.onmousewheel=scrollFn;//IE/Opera/Chrome/Safari
+
+
+
+
+</script>

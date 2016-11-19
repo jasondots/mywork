@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0; padding:0}
+li{list-style:none;padding-bottom:40px; border-bottom:1px #000000 solid;}
+
+button{height:20px; width:50px; text-align:center;}
+.hidden{display:none}
+.text{width:500px; line-height:50px; }
+</style>
+<script>
+window.onload=function(){
+	var aBtn=document.getElementsByTagName('button');
+	var aText=document.getElementsByTagName('div');
+	for(i=0;i<aBtn.length;i++){
+		aText[i].op=0
+		aBtn[i].index=i
+		aBtn[i].onclick=function(){
+			for(j=0;j<aText.length; j++){
+				aText[j].className='text hidden';
+			};
+			for(j=0;j<aText.length; j++){
+				if(j!=this.index){
+					aText[j].op=0;
+					}
+			};
+			aText[this.index].className='text';
+			aText[this.index].op=aText[this.index].op+1;
+			if(aText[this.index].op==2){
+				aText[this.index].className='text  hidden';
+				aText[this.index].op=0;
+				
+			};
+		}
+	}
+}
+</script>
+</head>
+
+<body>
+<ul>
+	<li> 
+    <button type="button"> A</button>
+    <button type="button"> B</button>
+    <div class="text hidden">A</div>
+    <div class="text hidden">B</div>
+    </li>
+	<li> 
+    <button type="button"> A</button>
+    <button type="button"> B</button>
+    <div class="text hidden">A</div>
+    <div class="text hidden">B</div>
+    </li>
+	<li> 
+    <button type="button"> A</button>
+    <button type="button"> B</button>
+    <div class="text hidden">A</div>
+    <div class="text hidden">B</div>
+    </li>
+</ul>
+</body>
+</html>

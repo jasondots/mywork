@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+#box{ width:300px; background:#ddd; padding:10px}
+#textArea{ width:300px; padding:10px; height:600px}
+</style>
+</head>
+
+<body>
+<div id="box">
+火星时代教育是中国艺术教育高端品牌，设有多个热门专业(UI设计、游戏设计、室内设计、影视特效、程序开发、数字艺术学历)等 ，多年来一直与国内外各大企业联合实训，公司CEO携总监亲自授课，配备业界优秀师资，项目实训案例实时更新，每年为业界输送大量专业人才。
+</div>
+<br>
+<textarea id="textArea"></textarea>
+
+</body>
+</html>
+<script>
+var oDiv1=document.getElementById('box');
+var textArea=document.getElementById('textArea');
+
+	oDiv1.oncopy = function () {
+		alert('已复制到剪贴板');
+		//alert('禁止复制');
+		//return false;
+    };
+	
+	
+	
+	textArea.onpaste=function(ev){
+		ev=ev ||event;
+		  var clipboardData = ev.clipboardData || window.clipboardData;
+		
+		
+		
+		var newTxt=clipboardData.getData('text')+"----版权所有：火星时代";
+		alert(newTxt);
+		
+		clipboardData.setData('text',newTxt);//只有ie支持setData方法
+		
+		this.value=clipboardData.getData('text');
+		
+		
+		//this.value=newTxt;
+		//alert('禁止粘贴');
+		//return false; //同样都是使用return false 的方法取消默认事件
+	};
+	
+	
+/*
+	
+
+ev.clipboardData 剪贴板对象
+　这个对象有三个方法：getData()、setData()和clearData ()
+
+getData()
+
+　　getData()方法用于从剪贴板中取得数据，它接受一个参数，即要取得的数据的格式。在IE中，有两种数据格式："text" 和 "URL"。在其他浏览器中，这个参数是一种MIME类型；不过，可以用"text"代表
+
+　　[注意]在IE浏览器中，cut和copy事件中的getData()方法始终返回null；而其他浏览器始终返回空字符串''。但如果和setDada()方法配合，就可以正常使用
+
+
+
+setData()
+
+　　setData()方法的第一个参数也是数据类型，第二个参数是要放在剪贴板中的文本。对于第一个参数的规则与getData()相同
+
+　　在IE浏览器中，该方法在成功将文本放到剪贴板中后，返回true，否则返回false；而其他浏览器中，该方法无返回值
+
+　　[注意]在paste事件中，只有IE浏览器可以正常使用setData()方法，chrome浏览器会静默失败，而firefox浏览器会报错
+
+
+clearData()
+
+　　clearData()方法用于从剪贴板中删除数据，它接受一个参数，即要取得的数据的格式。在IE中，有两种数据格式："text"和"URL"。在其他浏览器中，这个参数是一种MIME类型；不过，可以用"text"代表
+
+　　在IE浏览器中，该方法在成功将文本放到剪贴板中后，返回true，否则返回false；而其他浏览器该方法的返回值为undefined
+
+　　[注意]在paste事件中，chrome浏览器和IE浏览器可以正常使用setData()方法，而firefox浏览器会报错
+
+*/
+
+</script>

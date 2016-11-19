@@ -1,0 +1,69 @@
+事件汇总
+
+表单事件
+onblur	        元素失去焦点
+onfocus	        元素获得焦点
+onreset	        重置按钮被点击
+onsubmit	提交按钮被点击
+onchange	内容改变时触发
+
+鼠标事件
+onclick	        鼠标点击
+ondblclick	鼠标双击
+onmousedown	鼠标按键按下
+onmouseup	鼠标按键被松开
+onmouseout	鼠标从某元素移开
+onmouseover	鼠标被移到某元素之上
+onmouseenter    鼠标进入某元素
+onmouseleave    鼠标离开某元素 
+onmousemove	鼠标移动
+
+键盘事件
+onkeydown	某个键盘的键被按下
+onkeypress	某个键盘的键被按下并释放
+onkeyup	        某个键盘的键被松开
+
+window事件
+onload	        某个页面或图像被完成加载
+onunload	用户退出页面
+onresize	窗口或框架被调整尺寸
+
+------------------------------------------------------------
+事件对象
+键盘
+ctrlKey  返回当事件被触发时，"Ctrl" 是否被按下
+altKey	 返回当事件被触发时，"Alt" 是否被按下
+shiftKey 返回当事件被触发时，"Shift" 键是否被按下
+
+鼠标
+button	 返回当事件被触发时，哪个鼠标按钮被点击
+clientX	 返回当事件被触发时，鼠标指针的水平坐标
+clientY	 返回当事件被触发时，鼠标指针的垂直坐标
+
+screenX  返回当某个事件被触发时，鼠标指针的水平坐标
+screenY	 返回当某个事件被触发时，鼠标指针的垂直坐标
+
+
+---------------------------------------------------------
+函数的返回值 return
+
+用 return 语句来终止一个函数的执行
+
+可以向外部返回一个值（可以是任何数据：字符串 数字 数组 函数 对象等等）
+
+函数内没有 return 语句被执行，则函数的返回值是 undefined
+
+return false可以阻止默认事件（不够完善）
+
+
+--------------------------------------------------------
+offsetWidth  宽度
+offsetHeight 高度
+offsetLeft   左    计算到有position属性的父级
+offsetTop    上    计算到有position属性的父级
+offsetParent 父级  有position属性的父级
+
+元素隐藏(display:none)无法读取以上属性
+
+
+

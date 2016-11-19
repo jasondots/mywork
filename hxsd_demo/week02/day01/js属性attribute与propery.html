@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Attribute 与 property</title>
+</head>
+
+<body>
+<div id="div1" class="div_cls" sst="18">xiaoming</div>
+
+<script>
+//行内属性：Attribute
+//.语法声明的特性：property
+
+var oDiv=document.getElementById('div1');
+//alert(oDiv.getAttribute('sst'));//用getAttribute 方法，读取行内属性（Attribute）
+oDiv.my_index=890;
+alert(oDiv.my_index);//用.语法读取 .语法声明的特性(property)
+
+
+
+</script>
+</body>
+</html>

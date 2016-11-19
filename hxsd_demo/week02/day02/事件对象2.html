@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<div id="box" style="width:200px; height:200px; background:red"></div>
+</body>
+</html>
+
+<script>
+	//找到一个div对象
+	var oDiv=document.getElementById('box');
+	
+	//为div绑定事件 其中ev是事件函数的参数
+	oDiv.onclick=function(ev){
+		alert(ev);// 显示结果 object mouseevent
+	};
+	
+	document.onkeydown=function(ev){
+		alert(ev)
+	}
+	
+
+</script>

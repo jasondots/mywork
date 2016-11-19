@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link href="960_16_col.css" rel="stylesheet" type="text/css">
+<style>
+/*reset*/
+body,p,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,hr,blockquote,object,iframe,fieldset,input,legend,form,th,td{margin:0;padding:0}
+body,input,textarea,keygen,select,button,isindex{font:14px/24px Verdana,Tahoma,"Lucida Grande","\5FAE\8F6F\96C5\9ED1";color:#333;word-break:break-all}
+ul,ol,li{list-style:none}
+img{border:none}
+a{text-decoration:none}
+
+
+/*common*/
+h1,h2,h3,h4,h5,h6{font-weight:normal}
+h1{font-size:24px}h2{font-size:20px}h3{font-size:18px}h4{font-size:16px}h5{font-size:14px}h6{font-size:14px}
+i,b,em{font-style:normal;font-weight:normal}
+table{border-collapse:collapse;border-spacing:0; width:100%; background:#fff}
+td{padding:3px 5px;}
+th{font-weight:normal; background:#e7f4fe; height:40px}
+table,td,th{ border:1px solid #ddd}
+table caption{ font-size:16px; text-align:left; padding-bottom:10px}
+
+.fl{float:left}
+.fr{float:right}
+.clearBoth{clear:both}
+.mc{margin:0 auto}
+.pr{position:relative;*zoom:1}
+.pa{position:absolute}
+.tc{text-align:center}
+.tl{text-align:left !important}
+.tr{text-align:right !important}
+
+.pd20{ padding:20px}
+.border{ border:1px solid #ccc}
+
+.head{ height:40px; background:red; margin-bottom:20px}
+h1{ font-size:20px; line-height:40px; color:#fff; text-indent:2em}
+
+.main_l_item{ margin-bottom:20px}
+.main_r_item{ background:#eee; min-height:400px; margin-bottom:20px}
+.main_r_item h4{ height:30px; line-height:30px; border-bottom:1px solid #ccc;}
+.banner{ height:120px; min-height:144px}
+.banner img{ width:100%}
+.banner_fixed{ position:fixed; width:220px; top:0}
+</style>
+
+<script>
+window.onload=function(){
+	var oHead=document.getElementById('oHead');
+	var oBanner=document.getElementById('oBanner');
+	var userList=document.getElementById('userList');
+	
+	window.onscroll=function () { 
+		var t = document.documentElement.scrollTop || document.body.scrollTop;
+		if (t >60) { 
+			oBanner.className="main_r_item banner banner_fixed";
+			userList.style.marginTop=164+'px';	
+		}else{
+			oBanner.className="main_r_item banner";
+			userList.style.marginTop=0+'px';	
+		}
+	}
+
+}
+
+
+</script>
+
+</head>
+
+<body>
+	<div id="oHead" class="head">
+    	<div class="container_16">
+        	<h1 class="grid_4">火星时代</h1>
+        </div>
+    </div>
+    
+    <div id="oMain" class="container_16 main">
+    	<div class="grid_12 main_l">
+        	<div class="main_l_item info">
+            	<div class="border">
+                    <div class="pd20">
+                        火星时代教育是中国艺术教育高端品牌，设有多个热门专业(UI设计、游戏设计、室内设计、影视特效、程序开发、数字艺术学历)等 ，多年来一直与国内外各大企业联合实训，公司CEO携总监亲自授课，配备业界优秀师资，项目实训案例实时更新，每年为业界输送大量专业人才。
+                    </div>
+                </div>
+            </div>
+            <div class="main_l_item info2">
+            	<div class="grid_4 alpha" style=" background:red; height:100px"></div>
+                <div class="grid_4" style=" background:green;height:100px"></div>
+                <div class="grid_4 omega" style=" background:blue;height:100px"></div>
+            
+            
+            </div>
+            
+        </div>
+        
+        <div class="grid_4 main_r">
+        	<div id="oBanner" class="main_r_item banner">
+            	<img src="05.jpg">
+            </div>
+            <div id="userList" class="main_r_item">
+            	<div class="pd20">
+                	<h4>用户列表</h4>
+                </div>
+            </div>
+            <div id="userList" class="main_r_item">
+            	<div class="pd20">
+                	<h4>图片收藏</h4>
+                </div>
+            </div>
+        </div>
+    	
+   </div>
+   
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style type="text/css">
+*{margin: 0;padding: 0;}
+.box1{width: 300px;height: 413px;position: relative;left: 200px;top: 100px;overflow: hidden;}
+.box1 .demo_img{width: 100%;}
+.box2{width: 150px;height: 150px;overflow: hidden;position: absolute;display: none; /*border-radius:50%;*/ box-shadow:3px 3px 10px 2px #333; background:#fff}
+.box2 .big_img{position: absolute;left: 0;top: 0;}
+</style>
+
+<script type="text/javascript">
+    window.onload=function(){
+        var oDiv1=document.getElementsByClassName('box1')[0];
+        var oDiv2=document.getElementsByClassName('box2')[0];
+        var bigImg=oDiv2.getElementsByTagName('img')[0]
+        
+		oDiv1.onmousemove=function(ev){
+            oDiv2.style.display='block';//move的时候使span和oDiv2显示
+			var oEv=ev||window.event;
+			var l=oEv.clientX-oDiv1.offsetLeft-oDiv2.offsetWidth/2;
+			var t=oEv.clientY-oDiv1.offsetTop-oDiv2.offsetHeight/2;
+			//判断handle的移动范围
+			if(l<-10){
+				l=-10
+			}
+			if(l>(oDiv1.offsetWidth-oDiv2.offsetWidth+10)){
+				l=oDiv1.offsetWidth-oDiv2.offsetWidth+10
+			}
+			if(t<-10){
+				t=-10
+			}
+			if(t>oDiv1.offsetHeight-oDiv2.offsetHeight+10){
+				t=oDiv1.offsetHeight-oDiv2.offsetHeight+10
+			}
+			//给handle赋予left和top值，使其移动；
+			oDiv2.style.left=l+'px';
+			oDiv2.style.top=t+'px';
+			
+			
+			var l_rate=l / (oDiv1.offsetWidth-oDiv2.offsetWidth);
+			var t_rate=t / (oDiv1.offsetHeight-oDiv2.offsetHeight);
+			
+			
+			bigImg.style.left= (oDiv2.offsetWidth-bigImg.offsetWidth)*l_rate +'px'; //外box 减 内部大图片，为负值
+			bigImg.style.top= (oDiv2.offsetHeight-bigImg.offsetHeight)*t_rate +'px';
+		};
+		
+        oDiv1.onmouseout=function(){
+            oDiv2.style.display='none';
+        }
+        
+    }
+</script>
+</head>
+<body>
+<div class="box1">
+    <img class="demo_img" src="images/1.jpg"/>
+    <div class="box2"><img class="big_img" src="images/1.jpg"/></div>
+</div>
+
+</body>
+</html>

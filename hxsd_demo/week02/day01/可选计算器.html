@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+input{ width:100px;}
+</style>
+<script>
+window.onload=function(){
+var oA=document.getElementById('sum_a');
+var oB=document.getElementById('sum_b');
+var oResult=document.getElementById('result');
+var oBtn=document.getElementById('btn');
+var sel=document.getElementById('sel');
+
+
+/*function isNumber(elm){
+	if(isNaN(elm.value)){
+		alert('请输入数字！');
+		elm.value="";
+	}	
+};*/
+
+function checkInput(input){
+	input.onkeyup=function(){
+		if(isNaN(this.value)){
+			alert('请输入数字！');
+			this.value="";
+		}	
+	};
+};
+
+checkInput(oA);
+checkInput(oB);
+
+
+
+/*oA.onkeyup=function(){
+	isNumber(this);
+};
+oB.onkeyup=function(){
+	isNumber(this);
+};*/
+
+oA.onchange=function(){
+	oResult.value="";
+};
+oB.onchange=function(){
+	oResult.value="";
+}
+
+
+oBtn.onclick=function(){
+	var mode=parseInt(sel.value);
+	var a_value= parseInt(oA.value);
+	var b_value= parseInt(oB.value);
+	switch(mode){
+		case 1:
+		oResult.value=a_value+b_value;
+		break;
+		case 2:
+		oResult.value=a_value-b_value;
+		break;
+		case 3:
+		oResult.value=a_value*b_value;
+		break;
+		case 4:
+		oResult.value=a_value/b_value;
+		break;
+	};
+	
+	/*if(oResult.value=="NaN"){
+		alert('请输入有效数字！');
+		oA.value=oB.value=oResult.value="";
+		oA.focus();
+	}*/
+	
+}
+
+}
+
+
+</script>
+</head>
+
+<body>
+<input id="sum_a" type="text">
+<select id="sel">
+	<option value="1">+</option>
+    <option value="2">-</option>
+    <option value="3">*</option>
+    <option value="4">/</option>
+</select>
+<input id="sum_b" type="text">
+
+<button id="btn" type="button">=</button> <input type="text" id="result">
+
+</body>
+</html>

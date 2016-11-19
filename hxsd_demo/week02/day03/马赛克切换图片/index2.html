@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>马赛克切换图片</title>
+<style>
+*{ margin:0;  padding:0}
+body{ padding:20px}
+ul{ list-style:none}
+#box{ width:400px; height:260px; border:1px solid #ccc; margin-bottom:10px; position:relative}    
+button{ border:none; background:#ccc; width:30px; height:30px; margin-left:10px}
+.ac{ background:red; color:#fff;}
+.hide{ display:none}    
+</style>
+</head>
+
+<body>
+<div id="box">
+	<ul>
+    	<li><img src="01.jpg"></li>
+        <li class="hide"><img src="02.jpg"></li>
+        <li class="hide"><img src="03.jpg"></li>
+    </ul>
+</div>
+<button class="ac" type="button">1</button><button type="button">2</button><button type="button">3</button>
+
+<script>
+window.onload=function(){var aBtn=document.getElementsByTagName("button");var aLi=document.getElementsByTagName("li");var mosaic_row=10;var mosaic_col=10;var mosaic_all=mosaic_row*mosaic_col;var h=260/mosaic_row;var w=400/mosaic_col;function changeImg(elm,img,speed){var num=-1;var show=0;var imgDiv=document.createElement("div");imgDiv.style.position="absolute";imgDiv.style.top=0;imgDiv.style.left=0;imgDiv.style.zIndex=10;for(var i=0;i<mosaic_all;i++){var subDiv=document.createElement("div");subDiv.style.backgroundImage="url("+img+")";subDiv.style.width=w+"px";subDiv.style.height=h+"px";subDiv.style.position="absolute";if(i%mosaic_col==0){num++}subDiv.style.top=num*h+"px";subDiv.style.left=(i%mosaic_col)*w+"px";subDiv.style.backgroundPosition=-(i%mosaic_col)*w+"px"+" "+-(num*h)+"px";subDiv.style.display="none";imgDiv.appendChild(subDiv)}var mosaic=imgDiv.children;clearInterval(timer);var timer=setInterval(function(){mosaic[show].style.display="block";show++;if(show>=mosaic_all){clearInterval(timer)}},speed);elm.appendChild(imgDiv)}for(var i=0;i<aBtn.length;i++){aBtn[i].index=i;aBtn[i].onclick=function(){for(var j=0;j<aBtn.length;j++){aLi[j].style.display="none";aBtn[j].className=""}this.className="ac";aLi[this.index].innerHTML="";aLi[this.index].style.display="block";changeImg(aLi[this.index],"0"+(parseInt(this.index)+1)+".jpg",10)}}};
+</script>
+
+</body>
+</html>

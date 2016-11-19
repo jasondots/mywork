@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0}
+ul{ list-style:none; width:400px; border:5px solid #000; background:pink; margin-left:200px; position:relative; height:100px; overflow:auto;}
+li{ width:300px; height:60px; background:#ccc; margin-bottom:20px;}
+#li_B{}
+#li_C{}
+</style>
+<script>
+/*
+clientWidth  
+是对象可见的宽度（不包滚动条、边框线），会随窗口的显示大小改变。  
+offsetWidth  
+是对象的可见宽度，包滚动条等边线，会随窗口的显示大小改变。  
+*/
+
+
+
+window.onload=function(){
+	var ul=document.getElementsByTagName('ul')[0];
+	alert(ul.clientWidth);
+	alert(ul.offsetWidth);
+	
+	var li=document.getElementById('li_B');
+	//alert(li.offsetLeft);
+	
+	//元素display:none  无法读取
+
+}
+
+
+</script>
+
+</head>
+
+<body>
+<ul class="nav">
+	<li class="ac"><a href="#">sdf</a></li>
+    <li id="li_B"><a href="#">li_Bli_Bli_Bli_B</a></li>
+    <li id="li_C"><a href="#">sdfsdfsdf</a></li>
+    <li><a href="#">sdf</a></li>
+    
+</ul>
+
+</body>
+</html>

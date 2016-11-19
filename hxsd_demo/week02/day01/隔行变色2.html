@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0}
+table{ width:500px;}
+table,th,td{ border:1px solid #ccc; border-collapse:collapse;}
+th,td{ height:30px; padding:0 5px}
+.tr_even_bg{ background:#efefef;}
+.over{ background:#ccc;}
+</style>
+<script>
+window.onload=dom_onload;
+
+
+
+function dom_onload(){
+	var oTbody=document.getElementsByTagName('tbody')[0];
+	var aTr=oTbody.children;
+	
+	for(var i=0; i<aTr.length; i++){
+		//alert(i%2);  结果为0,0是false
+		if(i%2){
+			aTr[i].className="tr_even_bg";
+		};
+		
+		aTr[i].onmouseover=function(){
+				this.style.background="red";
+				this.style.color="#fff";
+			
+		};
+		aTr[i].onmouseout=function(){
+			this.style.background="";
+			this.style.color="";//ie8以下有问题
+			
+		}
+		
+	}
+	
+
+
+}
+
+</script>
+</head>
+
+<body>
+<table id="table01">
+	<thead>
+    	<tr>
+        	<th>姓名</th>
+            <th>性别</th>
+            <th>年龄</th>
+            <th>学历</th>
+        </tr>
+    </thead>
+    <tbody>
+    	<tr>
+        	<td>张三</td>
+            <td>男</td>
+            <td>18</td>
+            <td>大专</td>
+        </tr>
+        <tr>
+        	<td>李四</td>
+            <td>男</td>
+            <td>20</td>
+            <td>中专</td>
+        </tr>
+        <tr>
+        	<td>小明</td>
+            <td>男</td>
+            <td>29</td>
+            <td>硕士</td>
+        </tr>
+        <tr>
+        	<td>小红</td>
+            <td>女</td>
+            <td>24</td>
+            <td>本科</td>
+        </tr>
+        <tr>
+        	<td>张三</td>
+            <td>男</td>
+            <td>18</td>
+            <td>大专</td>
+        </tr>
+        <tr>
+        	<td>张三</td>
+            <td>男</td>
+            <td>18</td>
+            <td>大专</td>
+        </tr>
+        <tr>
+        	<td>李四</td>
+            <td>男</td>
+            <td>20</td>
+            <td>中专</td>
+        </tr>
+        <tr>
+        	<td>小明</td>
+            <td>男</td>
+            <td>29</td>
+            <td>硕士</td>
+        </tr>
+        <tr>
+        	<td>小红</td>
+            <td>女</td>
+            <td>24</td>
+            <td>本科</td>
+        </tr>
+        <tr>
+        	<td>张三</td>
+            <td>男</td>
+            <td>18</td>
+            <td>大专</td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>

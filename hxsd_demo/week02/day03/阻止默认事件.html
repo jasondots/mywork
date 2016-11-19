@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+
+
+window.onload=function(){
+var userName=document.getElementById('userName');
+var btn=document.getElementById('btn');
+var oForm=document.getElementsByTagName('form')[0];
+
+
+
+var a=document.getElementsByTagName('a')[0];
+	a.onclick=function(ev){
+		var	oEv = ev || window.event;
+		//alert('ok');
+		//return false;
+		if(window.event){//IE
+			oEv.returnValue = false; //ie 阻止默认事件
+			return false;//ie9 以上阻止回车
+		}
+		else{
+			oEv.preventDefault();//阻止默认事件 firefox chrome
+		}
+	}
+
+	oForm.onsubmit=function(ev){
+		alert(345345345);
+		
+		/*alert('请验证一下表单内容后再提交');
+		return false;
+		var	oEv = ev || window.event;
+		if(isNaN(userName.value) || userName.value==''){//你确定不是一个数字吗？
+			alert('请输入数字');
+			userName.value="";
+			userName.focus();
+			
+			
+			return false;
+			if(window.event){//IE
+				oEv.returnValue = false; //ie 阻止默认事件
+				return false;//ie9 以上阻止回车
+			}
+			else{
+				oEv.preventDefault();//阻止默认事件 firefox 
+			}
+		};*/
+	};
+	
+};
+
+
+</script>
+
+</head>
+
+<body onUnload="alert(32234)">
+<a href="http://www.baidu.com">baidu</a>
+
+<form action="abc.php" method="get">
+	电话号码：<input id="userName" name="user" type="text">
+    <button id="btn" type="submit">提交</button>
+</form>
+
+</body>
+</html>

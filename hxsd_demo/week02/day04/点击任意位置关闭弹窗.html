@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0; font-size:14px;}
+a{ text-decoration:none; color:#999}
+ul{ list-style:none}
+.pop_sel{ width:200px; height:30px; line-height:30px; position:relative; border:1px solid #ccc; margin:100px}
+.pop_sel i{ position:absolute; border:5px solid #000; top:12px; right:10px; border-left-color:#fff;border-right-color:#fff;border-bottom-color:#fff;}
+.pop_sel h5{ text-indent:1em; font-size:14px}
+.pop_sel ul{ position:absolute; top:30px; left:-1px; border:1px solid #ccc; width:200px;}
+.pop_sel ul li{ border-bottom:1px solid #ddd;}
+.pop_sel ul li a{ display:block; text-indent:1em}
+.pop_sel ul li a:hover{ color:red}
+.pop_box{display:none;}
+</style>
+
+<script>
+window.onload=function(){
+	var my_sel=document.getElementById('my_sel');
+	var oUl=my_sel.getElementsByTagName('ul')[0];
+	var oH5=my_sel.getElementsByTagName('h5')[0];
+	
+	my_sel.onclick=function(ev){
+		var oEv=ev || window.event;
+		oUl.style.display="block";
+		oEv.cancelBubble=true;
+		//var oEl=oEv.target||oEv.srcElement;
+		//if(oEl==this||oEl.className=='pop_box')return;
+	};
+	
+	var aLi=my_sel.getElementsByTagName('li');
+	
+	for(var i=0; i<aLi.length; i++){
+		aLi[i].onclick=function(ev){
+			oUl.style.display="none";
+			var a=this.getElementsByTagName('a')[0];
+			oH5.innerHTML=a.innerHTML;
+			var oEv=ev || window.event;
+			oEv.cancelBubble=true;
+		}
+	};
+	
+	document.onmouseup=function(){
+		var pop_box=document.getElementsByClassName('pop_box');
+		for(var i=0; i<pop_box.length; i++){
+			pop_box[i].style.display='none';
+		}
+	}
+	
+	
+	
+
+
+}
+
+
+
+</script>
+
+</head>
+
+<body>
+<div id="my_sel" class="pop_sel">
+	<h5>标题</h5><i></i>
+    <ul class="pop_box">
+    	<li><a href="javascript:;">11111</a></li>
+        <li><a href="javascript:;">22222</a></li>
+        <li><a href="javascript:;">33333</a></li>
+        <li><a href="javascript:;">44444</a></li>
+    </ul>
+</div>
+
+</body>
+</html>

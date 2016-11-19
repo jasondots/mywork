@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0}
+ul{ list-style:none; width:300px;}
+li{ height:130px; background:#ccc; margin-bottom:30px; position:relative}
+li div{ position:absolute; height:370px; width:150px; background:red; top:0px; right:-170px; display:none; border-radius:5px}
+li div::before{ content:''; border:10px solid #fff; position:absolute; left:-20px; top:40px; width:0; height:0; border-right-color:red;}
+.showBottom{top:auto; bottom:0}
+.showBottom::before{top:auto; bottom:40px}
+</style>
+
+<script>
+
+// JavaScript Document
+
+window.onload=function(){
+	var aLi=document.getElementsByTagName('li');
+	for(var i=0; i<aLi.length; i++){
+		aLi[i].onmouseover=function(){
+			
+			var scroll_top=document.documentElement.scrollTop || document.body.scrollTop;//滚动条高度
+			var top=this.offsetTop;
+			var screen_h=document.documentElement.clientHeight;//浏览器视口高度
+			var sub_div=this.getElementsByTagName('div')[0];
+			
+			sub_div.style.display="block";
+			
+			if( top<scroll_top+screen_h/2 ){  //判断在屏幕的上半屏/下半屏
+				sub_div.className='';
+			}else{
+				sub_div.className='showBottom';
+			}
+		};
+		
+		aLi[i].onmouseout=function(){
+			var sub_div=this.getElementsByTagName('div')[0].style.display="none";
+		}
+	}
+
+}
+
+
+
+</script>
+
+</head>
+
+<body>
+<ul>
+	<li>
+    	<div></div>
+    </li>
+    <li>
+    	<div></div>
+    </li>
+    <li>
+    	<div></div>
+    </li>
+    <li>
+    	<div></div>
+    </li>
+    <li>
+    	<div></div>
+    </li>
+    <li>
+    	<div></div>
+    </li>
+    <li>
+    	<div></div>
+    </li>
+    <li>
+    	<div></div>
+    </li>
+    <li>
+    	<div></div>
+    </li>
+    <li>
+    	<div></div>
+    </li>
+
+</ul>
+
+
+</body>
+</html>

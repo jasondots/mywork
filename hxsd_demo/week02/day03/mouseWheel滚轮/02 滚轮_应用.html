@@ -1,0 +1,58 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0}
+div{width:300px;height:300px; background:red;}
+</style>
+<script>
+window.onload=function(){
+	
+	
+	
+	var oDiv=document.getElementById('box');
+	
+		if(window.navigator.userAgent.indexOf('Firefox')!=-1){	
+			oDiv.attachEvent? oDiv.attachEvent('DOMMouseScroll',wheelFn):oDiv.addEventListener('DOMMouseScroll',wheelFn,true);
+			
+		}
+		else{
+			oDiv.onmousewheel=wheelFn;
+		};
+		function wheelFn(ev){
+			var oEv=ev||event;
+			var direct=oEv.wheelDelta ? oEv.wheelDelta<0 : oEv.detail>0;
+			//console.log(oEv.wheelDelta,direct);
+			//console.log(oEv.detail,direct);
+			if(direct){
+				oDiv.style.background="red";
+			}else{
+				oDiv.style.background="green";
+			};
+			//return false;//FF不能用这个方法
+			
+			if(window.event){//IE
+				ev.returnValue = false;
+				return false;
+			}
+			else{
+				ev.preventDefault();
+			}
+		};
+	
+	
+	
+	
+	
+	
+	
+};
+</script>
+</head>
+
+<body style="height:2000px;">
+<div id="box"></div>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0}
+ul{ list-style:none; position:relative;}
+ul li{ float:left; font-size:20px; margin-left:20px; height:100px; width:180px; background:#ccc;}
+</style>
+<script>
+window.onload=function(){
+	var aLi=document.getElementsByTagName('li');
+	var arr=[];
+	
+	
+	
+	//重新定位
+	for(var i=0; i<aLi.length; i++){
+		aLi[i].style.left=aLi[i].offsetLeft+'px';
+		aLi[i].style.top=aLi[i].offsetTop+'px';
+	};
+	for(var i=0; i<aLi.length; i++){
+		aLi[i].style.margin=0;
+		aLi[i].style.position='absolute';
+	};
+	
+	//拖拽
+	for(var i=0; i<aLi.length; i++){
+		aLi[i].index=i;
+		
+		aLi[i].onmousedown=function(ev){
+			var oEv=ev || window.event;
+			var _this=this;
+			var myIndex=this.index;
+			
+			var disX=oEv.clientX-_this.offsetLeft;
+			
+			//存储所有li的坐标
+			arr=[];
+			for(var i=0; i<aLi.length; i++){
+				arr.push({L:aLi[i].offsetLeft,T:aLi[i].offsetTop});
+			};
+			
+		
+			
+			document.onmousemove=function(ev){//移动拖拽
+				var oEv=ev || window.event;
+				var l=oEv.clientX-disX;
+				
+				//判断屏幕范围
+				if(l<0)l=0;
+				if(l>document.documentElement.clientWidth-_this.offsetWidth)l=document.documentElement.clientWidth-_this.offsetWidth;
+				
+				//最后赋值
+				_this.style.left=l+'px';
+				
+				console.log(myIndex)
+				if(l<aLi[myIndex-1].offsetLeft+150){
+					_this.style.left=arr[myIndex-1].L+'px';
+					_this.style.top=arr[myIndex-1].T+'px';
+					
+					aLi[myIndex-1].style.left=arr[myIndex].L+'px';
+					aLi[myIndex-1].style.top=arr[myIndex].T+'px';
+					
+					for(var i=0; i<aLi.length; i++){
+						aLi[i].index=i;
+						//console.log(aLi[i].index)
+					};
+					
+					
+				}
+				
+				
+				//碰撞
+				
+				/*for(var i=0; i<aLi.length;i++){
+					var li_l=aLi[i].offsetLeft;
+					
+					if(l+_this.offsetWidth<li_l ||  l>aLi[i].offsetLeft+aLi[i].offsetWidth){
+						aLi[i].style.border="none";
+					}
+					else{
+						console.log(arr[myIndex].L);
+						aLi[i].style.border="2px solid #000";
+					}
+				};*/
+				
+				
+				
+				
+				
+				
+			};
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			//释放鼠标move事件
+			document.onmouseup=function(){
+				document.onmouseup=document.onmousemove=null;
+			}
+			return false;
+		};
+	
+	
+	}
+	
+	
+	
+
+
+
+
+}
+
+</script>
+
+
+</head>
+
+<body>
+<ul>
+	<li style="background:red">1</li>
+    <li style="background:green">2</li>
+    <li style="background:blue">3</li>
+    <li style="background:pink">4</li>
+    <li style="background:gray">5</li>
+    
+</ul>
+</body>
+</html>

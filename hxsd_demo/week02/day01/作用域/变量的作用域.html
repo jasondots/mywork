@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+	var a=10;
+	
+	//函数内的变量------------------------------------
+	function run(){
+		var b=20;
+		c=50;
+	};
+	//run();
+	//console.log(b)
+	//console.log(c);//调用函数后，c才会被声明为全局函数
+	
+	
+	//for内的变量-------------------------
+	for(var i=0; i<10; i++){
+		var d=50;
+		console.log('循环内的i：'+i);
+	};
+	console.log('循环完的i：'+i);
+	console.log(d);
+	
+	//if 内的变量---------------------------
+	if(a<10){
+		var cc=40;
+	};
+	
+	console.log(cc);
+	alert(e);//外部js文件，外部js要加载在前面
+
+</script>
+<script src="out.js"></script>
+
+
+</head>
+
+<body>
+<div id="box" data-age="18" style="width:100px; height:100px; background:red"></div>
+</body>
+</html>
+

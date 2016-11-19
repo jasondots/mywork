@@ -1,0 +1,57 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0}
+div{ position:absolute;top:0;left:200px;width:200px;height:200px; background:red}
+h2{ height:40px; background:#ccc;}
+</style>
+<script>
+window.onload=function(){
+
+	var oBox=document.getElementById('box');
+	var oh=document.getElementById('rr');
+	
+	oh.onmousedown=function(ev){//得到鼠标与box之间的差
+		console.log(oh.offsetLeft)
+		var oEvent=ev||event;
+		var disX=oEvent.clientX-oBox.offsetLeft;
+		var disY=oEvent.clientY-oBox.offsetTop;
+		
+		document.onmousemove=function(ev){//鼠标移动，进行拖拽
+			var oEvent=ev||event;
+			var t=oEvent.clientY-disY;
+			var l=oEvent.clientX-disX;
+			
+			
+			
+			if(t<0)t=0;
+			if(t>document.documentElement.clientHeight-oBox.offsetHeight)t=document.documentElement.clientHeight-oBox.offsetHeight;
+			
+			if(l<0)l=0;
+			if(l>document.documentElement.clientWidth-oBox.offsetWidth)l=document.documentElement.clientWidth-oBox.offsetWidth;
+			
+			oBox.style.top=t+'px';
+			oBox.style.left=l+'px';
+		};	
+		
+		document.onmouseup=function(){//释放事件
+			document.onmousemove=null;
+			document.onmouseup=null;
+		};
+		return false;
+	};
+	
+	
+};
+</script>
+</head>
+
+<body>
+<div id="box">
+<h2 id="rr">dsfsdf</h2>
+</div>
+</body>
+</html>

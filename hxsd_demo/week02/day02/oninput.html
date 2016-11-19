@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<input type="text">
+<div id="box"></div>
+</body>
+</html>
+<script>
+var oTxt=document.getElementsByTagName('input')[0];
+var oBox=document.getElementById('box');
+oTxt.oninput=function(){ //ie 9以上
+	oBox.innerHTML=this.value;
+};
+
+/*oTxt.onkeyup=function(){
+	oBox.innerHTML=this.value;
+}*/
+
+</script>

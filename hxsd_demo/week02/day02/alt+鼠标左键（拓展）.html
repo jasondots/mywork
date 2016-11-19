@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>alt+鼠标</title>
+<script>
+window.onload=function(){
+	var oDiv=document.getElementById('div01');
+	
+	document.onkeydown=function(ev){
+		var ev=ev || window.event;
+		
+		oDiv.onclick=function(oev){
+			var oev=oev || window.event;
+			if(ev){//判断document的事件
+				if(ev.altKey && oev.button==0){
+					alert(1212);
+					ev=null;
+				};
+			};
+		};
+	}
+
+}
+
+
+</script>
+</head>
+
+<body>
+
+<div id="div01" style="height:100px;width:100px;background:red"></div>
+</body>
+</html>

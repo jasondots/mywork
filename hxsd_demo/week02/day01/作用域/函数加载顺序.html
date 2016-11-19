@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+run();
+
+function run(){
+	alert(123);
+};
+play('内部调用外部fn');
+
+function make_fn(){
+	function abc(){
+		alert(abc);
+	};
+	abc();
+
+};
+make_fn();
+
+</script>
+
+<script src="out.js"></script>
+
+
+</head>
+
+<body>
+</body>
+</html>

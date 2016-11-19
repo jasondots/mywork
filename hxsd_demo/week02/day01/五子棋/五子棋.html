@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+
+
+<style type="text/css">
+ul,li{list-style:none; margin:0; padding:0;}
+#bg{width:600px; height:600px; background: url(bg.jpg) no-repeat center center; margin:auto; position: absolute; top:0; bottom:0; left:0; right:0; border:1px dotted #111;}
+#box{width:600px; height:600px; }
+#box:after{content: ''; display: block; clear:both;}
+#box li{width:30px; height:30px; margin:5px;float:left; text-align: center; line-height: 38px; cursor: pointer; border-radius: 50%; }
+#box .black{box-shadow: 0 2px 10px #b2b97b; background:-webkit-radial-gradient(65% 25%,#ccc ,#000 15%,#000); color:white;}
+#box .white{box-shadow: 0 2px 10px #b2b97b; background:-webkit-radial-gradient(65% 25%,#fff,#eee 15%,#fff); color:black;}
+
+#box .blackHover{box-shadow: 0 2px 10px #b2b97b; background:-webkit-radial-gradient(65% 25%,#ccc ,#000 15%,#000); color:white;opacity: .3}
+#box .whiteHover{box-shadow: 0 2px 10px #b2b97b; background:-webkit-radial-gradient(65% 25%,#fff,#eee 15%,#fff); color:black;opacity: .3}
+
+
+</style>
+
+
+<script type="text/javascript">
+window.onload = function(){
+	var box = document.getElementById('box');
+	var gz = '';
+	for (var i = 0; i<225; i++) {
+		gz += '<li></li>';
+	}
+	box.innerHTML = gz;
+
+
+
+	/*var b_w = true;   //
+	var result = 0
+
+	var aLi = document.getElementsByTagName("li");
+
+
+	for( var i=0; i<225; i++){
+		aLi[i].index = i;
+
+		//悬停显示半透明棋子
+		aLi[i].onmouseover = function(){
+			if( result === 1 ){	//判断是否已经决出胜负
+				return;
+			};
+			if( this.className == 'black' || this.className == 'white'){
+				return;
+			};
+			if(b_w == true){
+				this.className = "blackHover";
+			}else{
+				this.className = "whiteHover";
+			};
+		};
+
+		//移出隐藏半透明棋子
+		aLi[i].onmouseout = function(){
+			if( this.className == 'black' || this.className == 'white'){
+				return;
+			};
+			this.className = '';
+		}
+
+
+
+		//点击落子
+		aLi[i].onclick = function(){
+			if( result === 1 ){	//判断是否已经决出胜负
+				return;
+			};
+			// 1.black
+			// 2.white
+			if ( this.className != 'black' && this.className != 'white' ){
+				if(b_w == true){
+					this.className = "black";
+					b_w = false;
+				}else{
+					this.className = "white";
+					b_w = true;
+				};
+			};		
+			panduan();
+		};
+	};
+
+
+	function panduan(){
+		for( var n=0 ; n<aLi.length ; n++){
+			//横向判断
+			if( n%15<=10){
+				if(	aLi[n].className == 'black' 
+					&& aLi[n+1].className == 'black' 
+					&& aLi[n+2].className == 'black'
+					&& aLi[n+3].className == 'black'
+					&& aLi[n+4].className == 'black'){
+					alert('black win');
+					return result=1;
+				}else if(aLi[n].className == 'white' 
+					&& aLi[n+1].className == 'white' 
+					&& aLi[n+2].className == 'white'
+					&& aLi[n+3].className == 'white'
+					&& aLi[n+4].className == 'white'){
+					alert('white win');
+					return result=1;
+				};
+			};
+
+
+			//竖向判断
+			if( n<=164){
+				if(	aLi[n].className == 'black' 
+					&& aLi[n+(15*1)].className == 'black' 
+					&& aLi[n+(15*2)].className == 'black'
+					&& aLi[n+(15*3)].className == 'black'
+					&& aLi[n+(15*4)].className == 'black'){
+					alert('black win');
+					return result=1;
+				}else if(aLi[n].className == 'white' 
+					&& aLi[n+(15*1)].className == 'white' 
+					&& aLi[n+(15*2)].className == 'white'
+					&& aLi[n+(15*3)].className == 'white'
+					&& aLi[n+(15*4)].className == 'white'){
+					alert('white win');
+					return result=1;
+				};
+			};
+
+
+
+			//右下方向判断
+			if( n%15<=10 && n<=164){
+				if(	aLi[n].className == 'black' 
+					&& aLi[n+(16*1)].className == 'black' 
+					&& aLi[n+(16*2)].className == 'black'
+					&& aLi[n+(16*3)].className == 'black'
+					&& aLi[n+(16*4)].className == 'black'){
+					alert('black win');
+					return result=1;
+				}else if( aLi[n].className == 'white' 
+					&& aLi[n+(16*1)].className == 'white' 
+					&& aLi[n+(16*2)].className == 'white'
+					&& aLi[n+(16*3)].className == 'white'
+					&& aLi[n+(16*4)].className == 'white'){
+					alert('white win');
+					return result=1;
+				}
+			};
+
+
+			//左下方向判断
+			if( n%15>=4 && n<=164){
+				if(	aLi[n].className == 'black' 
+					&& aLi[n+(14*1)].className == 'black' 
+					&& aLi[n+(14*2)].className == 'black'
+					&& aLi[n+(14*3)].className == 'black'
+					&& aLi[n+(14*4)].className == 'black'){
+					alert('black win');
+					return result=1;
+				}else if( aLi[n].className == 'white' 
+					&& aLi[n+(14*1)].className == 'white' 
+					&& aLi[n+(14*2)].className == 'white'
+					&& aLi[n+(14*3)].className == 'white'
+					&& aLi[n+(14*4)].className == 'white'){
+					alert('white win');
+					return result=1;
+				}
+			};
+
+
+
+		}; //for循环结束括号
+	}; //panduan函数结束括号
+*/
+
+
+
+
+
+}
+
+</script>
+
+
+</head>
+
+<body>
+<div id="bg">
+	<ul id="box"></ul>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0}
+.divA{ width:500px;margin-top:50px; padding:50px; background:#ccc; overflow:hidden; position:relative}
+.divB{  margin-top:20px;padding:30px; background:#ddd; overflow:hidden; position:relative}
+.divC{ margin-top:80px;padding:60px; background:blue; overflow:hidden; position:relative}
+.divD{  margin-top:60px;padding:20px; background:red;overflow:hidden; position:relative}
+
+</style>
+<script>
+
+function offsetTop( elements ){ 
+	var top = elements.offsetTop; 
+	var parent = elements.offsetParent; 
+	while( parent != null ){ 
+		top += parent.offsetTop; 
+		parent = parent.offsetParent; 
+	}; 
+	return top; 
+}; 
+function offsetLeft( elements ){ 
+	var left = elements.offsetLeft; 
+	var parent = elements.offsetParent; 
+	while( parent != null ){ 
+		left += parent.offsetLeft; 
+		parent = parent.offsetParent; 
+	}; 
+	return left; 
+}; 
+
+
+
+window.onload=function(){
+	var oD=document.getElementById('D');
+	alert(offsetTop(A))
+}
+
+</script>
+
+</head>
+
+<body>
+<div id="A" class="divA">
+	<div id="B" class="divB">
+        <div id="C" class="divC">
+        	<div id="D" class="divD">
+
+
+			</div>
+        
+        </div>
+
+	</div>
+
+</div>
+</body>
+</html>

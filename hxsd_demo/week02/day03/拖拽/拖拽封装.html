@@ -1,0 +1,61 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0}
+div{ position:absolute;top:0;left:200px;width:200px;height:200px; background:red}
+.box2{ top:30px; left:400px; background:green}
+.box3{top:80px; left:20px; background:blue}
+</style>
+
+<script>
+window.onload=function(){
+	var oBox=document.getElementById('box');
+	var aBoxs=document.getElementsByTagName('div');
+
+function drag(elm){
+	elm.onmousedown=function(ev){//得到鼠标与box之间的差
+		var oEv=ev||window.event;
+		var disX=oEv.clientX-elm.offsetLeft;
+		var disY=oEv.clientY-elm.offsetTop;
+		
+		document.onmousemove=function(ev){//鼠标移动，进行拖拽
+			var oEv=ev||window.event;
+			var t=oEv.clientY-disY;
+			var l=oEv.clientX-disX;
+			
+			elm.style.top=t+'px';
+			elm.style.left=l+'px';
+		};	
+		document.onmouseup=function(){//释放事件
+			document.onmousemove=document.onmouseup=null;
+		};
+		return false;
+	};
+};
+
+
+
+	for(var i=0; i<aBoxs.length; i++){
+		drag(aBoxs[i]);
+	}
+
+
+//drag(oBox);
+
+
+	
+	
+	
+};
+</script>
+</head>
+
+<body>
+<div class="box1"></div>
+<div class="box2"></div>
+<div class="box3"></div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>数字按键反馈</title>
+<style>
+ul{ list-style:none}
+.list{margin:200px auto; width: 400px; }
+li{width:100px;height:100px;font:20px/100px arial; background: #7f30c7; color: #fff; text-align: center; border-radius:50px; float: left; margin:10px; }
+li:hover{background: #6e4fc7; transform:scale(1.5);box-shadow: 0 0 15px #000; }
+.over{background: #6e4fc7; transform:scale(1.5);box-shadow: 0 0 15px #000; }
+</style>
+<script>
+	window.onload=function() {
+		var aLi = document.getElementsByTagName("li");
+			
+		function addOver(index) {
+			for (var i = 0; i < 9; i++) {//防止多键同时按下
+				aLi[i].className ="";
+			}
+			aLi[index].className = "over";
+		};
+		
+		document.onkeydown = function (ev) {
+			ev = ev || windows.event;
+			if(ev.keyCode==97 || ev.keyCode==49){//兼容小键盘和数字键
+				addOver(0);
+			};
+			if(ev.keyCode==98 || ev.keyCode==50){
+				addOver(1);
+			};
+			if(ev.keyCode==99 || ev.keyCode==51){//兼容小键盘和数字键
+				addOver(2);
+			};
+		};
+		
+		document.onkeyup = function(){
+		   for (var i = 0; i < 9; i++) {
+				aLi[i].className="";
+			}
+		};
+	};
+
+</script>
+</head>
+<body>
+<ul class="list">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+</ul>
+</body>
+</html>

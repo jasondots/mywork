@@ -1,0 +1,101 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0}
+a{ text-decoration:none; width:20px; text-align:center; line-height:20px; height:20px; position:absolute; top:10px; right:8px; color:#fff;}
+.openBtn{ width:100px; height:40px; border:1px solid #ccc; border-radius:5px; display:block; margin:100px auto}
+.modal{ width:100%; height:100%; background:#000; opacity:.3; position:fixed; top:0; left:0; z-index:10; display:none}
+.popBox{width:500px;height:220px; background:#fff;position:absolute;top:0;left:0; z-index:20; display:none}
+.popBox input{ height:30px; width:200px; border:1px solid #ccc;}
+.popBox p{ padding-left:50px; padding-top:20px;}
+h4{height:40px; line-height:40px; text-indent:1em; background:#ccc;cursor:move}
+.logonBtn{width:100px; height:30px;border:1px solid #ccc; margin-left:66px}
+</style>
+<script>
+window.onload=function(){
+	var oDiv=document.getElementById('box');
+	var open_popBox_btn=document.getElementById('open_popBox_btn');
+	var modal=document.getElementById('black_modal');
+	var closeBtn=document.getElementById('closeBtn');
+	var title=oDiv.getElementsByTagName('h4')[0];
+	
+	var input=document.getElementsByTagName('input')[0];
+	
+	
+	//中心显示
+	function popShow(popBox){
+		popBox.style.display="block";	
+		var l=(document.documentElement.clientWidth-popBox.offsetWidth)/2;
+		var t=(document.documentElement.clientHeight-popBox.offsetHeight)/2;
+		popBox.style.left=l+'px';
+		popBox.style.top=t+'px';
+	};
+	
+	function drag(box,handle){
+		box_handle=handle||box;
+		
+		box_handle.onmousedown=function(ev){
+			var oEv=ev||window.event;
+			var disX=oEv.clientX-box.offsetLeft;
+			var disY=oEv.clientY-box.offsetTop;
+			
+			document.onmousemove=function(ev){
+				var oEv=ev||window.event;
+				var l=oEv.clientX-disX;
+				var t=oEv.clientY-disY;
+				if(t<0)t=0;
+				if(t>document.documentElement.clientHeight-box.offsetHeight)t=document.documentElement.clientHeight-box.offsetHeight;
+				
+				if(l<0)l=0;
+				if(l>document.documentElement.clientWidth-box.offsetWidth)l=document.documentElement.clientWidth-box.offsetWidth;
+				box.style.top=t+'px';
+				box.style.left=l+'px';
+			};
+			document.onmouseup=function(){
+				document.onmousemove=null;
+			};
+			return false;
+		};
+		
+	};
+	
+//-------------------------------------------------------------	
+	open_popBox_btn.onclick=function(){
+		modal.style.display="block";
+		popShow(oDiv);
+	};
+	
+	drag(oDiv);
+	
+	
+	closeBtn.onclick=function(){
+		modal.style.display=oDiv.style.display="none";
+	};
+	
+	input.onmousedown=function(ev){
+		var oEv=ev ||window.event;
+		oEv.cancelBubble=true;
+	}
+
+};
+
+
+
+</script>
+</head>
+
+<body>
+<button class="openBtn" type="button" id="open_popBox_btn">请登录</button>
+<div id="black_modal" class="modal"></div>
+<div id="box" class="popBox">
+	<h4>用户登录</h4>
+    <a id="closeBtn" href="javascript:;">×</a>
+    <p><label>用户名：<input type="text"></label></p>
+    <p><label>密　码：<input type="password"></label></p>
+    <p><button class="logonBtn" type="button">登录</button></p>
+</div>
+</body>
+</html>
