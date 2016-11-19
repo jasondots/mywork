@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<div title="asdf\rasdfsdf" style="height:200px; width:200px; background:red"></div>
+<!--<form>
+<input name="reText" type="text">
+<button>test</button>
+</form>-->
+
+</body>
+</html>
+<script>
+/*
+
+\w	[a-zA-Z0-9_]	匹配字母数字和下划线 
+
+\W	[^a-zA-Z0-9_]	匹配 除 字母数字下划线之外的字符 
+
+\d	[0-9]		匹配数字 
+
+\D	[^0-9]		匹配 非 数字字符
+
+*/
+
+var txt="2016火星时代是最好的培训学校(huoxingshidai(HXSD) is best training school)";
+
+
+//alert(txt)
+
+
+
+var re=//g;
+
+//var re=new RegExp("\b");
+
+alert( re.test(txt) );
+
+
+
+
+/*var oForm=document.forms[0];
+var input_text=document.getElementsByName('reText')[0];
+
+oForm.onsubmit=function(){
+	var reText=input_text.value;
+	
+	//var re=/\u706b\u661f\u65f6\u4ee3/;   //火星时代
+	var re=/\W/;   
+	
+	if(re.test(reText)){
+		
+		alert('匹配成功')
+	}else{
+		alert('错误')
+	};
+	return false;
+}*/
+
+
+
+
+
+
+
+</script>

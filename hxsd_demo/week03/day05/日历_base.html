@@ -1,0 +1,105 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0}
+#calendar{width:210px;margin:100px auto; overflow:hidden;border:1px solid #000; padding:20px}
+#title{ text-align:center; margin-bottom:10px}
+#calendar .name li .a1{ position:absolute;top:0;left:0;}
+#calendar .name li .a2{ position:absolute;top:0;right:0;}
+#calendar .week{height:30px; line-height:20px;border-bottom:1px solid #000; margin-bottom:10px}
+#calendar .week li{ float:left;width:30px;height:30px; text-align:center; list-style:none;}
+#calendar .dateUl{ overflow:hidden; clear:both}
+#calendar .dateUl li{float:left;width:30px;height:30px; text-align:center; line-height:30px;list-style:none;}
+#calendar .dateUl li.ccc{ color:#ccc;}
+#calendar .dateUl li.red{ background:#F90; color:#fff;}
+#calendar .dateUl li.sun{ color:#f00;}
+</style>
+<script>
+window.onload=function(){
+   var calendar=document.getElementById('calendar');
+   var day_list=document.getElementById('date_list');
+   
+   
+   //必要的数据
+   var allDays=0; //本月一个有多少天
+   var firstDay_week=0; //本月第一天是星期几
+   var today=0//今天的是日期
+
+   
+	//算出本月有多少天
+	var oDate=new Date();
+	today=oDate.getDate();//今天
+	
+	// 算出本月第一天是星期几 
+	oDate.setDate(1);//把日期设置到第一天
+	firstDay_week=oDate.getDay();// 0-6   星期天是0
+
+	
+	oDate.setMonth(oDate.getMonth()+1,0); //到下个月的第0天，就是本月的最后一天
+	allDays=oDate.getDate();
+   
+	
+	//接收本月第一天是星期几
+	console.log(firstDay_week);
+	if(firstDay_week==0)firstDay_week=7;//星期长度为0-6,如果长度为0，数组长度其实是7
+	
+	
+	//塞上个月 空白日期的LI
+	for(var i=1;i<firstDay_week;i++){//星期从周一开始，所有i=1
+		var oLi=document.createElement('li');
+		day_list.appendChild(oLi);
+	};
+	
+	//根据本月有多少天创建LI
+	for(var i=0;i<allDays;i++){
+		var oLi=document.createElement('li');
+		oLi.innerHTML=i+1;
+		day_list.appendChild(oLi);
+	};
+	
+	//获取所有日期的LI
+	var aLi=day_list.children;
+   
+	//判断是上个月还是下个月还是本月
+	for(var i=0;i<aLi.length;i++){
+		if(aLi[i].innerHTML<today){
+			aLi[i].className='ccc';	//过去的日期变灰
+		}	
+		else if(aLi[i].innerHTML==today){
+			aLi[i].className='red';	//当天	
+		}
+		else if(i%7==5||i%7==6){
+			console.log(i,aLi[i].innerHTML);
+			aLi[i].className='sun';	//星期六星期天
+		}
+	};
+	
+	//改日期标题
+	var title=document.getElementById('title');
+	title.innerHTML=oDate.getFullYear()+'年'+(oDate.getMonth()+1)+'月';
+   
+};
+</script>
+</head>
+
+<body>
+<div id="calendar">
+       <h4 id="title">2013年10月</h4>
+       <a href="javascript:;" id="pre" class="a1">上月</a>
+       <a href="javascript:;" id="next" class="a2">下月</a>
+    <ul class="week">
+    	<li>一</li>
+    	<li>二</li>
+    	<li>三</li>
+    	<li>四</li>
+    	<li>五</li>
+    	<li>六</li>
+    	<li>七</li>
+    </ul>
+    <ul id="date_list" class="dateUl"></ul>
+</div>
+</body>
+</html>

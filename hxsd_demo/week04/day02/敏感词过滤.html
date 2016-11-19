@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script>
+
+
+window.onload=function (){
+	var oTxt1=document.getElementById('txt1');
+	var oTxt2=document.getElementById('txt2');
+	var oBtn=document.getElementById('btn1');
+	
+	oBtn.onclick=function (){
+		
+		
+		//oTxt2.value=oTxt1.value.replace(/\u706b\u661f\u65f6\u4ee3/g,"huohuohuo");
+		
+		//回调函数
+		/*oTxt2.value=oTxt1.value.replace(/品牌|学费|免费|艺术/g, function (s){
+			//return '(此处省略'+s.length+'字)';
+			var str='';
+			
+			for(var i=0;i<s.length;i++)	{
+				str+='*';
+			}
+			
+			return str;
+		});*/
+	};
+};
+</script>
+</head>
+
+<body>
+<p>火星时代教育是中国艺术教育高端品牌，设有多个热门专业(UI设计、游戏设计、室内设计、影视特效、程序开发、数字艺术学历)等 ，多年来一直与国内外各大企业联合实训。即日起，火星时代斥资数百万助力学员免息贷款0学费入学。更有5天免费特训营干货课程！速抢！
+</p>
+<textarea id="txt1" rows="7" cols="60"></textarea><br>
+<input type="button" value="过滤" id="btn1" /><br>
+<textarea id="txt2" rows="7" cols="60"></textarea>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+window.onload=function(){
+	var oBtn=document.getElementsByTagName('button')[0];
+	
+	//事件监听兼容方法
+	function addEvent(obj,oEv,fn){//对象 事件 要执行的函数
+		obj.attachEvent? obj.attachEvent('on'+oEv,fn):obj.addEventListener(oEv,fn,true);
+	};
+	
+	
+	//调用
+	addEvent(oBtn,"click",function(){
+		alert(3453453);
+	})
+
+}
+
+
+</script>
+</head>
+
+<body>
+<button style="height:40px; width:100px;" type="button">按钮</button><br><br>
+</body>
+</html>

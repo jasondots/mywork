@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<input type="text">
+
+</body>
+</html>
+<script>
+document.getElementsByTagName('input')[0].onblur=function(){
+	var re=/\\/;
+	alert(re.test(this.value));
+}
+
+
+var school="beijing huo xing shi dai 北京火星时代, 2016/11/16";
+
+var str="The rain in SPAIN stays mainly in the plain"; 
+
+var arr=str.match(/\wain/g);
+alert(arr);
+
+//console.log(re.exec(school));	
+
+//alert(re.test(school));
+
+console.log(school);	
+</script>

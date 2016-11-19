@@ -1,0 +1,66 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0}
+div{width:200px;height:200px; background:red; position:absolute;top:0;left:0}
+</style>
+<script>
+window.onload=function(){
+	var oDiv=document.getElementsByTagName('div')[0];
+	var arr=[];
+	oDiv.onmousedown=function(ev){
+		arr=[];
+		var oEv=ev||event;
+		var disX=oEv.clientX-oDiv.offsetLeft;
+		var disY=oEv.clientY-oDiv.offsetTop;
+		
+		//也得记录，回到标准原位
+		arr.push([oDiv.offsetLeft,oDiv.offsetTop]);	
+		
+		document.onmousemove=function(ev){
+			var oEv=ev||event;
+			oDiv.style.top=oEv.clientY-disY+'px';
+			oDiv.style.left=oEv.clientX-disX+'px';
+			
+			arr.push([oEv.clientX-disX,oEv.clientY-disY]);	
+		};
+		
+		
+		document.onmouseup=function(){
+			document.onmousemove=document.onmouseup=null;
+			if(oDiv.releaseCapture) oDiv.releaseCapture();//取消获捕
+			alert(arr);
+		};
+		
+		if(oDiv.setCapture) oDiv.setCapture();
+		return false;
+	};
+	
+	document.getElementById('btn').onclick=function(){
+		
+		for(var i=arr.length-1;i>-1;i--){
+			(function(index){
+			  setTimeout(function(){
+				oDiv.style.left=arr[index][0]+'px';
+				oDiv.style.top=arr[index][1]+'px';
+			  },(arr.length-1-i)*20)
+			})(i);
+			
+		};	
+		/*
+		arr.length=100;
+		arr.length-1-i*/
+	};
+		
+};
+</script>
+</head>
+
+<body>
+<input type="button" value="回放" id="btn">
+<div></div>
+</body>
+</html>

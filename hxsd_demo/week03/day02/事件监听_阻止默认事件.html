@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+
+
+window.onload=function(){
+
+var a_link=document.getElementsByTagName('a')[0];
+
+a_link.addEventListener('click',function(ev){
+	//return false;//监听事件里，不能用return false阻止默认事件
+	ev.preventDefault();//阻止默认事件 firefox
+
+},false);
+
+//IE8以下--------------------------------------------------
+a_link.attachEvent('onclick',function(){
+	event.returnValue = false; //ie 阻止默认事件
+});
+	
+	
+};
+
+
+</script>
+
+</head>
+
+<body>
+<a href="http://www.baidu.com">baidu</a>
+
+<form action="abc.php" method="get">
+	电话号码：<input id="userName" name="user" type="text">
+    <button id="btn" type="submit">提交</button>
+</form>
+
+</body>
+</html>

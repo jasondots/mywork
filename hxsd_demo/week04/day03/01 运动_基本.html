@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0}
+div{ width:100px; height:100px; background:red; position:absolute}
+</style>
+
+<script>
+
+//哪些可以进行动画？？---凡是可以设定数值的样式，都可以动画，（颜色）也可以根据RGB值进行改变
+
+function move(obj,speed){
+	var timer=setInterval(function(){
+		obj.style.left=obj.offsetLeft+speed+'px';
+	if(obj.offsetLeft>500){
+		obj.offsetLeft=500;
+		clearInterval(timer);
+	};
+	},30)
+};
+
+window.onload=function(){
+	var oDiv=document.getElementById('box');
+	move(oDiv,1);
+}
+
+
+//距离*时间 /30
+//500/1000*30
+
+//给出速度的方式，反人类
+
+
+</script>
+</head>
+
+<body>
+<div id="box"></div>
+</body>
+</html>

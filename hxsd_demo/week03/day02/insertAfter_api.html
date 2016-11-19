@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+function insertAfter(newEl, targetEl){
+	var parentEl = targetEl.parentNode;//找到父级元素
+	if(parentEl.lastChild == targetEl) parentEl.appendChild(newEl);//如果是最后一个直接插入
+	else parentEl.insertBefore(newEl,targetEl.nextSibling);//如果不是最后一个，在下一个兄弟元素之前插入
+}
+
+window.onload=function(){
+	var p=document.getElementsByTagName('p')[0];
+	var em=document.createElement('em');
+	em.innerHTML="插个队";
+	
+	//p后面插入
+	insertAfter(em, p);
+
+}
+
+	
+
+</script>
+
+</head>
+
+<body>
+<div id="box">
+	<p>我是p标签</p>
+    <ul>
+    	<li>我是1标签</li>
+        <li>我是2标签</li>
+        <li>我是3标签</li>
+        <li>我是4标签</li>
+        <li>我是5标签</li>
+    </ul>
+</div>
+</body>
+</html>

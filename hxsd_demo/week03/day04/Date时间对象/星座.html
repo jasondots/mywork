@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+var str='';
+var currentDate=new Date();
+var year=currentDate.getFullYear();
+var	day=currentDate.getDay();
+var	month=currentDate.getMonth()+1;
+var today=currentDate.getDate();
+	
+var constellation =["摩羯", "水瓶", "双鱼", "牡羊", "金牛", "双子","巨蟹", "狮子", "处女", "天秤", "天蝎", "射手"];
+var week_arr=['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+str+=year+'年'+month+'月'+today+'日';
+str+=week_arr[day]+' ';	
+
+switch(month){
+	case 1:
+	today < 21 ?str+=constellation[0]:str+=constellation[1];
+	break;
+	case 2:
+	today < 20 ?str+=constellation[1]:str+=constellation[2];
+	break;
+	case 3:
+	today < 21 ?str+=constellation[2]:str+=constellation[3];
+	break;
+	case 4:
+	today < 21 ? str+=constellation[3]:str+=constellation[4];
+	break;
+	case 5:
+	today < 22 ? str+=constellation[4]:str+=constellation[5];
+	break;
+	case 6:
+	today < 22 ? str+=constellation[5]:str+=constellation[6];
+	break;
+	case 7:
+	today < 23 ? str+=constellation[6]:str+=constellation[7];
+	break;
+	case 8:
+	today < 24 ?str+=constellation[7]:str+=constellation[8];
+	break;
+	case 9:
+	today < 24 ?str+=constellation[8]:str+=constellation[9];
+	break;
+	case 10:
+	today < 24 ? str+=constellation[9]:str+=constellation[10];
+	break;
+	case 11:
+	today < 23 ?str+=constellation[10]:str+=constellation[11];
+	break;
+	case 12:
+	today < 22 ?str+=constellation[11]:str+=constellation[0];
+	break;
+	default:
+		str=('诡异');
+};
+str+='座';
+alert(str)
+
+/*
+水瓶座：1月21日 - 2月19日
+双鱼座：2月20日 - 3月20日
+白羊座：3月21日 - 4月20日
+金牛座：4月21日 - 5月21日
+双子座：5月22日 - 6月21日
+巨蟹座：6月22日 - 7月22日
+狮子座：7月23日 - 8月23日
+处女座：8月24日 - 9月23日
+天秤座：9月24日 - 10月23日
+天蝎座：10月24日 - 11月22日
+射手座：11月23日 - 12月21日
+魔羯座：12月22日 - 1月20日
+*/
+
+</script>
+</head>
+
+<body>
+
+</body>
+</html>

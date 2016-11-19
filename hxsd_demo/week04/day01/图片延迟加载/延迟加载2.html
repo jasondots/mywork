@@ -1,0 +1,63 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0}
+#box{margin:100px;width:500px; background:#ccc;height:500px;padding:100px;display:block; position:relative;}
+#box div{width:300px;height:300px; background:red;}
+img{ display:block}
+</style>
+<script>
+
+window.onload=window.onscroll=function(){
+	var aImg=document.getElementsByTagName('img');
+	var scrollT=document.documentElement.scrollTop||document.body.scrollTop;//滚动条高度
+	var winHeight=document.documentElement.clientHeight;//屏幕高度
+	
+	for(var i=0;i<aImg.length;i++){
+		if(!aImg[i]._load){//看看有没有被加载过
+		
+			if(aImg[i].offsetTop+100<(scrollT+winHeight)){
+				
+				(function(index){
+					var oImg=new Image();//新建图片对象
+					oImg.onload=function(){
+						aImg[index].src=this.src;//不能用这个i
+						aImg[index]._load=true;//记下来，本张图片被加载过了
+					};
+					
+					oImg.src=aImg[i].getAttribute('_src');//如果进入屏幕区域，就把真实地址替换上
+					
+				})(i);
+			};
+			
+				
+		};
+	}
+	
+};
+
+/*function getPos(obj){
+	var l=0;
+	var t=0;
+	while(obj){
+		l+=obj.offsetLeft;
+		t+=obj.offsetTop;
+		obj=obj.offsetParent;	
+	};
+	return {left:l,top:t};
+};*/
+
+
+</script>
+</head>
+
+<body>
+<img src="loading.jpg" width="800" height="800" _src="01.jpg">
+<img src="loading.jpg" width="800" height="800" _src="02.jpg">
+<img src="loading.jpg" width="800" height="800" _src="03.jpg">
+<img src="loading.jpg" width="800" height="800" _src="04.jpg">
+</body>
+</html>

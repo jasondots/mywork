@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+table,th,td{ border:1px solid #ccc; border-collapse:collapse}
+td,th{ padding:10px;}
+
+
+</style>
+
+
+<script>
+window.onload=function(){
+	var student=[['小明',18,'学生'],['小王',27,'工人'],['小红',20,'教师'],['小刘',19,'大学生'],['小青',500,'蛇精']]
+	
+	var table=document.createElement('table');
+	table.innerHTML='<thead><tr><th>姓名</th><th>年龄</th><th>职业</th></tr></thead>';
+	
+	var tbody=document.createElement('tbody');
+	
+	for(var i=0; i<student.length; i++){
+		var tr=document.createElement('tr');
+		
+		for(var j=0; j<student[i].length; j++){
+			var td=document.createElement('td');
+			td.innerHTML=student[i][j];
+			tr.appendChild(td);
+		};
+		tbody.appendChild(tr);
+	};
+	
+	table.appendChild(tbody);
+	document.body.appendChild(table);
+}
+	
+	
+	
+
+
+</script>
+</head>
+
+<body>
+</body>
+</html>

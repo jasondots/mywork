@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+function sum(a,b,c){
+	var value=0;
+	arguments[0]=50000;
+	alert(arguments.callee)
+	for(var i=0; i<arguments.length; i++){
+		value+=arguments[i];
+	};
+	
+	if(typeof value!='number'){
+		alert('请输入数字');
+		return;
+	}else{
+		return value;
+	};
+	
+}
+	
+	
+alert(sum(1,6,7,444,4,4,4,55));
+
+</script>
+</head>
+
+<body>
+</body>
+</html>

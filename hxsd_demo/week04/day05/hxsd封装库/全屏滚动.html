@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0;  padding:0}
+.box1{ height:600px; background:#F48C8E}
+.box2{ height:600px; background:#B6D6F0}
+.box3{ height:600px; background:#FBF282}
+.box4{ height:600px; background:#AAFC8D}
+.box5{ height:600px; background:#9ECB93}
+.floorList{ width:20px; position:fixed; right:20px; top:50%; margin-top:-100px; list-style:none}
+.floorList li{ width:20px; height:20px; text-align:center; border-bottom:1px solid #ccc}
+.floorList .ac{ background:red; color:#fff}
+</style>
+
+<script>
+window.onload=function(){
+	//阻止滚动条事件 window.onmousewheel  w3c	document.onmousewheel  ie7 
+	window.onmousewheel=document.onmousewheel=function(){return false};
+	var aLi=document.getElementsByTagName('li');
+	
+	var timer;
+	var f=0;
+	var s=0;//楼层
+	//------------------------------------------------------
+	function move(start,end,down){//down  向后滚动
+		
+		if(f<aLi.length){
+		var dis= down? start-end: end-start;
+		var count=parseInt(1500/30);
+		var n=0;
+		clearInterval(timer);
+		timer=setInterval(function(){
+			n++;
+			var a=1-n/count;
+			var step_dis=start + dis*(1-a*a*a*a);
+			window.scrollTo(0,step_dis);
+			if(n==count){
+				clearInterval(timer);
+
+				for(var i=0; i<aLi.length; i++){
+					aLi[i].className='';
+				};
+				
+				if(down){
+					s-=600;
+					f--;
+					if(f<0)f=0;
+				}else{
+					s+=600;
+					f++;
+					if(f>=aLi.length-1)f=aLi.length-1;
+				}
+				aLi[f].className='ac';
+				
+				
+				addMouseWheel();//滚动结束，重新绑定上事件
+			};
+		},30);
+		
+		}
+		
+		
+		
+		
+	};
+	//---------------------------------------------------------------
+	function addMouseWheel(remove){
+		var run=remove? 'removeEventListener':'addEventListener';
+		if(window.navigator.userAgent.indexOf('Firefox')!=-1){//FF
+			document[run]('DOMMouseScroll',wheelFn,false)
+		}else{
+			if(remove){
+				document.detachEvent ? document.detachEvent('onmousewheel',wheelFn):document.removeEventListener('mousewheel',wheelFn,false)
+			}else{
+				document.attachEvent? document.attachEvent('onmousewheel',wheelFn):document.addEventListener('mousewheel',wheelFn,false);
+			}
+		};
+	};
+	//判断滚动fan-----------------------------------------------------------	 
+	function wheelFn(ev){
+		addMouseWheel(true);//移除事件
+		var oEv=ev||event;
+		var direct=oEv.wheelDelta ? oEv.wheelDelta<0 : oEv.detail>0;
+		direct? move(s,s+600):move(s,s+600,true);//前滚 后滚
+	};
+	
+	addMouseWheel();//首次调用
+	
+	
+}
+
+
+
+</script>
+</head>
+
+<body>
+<div class="box1"></div>
+<div class="box2"></div>
+<div class="box3"></div>
+<div class="box4"></div>
+<div class="box5"></div>
+<ul class="floorList">
+	<li class="ac">1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+</ul>
+
+</body>
+</html>

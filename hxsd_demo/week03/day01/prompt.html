@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+.info_bar{ width:200px; height:200px; background:#ccc;}
+</style>
+<script>
+window.onload=function(){
+var aBtn=document.getElementsByTagName('button')[0];
+	aBtn.onclick=function(){
+		document.getElementById('info').innerHTML=prompt('请留言');
+	}
+
+}
+
+
+</script>
+</head>
+
+<body>
+<button type="button">给老师提点意见</button>
+<div id="info" class="info_bar"></div>
+</body>
+</html>

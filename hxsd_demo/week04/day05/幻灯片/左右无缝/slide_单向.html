@@ -1,0 +1,125 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>幻灯片左右滑动</title>
+<style>
+*{ padding: 0; margin: 0; }
+a{ text-decoration:none}
+li{ list-style: none; }
+img { border: none; }
+body{ background: #ecfaff; }
+
+.box { width: 400px; height: 260px; overflow: hidden; position: relative; margin: 150px auto 0; background: #ccc; }
+
+.box ol { position: absolute;right: 20px; bottom: 20px; z-index: 2; }
+.box ol li { float: left; margin-right: 3px; display: inline; cursor: pointer; background: #fcf2cf; border: 1px solid #f47500; padding: 2px 6px; color: #d94b01; font-family: arial; font-size: 12px; }
+.box .ac { padding: 3px 8px; font-weight: bold; color: #ffffff; background: #ffb442; position: relative; bottom: 2px; }
+
+.box ul { position: absolute; top: 0; left: 0; z-index: 1; }
+.box ul li { width: 400px; height: 260px; float: left; }
+.box ul img {width: 400px; height: 260px; }
+
+.box .moveBtn { width: 40px; height:40px; line-height:35px; font-size:30px;color: #fff; text-align: center;background: #333; opacity:.4; position: absolute; top: 50%; margin-top:-20px; z-index: 2; }
+.box .prev { left: 10px; }
+.box .next { right: 10px; }
+</style>
+<script src="HXSD_move.js"></script>
+<script>
+window.onload=function(){
+	var oDiv=document.getElementById('slide');
+	var aBtn=oDiv.getElementsByTagName('ol')[0].children;
+	var oUl=oDiv.getElementsByTagName('ul')[0];
+	var aLi=oUl.children;
+	
+	var pBtn=document.getElementById('prevBtn');
+	var nBtn=document.getElementById('nextBtn');
+	
+	//oUl.insertBefore(aLi[0],aLi[3]);
+	
+	var n=0;//当前显示图片索引
+	
+	var clone;
+	
+	//设定ul宽度
+	var li_w=getStyle(aLi[0], 'width');//图片的宽度
+	
+	oUl.style.width=li_w*(aLi.length+1) +'px';
+	
+	//添加点击事件
+	for(var i=0; i<aBtn.length; i++){
+		aBtn[i].index=i;//发拍照
+		
+		aBtn[i].onclick=function(){
+			var old=document.getElementById('temp_slide_item');//定义一个唯一id
+			if(old) oUl.removeChild(old);//如果有，就删除（快速点击不同按钮，会有残留，所以要先删除）
+			if(n!=this.index){//如果是当前索引，不动作
+				clone=aLi[n].cloneNode(true);//克隆节点
+				clone.id='temp_slide_item';
+				oUl.insertBefore(clone,aLi[this.index]);
+				
+				n=this.index;
+				oUl.style.left=-li_w*n+'px';
+				
+				move(oUl,'left',-li_w*(n+1),700,function(){
+					oUl.removeChild(aLi[n]);
+					oUl.style.left=-li_w*n+'px';
+				});
+				changeAc();
+			};
+			
+		};
+	};
+	
+	pBtn.onclick=function(){
+		n--;
+		if(n<0) n=0;
+		move(oUl,'left',-li_w*n,700);
+		changeAc();
+	}
+
+	nBtn.onclick=function(){
+		n++;
+		if(n>=aLi.length-1) n=aLi.length-1;
+		move(oUl,'left',-li_w*n,700);
+		changeAc();
+	};
+	
+	
+	function changeAc(){
+		for(var j=0; j<aBtn.length; j++){
+			aBtn[j].className='';
+		};
+		aBtn[n].className='ac';
+	}
+	
+	
+	
+	
+};
+</script>
+</head>
+
+<body>
+
+<div class="box" id="slide">
+    <a id="prevBtn" href="javascript:;" class="moveBtn prev">&laquo;</a>
+    <a id="nextBtn" href="javascript:;" class="moveBtn next">&raquo;</a>
+    <ol>
+        <li class="ac">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ol>
+    <ul>
+        <li class="1"><a href="javascript:;"><img src="images/01.jpg" alt="广告一" /></a></li>
+        <li class="2"><a href="javascript:;"><img src="images/02.jpg" alt="广告二" /></a></li>
+        <li class="3"><a href="javascript:;"><img src="images/03.jpg" alt="广告三" /></a></li>
+        <li class="4"><a href="javascript:;"><img src="images/04.jpg" alt="广告四" /></a></li>
+        <li class="5"><a href="javascript:;"><img src="images/05.jpg" alt="广告五" /></a></li>
+    </ul>
+</div>
+
+</body>
+</html>

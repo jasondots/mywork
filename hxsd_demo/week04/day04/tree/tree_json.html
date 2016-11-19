@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>树形菜单</title>
+<style>
+*{ margin:0; padding:0}
+ul{ list-style:none}
+a{ text-decoration:none}
+li a{ display:block; height:30px;line-height:30px; font-size:14px; color:#999; padding-left:2em}
+.subMenu{ display:none; margin-left:1em}
+.hasSub>a{ display:block; background-image:url(a1.png); background-repeat:no-repeat; background-position:10px center;color:#666}
+.showSubmenu>a{ background-image:url(a2.png); background-position:11px center; background-repeat:no-repeat}
+.ac{ color:#000 !important; background-color:#efefef;}
+
+#objTree{ margin:100px; width:260px; padding:10px; border:1px solid #777}
+
+</style>
+
+
+<script>
+var tree_arr=[
+	{"id":11,"pid":0,"txt":"第一级A"},
+		/*{"id":1121,"pid":11,"txt":"第二级A"},
+			{"id":1131,"pid":1121,"txt":"第三级A"},
+			{"id":1132,"pid":1121,"txt":"第三级B"},
+		{"id":1122,"pid":11,"txt":"第二级B"},
+		{"id":1123,"pid":11,"txt":"第二级C"},*/
+	{"id":12,"pid":0,"txt":"第一级B"},
+	{"id":13,"pid":0,"txt":"第一级C"},
+		{"id":1321,"pid":13,"txt":"第二级A"},
+			{"id":1331,"pid":1321,"txt":"第三级A"},
+			{"id":1332,"pid":1321,"txt":"第三级B"},
+		{"id":1322,"pid":13,"txt":"第二级B"},
+		{"id":1323,"pid":13,"txt":"第二级C"},
+	{"id":14,"pid":0,"txt":"第一级D"}
+];
+
+
+window.onload=function(){
+	
+//生成树--------------------------------------------------------------------------	
+	var oTree=document.createElement('div');
+	oTree.id='objTree';
+	var oUl=document.createElement('ul');
+	oUl.className='tree';
+	
+	for(var i=0; i<tree_arr.length; i++){
+		var nLi=document.createElement('li');
+		nLi.id=tree_arr[i].id;
+		nLi.pid=tree_arr[i].pid;
+		nLi.innerHTML='<a href="javascript:;">'+tree_arr[i].txt+'</a><ul></ul>';
+		oUl.appendChild(nLi);
+	};
+	oTree.appendChild(oUl);
+	document.body.appendChild(oTree);
+	
+	//移动li层次----------------------------------------------
+	var aLi=oUl.getElementsByTagName('li');
+	for(var j=0; j<aLi.length; j++){
+		var li_pid=aLi[j].pid;//读取父级id信息
+		if(li_pid != 0){
+			var nUl=document.getElementById(li_pid).getElementsByTagName('ul')[0];
+			nUl.appendChild(aLi[j]);//移动
+		};
+	};
+	//删除空ul-------------------------------------------
+	for(var j=0; j<aLi.length; j++){
+		var uul=aLi[j].getElementsByTagName('ul')[0];
+		if(uul.children.length==0){
+			aLi[j].removeChild(uul);
+		}
+	};
+	
+//操作树--------------------------------------------------------------------------
+	var tree=document.getElementById('objTree');
+	var aLi=tree.getElementsByTagName('li');
+	var aLi_a=tree.getElementsByTagName('a');
+	
+	for(var i=0; i<aLi.length; i++){
+		//标记有二级菜单的li------------------------------------
+		var subMenu=aLi[i].children[1];//判断是否有二级菜单
+		if(subMenu){
+			subMenu.className='subMenu';
+			aLi[i].className="hasSub";
+		};
+	
+		//绑定事件--------------------------------------------
+		aLi[i].show=true;//给自己增加个判断 开/关 自定义属性
+		
+		aLi[i].onclick=function(ev){
+			var oEv=ev || window.event;
+			oEv.cancelBubble=true;//阻止事件冒泡
+
+			//开关 子菜单--------------------
+			var subMenu=this.children[1];//是否有二级菜单
+			if(this.show){//判断开关状态
+				if(subMenu){
+					subMenu.style.display="block";
+					this.className='hasSub showSubmenu';
+					this.show=false;
+				}
+			}else{
+				subMenu.style.display="none";
+				this.className='hasSub';
+				this.show=true;
+			};
+			
+			//标记当前a标签------------------
+			for(var j=0; j<aLi.length; j++){
+				aLi_a[j].className='';
+			};
+			this.children[0].className='ac';
+		};
+	};	
+	
+}
+
+</script>
+</head>
+
+<body>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+function worldTime(){
+	var oDate=new Date;
+	var U_year=oDate.getUTCFullYear();
+	var U_month=oDate.getUTCMonth()+1;
+	var U_date=oDate.getUTCDate();
+	
+	var U_hour=oDate.getUTCHours();
+	var U_minute=oDate.getUTCMinutes();
+	var U_sec=oDate.getUTCSeconds();
+	document.body.innerHTML='东京时间：'+U_year+'年'+U_month+'月'+U_date+'日'+(U_hour+7)+'点'+U_minute+'分'+U_sec+'秒<br>'+'北京时间：'+U_year+'年'+U_month+'月'+U_date+'日'+(U_hour+8)+'点'+U_minute+'分'+U_sec+'秒<br>';
+};
+setInterval(function(){
+	worldTime();
+
+},1000)
+
+
+</script>
+
+</head>
+
+<body>
+</body>
+</html>

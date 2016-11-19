@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+	//cat的构造函数
+	function Cat(name,color){
+		this.name=name;
+		this.color=color;
+		this.speak=function(){
+			alert('喵');
+		};
+
+　　};
+
+	var cat1=new Cat('大黄','黄色');
+	//alert(cat1.color);
+	//cat1.speak();
+	
+	//构造函数的prototype
+	Cat.prototype.weight=30;
+	
+	console.log(typeof Cat.prototype); 
+	
+	alert(cat1.weight);
+	
+	
+	//constructor属性，指向它们的构造函数
+	//alert(cat1.constructor);
+	
+	
+	//instanceof   
+	//alert(cat1 instanceof Cat);
+	
+	//instanceof不认为原始类型值的变量是对象
+	/*var txt='adsdf';
+	alert(txt instanceof String);//false
+	
+	var age=123123;
+	alert(age instanceof Number);//false
+	
+	var re=/\d/;
+	alert(re instanceof RegExp);//true*/
+	
+	var arr=[];
+	//alert(arr instanceof Array)
+	
+
+
+
+
+
+</script>

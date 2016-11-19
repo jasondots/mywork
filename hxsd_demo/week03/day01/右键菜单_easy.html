@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0}
+.r_menu{ width:100px; border:1px solid #ccc; padding:5px; position:absolute; list-style:none; background:#fff;}
+.r_menu li{ height:30px; line-height:30px; border-bottom:1px solid #ccc;}
+
+</style>
+<script>
+window.onload=function(){
+	/*document.body.oncontextmenu=function(){
+		return false;
+	};*/
+	
+	var right_menu=document.createElement('ul');
+	right_menu.className='r_menu';
+	
+	right_menu.id='right_menu_id';//为删除用，否则会报错
+	right_menu.innerHTML='<li>删除</li><li>复制</li><li>粘贴</li>';
+	
+	
+	
+	var oDiv=document.getElementById('box');
+	
+	oDiv.oncontextmenu=function(ev){
+		document.body.appendChild(right_menu);
+		var oEv=ev || window.event;
+		var l=oEv.clientX;//得到鼠标坐标
+		var t=oEv.clientY;
+		oEv.cancelBubble=true;//如果不阻止冒泡，会传播到body上，删除right_menu
+		
+		//创建右键的菜单
+		
+		right_menu.style.top=t+'px';
+		right_menu.style.left=l+'px';
+		
+		//删除div
+		right_menu.children[0].onclick=function(){
+			document.body.removeChild(oDiv);
+		};
+		
+		var new_oDiv=null;
+		right_menu.children[1].onclick=function(){
+			new_oDiv=oDiv.cloneNode(true);
+			console.log(new_oDiv);
+		};
+		
+		
+		
+		
+		return false;
+	};
+	
+	
+	
+	
+	oDiv.onclick=document.onclick=document.oncontextmenu=function(){
+		if(document.getElementById('right_menu_id'))document.body.removeChild(document.getElementById('right_menu_id'));
+	
+	};
+	
+	
+	
+
+}
+
+
+
+
+</script>
+
+
+</head>
+
+<body>
+<div id="box" style="width:200px; height:200px; background:red">
+</div>
+
+<!--<ul class="r_menu">
+	<li>删除</li>
+    <li>复制</li>
+    <li>粘贴</li>
+</ul>-->
+
+
+
+</body>
+</html>

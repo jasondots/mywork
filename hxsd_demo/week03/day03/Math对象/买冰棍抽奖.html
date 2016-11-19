@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+div{ margin:100px auto; border:1px solid #ccc; width:400px; text-align:center; padding:30px;}
+input{ width:200px; height:50px; font-size:50px; text-align:center; margin-bottom:20px; padding:30px; border-radius:10px}
+button{ height:40px; width:60px;}
+</style>
+
+<script>
+window.onload=function(){
+	var names='王天义,顾晓婷,王海峰,郝硕,陈子豪,刘启伟,解慧韬,陈静远,李欢,吴嘉文,陈英隆,靳扬,梁帮凯,朱新春,胡英龙,付洛溪,杨志鹏,张芷豪,刘海伦,张冠男,赵言博,赵珊珊,屈圣凯,洪亮,成瑞峰,周方正,郑香,李振翰,王福望,史文焕,朱首峰,黄鹏刚,杜英豪,戴浩楠,安宣宣,吴佳新,李艳玲,罗诚,周秋雨,朴振龙,彭伟城,周达理,申萍,王爽,李德柱,蔡小丽,王国栋,刘国正,郝花花';
+	var student=names.split(',');	
+	var btn=document.getElementsByTagName('button');
+	var input=document.getElementsByTagName('input')[0];
+	var timer=null;
+	var draw_num=0;
+	
+	btn[0].onclick=function(){
+		clearInterval(timer);
+		timer=setInterval(function(){
+			draw_num=parseInt(Math.random()*student.length);
+			console.log(draw_num);
+			
+			input.value=student[draw_num];
+		},50)
+	};
+	btn[1].onclick=function(){
+		clearInterval(timer);
+		input.value=student[draw_num];
+	}
+
+}
+
+
+</script>
+</head>
+
+<body>
+<div>
+	<h2>今天该谁买冰棍？</h2>
+	<input type="text" readonly value="谁？">
+    <br>
+	<button type="button">开始</button>
+	<button type="button">停</button>
+
+</div>
+</body>
+</html>

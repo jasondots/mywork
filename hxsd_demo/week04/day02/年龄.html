@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script>
+window.onload=function (){
+	//驾照申请年龄18岁以上，65岁一下
+	
+	var re=/^(1[8-9]|[2-6][1-5])$/;
+	var oTxt=document.getElementById('txt1');
+	var oBtn=document.getElementById('btn1');
+	
+	oBtn.onclick=function (){
+		var s=parseInt(oTxt.value);
+		console.log(s);
+		if(18<s){
+		//if(re.test(oTxt.value)){
+			alert('OK');
+		}
+		else{
+			alert('不行');
+		}
+	};
+};
+</script>
+</head>
+
+<body>
+<input type="text" id="txt1" />
+<input type="button" value="校验" id="btn1" />
+</body>
+</html>

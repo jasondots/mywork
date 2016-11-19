@@ -1,0 +1,189 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>京东菜单</title>
+<style>
+*{ margin:0; padding:0}
+body{ font-size:14px}
+ul,li,ol{ list-style:none}
+a{ text-decoration:none; color:#333;}
+.taobao_menu{ margin:20px; width:200px; background:#efefef;}
+.taobao_menu li{ border-bottom:1px solid #ccc;}
+.taobao_menu li a{ display:block; height:30px; line-height:30px; text-indent:1em}
+
+.taobao_menu .ac{ background:red;}
+.taobao_menu .ac a{ color:#fff;}
+
+.menu_cont{ width:500px; min-height:400px; border:1px solid red; position:absolute; top:20px; left:220px; padding:10px 20px;  display:none;}
+.cate_part{ display:none}
+.menu_cont dt{ height:30px; line-height:30px; border-bottom:1px solid #ccc; font-weight:bold}
+.menu_cont dd{ float:left; margin:10px 10px 0 0}
+</style>
+
+<script>
+window.onload=function(){
+	var oMenu=document.getElementById('taobaoMenu');
+	var aLi=oMenu.getElementsByTagName('li');
+	var oMenuCont=document.getElementById('menuCont');
+	var a_cate_part=oMenuCont.getElementsByClassName('cate_part');
+	var leave_menu=null;//离开右侧 回到左侧
+	
+	//cate: n. 美食；佳肴；外购食物
+	
+	//删除所有li上的ac
+	function del_li_ac(){
+		for(var i=0; i<aLi.length; i++){
+			aLi[i].className="";
+		};
+	};
+	
+	for(var i=0; i<aLi.length; i++){
+		aLi[i].onmouseover=function(){
+			clearTimeout(leave_menu);
+			oMenuCont.style.display="block";
+			del_li_ac();//删除所有li上的ac  
+			this.className="ac";//自己增加ac
+			
+			//得到自己的data-index自定义属性
+			var show_id=this.getAttribute("data-index");
+			
+			for(var j=0; j<a_cate_part.length; j++){
+				a_cate_part[j].style.display="none";
+			}
+			//显示相对应的内容
+			document.getElementById("cate_item"+show_id).style.display="block";
+		};
+		
+		aLi[i].onmouseout=function(){
+			clearTimeout(leave_menu);
+			leave_menu=setTimeout(function(){
+				oMenuCont.style.display="none";
+				del_li_ac();//删除所有li上的ac  
+			},100)
+		};
+	};
+	
+	oMenuCont.onmouseenter=function(ev){
+		clearTimeout(leave_menu);
+		this.style.display="block";
+	};
+	
+	oMenuCont.onmouseleave=function(){
+		del_li_ac();//删除所有li上的ac  
+		this.style.display="none";
+	};
+	
+  
+	
+	
+	
+	
+	
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div id="taobaoMenu" class="taobao_menu">
+	
+    <ul>
+    	<li data-index="1"><a href="#"> 女装 / 男装 / 内衣</a></li>
+        <li data-index="2"><a href="#"> 鞋靴 / 箱包 / 配件</a></li>
+        <li data-index="3"><a href="#"> 童装玩具 / 孕产 / 用品</a></li>
+        <li data-index="4"><a href="#"> 家电 / 数码 / 手机</a></li>
+        <li data-index="5"><a href="#"> 美妆 / 洗护 / 保健品</a></li>
+        <li data-index="6"><a href="#"> 珠宝 / 眼镜 / 手表</a></li>
+    </ul>
+    
+    <div id="menuCont" class="menu_cont">
+    	<div class="cate_part" id="cate_item1">
+        	<dl>
+                <dt>女装</dt>
+                <dd><a href="#">大码</a></dd>
+                <dd><a href="#">韩版</a></dd>
+                <dd><a href="#">淘品牌</a></dd>
+                <dd><a href="#">连衣裙</a></dd>
+                <dd><a href="#">裤子</a></dd>
+                <dd><a href="#">淘品牌</a></dd>
+                <dd><a href="#">连衣裙</a></dd>
+                <dd><a href="#">裤子</a></dd>
+                <dd><a href="#">大码</a></dd>
+            </dl>
+        </div>
+    	<div class="cate_part" id="cate_item2">
+            <dl>
+                <dt>男装</dt>
+                <dd><a href="#">西装</a></dd>
+                <dd><a href="#">皮衣</a></dd>
+                <dd><a href="#">眼镜</a></dd>
+                <dd><a href="#">风衣</a></dd>
+            </dl>
+        </div>
+        <div class="cate_part" id="cate_item3"
+        	<dl>
+                <dt>童装玩具</dt>
+                <dd><a href="#">电子玩具</a></dd>
+                <dd><a href="#">孕妇装</a></dd>
+                <dd><a href="#">童鞋</a></dd>
+                <dd><a href="#">儿童车</a></dd>
+                <dd><a href="#">电子玩具</a></dd>
+                <dd><a href="#">孕妇装</a></dd>
+                <dd><a href="#">童鞋</a></dd>
+                <dd><a href="#">儿童车</a></dd>
+            </dl>
+        </div>
+        <div class="cate_part" id="cate_item4">
+            <dl>
+                <dt>家电</dt>
+                <dd><a href="#">平板电视</a></dd>
+                <dd><a href="#">电饭煲</a></dd>
+                <dd><a href="#">洗衣机</a></dd>
+                <dd><a href="#">家用音响</a></dd>
+                <dd><a href="#">平板电视</a></dd>
+                <dd><a href="#">电饭煲</a></dd>
+                <dd><a href="#">洗衣机</a></dd>
+                <dd><a href="#">家用音响</a></dd>
+                <dd><a href="#">平板电视</a></dd>
+                <dd><a href="#">电饭煲</a></dd>
+                <dd><a href="#">洗衣机</a></dd>
+                <dd><a href="#">家用音响</a></dd>
+            </dl>
+        </div>
+        <div class="cate_part" id="cate_item5">
+            <dl>
+                <dt>美妆</dt>
+                <dd><a href="#">彩妆</a></dd>
+                <dd><a href="#">眼影</a></dd>
+                <dd><a href="#">面膜</a></dd>
+                <dd><a href="#">唇彩</a></dd>
+                <dd><a href="#">美甲油</a></dd>
+            </dl>
+        </div>
+        <div class="cate_part" id="cate_item6">
+            <dl>
+                <dt>珠宝</dt>
+                <dd><a href="#">戒指</a></dd>
+                <dd><a href="#">手链</a></dd>
+                <dd><a href="#">翡翠挂件</a></dd>
+                <dd><a href="#">银首饰</a></dd>
+            </dl>
+        </div>
+        
+    </div>
+    
+    
+    
+    
+    
+    
+</div>
+
+
+
+
+</body>
+</html>

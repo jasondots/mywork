@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0}
+html,body{height:100%}
+ul{ list-style:none;}
+div{ height:200px; width:200px; background:red; float:left; margin:20px; font-size:40px; color:#fff}
+.contextmenu{ width:100px; padding:10px; border:1px solid #ccc; padding-top:0; position:absolute; background:#fff;}
+.contextmenu li{ height:30px; line-height:30px; border-bottom:1px solid #ccc; font-size:14px; cursor:pointer}
+
+</style>
+<script>
+window.onload=function(){
+	
+	var aDiv=document.getElementsByTagName('div');
+	
+	var r_menu=document.createElement('ul');
+	r_menu.className='contextmenu';
+	r_menu.id='contextmenu_popBox';
+	r_menu.innerHTML="<li>删除</li><li>复制</li><li>粘贴</li>";
+	
+	for(var i=0; i<aDiv.length; i++){
+	
+		//显示右键菜单
+		aDiv[i].oncontextmenu=function(ev){
+			var _this=this;
+			var oEv=ev || window.event;
+			var l=oEv.clientX;
+			var t=oEv.clientY;
+			oEv.cancelBubble=true; //如果不阻止，在body上点右键，r_menu不会删除
+			
+			document.body.appendChild(r_menu);
+			r_menu.style.top=t+'px';
+			r_menu.style.left=l+'px';
+		
+			r_menu.children[0].onclick=function(){
+				document.body.removeChild(_this);
+			};
+			
+			//阻止oDiv默认事件(右键菜单)
+			return false;
+		};
+	};
+	
+	
+	document.body.onclick=document.body.oncontextmenu=function(){
+		var contextmenu_popBox=document.getElementById('contextmenu_popBox');
+		if(contextmenu_popBox){
+			document.body.removeChild(contextmenu_popBox);
+		}
+	};
+	
+	
+
+
+}
+
+
+
+
+</script>
+</head>
+
+<body>
+	<div>A</div>
+    <div>B</div>
+    <div>C</div>
+    <div>D</div>
+    
+    <!--<ul	class="contextmenu">
+    	<li>删除</li><li>复制</li><li>粘贴</li>
+    
+    </ul>-->
+</body>
+</html>

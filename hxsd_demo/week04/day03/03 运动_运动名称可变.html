@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0}
+#box{ width:300px; height:300px; top:0; background:#ccc; margin-left:100px; left:200px; position:relative}
+#sub_box{ width:200px; height:100px; left:0; position:absolute; background:red}
+</style>
+
+<script>
+//读取样式   判断运动方式    设定obj.timer
+
+
+
+//读取样式
+function getStyle(obj, styleName){
+	var value=obj.currentStyle ? obj.currentStyle[styleName]:getComputedStyle(obj, false)[styleName];
+	if(styleName=='opacity'){
+		value=Math.round(parseFloat(value)*100);
+	}
+	else{
+		value=parseInt(value);
+	}
+	return value;
+}
+
+//判断运动方式  透明度  上下/左右移动  宽 高  opacity  top left  width  height-----------------------
+function getMoveValue(obj, moveMode){
+	//透明度
+	if(name=='opacity'){
+		var moveValue=Math.round(parseFloat(getStyle(obj, moveMode))*100);
+	}
+	else{
+		var moveValue=parseInt(getStyle(obj, moveMode));
+	};
+	
+	//top left width height
+	if(isNaN(moveValue)){
+		switch(moveValue){
+			case 'top':
+				return obj.offsetTop;
+			case 'left':
+				return obj.offsetLeft;
+			case 'width':
+				return obj.offsetWidth;
+			case 'height':
+				return obj.offsetHeight;
+		}
+	}
+	return moveValue;
+}
+//-----------------------------------------------------------------------------
+function move(obj,moveMode,end,stopTime){//对象 终点位置 运动终点  运动方式
+	
+	//距离=终点-起点;
+	var start=getMoveValue(obj, moveMode);//起点数值
+
+	var dis=end-start;//距离 distance
+	
+	var count=parseInt(stopTime/30);////次数
+	var n=0;//步进
+
+	clearInterval(obj.timer);//使用对象属性，定义计时器变量
+	
+	obj.timer=setInterval(function(){
+		
+		n++;
+		var step_dis=start+dis/count*n; ////起点 + 距离/次数 * n;
+		
+		if(moveMode=='opacity'){//透明
+		
+			obj.style.filter='alpha(opacity:'+step_dis+')';
+			obj.style.opacity=step_dis/100;
+		}
+		else{//宽高 移动
+			obj.style[moveMode]=step_dis+'px';
+		}
+		
+		//取消定时器
+		if(n==count){
+			clearInterval(obj.timer);
+		};
+	
+	},30)
+};
+
+window.onload=function(){
+	var oDiv=document.getElementById('box');
+	var sub_box=document.getElementById('sub_box');
+	var btn=document.getElementById('btn');
+	btn.onclick=function(){
+		move(oDiv,"left",140,2000);
+		//move(oDiv,"top",140,2000);
+	}
+	
+	
+}
+
+
+</script>
+</head>
+
+<body>
+
+<div id="box">
+	<div id="sub_box">
+    dfsd
+    </div>
+
+</div>
+<button id="btn" type="button" style=" width:100px; height:40px">move</button>
+</body>
+</html>

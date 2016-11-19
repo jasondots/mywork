@@ -1,0 +1,124 @@
+Window Screen
+window.screen.width 返回当前屏幕宽度(分辨率值) 
+window.screen.height 返回当前屏幕高度(分辨率值) 
+
+
+window.document.body.offsetHeight; 返回当前网页高度（内容撑开的，如果没有内容，为0） 
+window.document.body.offsetWidth; 返回当前网页宽度
+
+window.document.documentElement.clientHeight 浏览器窗口高度
+window.document.documentElement.clientWidth  浏览器窗口宽度
+
+
+
+滚动条 
+document.body.scrollTop   //chrome
+document.documentElement.scrollTop   //FF IE 
+
+
+window.location
+window.location.href='http://www.baidu.com/' 页面跳转
+window.location.reload()  页面重载
+
+window History
+window.history.go(1) 前进（跳转）
+window.history.go(-1) 后退（跳转）
+window.history.forward() 前进
+window.history.back() 后退
+
+window.navigator.userAgent  浏览器类型、版本、操作系统类型、浏览器引擎类型等信息
+
+
+---------------------------------------------------------------------
+节点类型：共有12种节点类型
+
+1	Element	   一个元素
+2	Attr	   一个属性
+3	Text	   一个元素的文本内容 或属性
+8	Comment	   一个注释
+9	Document   整个文档（DOM树的根节点）
+
+
+查找节点
+
+父节点 parentNode
+
+第一级所以子节点 children /childNodes一级子元素子节点（包含空格和文本节点,不用！！！）
+
+上一个兄弟节点 previousSbiling
+下一个兄弟节点 nextSibling
+
+第一个子节点 firstChild
+最后一个子节点 lastChild
+
+克隆节点 cloneNode
+newElement=oldElement.cloneNode(true / false )
+
+true：复制本节点以及所有子节点 
+false：只复制节点本身
+
+
+
+
+arguments
+当前函数的一个内置属性
+arguments对象的长度是由实参个数（而不是形参个数）决定的
+-----------------------------------------------------------------
+
+
+回调函数
+如果把一个函数作为参数传递给另一个函数，这个函数就是回调函数。
+例：
+function A（）{……}
+
+function B（fn）{……fn()}
+
+B(A)  函数A被称为函数B的回调函数
+
+
+-------------------------------------------------------------
+闭包
+
+有权访问另外一个函数作用域中的变量的函数。
+
+创建闭包的常见方式就是在一个函数内部创建另外一个函数。
+
+特性：
+
+可以读取函数内部的变量
+
+让这些变量的值始终保持在内存中
+
+
+---------------------------------------------------------------
+onmouseover omouseout事件源
+
+W3C：relatedTarget
+
+对于 onmouseover 要 离开 的元素
+对于 onmouseout  要 进入 的元素
+
+IE：
+fromElement  要 离开 的元素
+toElement    要 进入 的元素
+
+例：
+oBox.onmouseover=function(ev){
+	var oEv=ev|| window.event;
+	var oEl=oEv.relatedTarget || oEv.fromElement;// relatedTarget 对于 onmouseover 指的是要 离开 的元素
+			
+};
+	
+		
+oBox.onmouseout=function(ev){
+	var oEv=ev|| window.event;
+	var oEl=oEv.relatedTarget || oEv.toElement; // relatedTarget 对于 onmouseout 指的是要 进入 的元素
+	
+};
+
+
+
+
+
+
+

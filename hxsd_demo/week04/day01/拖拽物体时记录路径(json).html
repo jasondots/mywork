@@ -1,0 +1,86 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0}
+div{width:200px;height:200px; background:red; position:absolute;top:0;left:0}
+button{ height:40px; width:100px; position:absolute; top:300px}
+</style>
+<script>
+window.onload=function(){
+	var oDiv=document.getElementsByTagName('div')[0];
+	var arr=[];
+	var timer=null;
+	
+	oDiv.onmousedown=function(ev){
+		arr=[];
+		
+		//记录起始位置
+		arr.push({'left':oDiv.offsetLeft,'top':oDiv.offsetTop});
+		
+		
+		var oEv=ev||event;
+		var disX=oEv.clientX-oDiv.offsetLeft;
+		var disY=oEv.clientY-oDiv.offsetTop;
+		
+	
+		document.onmousemove=function(ev){
+			var oEv=ev||event;
+			var l=oEv.clientX-disX;
+			var t=oEv.clientY-disY;
+			
+			oDiv.style.top=t+'px';
+			oDiv.style.left=l+'px';
+			
+			arr.push({'left':l,'top':t});	
+			//console.log(arr);
+		};
+		
+		
+		document.onmouseup=function(){
+			document.onmousemove=document.onmouseup=null;
+			if(oDiv.releaseCapture) oDiv.releaseCapture();//取消获捕
+		};
+		
+		if(oDiv.setCapture) oDiv.setCapture();
+		return false;
+	};
+	
+	document.getElementById('btn').onclick=function(){
+		
+		for(var i=arr.length-1;i>-1;i--){//数组索引 0--length-1  之间  所以 i>-1
+			(function(index){
+			  timer=setTimeout(function(){
+				var l=arr[index].left;
+				var t=arr[index].top;
+				
+				
+				
+
+				oDiv.style.top=t+'px';
+				oDiv.style.left=l+'px';
+				
+						
+				document.title=arr[index].top;
+			  },(arr.length-1-index)*20) //间隔时间应该越来越短
+			})(i);
+			
+		};	
+		
+		
+		/*
+		arr.length=100;
+		arr.length-1-i*/
+	};
+		
+};
+</script>
+</head>
+
+<body>
+<button type="button" id="btn">回放</button>
+<div></div>
+</body>
+</html>

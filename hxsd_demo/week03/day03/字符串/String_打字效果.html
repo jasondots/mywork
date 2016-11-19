@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+	var text='火星时代教育是中国艺术教育高端品牌';
+	var end=1;
+	var new_text="";
+	/*var timer=setInterval(function(){
+		new_text=text.substr(0,end);
+		document.body.innerHTML=new_text;
+		end++;
+		if(end>text.length) clearInterval(timer);
+		console.log(end);
+	},500);*/
+	
+	//appendChild
+	
+	var star=0;
+	var timer=setInterval(function(){
+		new_text=text.substr(star,1);
+		var span=document.createElement('span');
+		span.innerHTML=new_text;
+		document.body.appendChild(span);
+		star++;
+		if(star>text.length) clearInterval(timer);
+		console.log(star);
+	},500);
+	
+	
+	
+
+</script>
+
+
+
+</head>
+
+<body>
+</body>
+</html>

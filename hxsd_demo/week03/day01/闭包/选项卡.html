@@ -1,0 +1,76 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>选项卡_回调</title>
+<style>
+*{margin:0;padding:0}
+ul{ list-style:none}
+
+.tab{width:500px; margin-bottom:50px}
+.tab ul{ height:40px;}
+.tab ul li{ float:left; height:40px; line-height:40px; padding:0 20px;}
+.tab ul .ac{ background:#ccc; color:#fff;}
+
+.tabCont{height:200px; padding:20px; border:1px solid #000;font-size:16px; border:1px solid #ccc;}
+</style>
+<script src="tab.js"></script>
+<script>
+var data_arr=['111111111','222222222','333333333'];
+var data_arr2=['444444444','555555555','666666666'];
+
+
+window.onload=function(){
+	
+	var tabA=document.getElementById('tabA');
+	
+	tab(tabA,function(index,aTabItem){
+		//异步读取数据库中的数据
+		aTabItem[index].innerHTML=data_arr[index];
+	});
+	
+	//------------------------------------------------
+	var tabB=document.getElementById('tabB');
+	
+	tab(tabB,function(index,aTabItem){
+		//异步读取数据库中的数据
+		aTabItem[index].innerHTML=data_arr2[index];
+	});
+	
+};
+</script>
+</head>
+
+<body>
+<div id="tabA" class="tab">
+	<ul>
+    	<li class="ac" data-cont="contA">标签一</li>
+        <li  data-cont="contB">标签二</li>
+        <li  data-cont="contC">标签三</li>
+    </ul>
+    <div class="tabCont">
+    	<div class="tabItem">111111111</div>
+        <div class="tabItem"></div>
+        <div class="tabItem"></div>
+        
+    </div>
+</div>
+
+<div id="tabB" class="tab">
+	<ul>
+    	<li class="ac" data-cont="contA">标签一</li>
+        <li  data-cont="contB">标签二</li>
+        <li  data-cont="contC">标签三</li>
+    </ul>
+    <div class="tabCont">
+    	<div class="tabItem">444444444</div>
+        <div class="tabItem"></div>
+        <div class="tabItem"></div>
+        
+    </div>
+</div>
+
+
+
+</body>
+</html>

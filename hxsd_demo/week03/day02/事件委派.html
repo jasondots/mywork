@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+p,span,em,strong{ display:block; width:200px; height:50px; margin-bottom:20px; background:red}
+</style>
+</head>
+
+<body>
+<div>
+	<p></p>
+    <span></span>
+    <em></em>
+    <strong></strong>
+    <p></p>
+    <em></em>
+    <p></p>
+    <span></span>
+    <em></em>
+    <strong></strong>
+    <p></p>
+    <em></em>
+    <p></p>
+    <span></span>
+    <em></em>
+    <strong></strong>
+    <p></p>
+    <em></em>
+</div>
+
+</body>
+</html>
+<script>
+	var oDiv=document.getElementsByTagName('div')[0];
+	oDiv.onclick=function(ev){
+		ev=ev||event;
+		var elm=ev.target;
+		if(elm==this){
+		return;
+		};
+		elm.style.background="green";
+	}
+	
+
+</script>

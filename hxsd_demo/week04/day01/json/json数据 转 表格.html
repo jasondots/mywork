@@ -1,0 +1,99 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+table{border-collapse:collapse; margin:20px}
+table, td,th{ border:1px solid #ccc;  padding:10px}
+
+</style>
+
+</head>
+
+<body>
+
+
+</body>
+</html>
+<script>
+var man1={
+	name:["张三","李四","王五"],
+	age:[18,20,13],
+	work:["老师","工人","学生"],
+	city:["北京","上海","广州"]
+};
+
+var man2=[
+	{"name":"张三","age":18,"work":"老师","city":"北京"},
+	{"name":"李四","age":20,"work":"工人","city":"上海"},
+	{"name":"王五","age":13,"work":"学生","city":"广州"}
+];
+
+//json长度
+function json_length(json){
+	var i=0;
+	for(var k in json){
+		i++;
+	}
+	return i;
+};
+
+var table1=document.createElement('table');
+	
+	//添加第一行
+	var tr1=document.createElement('tr');
+	for(var key in man1){
+		var th=document.createElement('th');
+		th.innerHTML=key;
+		tr1.appendChild(th);
+	};
+	table1.appendChild(tr1);
+	
+	
+	for(var i=0; i<man1.name.length; i++){
+		var tr11=document.createElement('tr');
+		for(var key in man1){
+			var td=document.createElement('td');
+			td.innerHTML=man1[key][i];
+			tr11.appendChild(td);
+		};
+		table1.appendChild(tr11);
+	};
+//----------------------------------------------------	
+
+var table2=document.createElement('table');
+
+	//添加第一行
+	var tr2=document.createElement('tr');
+	for(var key in man2[0]){
+		var th=document.createElement('th');
+		th.innerHTML=key;
+		tr2.appendChild(th);
+	};
+	table2.appendChild(tr2);
+	
+	for(var i=0; i<man2.length; i++){
+		var tr22=document.createElement('tr');
+		for(var key in man2[i]){
+			var td=document.createElement('td');
+			td.innerHTML=man2[i][key];
+			tr22.appendChild(td);
+		}
+		table2.appendChild(tr22);
+	
+	}
+	
+//----------------------------------------------------	
+	document.body.appendChild(table1);
+	document.body.appendChild(table2);
+	
+
+
+
+
+
+
+
+
+</script>

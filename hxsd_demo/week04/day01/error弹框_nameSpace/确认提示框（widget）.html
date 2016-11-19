@@ -1,0 +1,45 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link href="base.css" rel="stylesheet" type="text/css">
+<link href="widget.css" rel="stylesheet" type="text/css">
+<script src="hxsd_tools.js" type="text/javascript"></script>
+<script src="hxsd_widget.js" type="text/javascript"></script>
+
+<script>
+window.onload=function(){
+	
+	var input=document.getElementsByTagName('input')[0];
+	
+	//打开弹框
+	document.getElementById('open_popBox_btn').onclick=function(){
+		if(isNaN(input.value)){
+			hxsd_widget.popBox_error("请输入数字！",5000);
+		}
+	};
+	
+	//随时调用  调用的时候，内容，和延迟时间可控
+	
+	//插入到页面当中
+	
+	//居中显示  宽度？？ 设定最大宽度
+	
+	//2秒以后，自动消失，从页面移除
+	
+	//鼠标移入，不消失
+	
+	
+	
+	
+};
+</script>
+</head>
+
+<body>
+<input type="text">
+<button class="openBtn" type="button" id="open_popBox_btn">提交</button>
+
+</body>
+</html>

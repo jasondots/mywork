@@ -1,0 +1,96 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>自动播放的选项卡</title>
+<style>
+*{ margin:0; padding:0}
+ul{ list-style:none}
+a{ text-decoration:none}
+.hide{ display:none;}
+.wrap{ width:500px; margin:50px}
+.tab{ margin-bottom:30px;}
+.tab .tabList{ height:40px;}
+.tab .tabList li{ float:left;}
+.tab .tabList li a{ display:block;height:40px; line-height:40px; padding:0 20px}
+.tab .tabList .ac a{ background:#ccc; color:#fff}
+.tab .tabItem{min-height:200px; border:1px solid #ccc;padding:20px}
+</style>
+
+<script>
+window.onload=function(){
+	function Tab(id){
+	  this.oParent = document.getElementById(id);
+	  this.ali = this.oParent.getElementsByTagName("li");
+	  this.tabItem = this.oParent.getElementsByClassName("tabItem");
+	  this.iNow=0;
+	};
+
+	Tab.prototype.init=function(){
+		var _this = this;// Tab对象
+		for(var i=0; i<this.ali.length;i++){
+			this.ali[i].index = i;
+			this.ali[i].onclick=function(){
+				for(var j=0; j<_this.ali.length;j++){
+					_this.ali[j].className="";
+					_this.tabItem[j].style.display="none";
+				}
+				this.className="ac";
+				_this.tabItem[this.index].style.display="block";
+			}
+		};
+		return this;	
+	};
+	
+	//自动播放
+	Tab.prototype.autoPlay = function(){
+		var _this = this;//Tab对象
+		this.timer=setInterval(function(){
+			_this.iNow == _this.ali.length-1 ? _this.iNow = 0:_this.iNow++;
+						
+			for(var i=0;i<_this.ali.length;i++){
+				_this.ali[i].className = '';
+				_this.tabItem[i].style.display = 'none';
+			}
+			_this.ali[_this.iNow].className = 'ac';
+			_this.tabItem[_this.iNow].style.display = 'block';
+		},1000);
+		
+		this.oParent.onmouseover=function(){
+			clearInterval(_this.timer);
+		};
+		this.oParent.onmouseout=function(){
+			_this.autoPlay();
+		};
+		return this;
+	};
+	
+	//---------------------------------------------------
+	
+	var t1 = new Tab("tab1");
+	
+ 	t1.autoPlay().init();
+	
+};
+</script>
+</head>
+
+<body>
+<div class="wrap">
+    <div id="tab1" class="tab">
+        <ul class="tabList">
+            <li class="ac"><a href="javascript:;">itemA</a></li>
+            <li><a href="javascript:;">itemB</a></li>
+            <li><a href="javascript:;">itemC</a></li>
+            <li><a href="javascript:;">itemD</a></li>
+        </ul>
+        <div class="tabCont">
+            <div class="tabItem">1111</div>
+            <div class="tabItem hide">2222</div>
+            <div class="tabItem hide">3333</div>
+            <div class="tabItem hide">4444</div>
+       </div>
+   </div>
+</div>
+</body>
+</html>

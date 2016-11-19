@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>月历月份跳转</title>
+<style>
+*{margin:0;padding:0;}
+li{list-style:none;}
+a{text-decoration:none;}
+.turn{text-align:center;margin:30px auto;}
+#calendar{width:220px;margin:30px auto;border:1px solid #421C1D;overflow:hidden;text-align:center;position:relative;}
+#title{text-align:center;margin-bottom:10px;line-height:50px;}
+#pre{background:#F1E100;width:30px;height:30px;position:absolute;left:10px;top:10px;color:#fff;line-height:30px;}
+#next{background:#F1E100;width:30px;height:30px;position:absolute;right:10px;top:10px;color:#fff;line-height:30px;}
+#calendar .week{height:30px;line-height:20px;border-bottom:1px solid #000;}
+#calendar .week li{width:30px;float:left;height:30px;text-align:center;line-height:30px;}
+#calendar .dateUl{overflow:hidden;clear:both;margin:10px 0;}
+#calendar .dateUl li{float:left;width:30px;height:30px;;text-align:center;line-height:30px;}
+#calendar .dateUl li.ccc{color:#ccc;}
+#calendar .dateUl li.red{background:#F90;color:#fff;}
+#calendar .dateUl li.sun{color:#f00;}
+
+</style>
+<script>
+window.onload=function(){
+	var calendar=document.getElementById('calendar');
+	var day_list=document.getElementById('date_list');
+	var title=document.getElementById('title');
+	var n_Day=document.getElementById('n_day');
+	
+	var allDays=0;//本月共计多少天
+	var first_week=0;//本月第一天式星期几
+	var today=0;//今天的日期
+	var iNow=0;//当天
+	
+	var seleMonth=document.getElementById('seleMonth');
+	
+	function dateFn(){
+		//找出必要的数据
+		var oDate=new Date();//定义元素
+		today=oDate.getDate();//抓取今天是几号
+		oDate.setMonth(oDate.getMonth()+iNow,1);//把日期设置到第一天
+		//找出今天是星期几
+		//oDate.setDate(1);//把日期设置到第一天
+		first_week=oDate.getDay();//抓取今天是星期几
+	
+		//计算本月有多少天
+		oDate.setMonth(oDate.getMonth()+1,0);
+		all_day=oDate.getDate();
+	
+		console.log(today,first_week,all_day);
+	
+		//每次进来前清空
+		day_list.innerHTML="";
+	
+		//塞到1号之前的星期中空白
+		for(var i=0;i<first_week;i++){
+			var li=document.createElement('li');
+			day_list.appendChild(li);
+		};
+		for(var i=0;i<all_day;i++){
+			var li=document.createElement('li');
+			li.innerHTML=i+1;
+			day_list.appendChild(li);
+		};
+	
+		//声明所有的li,并上色
+		var aLi=day_list.children;
+		if(iNow<0){
+			for(var i=0;i<aLi.length;i++){
+				aLi[i].className="ccc";
+			};
+		}
+		else if(iNow==0){
+			for(var i=0;i<aLi.length;i++){
+				if(aLi[i].innerHTML<today){
+					aLi[i].className="ccc";	
+				}
+				else if(aLi[i].innerHTML==today){
+					aLi[i].className="red";
+				}
+				else if(i%7==6||i%7==0){
+				aLi[i].className="sun";
+				};
+			};
+		}
+		else{//后边的月份只有周末变色
+			for(var i=0;i<aLi.length;i++){
+				if(i%7==6||i%7==0){
+					aLi[i].className="sun";
+				}
+			}
+		}
+		title.innerHTML=oDate.getFullYear()+'年'+(oDate.getMonth()+1)+'月';
+		seleMonth.value=oDate.getMonth()+1;
+		//下拉菜单跳转月份
+	
+	
+	};
+	dateFn();
+	
+	
+	seleMonth.onchange=function run(){
+		var oDate=new Date();
+		iNow=this.value-oDate.getMonth()-1;
+		dateFn();
+	};
+}
+</script>
+</head>
+
+<body>
+
+<div class="turn">
+	<select id="seleMonth">
+		<option value="1">1</option>
+		<option value="2">2</option>
+    	<option value="3">3</option>
+   		<option value="4">4</option>
+    	<option value="5">5</option>
+    	<option value="6">6</option>
+    	<option value="7" selected>7</option>
+    	<option value="8">8</option>
+    	<option value="9">9</option>
+    	<option value="10">10</option>
+    	<option value="11">11</option>
+    	<option value="12">12</option>
+	</select>月
+</div>
+<div id="calendar">
+	<h4 id="title">2013年10月</h4>
+    <ul class="week">
+    	<li>日</li>
+    	<li>一</li>
+        <li>二</li>
+        <li>三</li>
+        <li>四</li>
+        <li>五</li>
+        <li>六</li>
+    </ul>
+    <ul id="date_list" class="dateUl"></ul>
+</div>
+</body>
+</html>

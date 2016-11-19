@@ -1,0 +1,192 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0}
+a{ text-decoration:none; font-size:14px; color:#333;}
+a:hover{ color:red}
+ul{ list-style:none}
+.news{ width:400px; margin:100px; padding:20px; border:1px solid #ccc}
+.newsList li{ height:30px; line-height:30px;}
+.newsList li span{ float:right; width:80px; text-align:left;*margin-top:-30px}
+.page{ padding-top:20px; text-align:center}
+.page a,.page span{ padding:8px 10px; margin:0 5px; font-size:12px; cursor:pointer; *margin-top:-2px; background:#ddd;}
+.page .ac{ color:#fff; background:#900; font-weight:bold}
+</style>
+<script>
+
+var news_arr=[
+	{"title":"冬奥会期间京张两地赛区50分钟直达","time":"2016-1-1"},
+	{"title":"6名“北京榜样” 走进武警军营","time":"2016-1-13"},
+	{"title":"北京农村廉洁研究中心成立","time":"2016-1-17"},
+	{"title":"北京初步实现食品安全检测与监测全覆盖","time":"2016-1-20"},
+	{"title":"大兴一仓库失火 近40辆车救援","time":"2016-2-24"},
+	{"title":"起底杨秀珠13年逃亡路：辗转多国 亡命天涯","time":"2016-3-10"},
+	{"title":"大兴一仓库失火 近40辆车救援","time":"2016-3-14"},
+	{"title":"18个月负债12余万元，大学生身陷“连环贷”！","time":"2016-3-18"},
+	{"title":"江苏省人民代表大会常务委员会决定任命名单","time":"2016-3-20"},
+	{"title":"大兴一仓库失火 近40辆车救援","time":"2016-4-4"},
+	{"title":"中国是社会主义建设的典范","time":"2016-4-6"},
+	{"title":"奥运史上首个难民代表团!5名难民运动员赴里约","time":"2016-4-24"},
+	{"title":"三中院试点电子送达诉讼文书 最快仅用半小时","time":"2016-5-2"},
+	{"title":"冬奥会期间京张两地赛区50分钟直达","time":"2016-5-7"},
+	{"title":"6名“北京榜样” 走进武警军营","time":"2016-5-19"},
+	{"title":"北京农村廉洁研究中心成立","time":"2016-5-24"},
+	{"title":"北京初步实现食品安全检测与监测全覆盖","time":"2016-5-30"},
+	{"title":"大兴一仓库失火 近40辆车救援","time":"2016-6-6"},
+	{"title":"起底杨秀珠13年逃亡路：辗转多国 亡命天涯","time":"2016-6-19"},
+	{"title":"大兴一仓库失火 近40辆车救援","time":"2016-6-29"},
+	{"title":"18个月负债12余万元，大学生身陷“连环贷”！","time":"2016-6-30"},
+	{"title":"江苏省人民代表大会常务委员会决定任命名单","time":"2016-7-6"},
+	{"title":"大兴一仓库失火 近40辆车救援","time":"2016-7-15"},
+	{"title":"中国是社会主义建设的典范","time":"2016-7-18"},
+	{"title":"奥运史上首个难民代表团!5名难民运动员赴里约","time":"2016-7-20"},
+	{"title":"大兴一仓库失火 近40辆车救援","time":"2016-7-29"}
+	
+];
+
+window.onload=function(){
+	// 1 把数据插入到li  把li插到ul
+	
+		
+	
+		
+		var news=document.getElementById('news');
+		var oUl=document.createElement('ul');
+		
+		var num=8;//每页多少行
+		var page=0;
+		
+		oUl.className="newsList";
+		news.appendChild(oUl);
+	
+		//2 定义每页几条  ul里面就插入几条
+		function changePage(n){
+			var start=n*num; //开始
+			var end=start+num;//结束
+			oUl.innerHTML='';
+			
+			for(var i=start; i<end;i++){
+				if(news_arr[i]){
+					oUl.innerHTML+='<li><a href="javascript:;">'+news_arr[i].title +'</a><span>'+ news_arr[i].time +'</span></li>';
+				}
+				
+			}
+		};
+		
+		changePage(page);//首次调用
+		
+		oUl.style.height=oUl.offsetHeight+'px';//设定ul高度
+		
+		
+		
+	//3 插分页
+		var pageList=document.createElement('div');
+		pageList.className='page';
+		
+		if(news_arr.length>num){
+			var html='<span>上一页</span>';
+			
+			//怎么分页？？
+			var p_num=0;
+			for(var i=0;i<news_arr.length; i+=num){
+				p_num++;
+				html+='<a>'+p_num+'</a>';
+			};
+			
+			//第二种分页方法
+			/*for(var i=1; i<news_arr.length; i++){
+				if(i%num==0){
+					var p_num=i/num;
+					html+='<a>'+p_num+'</a>';
+				}
+			};
+			
+			if(news_arr.length%num!=0){
+				html+='<a>'+(p_num+1)+'</a>';
+			};*/
+			
+			html+='<span>下一页</span>';
+			pageList.innerHTML=html;
+			news.appendChild(pageList);//插入分页
+			pageList.children[1].className='ac';
+			
+			
+			
+			function changeBtn(page){//清除所有a标签上的ac
+				for(var i=0; i<aA.length; i++){
+					aA[i].className="";
+				};
+				aA[page].className='ac';
+			}
+			
+			//4 点击切换
+			var aA=pageList.getElementsByTagName('a');
+			
+			for(var j=0; j<aA.length; j++){
+				aA[j].onclick=function(){
+					//点击数字   换li
+					page=this.innerHTML-1;
+					changePage(page);
+					changeBtn(page)
+				}
+			};
+			
+			//上下页切换
+			var prev=pageList.getElementsByTagName('span')[0];
+			var next=pageList.getElementsByTagName('span')[1];
+			
+			prev.onclick=function(){
+				page--;
+				if(page<0) page=0;
+				changePage( page );
+				changeBtn(page)
+			
+			};
+			
+			next.onclick=function(){
+				page++;
+				if(page==p_num) page=p_num-1;
+				//if(page>p_num) page=p_num;//第二种
+				changePage( page );
+				changeBtn(page)
+			
+			};
+		}
+
+}
+
+	
+
+
+
+
+
+
+
+</script>
+</head>
+
+
+
+
+
+<body>
+<div id="news" class="news">
+	<!--<ul class="newsList">
+    	<li><a href="javascript:;">北京农村廉洁研究中心成立</a><span>2016-1-20</span></li>
+        <li><a href="javascript:;">冬奥会期间京张两地赛区50分钟直达</a><span>2016-1-20</span></li>
+        <li><a href="javascript:;">6名“北京榜样” 走进武警军营</a><span>2016-1-20</span></li>
+        <li><a href="javascript:;">大兴一仓库失火 近40辆车救援</a><span>2016-1-20</span></li>
+        <li><a href="javascript:;">北京初步实现食品安全检测与监测全覆盖</a><span>2016-1-20</span></li>
+        <li><a href="javascript:;">三中院试点电子送达诉讼文书 最快仅用半小时</a><span>2016-1-20</span></li>
+    </ul>
+    <div class="page">
+    	<span>上一页</span><a class="ac">1</a><a>2</a><a>3</a><span>下一页</span>
+    </div>-->
+
+</div>
+</body>
+</html>

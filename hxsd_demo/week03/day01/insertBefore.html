@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+
+<script>
+window.onload=function(){
+	var oDiv=document.getElementById('box');
+	var ul=document.getElementsByTagName('ul')[0];
+	var oP=document.getElementsByTagName('p')[0];
+
+	//创建标签----------------------------------
+	var h5=document.createElement('h5');
+	h5.innerHTML="插个队";
+	oDiv.insertBefore(h5,ul);
+	
+	var btn=document.getElementsByTagName('button');
+	
+	var aLi=document.getElementsByTagName('li');
+	
+	//在第2个li后面再插入一个li----------------------
+	btn[0].onclick=function(){
+		var li=document.createElement('li');
+		li.innerHTML="我是插队的！";
+		//ul.appendChild(li);
+		ul.insertBefore(li,aLi[2]);
+	};
+	
+	//replaceChild------------------------------------------
+	btn[1].onclick=function(){
+		var h3=document.createElement('h3');
+		h3.innerHTML='我是H3标签';
+		oDiv.replaceChild(h3,oP);
+	}
+	
+};
+
+
+
+
+</script>
+</head>
+
+<body>
+
+<div id="box">
+	<p>我是p标签</p>
+    <ul>
+    	<li>我是1标签</li>
+        <li>我是2标签</li>
+        <li>我是3标签</li>
+        <li>我是4标签</li>
+        <li>我是5标签</li>
+    </ul>
+<button type="button">在第2个li后面再插入一个li</button>	<button type="button">p标签替换成h3标签</button>	
+</div>
+</body>
+</html>

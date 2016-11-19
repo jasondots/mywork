@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+var obj={
+'name':'zhangsan',
+'age':18,
+'say':function(){
+		alert(this.name);
+	}
+};
+
+obj.say();
+obj.say=function(){
+	alert('sdfasdfadf');
+};
+obj.say();
+
+
+
+
+function Student(name,age,txt) {
+	var obj = new Object();
+	obj.name = name;
+	obj.age = age;
+	obj.say=function(){
+		alert(txt);
+	};
+	return obj;
+};
+
+var man1=Student('xiaoming',18,'我是小明');
+man1.say();
+man1.say=function(){ //可改写自己的方法
+	alert(2323423);
+};
+man1.say();
+
+//alert(man1.age);
+var man2=Student('xiaoming',18,'我是老王');
+man2.say();
+</script>
+
+</head>
+
+<body>
+</body>
+</html>

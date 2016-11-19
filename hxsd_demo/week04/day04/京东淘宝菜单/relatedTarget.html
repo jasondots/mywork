@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+window.onload=function(){
+	var oBox=document.getElementById('box');
+	var oSub=document.getElementById('sub');
+	
+	
+	
+	
+	oBox.onmouseover=function(ev){
+		this.style.background='#999';
+		
+		var oEv=ev || window.event;
+		var oEl=oEv.relatedTarget || oEv.fromElement  ; // relatedTarget对于onmouseover, 是要离开的元素
+		if(oEl==this){return}
+		console.log('进入');
+		
+		/*if( isChild(this,oEl) ){//如果离开的元素还是自己
+			return;
+		}*/
+		
+	};
+	
+	
+	oBox.onmouseout=function(ev){
+		var oEv=ev || window.event;
+		var oEl=oEv.relatedTarget || oEv.toElement  ;// relatedTarget对于onmouseout, 是要进入的元素
+		if(oEl!=this && oEl!=document.getElementById('sub') ){
+			this.style.display="none";
+			console.log('离开');
+		};
+		
+		
+		//this.style.display="none";
+		
+		/*if(!isChild(this,oEl)){//如果进入的元素不是自己
+			this.style.display="none";
+			return;
+		};*/
+		
+	};
+	
+	function isChild(oParent,obj){//判断有没有子集
+		while(obj){
+			if(obj==oParent)return true; //如果obj==oParent 说明就是‘自己’ 
+			obj=obj.parentNode;	//如果不是，把这个obj指定为obj的父元素
+		};	
+		return false;// 不是我的子级
+	};
+	
+
+}
+
+
+
+</script>
+
+
+</head>
+
+<body id="body">
+<div id="box" style="width:300px; height:300px; background:#ccc;">
+	<div id="sub" style="height:200px; width:200px; background:red;"></div>
+</div>
+
+</body>
+</html>

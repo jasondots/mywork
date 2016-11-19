@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0}
+.pop{ max-width:300px;background:red; padding:20px; position:absolute; color:#fff;}
+
+</style>
+<script>
+window.onload=function(){
+	var div=document.createElement('div');
+	div.className='pop';
+	div.innerHTML='出错啦！！！';
+	
+	
+	document.body.appendChild(div);
+	var l=(document.documentElement.clientWidth-div.offsetWidth)/2;
+	div.style.left=l+'px';
+	div.style.top=-(div.offsetHeight)+'px';
+	var t=-100;
+	
+	var timer=setInterval(function(){
+		t+=10;
+		div.style.top=t+'px';
+		if(t>=div.offsetHeight){
+			clearInterval(timer);
+		}
+	},30);
+	
+	var outTimer=setTimeout(function(){
+		document.body.removeChild(div);
+		
+	},2000)
+	
+}
+
+
+</script>
+
+
+</head>
+
+<body>
+</body>
+</html>

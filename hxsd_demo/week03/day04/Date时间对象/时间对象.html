@@ -1,0 +1,29 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+
+</head>
+
+<body>
+</body>
+<script>
+var od=new Date();
+od.setFullYear(2016,3,13);
+alert(od.getDate());
+
+
+
+fn();
+setInterval(fn,1000);
+	
+
+	function fn(){
+		var oDate=new Date();
+		 document.body.innerHTML=oDate.getHours()+':'+oDate.getMinutes()+':'+oDate.getSeconds();
+	
+}
+
+</script>
+</html>

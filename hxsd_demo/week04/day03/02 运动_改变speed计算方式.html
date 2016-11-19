@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0}
+div{ width:100px; height:100px; background:red; position:absolute; left:0}
+</style>
+
+<script>
+//公式：起点 +  距离/次数 * n;
+
+function move(obj,end,stopTime){
+
+	//距离=终点-起点;
+	var start=0;
+	var dis=end-start;//距离 distance
+	
+	var count=parseInt(stopTime/30);////次数
+	var n=0;//步进
+	
+	var timer=setInterval(function(){
+		n++;
+		var step_dis=start+dis/count*n; ////起点 + 距离/次数 * n;
+		
+		console.log(obj.offsetLeft);
+		obj.style.left=step_dis+'px';
+		if(n==count){
+			clearInterval(timer);
+		};
+	},30)
+};
+
+window.onload=function(){
+	var oDiv=document.getElementById('box');
+	var btn=document.getElementById('btn');
+	btn.onclick=function(){
+		move(oDiv,200,10000);
+	};
+	
+	
+	var ss=0;
+	var timer=setInterval(function(){
+		ss++;
+		document.title=ss;
+		if(ss==10) clearInterval(timer);
+		
+	},1000);
+};
+
+
+
+
+
+
+
+</script>
+</head>
+
+<body>
+<div id="box"></div>
+<button id="btn" type="button" style=" width:100px; height:40px; margin-top:200px">move</button>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>解绑事件</title>
+
+
+</head>
+
+<body>
+<div id="box" style="width:200px; height:200px; background:red; font-size:20px; color:#fff">点击有效</div>
+</body>
+</html>
+<script>
+	var oDiv=document.getElementById('box');
+	var n=200;
+	var timer;
+	
+	function run(){
+		alert('点击有效');
+		oDiv.removeEventListener('click', run, false);
+		timer=setInterval(function(){
+			n--;
+			oDiv.innerHTML='倒计时'+n+'秒，点击无效';
+			if(n<0){
+				n=200;
+				clearInterval(timer);
+				oDiv.innerHTML='点击有效';
+				oDiv.addEventListener('click',run,false)
+			};
+		},30)
+	};
+	oDiv.addEventListener('click',run,false)	
+
+</script>

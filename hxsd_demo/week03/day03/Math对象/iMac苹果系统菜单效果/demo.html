@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>iMac苹果系统菜单效果</title>
+<style>
+* {margin:0; padding:0; list-style:none;}
+#div1 {position:absolute; bottom:0; width:100%; text-align:center;}
+img{ margin:0 10px}
+input{ width:100px}
+</style>
+<script>
+window.onload=function (){
+	//想让图片放大几倍？？2倍
+	
+	var oDiv=document.getElementById('div1');
+	var aImg=document.getElementsByTagName('img');
+	
+	document.onmousemove=function (ev){
+		var oEv=ev||event;
+		
+		for(var i=0;i<aImg.length;i++){
+			//图片中心点的坐标
+			var l=aImg[i].offsetLeft+aImg[i].offsetWidth/2;
+			var t=aImg[i].offsetTop+oDiv.offsetTop+aImg[i].offsetHeight/2;
+			console.log(aImg[0].offsetLeft)
+			
+			//以第一个图标为例
+			var l_1=aImg[0].offsetLeft+aImg[0].offsetWidth/2;
+			var t_1=aImg[0].offsetTop+oDiv.offsetTop+aImg[0].offsetHeight/2;
+			var a_1=oEv.clientX-l_1;
+			var b_1=oEv.clientY-t_1;
+			var dis_1=Math.sqrt(a_1*a_1+b_1*b_1);
+			//console.log(parseInt(dis_1));
+			
+			//距离
+			var a=oEv.clientX-l;
+			var b=oEv.clientY-t;
+			var dis=Math.sqrt(a*a+b*b);
+			
+			//放大倍率
+			var scale=1-dis/300;  //低于300/2的一半，开始产生放大效果
+			
+			if(scale<0.5)scale=0.5;
+			aImg[i].style.width=128*scale+'px';
+		}
+	};
+};
+</script>
+</head>
+
+<body>
+<div id="div1">
+	<img src="img/01.png" width="64" />
+	<img src="img/02.png" width="64" />
+	<img src="img/03.png" width="64" />
+    <img src="img/01.png" width="64" />
+	<img src="img/02.png" width="64" />
+	<img src="img/03.png" width="64" />
+</div>
+</body>
+</html>

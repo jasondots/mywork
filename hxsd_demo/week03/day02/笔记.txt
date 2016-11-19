@@ -1,0 +1,36 @@
+事件监听
+
+可以为一个元素，同时绑定多个事件
+obj.addEventListener(事件，回调函数，冒泡/捕获) ; 
+
+例：
+btn.addEventListener("click",function(){
+
+	alert(123);
+
+},false)   //false 冒泡阶段
+
+
+//ie8以下
+
+btn.attachEvent("onclick",function(){
+	
+	alert(123)
+
+})；
+
+
+-------------------------------------------------------------------------------
+
+事件委派
+
+将事件绑定在父级上
+
+利用事件冒泡原理
+
+通过判断触事件的“目标元素”来触发父级上绑定的事件
+
+
+ev=ev.target || ev.srcElement    //ev.srcElement  ie8
+
+为未知元素绑定事件

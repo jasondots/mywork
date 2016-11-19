@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+var txt="sdfsdf";
+
+var num=123123;
+
+var arr= [32423,45345,56];
+
+var obj={};
+
+function run(){};
+
+
+//对象
+function Cat(){
+	this.name="miao";
+};
+
+var cat1=new Cat;
+
+alert(cat1 instanceof Cat);
+
+var oDate=new Date;
+alert(oDate);
+
+
+//  instanceof不认为原始类型值的变量是对象，
+alert(txt instanceof String );
+alert(num instanceof Number);
+
+
+alert(arr instanceof Array );//ture
+alert(obj instanceof Object );//ture
+alert(run instanceof Function); //ture
+
+
+
+</script>

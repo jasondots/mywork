@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+
+
+//match:比赛; 火柴; 对手; 相配的人（或物）
+
+//贪婪 惰性
+var str = 'aaxbbazbbwwbbaa';  
+
+var arr =str.match(/.*bb/g); //aabbazbbwwbb 贪婪的
+//var arr =str.match(/.*?bb/g); //aabb azbb wwbb 返回一个数组包含3个值，惰性的
+//alert(arr);
+
+var str="abbbbc";
+var arr=str.match(/[ab]+b/);  //abbbb
+var arr=str.match(/[ab]+?b/); //ab
+
+//-------------------------------------
+//结尾最少5个数字
+var num='1390026195';
+var re=/\d{5}/g;
+//alert(re.test(num));
+
+//--------------------------------------------
+//匹配137 138 139手机号
+var num='1390026195';
+var re=/^13[789]\d{7}$/g;
+//var re=/^(137|138|139)\d{7}$/g;
+
+//var re=/^137|^138|  139\d{7}$/g; //错误的
+
+//alert(re.test(num));
+//-----------------------------------------------------
+//匹配密码8位以上， 数字字母 必须有下划线  最少有一位大写字母
+
+var txt='AAAAB1332';
+
+var re=/\d+[A-Z]+/g;
+alert(re.test(txt));
+
+
+/*var re1=/[A-Z]/g
+var re2=/_/g;
+if(txt.length<8 ||!re1.test(txt)||!re2.test(txt) ){
+	alert('no');
+}else{
+	alert('ok')
+}*/
+
+
+//-------------------------------------------------
+
+
+
+
+/*var text='user18dsdfuser2dsfsd';
+
+	var re=/user\d/g;  
+	
+	var sfz=/\d{3}[a-z0-9]/g
+	
+	alert(sfz.test('323r'))
+	 
+	var arr=re.exec(text);
+	var arr2=re.exec(text);
+	var arr3=text.match(re);
+	
+	console.log(arr3);
+*/
+
+
+
+
+
+
+</script>

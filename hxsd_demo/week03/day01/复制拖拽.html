@@ -1,0 +1,65 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0}
+.div1{width:300px;height:300px; background:red; position:absolute;top:0;left:0; z-index:2}
+h4{ height:40px; line-height:40px; font-size:18px; text-indent:1em; background:#ccc;}
+.box{ position: absolute;border:4px dashed #000; z-index:1}
+</style>
+<script>
+window.onload=function(){
+	var oDiv=document.getElementsByTagName('div')[0];
+	oDiv.onmousedown=function(ev){
+		var oEv=ev||event;
+		var disX=oEv.clientX-oDiv.offsetLeft;
+		var disY=oEv.clientY-oDiv.offsetTop;
+		
+		var oBig=document.createElement('div');
+		oBig.appendChild(oDiv);
+		var str=oBig.innerHTML;
+		document.body.appendChild(oDiv);
+		oBig.innerHTML=str;
+		var newDiv=oBig.children[0];
+		document.body.appendChild(newDiv);
+		newDiv.style.zIndex=1;
+
+		document.onmousemove=function(ev){
+			var oEv=ev||event;
+			oDiv.style.top=oEv.clientY-disY+'px';
+			oDiv.style.left=oEv.clientX-disX+'px';
+			
+			oDiv.style.opacity='0.4';
+				
+		};
+		
+		document.onmouseup=function(){
+			document.onmousemove=document.onmouseup=null;
+			if(oDiv.releaseCapture)	oDiv.releaseCapture();//取消获捕
+			
+			oDiv.style.opacity='';
+		    oDiv.style.filter='';
+			document.body.removeChild(newDiv);
+		};
+		
+		if(oDiv.setCapture)	oDiv.setCapture();//设置捕获
+		
+		
+		return false;
+			
+	};
+		
+};
+</script>
+</head>
+
+<body>
+
+
+<div class="div1">
+	<h4>标题</h4>
+</div>
+</body>
+</html>

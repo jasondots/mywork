@@ -1,0 +1,129 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>幻灯片淡出淡入</title>
+<style>
+*{ padding: 0; margin: 0; }
+a{ text-decoration:none}
+li{ list-style: none; }
+img { border: none; }
+body{ background: #ecfaff; }
+
+.box { width: 400px; height: 260px; overflow: hidden; position: relative; margin: 150px auto 0; background: #ccc; }
+
+.box ol { position: absolute;right: 20px; bottom: 20px; z-index: 2; }
+.box ol li { float: left; margin-right: 3px; display: inline; cursor: pointer; background: #fcf2cf; border: 1px solid #f47500; padding: 2px 6px; color: #d94b01; font-family: arial; font-size: 12px; }
+.box .ac { padding: 3px 8px; font-weight: bold; color: #ffffff; background: #ffb442; position: relative; bottom: 2px; }
+.box ul{ position:relative}
+.box ul li { width: 400px; height: 260px; position:absolute; display:none; top:0}
+.box ul img {width: 400px; height: 260px; }
+
+.box .moveBtn { width: 40px; height:40px; line-height:35px; font-size:30px;color: #fff; text-align: center;background: #333; opacity:.4; position: absolute; top: 50%; margin-top:-20px; z-index: 2; }
+.box .prev { left: 10px; }
+.box .next { right: 10px; }
+</style>
+<script src="HXSD_move.js"></script>
+<script>
+window.onload=function(){
+	var oDiv=document.getElementById('slide');
+	var aBtn=oDiv.getElementsByTagName('ol')[0].children;
+	var oUl=oDiv.getElementsByTagName('ul')[0];
+	var aLi=oUl.children;
+	var li_w=getStyle(aLi[0], 'width');//图片的宽度
+	var n=0;//当前显示图片索引
+	
+	aLi[n].style.display='block';
+	aLi[n].style.left='0px';
+	
+	
+	//添加点击事件
+	for(var i=0; i<aBtn.length; i++){
+		aBtn[i].index=i;//发拍照
+		aBtn[i].onclick=function(){
+			if(n!=this.index){
+				slideItem(n,this.index);
+				n=this.index;
+				changeAc();
+			}
+		};
+	};
+	
+	
+	var pBtn=document.getElementById('prevBtn');
+	var nBtn=document.getElementById('nextBtn');
+	
+	//左右按钮动作
+	
+	pBtn.onclick=function(){
+		if(n<1){
+			n=aLi.length;
+			slideItem(0,aLi.length-1);
+		}else{
+			slideItem(n,n-1);
+		};
+		n--;
+		changeAc();
+	};
+	
+
+	nBtn.onclick=function(){
+		n++;
+		if(n>aLi.length-1){
+			n=0;
+			slideItem(aLi.length-1,0);
+		}else{
+			slideItem(n-1,n);
+		};
+		changeAc();
+		
+	};
+	//-----------------------------------------------
+	function slideItem(a,b){
+		aLi[a].style.display='block';
+		aLi[a].style.left=0;
+		aLi[b].style.display='block';
+		aLi[b].style.left=li_w+'px';
+		move(aLi[a],'left',-li_w,700);
+		move(aLi[b],'left',0,700,function(){
+			aLi[a].style.display='none';
+		});
+	};
+	
+	function changeAc(){
+		for(var j=0; j<aBtn.length; j++){
+			aBtn[j].className='';
+		};
+		aBtn[n].className='ac';
+	}
+	
+	
+	
+	
+};
+</script>
+</head>
+
+<body>
+
+<div class="box" id="slide">
+    <a id="prevBtn" href="javascript:;" class="moveBtn prev">&laquo;</a>
+    <a id="nextBtn" href="javascript:;" class="moveBtn next">&raquo;</a>
+    <ol>
+        <li class="ac">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ol>
+    <ul>
+        <li class="1"><a href="javascript:;"><img src="images/01.jpg" alt="广告一" /></a></li>
+        <li class="2"><a href="javascript:;"><img src="images/02.jpg" alt="广告二" /></a></li>
+        <li class="3"><a href="javascript:;"><img src="images/03.jpg" alt="广告三" /></a></li>
+        <li class="4"><a href="javascript:;"><img src="images/04.jpg" alt="广告四" /></a></li>
+        <li class="5"><a href="javascript:;"><img src="images/05.jpg" alt="广告五" /></a></li>
+    </ul>
+</div>
+
+</body>
+</html>

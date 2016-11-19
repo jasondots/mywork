@@ -1,0 +1,164 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>淘宝菜单</title>
+<style>
+*{ margin:0; padding:0}
+body{ font-size:14px}
+ul,li,ol{ list-style:none}
+a{ text-decoration:none; color:#333;}
+.taobao_menu{ margin:20px; width:200px; background:#efefef;}
+.taobao_menu li{ border-bottom:1px solid #ccc;}
+.taobao_menu li a{ display:block; height:30px; line-height:30px; text-indent:1em}
+.taobao_menu .ac{ background:red;}
+.taobao_menu .ac a{ color:#fff;}
+.menu_cont{ width:500px; min-height:400px; border:1px solid red; position:fixed; top:20px; left:220px; padding:10px 20px; display:none}
+.menu_cont dl{ display:none;}
+.menu_cont dt{ height:30px; line-height:30px; border-bottom:1px solid #ccc; font-weight:bold}
+.menu_cont dd{ float:left; margin:10px 10px 0 0}
+</style>
+
+<script>
+window.onload=function(){
+	//找到谁  触发什么行为（事件）  使谁（自己还是其他）   干什么  
+
+	//找到菜单和要显示的菜单框
+	var oMenu=document.getElementById('taobaoMenu');
+	var aLi=oMenu.getElementsByTagName('li');
+	var oMenuCont=document.getElementById('menuCont');
+	var aDl=oMenuCont.getElementsByTagName('dl');
+	
+	var show_t;//显示弹框计算器
+	var hide_t;//隐藏弹框计算器
+	var move_t;//鼠标从弹框移入菜单延迟用计时器
+	
+	//删除所有li上的ac
+	function del_li_ac(){
+		for(var i=0; i<aLi.length; i++){
+			aLi[i].className="";
+		};
+	}
+
+//----------------------------------------------------------------------------------------
+	
+	//触发什么行为（事件）
+	for(var i=0; i<aLi.length; i++){
+		aLi[i].index=i;//发牌照
+		aLi[i].onmouseover=function(){ //为每一个li标签绑定onmouseover事件
+			clearTimeout(hide_t);//清除关闭
+			clearTimeout(move_t);//清除鼠标移动
+		
+			var _this=this; //计时器中的this是window，所以要先声明一个_this变量，用这个变量传入计时器 
+			show_t=setTimeout(function(){
+				
+				oMenuCont.style.display="block";//oMenuCont弹框 显示
+				
+				//显示相对应的内容(就是选项卡的原理)
+				for(var i=0; i<aDl.length; i++){
+					aDl[i].style.display="none";
+				};
+				aDl[_this.index].style.display="block";
+				
+				
+				del_li_ac();//删除所有li上的ac  
+				_this.className="ac";//自己增加ac
+			},200);
+			
+		
+		};
+		
+		
+		aLi[i].onmouseout=function(){  //为每一个li标签绑定onmouseout 事件
+			clearTimeout(show_t);
+			clearTimeout(hide_t);
+			var _this=this;  
+			hide_t=setTimeout(function(){
+				oMenuCont.style.display="none"; //oMenuCont弹框 隐藏
+				
+				del_li_ac();//删除所有li上的ac  
+			},200);
+		};
+//-------------------------------------------------------------------------------------		
+	};
+	
+	//oMenuCont绑定两个事件
+	oMenuCont.onmouseover=function(){
+		clearTimeout(hide_t);
+		clearTimeout(move_t);
+		this.style.display="block"; //让自己显示
+	};
+	
+	oMenuCont.onmouseout=function(){
+		var _this=this;
+		move_t=setTimeout(function(){//延时隐藏
+			_this.style.display="none";
+
+			del_li_ac();//删除所有li上的ac  
+
+		},100);
+	}
+}
+
+</script>
+
+</head>
+
+<body>
+<div id="taobaoMenu" class="taobao_menu">
+	<ul>
+    	<li><a href="#"> 女装 / 男装 / 内衣</a></li>
+        <li><a href="#"> 男装 / 箱包 / 配件</a></li>
+        <li><a href="#"> 童装玩具 / 孕产 / 用品</a></li>
+        <li><a href="#"> 家电 / 数码 / 手机</a></li>
+    </ul>
+    <div id="menuCont" class="menu_cont">
+    	<dl>
+        	<dt>女装</dt>
+            <dd><a href="#">大码</a></dd>
+            <dd><a href="#">韩版</a></dd>
+            <dd><a href="#">淘品牌</a></dd>
+            <dd><a href="#">连衣裙</a></dd>
+            <dd><a href="#">裤子</a></dd>
+            <dd><a href="#">淘品牌</a></dd>
+            <dd><a href="#">连衣裙</a></dd>
+            <dd><a href="#">裤子</a></dd>
+            <dd><a href="#">大码</a></dd>
+        </dl>
+        <dl>
+        	<dt>男装</dt>
+            <dd><a href="#">西装</a></dd>
+            <dd><a href="#">皮衣</a></dd>
+            <dd><a href="#">眼镜</a></dd>
+            <dd><a href="#">风衣</a></dd>
+        </dl>
+        <dl>
+        	<dt>童装玩具</dt>
+            <dd><a href="#">电子玩具</a></dd>
+            <dd><a href="#">孕妇装</a></dd>
+            <dd><a href="#">童鞋</a></dd>
+            <dd><a href="#">儿童车</a></dd>
+            <dd><a href="#">电子玩具</a></dd>
+            <dd><a href="#">孕妇装</a></dd>
+            <dd><a href="#">童鞋</a></dd>
+            <dd><a href="#">儿童车</a></dd>
+        </dl>
+        <dl>
+        	<dt>家电</dt>
+            <dd><a href="#">平板电视</a></dd>
+            <dd><a href="#">电饭煲</a></dd>
+            <dd><a href="#">洗衣机</a></dd>
+            <dd><a href="#">家用音响</a></dd>
+            <dd><a href="#">平板电视</a></dd>
+            <dd><a href="#">电饭煲</a></dd>
+            <dd><a href="#">洗衣机</a></dd>
+            <dd><a href="#">家用音响</a></dd>
+            <dd><a href="#">平板电视</a></dd>
+            <dd><a href="#">电饭煲</a></dd>
+            <dd><a href="#">洗衣机</a></dd>
+            <dd><a href="#">家用音响</a></dd>
+        </dl>
+    </div>
+</div>
+</body>
+</html>

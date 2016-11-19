@@ -1,0 +1,100 @@
+Math 用来执行一些数学任务
+
+随机数
+
+Math.random()  随机数   0－1  1不会出现
+
+Math.random()*10          0-10之间的浮点数 0 ---9.xxx
+
+parseInt(Math.random()*10) 取整后 0-9
+
+parseInt(Math.random()*11)    0-10 
+
+parseInt(Math.random()*10+1)  1-10
+
+
+Math.random()*60+30       30－90  parseInt后 不包含90
+
+Math.random()*(大－小)+小 parseInt后 不包含“大”
+
+
+
+
+Math.abs(x)	返回数的绝对值 （去除正负）
+Math.round(x)	四舍五入
+
+Math.floor(x)	下舍入
+Math.ceil(x)	上舍入
+
+Math.max(x,y)	返回 x 和 y 中的最高值
+Math.min(x,y)	返回 x 和 y 中的最低值
+
+Math.cos(x)	返回数的余弦
+Math.sin(x)	返回数的正弦
+
+Math.sqrt(x)	返回数的平方根
+
+Math.floor()和parseInt()
+
+1.功能差异：
+Math.floor() 方法可对一个数进行下舍入
+parseInt() 函数可解析一个字符串，并返回一个整数
+
+2.用法差异：
+Math.floor(x)，x为任意数值或表达式。
+parseInt(string)，string为字符类型的数字
+
+
+Math.floor(-0.1)  结果：-1
+
+parseInt(-0.1)    结果： 0
+
+
+两个函数完全不是相同的作用，只有在特殊情况下（都传一个正数，且只传一个参数）结果是一样，但不代表作用是一样的。
+
+-------------------------------------------------------------------
+
+字符串 String
+
+strObj.length
+
+strObj.slice(start[,end])    start开始--end（end可以没有）部分
+
+strObj.substr(start[,length])  start开始，取length个字符
+
+strObj.split([separator[,limit]])  按条件分割字符串，保存成数组
+
+strObj.indexOf(substr[,startIndex]) （string）在父串中首次出现的位置，从0开始！没有返回-1
+
+strObj.lastIndexOf(substr[,startindex]) 倒序查找
+
+strObj.charAt(index)  指定索引的字符
+
+toLowerCase 转小写
+
+toUpperCase 转大写
+
+//支持正则方法-------------------------------------------
+
+search	第一个与正则相匹配的字符串的索引（不执行全局匹配，它将忽略标志 g）
+
+match	找到一个或多个正则表达式的匹配，没有找到任何匹配的文本，返回 null，否则，返回一个数组，
+
+replace	替换与正则表达式匹配的子串
+
+特殊字符
+
+\'	单引号
+
+\"	双引号
+
+\&	和号
+
+\\	反斜杠
+
+\n	换行符
+
+\r	回车符
+
+
+

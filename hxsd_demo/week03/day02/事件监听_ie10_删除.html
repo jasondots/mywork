@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+window.onload=function(){
+	var oBtn=document.getElementsByTagName('button')[0];
+	function abc(){
+		alert('abc');
+		oBtn.detachEvent('onclick',abc);
+	};
+	
+	oBtn.attachEvent('onclick',abc);
+	
+	
+	
+	/*//事件监听兼容方法
+	function addEvent(obj,oEv,fn){
+		if(obj.attachEvent) obj.attachEvent('on'+oEv,fn);
+		else obj.addEventListener(oEv,fn,true);	//一般用false
+	};*/
+	
+	
+
+}
+
+
+</script>
+</head>
+
+<body>
+<button style="height:40px; width:100px;" type="button">按钮</button>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+
+function myHome() {
+    var money =100;
+	
+	var key=function () {
+        alert(money);
+		money++;
+    };
+	
+	return key;
+};
+
+
+var show=myHome(); // key现在是一个闭包
+
+show();
+show();
+
+
+//可以读取函数内部的变量
+//让这些变量的值始终保持在内存中
+
+
+</script>
+</head>
+
+<body>
+</body>
+</html>

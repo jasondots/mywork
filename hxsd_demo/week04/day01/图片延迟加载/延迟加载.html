@@ -1,0 +1,39 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0}
+#box{margin:100px;width:500px; background:#ccc;height:500px;padding:100px;display:block; position:relative;}
+#box div{width:300px;height:300px; background:red;}
+img{ display:block}
+</style>
+<script>
+
+window.onload=window.onscroll=function(){
+	var aImg=document.getElementsByTagName('img');
+	var scrollT=document.documentElement.scrollTop||document.body.scrollTop;
+	var winHeight=document.documentElement.clientHeight;
+	
+
+	for(var i=0;i<aImg.length;i++){
+		
+		if(aImg[i].offsetTop+100<(scrollT+winHeight)  ){
+			aImg[i].src=aImg[i].getAttribute('_src');
+		}	
+	}
+	
+};
+
+
+</script>
+</head>
+
+<body>
+<img src="loading.jpg" width="1200" height="800" _src="01.jpg">
+<img src="loading.jpg" width="1200" height="800" _src="02.jpg">
+<img src="loading.jpg" width="1200" height="800" _src="03.jpg">
+<img src="loading.jpg" width="1200" height="800" _src="04.jpg">
+</body>
+</html>

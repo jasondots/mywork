@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0}
+a{ text-decoration:none}
+div{ width:500px; padding:20px; font-size:14px; line-height:24px; border:1px solid #ccc; margin:100px}
+p .more{ color:red; font-size:12px}
+</style>
+<script>
+window.onload=function(){
+var txt='火星时代教育是中国艺术教育高端品牌，设有多个热门专业(UI设计、游戏设计、室内设计、影视特效、程序开发、数字艺术学历)等 ，多年来一直与国内外各大企业联合实训，公司CEO携总监亲自授课，配备业界优秀师资，项目实训案例实时更新，每年为业界输送大量专业人才。';
+
+	function showMoreTxt(elmID,cont_txt,num){
+		var elm=document.getElementById(elmID);
+		var span=elm.getElementsByTagName('span')[0];
+		var openMore=elm.getElementsByTagName('a')[0];
+		var partTxt=txt.substring(0,num);
+		var show=true;
+		span.innerHTML=partTxt+'……';
+		openMore.onclick=function(){
+			if(show){
+				span.innerHTML=txt;
+				this.innerHTML='[收起]';
+				show=false;
+			}else{
+				span.innerHTML=partTxt+'……';
+				this.innerHTML='[详情]';
+				show=true;
+			}
+		}
+	};
+	showMoreTxt('news',txt,30);
+}
+
+</script>
+</head>
+
+<body>
+<div>
+	<p id="news"><span></span><a class="more" href="javascript:;">[详情]</a></p>
+</div>
+
+</body>
+</html>

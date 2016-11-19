@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+body {height:3000px;}
+#div1 {width:100px; height:200px; background:#CCC; position:absolute; top:0; right:0;}
+</style>
+<script src="HXSD_move.js"></script>
+<script>
+var start=0;
+window.onresize=window.onscroll=window.onload=function (){
+	
+	var oDiv=document.getElementById('div1');
+	
+	var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+	
+	var middle=scrollTop+(document.documentElement.clientHeight-oDiv.offsetHeight)/2;
+	
+	//oDiv.style.top=scrollTop+(document.documentElement.clientHeight-oDiv.offsetHeight)/2+'px';
+	move(oDiv,'top',middle,500);
+};
+</script>
+</head>
+
+<body>
+<div id="div1">ss</div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0;}
+p{ border-bottom:1px solid #000; padding-bottom:10px;}
+a{ text-decoration:none; color:#333; display:inline-block;  padding:10px 20px; margin-right:20px; position:relative}
+a i{  width:19px; height:10px; background:url(arrow.jpg); top:20px; display:none}
+.ac{ background:red; color:#fff;}
+.ac i{ display:block; position:absolute; left:50%; margin-left:-10px; top:60px}
+
+.cont{ border:1px solid #000; height:100px; margin-top:20px}
+
+</style>
+
+<script>
+window.onload=function(){
+	var oA=document.getElementsByTagName('a');
+	for(var i=0; i<oA.length; i++){
+		oA[i].onclick=function(){
+			for(var j=0; j<oA.length; j++){
+				oA[j].className="";
+			};
+			this.className="ac";
+		}
+	}
+}
+
+</script>
+</head>
+
+<body>
+<div id="box" style=" margin:100px auto; width:500px">
+	<p>
+	<a class="ac" href="#">link<i></i></a><a href="#">link<i></i></a><a href="#">link<i></i></a>
+	</p>
+	<div class="cont"></div>
+</div>
+</body>
+</html>

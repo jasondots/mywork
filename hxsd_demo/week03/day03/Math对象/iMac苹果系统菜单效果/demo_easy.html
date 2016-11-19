@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>iMac苹果系统菜单效果</title>
+<style>
+* {margin:0; padding:0; list-style:none;}
+
+#div1 {position:absolute; bottom:0; width:100%; text-align:center;}
+input{ width:100px}
+</style>
+<script>
+window.onload=function (){
+	//想让图片放大几倍？？2倍
+	
+	var oDiv=document.getElementById('div1');
+	var aImg=document.getElementsByTagName('img')[0];
+	
+	document.onmousemove=function (ev){
+		var oEv=ev||event;
+		
+		//图片中心点的坐标
+		var l=aImg.offsetLeft+aImg.offsetWidth/2;
+		var t=aImg.offsetTop+oDiv.offsetTop+aImg.offsetHeight/2;
+		
+		//距离
+		var a=oEv.clientX-l;
+		var b=oEv.clientY-t;
+		var c=Math.sqrt(a*a+b*b);
+		
+		//放大倍率
+		var rate=1-c/500;  //低于300/2的一半，开始产生放大效果
+		
+		if(rate<0.5)rate=0.5;
+		
+		aImg.style.width=128*rate+'px';
+	};
+};
+</script>
+</head>
+
+<body>
+<div id="div1">
+	<img src="img/01.png" width="64" />
+</div>
+</body>
+</html>

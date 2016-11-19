@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>call</title>
+<script>
+
+//动物 构造函数
+function Animal(){    
+    this.name = "动物";    
+    this.showName = function(otherName,age,color){ 
+		console.log(arguments);
+		otherName? alert(otherName):alert(this.name);; 
+    };    
+};  
+
+//猫 构造函数  
+function Cat(){    
+    this.name ="猫";    
+}    
+   
+var animal = new Animal(); //一个动物的实例
+var cat = new Cat();    //一个猫的实例
+    
+//通过call或apply方法，将原本属于Animal对象的showName()方法交给对象cat来使用了。
+    
+//输入结果为"Cat"  
+  
+//animal.showName.call(cat,"");  
+animal.showName.call(cat,'大黄',2,'黄色'); 
+
+//animal.showName.apply(cat,[]);  
+animal.showName.apply(cat,['小白',4,'白色']);   
+
+
+
+</script>
+</head>
+
+<body>
+</body>
+</html>

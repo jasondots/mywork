@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>节点操作</title>
+<script>
+function cleanSpace(elm) {   //清除空白节点
+    for(var i=0; i<elm.childNodes.length; i++){   
+        var node = elm.childNodes[i];
+        if(node.nodeType==3 && !/\S/.test(node.nodeValue)) node.parentNode.removeChild(node);   
+    }   
+};   
+
+
+
+//过滤文本和空格
+function get_firstChild(elm){
+	var x=elm.firstChild;
+	while (x.nodeType!=1){
+		x=x.nextSibling;//把自己变成节点，while继续向前查找
+	}
+	return x;
+};
+
+function get_lastChild(elm){
+	var x=elm.lastChild;
+	while (x.nodeType!=1){
+		x=x.previousSibling;//把自己变成节点，while继续向前查找
+	}
+	return x;
+};
+
+function get_previousSibling(elm){
+	var x=elm.previousSibling;
+	while (x.nodeType!=1){
+		x=x.previousSibling;//把自己变成节点，while继续向前查找
+	}
+	return x;
+};
+
+
+function get_nextSibling(elm){
+	var x=elm.nextSibling;
+	while (x.nodeType!=1){
+		x=x.nextSibling;
+	}
+	return x;
+};
+
+
+window.onload=function(){
+	var oDiv=document.getElementById('box');
+	//alert(oDiv.nodeType);
+	//alert(oDiv.getAttributeNode('id').nodeType);
+	
+	//alert(oDiv.childNodes.length) //一级子元素子节点（包含空格和文本节点）
+	//alert(oDiv.children.length) //一级子元素
+	
+	var ul=document.getElementsByTagName('ul')[0];
+	//alert(ul.firstChild.innerHTML);//第一个子元素（包含空格和文本节点）
+	//alert(ul.lastChild.innerHTML);//最后一个子元素（包含空格和文本节点）
+	//alert(ul.previousSibling);//前一个兄弟（包含空格和文本节点）
+	//alert(ul.nextSibling);//前一个兄弟（包含空格和文本节点）
+	
+	//alert(ul.parentNode);//父级元素
+	
+	//cleanSpace(ul);
+	
+	
+	alert(get_previousSibling(ul));
+	alert(get_nextSibling(ul));
+	alert(get_firstChild(ul).innerHTML)
+	alert(get_lastChild(ul).innerHTML)
+	
+	
+	     
+	//clone节点
+	var new_ul=ul.cloneNode(true);
+	oDiv.appendChild(new_ul);
+	
+	
+	
+}
+</script>
+</head>
+
+<body>
+    <div id="box">
+	<p>我是p标签</p>
+    <ul><li>我是1标签</li>
+        <li>我是2标签</li>
+        <li>我是3标签</li>
+        <li>我是4标签</li>
+        <li>我是5标签</li>
+    </ul>
+    <dl>
+    	<dt>服装</dt>
+        <dd>衬衫</dd>
+        <dd>裤子</dd>
+        <dd>袜子</dd>
+        <dd>衬衫</dd>
+        <dd>裤子</dd>
+        <dd>袜子</dd>
+    </dl>
+    </div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+.box1{ left:40px; bottom:20px; border-radius:20px;line-height:40px; width:650px; background:pink  }
+.box1 span{ display:block; height:40px; width:200px; background:gray;}
+.box2{ width:200px; height:200px; background:red}
+.box2:hover{ width:300px; height:300px}
+.box2::after{ content:''; width:140px; height:100px; display:block; background:green}
+
+
+</style>
+
+
+
+<script>
+
+//直接读取：height width  padding(t r b l)  margin(t r b l) opacity fontSize textIndent textAlign等
+
+//有设定值：left right top bottom borderWidth border-radius lineHeight
+
+//不能读取：background z-index color 其他文本格式的
+
+function getStyle(obj, styleName){
+	var value=obj.currentStyle ? obj.currentStyle[styleName]: getComputedStyle(obj, false)[styleName];
+	if(styleName=='opacity'){
+		value=Math.round(parseFloat(value)*100);
+	}
+	else{
+		value=parseInt(value);
+	}
+	return value;
+};
+window.onload=function(){
+	var oDiv1=document.getElementsByTagName('div')[0];
+	var oDiv2=document.getElementsByTagName('div')[1];
+	alert(getComputedStyle(oDiv2,'::after').width);
+	alert(getComputedStyle(oDiv1,false).textAlign);
+	//alert(getStyle(oDiv,'lineHeight'));
+
+}
+
+
+
+
+</script>
+
+
+</head>
+
+<body>
+<div class="box1">
+	<span>sdfsdfsdfsdf</span>
+
+</div>
+<div class="box2">
+
+</div>
+</body>
+</html>

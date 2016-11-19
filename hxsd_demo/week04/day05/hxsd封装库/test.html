@@ -1,0 +1,40 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>子元素over</title>
+<style>
+div{ background:#ccc;width:400px;height:400px;}
+h1{height:50px; background:yellow}
+</style>
+<script src="hxsd_tools.js"></script>
+<script>
+
+
+window.onload=function(){
+
+	var oBox=document.getElementById('box');
+
+		
+	var oP=document.getElementsByTagName('p')[0];
+	var h3=document.createElement('h3');
+	h3.innerHTML='dfsdf';
+	hxsd_tools.insertAfter(h3, oP)
+	
+	hxsd_tools.removeClass(oBox.children,'it')
+};
+
+
+</script>
+
+
+</head>
+
+<body>
+<div id="box">
+	<h1 class="item it">sdfsfdafasdf</h1>
+    <p class="item item2 it">afsdf</p>
+    <h5 class="item">sdf vasdfads</h5>
+</div>
+</body>
+</html>

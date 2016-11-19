@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+*{ margin:0; padding:0}
+ul{ list-style:none}
+.lucky_box{ width:500px; height:300px; border:1px solid red; border-radius:5px; padding:20px; margin:100px auto}
+h2{ text-align:center; height:60px; color:red}
+#lucky_ball_list{ height:50px; padding-left:65px; margin-bottom:30px;}
+#lucky_ball_list li{ float:left; height:40px; line-height:40px; width:40px; text-align:center; font-size:24px; border:2px solid red; margin-right:20px; color:red}
+button{ height:40px; width:100px}
+p{ word-break:break-all; font-size:20px; padding:10px; color:#333;}
+</style>
+
+<title>双色球</title>
+
+<script> 
+window.onload=function(){
+	var oBtn=document.getElementById('btn');
+	var oUl=document.getElementById('lucky_ball_list');
+	var aLi=document.getElementsByTagName('li');
+	var info=document.getElementById('info');
+
+	oBtn.onclick=function(){
+		info.innerHTML="";
+		
+		//从33个红球中开6个号码
+		var all_ball=[];//球池
+		var j=0;
+		
+		var timer=null;
+		
+		//生成33个球
+		for(var i=1;i<34;i++) {
+		 all_ball.push(i<10 ? "0"+i : i);
+		};
+		
+		function run(n){
+			clearInterval(timer);
+			timer=setInterval(function(){
+				for(var i=n;i<aLi.length;i++){
+					aLi[i].innerHTML=parseInt(Math.random()*all_ball.length);
+				};
+			},50);
+		};
+		run(j);
+		
+		var timer2=setInterval(function(){
+			var index=parseInt(Math.random()*all_ball.length);//随机抽取索引值 0-32 
+			var n=all_ball.splice(index,1);//删除 并返回
+			aLi[j].innerHTML=n;
+			j++;
+			run(j);
+			if(j==6){
+				clearInterval(timer);
+				clearInterval(timer2);
+				info.innerHTML="还剩 : "+all_ball;
+			} 
+		},800); 
+		
+			
+		
+		
+	
+	
+	}
+
+}
+
+</script>
+
+</head>
+
+<body>
+	<div id="box" class="lucky_box">
+    
+    	<h2>双色球大开奖</h2>
+        <ul id="lucky_ball_list">
+        	<li>祝</li><li>你</li><li>发</li><li>大</li><li>财</li><li>!</li>
+        </ul>
+        
+        <div style=" text-align:center"><button id="btn" type="button">开始</button></div>
+        <p id="info"></p>
+    </div>
+	
+</body>
+</html>

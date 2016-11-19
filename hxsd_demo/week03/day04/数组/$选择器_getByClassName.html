@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+window.onload=function(){
+
+	
+	function getByClass(oParent,className){
+		var arr=[]; //容器
+		if(document.getElementsByClassName) return oParent.getElementsByClassName(className);
+		else{
+			var aEl=oParent.getElementsByTagName('*');//所有标签
+			for(var i=0;i<aEl.length;i++){
+				if(new RegExp(className+'\\b','g').test(aEl[i].className)) arr.push(aEl[i]);//向数组中添加
+			}
+		return arr;
+		}
+	};
+	
+	function $(str){
+		//var sOne=str.substr(0,1);	
+		var sOne=str.charAt(0);
+		switch(sOne){
+		case '#':
+		  return document.getElementById(str.substr(1));
+		  break; 
+		case '.':
+		  return getByClass(document,str.substr(1));
+		   break
+		default:
+		return document.getElementsByTagName(str);	 
+		}
+	};
+	
+	
+	var aLi=getByClass(document,'it');
+	alert(aLi.length);
+	
+	/*var aLi=$('li');
+  	var  aItem=$('.item');
+   
+   //alert(aItem.length);
+   
+   
+   for(var i=0;i<aLi.length;i++){
+	 aLi[i].style.background='yellow';   
+    }
+	
+	for(var i=0;i<aItem.length;i++){
+	 aItem[i].style.background='green';   
+    }*/
+	
+	
+	
+	
+	
+}
+
+</script>
+
+</head>
+
+<body>
+	<ul>
+    	<li class="item it">1</li>
+        <li class="ff wrt item">2</li>
+        <li class="item item2">3</li>
+        <li class="item it">4</li>
+        <li class="item it">5</li>
+    </ul>
+
+</body>
+</html>
