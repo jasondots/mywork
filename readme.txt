@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 git¿ìËÙÊÖ²á
 
@@ -217,3 +218,7 @@ target
 bin
 *.db
 
+
+=======
+dfadfadf
+>>>>>>> parent of 8be58db... git
