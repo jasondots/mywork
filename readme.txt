@@ -115,7 +115,7 @@ $ git checkout -b [name]   创建新分支并立即切换到新分支
 
 $ git branch -d [name]     删除分支：-d选项只能删除已经参与了合并的分支，对于未有合并的分支是无法删除的。如果想强制删除一个分支，可以使用-D选项
 
-$ git merge [name]         合并分支：将名称为[name]的分支与当前分支合并
+$ git merge [name]         合并分支：将名称为[name]的分支与当前分支合并，注意：要从master合并下层分支
 
 $ git push origin [name]   创建远程分支(本地分支push到远程)
 
@@ -141,6 +141,9 @@ bin
 
 
 work01分支测试
+
+
+第二次测试
 
  
 
