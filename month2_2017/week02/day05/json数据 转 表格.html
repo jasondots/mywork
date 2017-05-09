@@ -1,0 +1,69 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+table{border-collapse:collapse; margin:20px}
+table, td,th{ border:1px solid #ccc;  padding:10px}
+
+</style>
+
+</head>
+
+<body>
+
+
+</body>
+</html>
+<script>
+var man1=[
+	{"name":"\u5f20\u4e09","age":18,"sex":"\u7537","work":"\u8001\u5e08"},
+	{"name":"\u674e\u56db","age":20,"sex":"\u7537","work":"\u5de5\u4eba"},
+	{"name":"\u738b\u82b3","age":13,"sex":"\u5973","work":"\u5b66\u751f"}
+];
+
+/*
+var man1=[
+	{"name":"张三","age":18,"sex":"男","work":"老师"},
+	{"name":"李四","age":20,"sex":"男","work":"工人"},
+	{"name":"王芳","age":13,"sex":"女","work":"学生"}
+];
+
+*/
+
+
+//-----------------------------------------------------------
+
+var table1=document.createElement('table');
+
+	//添加第一行
+	var tr1=document.createElement('tr');
+	for(var key in man1[0]){
+		var th=document.createElement('th');
+		th.innerHTML=key;
+		tr1.appendChild(th);
+	};
+	table1.appendChild(tr1);
+	
+	for(var i=0; i<man1.length; i++){
+		var tr11=document.createElement('tr');
+		for(var key in man1[i]){
+			tr11.innerHTML+='<td>'+man1[i][key] +'</td>';
+		}
+		table1.appendChild(tr11);
+	}
+	document.body.appendChild(table1);
+
+//----------------------------------------------------	
+
+//json长度
+function json_length(json){
+	var i=0;
+	for(var k in json){
+		i++;
+	}
+	return i;
+};
+
+</script>

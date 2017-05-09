@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0}
+#box1{ width:200px; height:100px; background:#ccc; margin-bottom:20px }
+#box2{ width:200px; height:100px; background:#ddd; margin-bottom:20px }
+#box3{ width:200px; height:100px; background:#eee; margin-bottom:20px }
+
+
+
+</style>
+<script src="jquery-1.11.3.js"></script>
+<script>
+/*window.onload=function(){
+	var oDiv=document.getElementById('box');
+	oDiv.onclick=function(){
+		this.style.background="blue";
+	}
+};*/
+
+$(document).ready(function() {
+	
+	//alert($(window).width());
+	//alert($(document).width())
+	
+	console.log(jQuery);//jQuery是个构造函数，用于“包装”对象
+ 	console.log($===jQuery);//为了方便使用，jQuery起了个别名----$;
+ 
+	//------------------------------------------------------------
+	
+	//jQuery通过传入的参数不同，可以进行非常复杂的操作
+	
+	var oBox1=document.getElementById('box1');
+	
+	//将对象作为参数传入$()进行包装，得到新的对象，新对象就可以继承jquery的方法
+	var new_oBox1=$(oBox1);
+	
+	new_oBox1.click(function(){
+		$(this).css('background','pink');
+	});
+	
+	
+	//--------------------------------------------------
+	//jquery自带强大的dom选择器，可以代替原生方法
+	
+	var oBox2=$('#box2');//jquery选择器
+	oBox2.click(function(){
+		$(this).css('background','black');
+	});
+	
+	
+	//-----------------------------------------------
+	//如果传入的参数是标签，将创建一个DOM元素
+	var oBox3=$('<div id="box3">');
+	$(document.body).append(oBox3);
+	
+	//----------------------------------------------
+	
+	//事件绑定机制--jquery事件全部采用DOM2级事件监听方式，在冒泡阶段监听
+	
+	var oBox1=document.getElementById('box1');
+	oBox1.addEventListener('click',function(){
+		console.log('原生dom标签：'+this);
+	},false)
+	
+	//jQuery中的this
+	
+	var oBox2=$('#box2');
+	oBox2.bind('click',function(){
+		console.log(oBox2 instanceof $);
+		console.log(oBox2.constructor===jQuery);
+		console.log('原生dom标签：'+this);
+		console.log('jquery包装后的：'+$(this)   );
+	
+	});
+	
+	
+	$('#box1').click(function(){
+		$(this).children().css("background","red")
+	
+	});
+	
+
+	
+	
+	
+	
+	
+});
+
+
+
+
+
+
+</script>
+
+
+</head>
+
+<body>
+<div id="box1">
+	<p>hxsd</p>
+    <p>hxsd</p>
+    <p>hxsd</p>
+    <p>hxsd</p>
+</div>
+<div id="box2"></div>
+
+
+</body>
+</html>

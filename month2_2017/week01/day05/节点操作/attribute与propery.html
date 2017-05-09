@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+window.onload=function(){
+var oDiv=document.getElementById('box');
+
+
+//property 特性(对象 操作方式)
+
+/*oDiv.user=[2112,5,454,4545]; //用"."语法定义的属性,在标签上不显示  可以自定义任何类型的数据
+
+alert(typeof oDiv.user); // 用"."语法定义的属性,可以用"."读取
+
+//"."语法无法读取标签上的自定义属性
+
+*/
+ 
+//容易混淆的单词:  data:数据  date:日期
+
+//--------------------------------------------------------------------
+
+//Attribute 属性 (节点 操作方式)
+
+//读取自定义属性 
+var dataUser=oDiv.getAttribute("data-user"); //读取标签上的自定义属性
+
+//设置自定义属性
+oDiv.setAttribute("data-age",[23,45,45,45]);  //定义的值 都是string类型
+ 
+var age=oDiv.getAttribute("data-age"); 
+ 
+alert(typeof age);
+
+
+//删除属性
+
+//oDiv.removeAttribute("style");
+
+};
+
+
+</script>
+
+
+</head>
+
+<body>
+<div id="box" data-user="zhangsan" style="width:200px; height:200px; background:red" title="盒子"></div>
+
+</body>
+</html>

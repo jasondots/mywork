@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Methods 方法</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+<link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css">
+<style>
+.box{ width:400px; height:400px; background:red; margin-bottom:20px}
+</style>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script>
+console.log($());
+$(function(){
+	$(".box").click(function(){
+		$(this).hide("explode");
+	});
+	
+	
+		
+})
+</script>
+
+</head>
+<body>
+    <div class="box"><img src="images/02.jpg"></div>
+    
+</body>
+</html>

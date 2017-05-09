@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+div{ margin:100px auto; border:1px solid #ccc; width:400px; text-align:center; padding:30px;}
+input{ width:200px; height:50px; font-size:50px; text-align:center; margin-bottom:20px; padding:30px; border-radius:10px}
+button{ height:40px; width:60px;}
+</style>
+<script src="jquery-1.11.3.min.js"></script>
+<script>
+var names='李宇,曹晓宁,杨升,秦崇阳,毛凌锋,温梓睿,马志清,靳宇,张悦,王宣,王博俊,周海涛,赵丽,张宏松,王祎伟,王治,侍波,赵高强,杨林鲎,王敬辉,王鸿,洪杰,赵孟龙,李帅,王强,郭争帅,梁超,张洁,孙明野,李志行,曹天野,刘朝阳,张永鱼,王钊,徐林,王阔,程皓,孙英范';
+var arr=names.split(',');
+
+$(function(){
+	var timer;
+	$("button:first").click(function(){
+		timer=setInterval(function(){
+			//抽随机数
+			var num=parseInt(Math.random()*arr.length);
+			$("input").val(arr[num]);
+		},50);
+	});
+	
+	$('button:last').click(function(){
+		clearInterval(timer)
+	});
+
+});
+
+
+
+
+
+</script>
+</head>
+
+<body>
+<div>
+	<h2>今天该谁买冰棍？</h2>
+	<input type="text" readonly value="谁？">
+    <br>
+	<button type="button">开始</button>
+	<button type="button">停</button>
+
+</div>
+</body>
+</html>

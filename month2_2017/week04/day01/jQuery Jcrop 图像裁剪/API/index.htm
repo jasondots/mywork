@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery Jcrop 图像裁剪 &raquo; 基础示例 &raquo; 在线演示 - 前端开发仓库</title>
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="demo.css">
+<link rel="stylesheet" href="layout.css" >
+<link rel="stylesheet" href="jquery.Jcrop.css" >
+</head>
+<body>
+<div class="wrap">
+  <div class="side">
+    <div class="logo"> <a href="http://code.ciaoca.com/" target="_blank">前端开发仓库</a> <em>在线演示</em> </div>
+    <dl class="about">
+      <dt>关于</dt>
+      <dd><a target="_blank" href="http://deepliquid.com/content/Jcrop.html">作者</a></dd>
+      <dd><a target="_blank" href="https://github.com/tapmodo/Jcrop">Github</a></dd>
+      <dd><a target="_blank" href="http://code.ciaoca.com/jquery/jcrop/">中文文档</a></dd>
+    </dl>
+    <div id="nav" class="nav">
+      <dl>
+        <dt>示例</dt>
+        <dd><a href="index.htm"  title="基础示例">hello world</a></dd>
+        <dd><a href="handler.htm"  title="事件处理">basic handler</a></dd>
+        <dd><a href="preview.htm"  title="按高宽比例预览裁剪效果">aspect ratio with preview pane</a></dd>
+        <dd><a href="animation.htm"  title="动画、过度效果">Animation / Transitions</a></dd>
+        <dd><a href="api.htm"  title="api 接口">api interface</a></dd>
+        <dd><a href="styling.htm"  title="css 样式">styling example</a></dd>
+        <dd><a href="non-image.htm"  title="非图片裁剪">non-image elements</a></dd>
+      </dl>
+      <dl>
+        <dt>配合后端语言</dt>
+        <dd><a href="crop.htm"  title="PHP 裁剪示例">PHP cropping demo</a></dd>
+      </dl>
+    </div>
+  </div>
+  <div class="main">
+    <div class="inwrap">
+      <h1>jQuery Jcrop 图像裁剪</h1>
+      <h2>基础示例</h2>
+      <div class="detail">
+        <p>这个示例演示了 Jcrop 的默认效果</p>
+        <p>由于没有其他的事件，它只是简单的在图像上画裁剪框，并不能处理什么。</p>
+      </div>
+      <div class="example"> <img src="sago.jpg"  id="target" alt="Jcrop Example"> </div>
+    </div>
+  </div>
+</div>
+<!--<script src="highlight.pack.js" ></script> -->
+<script src="demo.js" ></script>
+<script src="jquery-1.11.3.min.js"></script> 
+<script src="jquery.Jcrop.min.js"></script> 
+<script>
+jQuery(function($){
+  // How easy is this??
+  $('#target').Jcrop();
+});
+</script>
+</body>
+</html>

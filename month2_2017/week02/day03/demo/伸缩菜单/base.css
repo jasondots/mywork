@@ -1,0 +1,26 @@
+@charset "utf-8";
+/*reset*/
+body,p,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,hr,blockquote,object,iframe,fieldset,input,legend,form,th,td{margin:0;padding:0}
+body,input,textarea,keygen,select,button,isindex{font:14px/24px Verdana,Tahoma,"Lucida Grande","\5FAE\8F6F\96C5\9ED1";color:#333;word-break:break-all}
+ul,ol,li{list-style:none}
+img{border:none}
+a{ text-decoration:none}
+.hide{ display:none}
+
+/*左侧菜单  jw*/
+.l_asideMenu .setupMenu{ width:230px}
+.l_asideMenu .setupMenu a{display:block;height:40px;line-height:40px;text-indent:10px;color:#fff;background:#999;margin-bottom:1px;background:url(icon.png) no-repeat #999;background-position:180px -1000px}
+.l_asideMenu .setupMenu .close{background:url(icon.png) no-repeat #999;background-position:180px -1040px}
+.l_asideMenu .setupMenu a i{display:inline-block;width:20px;height:20px;vertical-align:-6px;margin-right:10px;background:url(sprite.png) no-repeat;background:url(sprite.png) no-repeat}
+.l_asideMenu .setupMenu .lisA i{background-position:-50px -289px}
+.l_asideMenu .setupMenu .lisB i{background-position:-207px -329px}
+.l_asideMenu .setupMenu .lisC i{background-position:-50px -330px}
+.l_asideMenu .setupMenu .lisD i{background-position:-88px -289px}
+.l_asideMenu .setupMenu .lisE i{background-position:-169px -289px}
+.l_asideMenu .setupMenu .lisF i{background-position:-208px -289px}
+.l_asideMenu .setupMenu .lisG i{background-position:-88px -332px}
+.l_asideMenu .setupMenu .lisH i{background-position:-126px -332px}
+.l_asideMenu .setupMenu .subMenu{font-size:12px;text-indent:20px;}
+.l_asideMenu .setupMenu .subMenu a{background:#ddd;height:30px;line-height:30px;color:#333;text-indent:40px}
+.l_asideMenu .setupMenu .subMenu a:hover, .l_asideMenu .setupMenu .subMenu .ac{background:#ccc;color:#f00}
+

@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>树形菜单</title>
+<style>
+*{ margin:0; padding:0}
+ul{ list-style:none}
+a{ text-decoration:none}
+li a{ display:block; height:30px;line-height:30px; font-size:14px; color:#999; padding-left:2em}
+.subMenu{ display:none; margin-left:1em}
+.hasSub>a{ display:block; background-image:url(a1.png); background-repeat:no-repeat; background-position:10px center;color:#666}
+.showSubmenu>a{ background-image:url(a2.png); background-position:11px center; background-repeat:no-repeat}
+.ac{ color:#000 !important; background-color:#efefef;}
+#objTree{ margin:100px; width:260px; padding:10px; border:1px solid #777}
+.showSubmenu>.subMenu{ display:block;}
+</style>
+
+<script src="jquery-1.11.3.min.js"></script>
+<script>
+var tree_arr=[
+	{"id":11,"pid":0,"txt":"第一级A"},
+		/*{"id":1121,"pid":11,"txt":"第二级A"},
+			{"id":1131,"pid":1121,"txt":"第三级A"},
+			{"id":1132,"pid":1121,"txt":"第三级B"},
+		{"id":1122,"pid":11,"txt":"第二级B"},*/
+		{"id":1123,"pid":11,"txt":"第二级C"},
+	{"id":12,"pid":0,"txt":"第一级B"},
+	{"id":13,"pid":0,"txt":"第一级C"},
+		{"id":1321,"pid":13,"txt":"第二级A"},
+			{"id":1331,"pid":1321,"txt":"第三级A"},
+			{"id":1332,"pid":1321,"txt":"第三级B"},
+		{"id":1322,"pid":13,"txt":"第二级B"},
+		{"id":1323,"pid":13,"txt":"第二级C"},
+	{"id":14,"pid":0,"txt":"第一级D"}
+];
+
+
+
+
+
+$(function(){
+	var ul=$('<ul>');
+	for(var i=0; i<tree_arr.length; i++){
+		ul.append('<li id="'+tree_arr[i].id+'" pid="'+tree_arr[i].pid+'"><a href="##">'+tree_arr[i].txt+'</a><ul></ul></li>');
+	};
+	$('#objTree').append(ul);
+
+	$('li').each(function() {
+		var _this=$(this);
+        var pid=_this.attr('pid');
+		var target_ul=$('#'+pid+">ul");
+		if(pid!=0){
+			_this.appendTo(target_ul);
+		};
+    });
+	
+	$('li').each(function() {
+		var _this=$(this);
+		var _this_ul=_this.children('ul');
+		if(_this_ul.children('li').size()==0){
+			_this_ul.remove();
+		}
+		
+    });
+	
+	
+	
+	//操作树
+	$('li').each(function(index, element) {
+        var _this=$(this);
+		var subMenu=_this.children('ul');
+		if(subMenu.size()){
+			subMenu.addClass('subMenu');
+			_this.addClass('hasSub');
+		};
+		_this.click(function(){
+			if($(this).hasClass('hasSub')){
+				$(this).toggleClass('showSubmenu');
+			};
+			$('#objTree a').removeClass('ac');
+			$(this).children('a').addClass('ac');
+			return false;
+		});
+    });
+	
+	
+});
+
+
+</script>
+</head>
+
+<body>
+<div id="objTree">
+	
+</div>
+</body>
+</html>

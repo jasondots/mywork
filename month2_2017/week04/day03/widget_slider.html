@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>slider滑块</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+<link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css">
+<style>
+.wrap{ width:500px; margin:100px auto}
+.ui-slider-range { background: #ef2929; }
+.slideImg{ overflow:hidden; position:relative;}
+.imgList { height:100px; position:relative}
+.imgList li{ float:left; height:100px; width:160px; margin-right:10px; margin-bottom:10px}
+.imgList li img{ width:100%; height:100%}
+
+</style>
+
+
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script>
+	$(function() {
+    	//基本
+		$( "#slider1" ).slider();
+		
+		//范围
+		$( "#slider-range" ).slider({
+			range: true,
+			min: 0,
+			max: 500,
+			values: [ 0, 300 ],
+			slide: function( event, ui ) {
+				$( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+			}
+		});
+		//初始值
+		$( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+		  " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+		  
+		  
+		//------------------------------------------
+		var ul_w=$('.imgList').children().size()*170;
+		var moveDis=ul_w-$('.slideImg').width()-10;
+		
+		$('.imgList').width(ul_w);
+		
+		$( ".scroll-bar" ).slider({
+			slide: function( event, ui ) {
+				var value = $( ".scroll-bar" ).slider( "option", "value" );
+				var rate=value/100;
+				console.log(moveDis*rate);
+				$('.imgList').css('left',-moveDis*rate)
+			}
+		});
+	});
+</script>
+</head>
+<body>
+<div class="wrap">
+	<div id="slider1"></div>
+    <br><br>
+    <p>
+      <label for="amount">价格范围：</label>
+      <input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;">
+    </p>
+	<div id="slider-range"></div>
+	<br><br>
+    <div class="slideImg">
+        <ul class="imgList">
+            <li><img src="images/01.jpg"></li>
+            <li><img src="images/02.jpg"></li>
+            <li><img src="images/03.jpg"></li>
+            <li><img src="images/04.jpg"></li>
+            <li><img src="images/05.jpg"></li>
+        </ul>
+    </div>
+    <div class="scroll-bar"></div>
+    
+</div>
+ 
+ 
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0;  padding:0}
+ul{ list-style:none; width:500px}
+.hide{ display:none}
+button{ width:80px; height:30px; margin-bottom:10px}
+li{ padding:20px; border-bottom:1px solid #CCCCCC}
+div{ height:100px; color:#fff; font-size:39px}
+.subA{ background:#ddd;}
+.subB{ background:#999}
+.show_boxA .subA{ display:block}
+.show_boxB .subB{ display:block}
+</style>
+<script src="jquery-1.11.3.min.js"></script>
+<script>
+$(function(){
+
+	/*$('li').each(function(){
+		var _this=$(this);
+		_this.children('button').eq(0).click(function(){
+			_this.siblings().removeClass();
+			_this.toggleClass('show_boxA').removeClass('show_boxB');
+		});
+		_this.children('button').eq(1).click(function(){
+			_this.siblings().removeClass();
+			_this.toggleClass('show_boxB').removeClass('show_boxA');
+		});
+	});
+	*/
+	
+	
+	$('li').each(function() {
+		var _this=$(this);
+        _this.children('button:first').click(function(){
+			if(!_this.hasClass("show_boxA")){
+				$('li').removeClass();
+				_this.addClass("show_boxA");
+			}else{
+				$('li').removeClass();
+			}
+		});
+		_this.children('button:last').click(function(){
+			if(!_this.hasClass("show_boxB")){
+				$('li').removeClass();
+				_this.addClass("show_boxB");
+			}else{
+				$('li').removeClass();
+			}
+		});
+    });
+	
+});
+
+
+
+/*
+window.onload=function(){
+	var aLi=document.getElementsByTagName('li');
+	
+	//删除所有li上class
+	function delClass(){
+		for(var j=0; j<aLi.length; j++){
+			aLi[j].className="";
+		};
+	};
+	
+	for(var i=0; i<aLi.length; i++){
+		var aBtn=aLi[i].getElementsByTagName('button');
+		
+		aBtn[0].onclick=function(){
+			var pa=this.parentNode;
+			if(pa.className!="show_boxA"){
+				delClass();
+				pa.className="show_boxA";
+			}else{
+				delClass();
+			}
+		};
+		aBtn[1].onclick=function(){
+			var pa=this.parentNode;
+			if(pa.className!="show_boxB"){
+				delClass();
+				pa.className="show_boxB";
+			}else{
+				delClass();
+			}
+		}
+	}
+}
+
+*/
+</script>
+
+
+</head>
+
+<body>
+<ul>
+	<li>
+    	<button type="button">A</button>
+        <button type="button">B</button>
+        <div class="subA hide">A</div>
+        <div class="subB hide">B</div>
+    
+    </li>
+    <li>
+    	<button type="button">A</button>
+        <button type="button">B</button>
+        <div class="subA hide">A</div>
+        <div class="subB hide">B</div>
+    
+    </li>
+    <li>
+    	<button type="button">A</button>
+        <button type="button">B</button>
+        <div class="subA hide"><span>ddd</span>A</div>
+        <div class="subB hide">B</div>
+    </li>
+
+</ul>
+<div><em>333</em><span></span></div>
+</body>
+</html>

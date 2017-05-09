@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>五星评价</title>
+<style>
+a{ display:inline-block; height:30px; width:30px; padding:5px;background:url(star.png) no-repeat center -40px}
+.ac{ background-position:center 0}
+
+</style>
+</head>
+
+<body>
+<a></a><a></a><a></a><a></a><a></a>
+
+
+<script>
+	var aA=document.getElementsByTagName('a');
+	
+	var num;//选中的位置
+	
+	function check(n){
+		for(var j=0; j<aA.length; j++){//循环判断
+			if(j<=n){
+				aA[j].className="ac";
+			}
+			else{
+				aA[j].className="";
+			}
+		}		
+	};
+	
+	
+	for(var i=0; i<aA.length; i++){
+		aA[i].index=i;//用“点”语法自定义索引属性
+		
+		aA[i].onmouseover=function(){
+			check(this.index);
+		};
+		//---------------------------------------------
+		aA[i].onclick=function(){
+			num=this.index;
+		};
+		//---------------------------------------------
+		aA[i].onmouseout=function(){
+			check(num);
+		};
+	}
+
+</script>
+
+</body>
+</html>

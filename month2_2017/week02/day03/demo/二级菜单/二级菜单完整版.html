@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>二级菜单完整版</title>
+<style>
+*{ margin:0; padding:0; font-size:14px;}
+body{ background:#efefef;}
+ul,li,ol{ list-style:none}
+a{ text-decoration:none;}
+
+.nav{ height:40px; background:#193F8C;}
+.nav li{ float:left; position:relative;}
+.nav li a{ color:#fff; display:block; height:40px; line-height:40px; padding:0 20px;}
+.nav li:hover{ background:red}
+.nav li .subMenu{ position:absolute; top:40px; left:0; background:#357EB9; display:none}
+.nav li .subMenu li{ width:100%}
+.nav li::after{ content:""; position:absolute; top:18px;right:5px;border:5px solid transparent; border-top-color:#fff; display:none;}
+.nav .hasSub::after{ display:block}
+</style>
+<script src="jquery-1.11.3.min.js"></script>
+<script>
+$(function(){
+	var aLi=$('li');
+	
+	for(var i=0; i<aLi.length; i++){
+		var subM=aLi.eq(i).children('ul').get(0);
+		if(subM){
+			aLi.eq(i).addClass('hasSub');
+			$(subM).addClass('subMenu');
+		};
+		
+		aLi.eq(i).hover(
+			function(){
+				$(this).children('.subMenu').stop().slideDown();
+			},
+			function(){
+				$(this).children('.subMenu').stop().slideUp();
+			}
+		);
+	};
+	
+	
+	
+	
+	/*$('li').each(function(index) {
+		var subM=$(this).children('ul');
+		if(subM.length==1){
+			$(this).addClass('hasSub');
+			subM.addClass('subMenu');
+		};
+		
+		$(this).hover(
+			function(){
+				$(this).children('.subMenu').stop().slideDown();
+			},
+			function(){
+				$(this).children('.subMenu').stop().slideUp();
+			}
+		);
+    });*/
+
+
+
+});
+
+
+
+
+/*window.onload=function(){
+	
+	
+	var aLi=document.getElementsByTagName('li');
+	
+	for(var i=0; i<aLi.length; i++){
+		
+		//判断li是否有二级菜单
+		//-------------------------------------------
+		var subM=aLi[i].getElementsByTagName('ul')[0];
+		
+		
+		//var subM=aLi[i].children[1];
+		if(subM){
+			aLi[i].className="hasSub";
+			subM.className="subMenu";
+		};
+		
+		//-------------------------------------------
+		aLi[i].onmouseover=function(){
+			var subMenu=this.children[1];//找到自己下面的二级菜单
+			if(subMenu){
+				subMenu.style.display="block";
+			}
+			
+		};
+		
+		//---------------------------------------------
+		aLi[i].onmouseout=function(){
+			var subMenu=this.children[1];
+			if(subMenu){
+				subMenu.style.display="none";
+			}
+			
+		};
+		
+		
+		
+	}
+
+}*/
+</script>
+
+
+</head>
+
+<body>
+<div class="abc"></div>
+
+    <ul class="nav">
+    	<li><a href="javascript:;">首页</a></li>
+        
+        <li>
+        	<a href="#">产品列表</a>
+        	<ul>
+            	<li><a href="javascript:;">冰箱</a></li>
+                <li><a href="javascript:;">彩电</a></li>
+                <li><a href="javascript:;">洗衣机</a></li>
+                <li><a href="javascript:;">小家电</a></li>
+            </ul>
+        </li>
+        
+        <li>
+        	<a href="#">新闻列表</a>
+        	<ul>
+            	<li><a href="javascript:;">最新动态</a></li>
+                <li><a href="javascript:;">企业文化</a></li>
+                <li><a href="javascript:;">内部活动</a></li>
+                <li><a href="javascript:;">客户活动</a></li>
+            </ul>
+        </li>
+        <li><a href="javascript:;">内部管理</a></li>
+        <li><a href="javascript:;">关于我们</a></li>
+    </ul>
+    
+    
+</body>
+</html>

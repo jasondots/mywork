@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script src="jquery-1.11.3.min.js"></script>
+<script>
+$(function(){
+	$('#btn').click(function(){
+		setInterval(function(){
+			
+			//60  3600 86400
+		var oDate=new Date;
+		var now_time=oDate.getTime();  //当前的毫秒数
+		
+		var year=$('select:eq(0)').val();
+		var month=$('select:eq(1)').val()-1;
+		var day=$('select:eq(2)').val();
+		
+		//设置到未来时间
+		oDate.setFullYear(year,month,day);
+		
+		oDate.setHours(0,0,0,0);//时间调整到 0时0分0秒
+		
+		var future_time=oDate.getTime();//未来时间的毫秒数
+		
+		var dif_time=(future_time-now_time)/1000; //相差的秒
+		
+		var days=parseInt(dif_time/86400);//天数
+		
+		dif_time=dif_time%86400;//过滤掉  天
+		
+		var hours=parseInt(dif_time/3600);
+		
+		
+		dif_time=dif_time%3600;//过滤掉  小时
+		
+		var mins=parseInt(dif_time/60);//过滤掉  分
+		
+		var sc=parseInt(dif_time%60);
+		
+		
+		$('p').text('距离'+year+'年'+(month+1)+'月'+day+'日还差：'+days+'天'+hours+'小时'+mins+'分'+sc+'秒');
+		
+			
+			
+		},1000)
+		
+		
+		
+		
+		
+		
+		
+	});
+
+});
+
+</script>
+
+
+</head>
+
+<body>
+<select>
+	<option value="2016">2016</option>
+    <option value="2017" selected>2017</option>
+</select>年
+<select>
+	<option value="1">01</option>
+    <option value="2">02</option>
+    <option value="3">03</option>
+    <option value="4">04</option>
+    <option value="5" selected>05</option>
+    <option value="6">06</option>
+    <option value="7">07</option>
+    <option value="8">08</option>
+    <option value="9">09</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+</select>月
+<select>
+	<option value="1">01</option>
+    <option value="2">02</option>
+    <option value="3">03</option>
+    <option value="4">04</option>
+    <option value="5">05</option>
+    <option value="6">06</option>
+    <option value="7">07</option>
+    <option value="8">08</option>
+    <option value="9">09</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+    <option value="13">13</option>
+    <option value="14">14</option>
+    <option value="15">15</option>
+    <option value="16">16</option>
+    <option value="17">17</option>
+    <option value="18">18</option>
+    <option value="19">19</option>
+    <option value="20">20</option>
+    <option value="21">21</option>
+    <option value="22">22</option>
+    <option value="23">23</option>
+    <option value="24">24</option>
+    <option value="25">25</option>
+    <option value="26">26</option>
+    <option value="27">27</option>
+    <option value="28">28</option>
+    <option value="29">29</option>
+    <option value="30">30</option>
+    <option value="31">31</option>
+</select>日
+<button id="btn" type="button">计算相差天数</button>
+<p></p>
+
+</body>
+</html>

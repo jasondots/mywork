@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+
+	
+	document.onclick=function(ev){
+		if (ev.button==0)    {
+		alert("左键")
+		};
+		if (ev.button==1)    {
+		alert("中键")
+		};
+	};
+	
+	//右键默认事件为contextmenu(右键菜单)
+	document.oncontextmenu=function(ev){
+		
+		alert("右键");
+		
+		//可以不用判断ev.button
+		/*if (ev.button==2) {
+			alert("右键");
+		};*/
+	}
+	
+	//-------------------------------------------
+	document.onkeydown=function(ev){
+		
+		alert(ev.keyCode); //显示键盘编号
+		
+		//alt shift ctrl键状态
+		if (ev.altKey==1 && ev.keyCode==65){ //组合键 alt+A 
+			alert("altKey+A")
+		};
+		
+		if (ev.shiftKey==1)    {//shift
+			alert("shiftKey")
+		};
+		
+		if (ev.ctrlKey==1)    { //ctrl
+			alert("ctrlKey")
+		};
+	};
+	
+	
+	
+
+</script>
+</head>
+
+<body>
+<div id="box" style="width:100px; height:100px; background:red"></div>
+</body>
+</html>

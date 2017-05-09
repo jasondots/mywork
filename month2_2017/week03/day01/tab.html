@@ -1,0 +1,134 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>自动播放的选项卡</title>
+<style>
+*{ margin:0; padding:0}
+ul{ list-style:none}
+a{ text-decoration:none}
+.clearfix:after{content:"";display:block;height:0;clear:both;visibility:hidden}
+.clearfix{*zoom:1;}
+.hide{ display:none}
+.fl{ float:left}
+.wrap{ width:500px;}
+.tab{ margin-bottom:30px}
+.tab .tabList li{ float:left; }
+.tab .tabList .ac a{ background:#333; color:#fff}
+.tab .tabList li a{ display:block; height:40px; line-height:40px; padding:0 20px;}
+.tab .tabItem{ border:1px solid #ccc; padding:20px}
+</style>
+
+<script>
+window.onload=function(){
+	
+	function Tab(obj){
+		this.oDiv=obj;
+		this.oUl=obj.children[0];
+		this.aLi=this.oUl.children;
+		this.aTabItem=obj.getElementsByClassName('tabItem');
+		//alert(this.aTabItem.length);
+		this.init();
+	};
+	
+	//初始化功能
+	Tab.prototype.init=function(){
+		//点击每一个li
+		var _this=this;//this指向实例化对象
+		
+		for(var i=0; i<this.aLi.length;i++){
+			this.aLi[i].index=i;
+			
+			this.aLi[i].onclick=function(){
+				//事件函数内部的this指向单个li，所以，需要用_this改变指向
+				for(var j=0; j<_this.aLi.length;j++){
+					_this.aLi[j].className="";
+					_this.aTabItem[j].style.display="none";
+				};
+				this.className="ac";
+				_this.aTabItem[this.index].style.display="block";
+			}
+		};
+		
+		return this;//将对象返回 可以进行链式操作
+		
+	};
+	
+	//自动运行
+	Tab.prototype.autoRun=function(){
+		//开定时器
+		
+		
+		this.oDiv.onmouseover=function(){
+			//alert(21123);
+		};
+		this.oDiv.onmouseout=function(){
+			//alert(21123);
+		};
+		return this;
+	};
+	
+	
+	
+	function $(arg){
+		return new Tab(arg);
+	};
+	
+	
+	var oTab1=document.getElementById('tab1');
+	var oTab2=document.getElementById('tab2');
+	
+	//new Tab(oTab1).autoRun();
+	
+	//new Tab(oTab2);
+	
+	$(oTab1).autoRun()
+	
+};
+</script>
+</head>
+
+<body>
+<div class="wrap">
+    
+    
+    <div id="tab1" class="tab">
+        <ul class="tabList clearfix">
+            <li class="ac"><a href="javascript:;">itemA</a></li>
+            <li><a href="javascript:;">itemB</a></li>
+            <li><a href="javascript:;">itemC</a></li>
+            <li><a href="javascript:;">itemD</a></li>
+            <li><a href="javascript:;">itemD</a></li>
+        </ul>
+        <div class="tabCont">
+            <div class="tabItem">111111</div>
+            <div class="tabItem hide">222222</div>
+            <div class="tabItem hide">333333</div>
+            <div class="tabItem hide">444444</div>
+            <div class="tabItem hide">444444</div>
+       </div>
+   </div>
+   <div id="tab2" class="tab">
+        <ul class="tabList clearfix">
+            <li class="ac"><a href="javascript:;">itemA</a></li>
+            <li><a href="javascript:;">itemB</a></li>
+            <li><a href="javascript:;">itemC</a></li>
+            <li><a href="javascript:;">itemD</a></li>
+        </ul>
+        <div class="tabCont">
+            <div class="tabItem">111111</div>
+            <div class="tabItem hide">222222</div>
+            <div class="tabItem hide">333333</div>
+            <div class="tabItem hide">444444</div>
+       </div>
+   </div>
+   
+   
+</div>
+
+
+
+
+
+</body>
+</html>

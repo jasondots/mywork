@@ -1,0 +1,6 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{ margin:0; padding:0}
+a{ text-decoration:none;}
+#showBtn{width:100px; height:40px; border:1px solid #ccc; display:block; margin:200px auto}

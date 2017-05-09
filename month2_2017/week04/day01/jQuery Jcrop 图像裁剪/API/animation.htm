@@ -1,0 +1,228 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery Jcrop 图像裁剪 &raquo; 动画、过度效果 &raquo; 在线演示 - 前端开发仓库</title>
+<link rel="stylesheet" href="base.css" tppabs="http://code.ciaoca.com/static/css/base.css">
+<link rel="stylesheet" href="demo.css" tppabs="http://code.ciaoca.com/static/css/demo.css"><link rel="stylesheet" href="layout.css" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/css/layout.css">
+<link rel="stylesheet" href="jquery.Jcrop.css" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/css/jquery.Jcrop.css">
+</head>
+<body>
+<div class="wrap">
+  <div class="side">
+    <div class="logo">
+  <a href="javascript:if(confirm(%27http://code.ciaoca.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://code.ciaoca.com/%27" tppabs="http://code.ciaoca.com/" target="_blank">前端开发仓库</a>
+  <em>在线演示</em>
+</div>    <dl class="about"><dt>关于</dt><dd><a target="_blank" href="javascript:if(confirm(%27http://deepliquid.com/content/Jcrop.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://deepliquid.com/content/Jcrop.html%27" tppabs="http://deepliquid.com/content/Jcrop.html">作者</a></dd><dd><a target="_blank" href="javascript:if(confirm(%27https://github.com/tapmodo/Jcrop  \n\nThis file was not retrieved by Teleport Pro, because it is addressed using an unsupported protocol (e.g., gopher).  \n\nDo you want to open it from the server?%27))window.location=%27https://github.com/tapmodo/Jcrop%27" tppabs="https://github.com/tapmodo/Jcrop">Github</a></dd><dd><a target="_blank" href="javascript:if(confirm(%27http://code.ciaoca.com/jquery/jcrop/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://code.ciaoca.com/jquery/jcrop/%27" tppabs="http://code.ciaoca.com/jquery/jcrop/">中文文档</a></dd></dl>    <div id="nav" class="nav">
+  <dl>
+    <dt>示例</dt>
+    <dd><a href="index.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/" title="基础示例">hello world</a></dd>
+    <dd><a href="handler.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/handler" title="事件处理">basic handler</a></dd>
+    <dd><a href="preview.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/preview" title="按高宽比例预览裁剪效果">aspect ratio with preview pane</a></dd>
+    <dd><a href="animation.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/animation" title="动画、过度效果">Animation / Transitions</a></dd>
+    <dd><a href="api.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/api" title="api 接口">api interface</a></dd>
+    <dd><a href="styling.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/styling" title="css 样式">styling example</a></dd>
+    <dd><a href="non-image.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/non-image" title="非图片裁剪">non-image elements</a></dd>
+  </dl>
+  <dl>
+    <dt>配合后端语言</dt>
+    <dd><a href="crop.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/crop" title="PHP 裁剪示例">PHP cropping demo</a></dd>
+  </dl>
+</div>  </div>
+  <div class="main">
+    <div class="inwrap">
+      <h1>jQuery Jcrop 图像裁剪</h1>
+      <h2>动画、过度效果</h2>
+      
+      <div class="detail">
+        <p>演示使用 animateTo API 和 过渡背景颜色、透明度选项。</p>
+        <p>颜色过渡需要 <a target="_blank" href="javascript:if(confirm(%27http://plugins.jquery.com/project/color  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://plugins.jquery.com/project/color%27" tppabs="http://plugins.jquery.com/project/color">jQuery Color Animations</a> 插件的支持，否则颜色不会有过渡效果。</p>
+        <p>这个演示还需要使用 outerImage 选项定义另外的图像。</p>
+        <p id="shadetxt" style="display:none;width:600px;color:#900;"><b>实验性的有效遮罩。</b>Jcrop 现在加入一种更好的透明遮罩（即选框以外的暗影部分），这种遮罩效果相比默认的方法，目前来说不是很稳定，建议只在确实需要的时候再使用。</p>
+      </div>
+
+      <div class="example">
+        <div class="clearfix">
+          <div class="left">
+            <img src="sago.jpg" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/demo_files/sago.jpg" id="target" alt="Jcrop Image">
+          </div>
+          <div id="interface" class="left ml">
+            <div>
+              <input type="checkbox" id="fadetog" class="checkbox">
+              <label for="fadetog">启用过渡 (bgFade: true)</label>
+            </div>
+            <div>
+              <input type="checkbox" id="shadetog" class="checkbox">
+              <label for="shadetog">使用实现性的遮罩 (shade: true)</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<script src="highlight.pack.js" tppabs="http://code.ciaoca.com/static/js/highlight/highlight.pack.js"></script>
+<script src="demo.js" tppabs="http://code.ciaoca.com/static/js/controller/demo.js"></script><script src="jquery-1.5.2.min.js" tppabs="http://code.ciaoca.com/static/js/jquery/jquery-1.5.2.min.js"></script>
+<script src="jquery.Jcrop.min.js" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/js/jquery.Jcrop.min.js"></script>
+<script src="jquery.color.js" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/js/jquery.color.js"></script>
+<script>
+jQuery(function($){
+  var jcrop_api;
+  
+  $('#target').Jcrop({
+    bgFade: true,
+    bgOpacity: .2,
+    setSelect: [ 60, 70, 540, 330 ]
+  },function(){
+    jcrop_api = this;
+  });
+  
+  $('#fadetog').change(function(){
+    jcrop_api.setOptions({
+      bgFade: this.checked
+    });
+  }).attr('checked', 'checked');
+  
+  $('#shadetog').change(function(){
+    if (this.checked) {
+      $('#shadetxt').slideDown();
+    } else {
+      $('#shadetxt').slideUp();
+    };
+
+    jcrop_api.setOptions({
+      shade: this.checked
+    });
+  }).attr('checked', false);
+  
+  // Define page sections
+  var sections = {
+    bgc_buttons: '更改背景颜色',
+    bgo_buttons: '更改背景透明度',
+    anim_buttons: '选择动画'
+  };
+
+  // Define animation buttons
+  var ac = {
+    anim1: [217, 122, 382, 284],
+    anim2: [20, 20, 580, 380],
+    anim3: [24, 24, 176, 376],
+    anim4: [347, 165, 550, 355],
+    anim5: [136, 55, 472, 183]
+  };
+
+  // Define bgOpacity buttons
+  var bgo = {
+    Low: .2,
+    Mid: .5,
+    High: .8,
+    Full: 1
+  };
+
+  // Define bgColor buttons
+  var bgc = {
+    R: '#900',
+    B: '#4BB6F0',
+    Y: '#F0B207',
+    G: '#46B81C',
+    W: 'white',
+    K: 'black'
+  };
+
+  // Create fieldset targets for buttons
+  for (i in sections) {
+    insertSection(i, sections[i]);
+  };
+  
+  function create_btn(c) {
+    var $o = $('<button/>').addClass('button green');
+    if (c) {
+      $o.append(c);
+    };
+    return $o;
+  };
+  
+  var a_count = 1;
+
+  // Create animation buttons
+  for(i in ac) {
+    $('#anim_buttons .button_group').append(
+      create_btn(a_count++).click(animHandler(ac[i])),
+      ' '
+    );
+  };
+  
+  $('#anim_buttons .button_group').append(
+    create_btn('Bye!').click(function(e){
+      $(e.target).addClass('active');
+      jcrop_api.animateTo(
+        [300, 200, 300, 200],
+        function(){
+          this.release();
+          $(e.target).closest('.button_group').find('.active').removeClass('active');
+        }
+      );
+      return false;
+    })
+  );
+  
+  // Create bgOpacity buttons
+  for (i in bgo) {
+    $('#bgo_buttons .button_group').append(
+      create_btn(i).click(setoptHandler('bgOpacity', bgo[i])),
+      ' '
+    );
+  }
+  // Create bgColor buttons
+  for (i in bgc) {
+    $('#bgc_buttons .button_group').append(
+      create_btn(i).css({
+        background: bgc[i],
+        color: ((i == 'K') || (i == 'R')) ? 'white' : 'black'
+      }).click(setoptHandler('bgColor', bgc[i])), ' '
+    );
+  }
+
+  // Function to insert named sections into interface
+  function insertSection(k, v) {
+    $('#interface').prepend(
+      $('<fieldset></fieldset>').attr('id', k).append(
+        $('<legend></legend>').append(v),
+        '<div class="button_group"></div>'
+      )
+    );
+  };
+  // Handler for option-setting buttons
+  function setoptHandler(k, v) {
+    return function(e) {
+      $(e.target).closest('.button_group').find('.active').removeClass('active');
+      $(e.target).addClass('active');
+      var opt = {};
+      opt[k] = v;
+      jcrop_api.setOptions(opt);
+      return false;
+    };
+  };
+  // Handler for animation buttons
+  function animHandler(v) {
+    return function(e) {
+      $(e.target).addClass('active');
+      jcrop_api.animateTo(v, function(){
+        $(e.target).closest('.button_group').find('.active').removeClass('active');
+      });
+      return false;
+    };
+  };
+  
+  $('#bgo_buttons .button:first, #bgc_buttons .button:last').addClass('active');
+  $('#interface').show();
+});
+</script>
+
+<div style="display:none;">
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cdiv id='cnzz_stat_icon_5076009' style='display:none;'%3E%3C/div%3E%3Cscript src='" + cnzz_protocol + "s25.cnzz.com/stat.php%3Fid%3D5076009' type='text/javascript'%3E%3C/script%3E"));</script>
+</div></body>
+</html>
+

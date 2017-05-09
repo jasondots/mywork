@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>tab集合</title>
+<script>
+window.onload=function(){
+	var tab=document.getElementsByClassName('tab');
+	for(var i=0; i<tab.length; i++){
+		myTab(tab[i]);
+	};
+	
+	function myTab(tab){
+		var aLi=tab.getElementsByTagName('li');
+		for(var i=0; i<aLi.length; i++){
+			aLi[i].onclick=function(){
+				for(var l=0; l<aLi.length; l++){
+					aLi[l].className="";
+				};
+				this.className='ac';
+			}
+		}
+	};
+
+
+
+}
+
+
+</script>
+<style>
+*{ margin:0; padding:0}
+ul{ list-style:none}
+a{ text-decoration:none}
+.wrap{ width:500px; margin:100px}
+.tab{ margin-bottom:30px;}
+.tab .tabList li{ float:left; position:relative}
+.tab .tabList li a{ display:block}
+.tab .tabItem{min-height:300px;}
+
+.tab_red .tabList{ height:40px; border-bottom:1px solid #ccc;border-bottom:1px solid red;}
+.tab_red .tabList .ac{ border:1px solid #f00; border-top:4px solid #f00; border-bottom:none; height:37px; background:#fff; position:relative}
+.tab_red .tabList li a{ height:36px; line-height:36px; padding:4px 20px 0;}
+.tab_red .tabList .ac a{padding:0 19px 0;}
+.tab_red .tabItem{ border:1px solid red;border-top:none; padding:20px}
+
+.tab_arrowA .tabList{ height:40px}
+.tab_arrowA .tabList li a{ padding:0 20px; height:40px; line-height:30px}
+.tab_arrowA .tabList li i{ width:19px; height:10px; background:url(arrow.jpg); top:20px; display:none}
+.tab_arrowA .tabList .ac i{ display:block; position:absolute; left:50%; margin-left:-10px; top:31px}
+.tab_arrowA .tabItem{ border:1px solid #000; padding:20px}
+
+.tab_arrowB{ border:1px solid #ccc; padding:10px}
+.tab_arrowB .tabList{ height:40px; border-bottom:1px solid #000}
+.tab_arrowB .tabList li a{ padding:0 20px; height:40px; line-height:30px}
+.tab_arrowB .tabList li i{ width:19px; height:10px; background:url(arrow.jpg); top:20px; display:none}
+.tab_arrowB .tabList .ac i{ display:block; position:absolute; left:50%; margin-left:-10px; top:31px}
+.tab_arrowB .tabItem{ margin-top:10px}
+
+.tab_msg .tabList{ height:60px; border-bottom:1px solid #000}
+.tab_msg .tabList li a{ width:80px; height:50px}
+.tab_msg .tabList li a b{ position:absolute; height:22px; line-height:22px; width:22px; background:#f97373; text-align:center; color:#fff; top:-4px; right:5px; border-radius:50%; font-size:12px; font-weight:normal}
+.tab_msg .tabList li a .over99{ background:url(over99.png) no-repeat; text-indent:-999px; overflow:hidden}
+.tab_msg .tabList li i{ width:19px; height:10px; background:url(arrow.jpg); top:20px; display:none}
+.tab_msg .tabList .ac i{ display:block; position:absolute; left:50%; margin-left:-10px; top:51px}
+.tab_msg .tabList .msg{ background:url(msg.png) no-repeat center}
+.tab_msg .tabList .letter{background:url(letter.png) no-repeat center}
+.tab_msg .tabItem{padding:20px 0}
+
+
+</style>
+
+</head>
+
+<body>
+<div class="wrap">
+	<div class="tab tab_red">
+        <ul class="tabList">
+            <li class="ac"><a href="javascript:;">itemA</a></li>
+            <li><a href="javascript:;">itemB</a></li>
+            <li><a href="javascript:;">itemC</a></li>
+            <li><a href="javascript:;">itemD</a></li>
+        </ul>
+        <div class="tabCont">
+            <div class="tabItem">火星时代教育是中国艺术教育高端品牌，设有多个热门专业(UI设计、游戏设计、室内设计、影视特效、程序开发、数字艺术学历)等 ，多年来一直与国内外各大企业联合实训，公司CEO携总监亲自授课，配备业界优秀师资，项目实训案例实时更新，每年为业界输送大量专业人才。</div>
+        </div>
+    </div>
+    
+    <!---->
+    <div class="tab tab_arrowA">
+        <ul class="tabList">
+            <li class="ac"><a href="javascript:;">sdf</a><i></i></li>
+            <li><a href="javascript:;">sdsdff</a><i></i></li>
+            <li><a href="javascript:;">sdfsdfsdf</a><i></i></li>
+            <li><a href="javascript:;">sdf</a><i></i></li>
+        </ul>
+        <div class="tabCont">
+            <div class="tabItem">火星时代教育是中国艺术教育高端品牌，设有多个热门专业(UI设计、游戏设计、室内设计、影视特效、程序开发、数字艺术学历)等 ，多年来一直与国内外各大企业联合实训，公司CEO携总监亲自授课，配备业界优秀师资，项目实训案例实时更新，每年为业界输送大量专业人才。</div>
+        </div>
+    </div>
+    
+    <div class="tab tab_arrowB">
+        <ul class="tabList">
+            <li class="ac"><a href="javascript:;">sdf</a><i></i></li>
+            <li><a href="javascript:;">sdsdff</a><i></i></li>
+            <li><a href="javascript:;">sdfsdfsdf</a><i></i></li>
+            <li><a href="javascript:;">sdf</a><i></i></li>
+        </ul>
+        <div class="tabCont">
+            <div class="tabItem">火星时代教育是中国艺术教育高端品牌，设有多个热门专业(UI设计、游戏设计、室内设计、影视特效、程序开发、数字艺术学历)等 ，多年来一直与国内外各大企业联合实训，公司CEO携总监亲自授课，配备业界优秀师资，项目实训案例实时更新，每年为业界输送大量专业人才。</div>
+        </div>
+    </div>
+    <div class="tab tab_msg">
+        <ul class="tabList">
+            <li class="ac"><a class="msg" href="javascript:;"><b class="over99">300</b></a><i></i></li>
+            <li><a class="letter" href="javascript:;"><b>10</b></a><i></i></li>
+        </ul>
+        <div class="tabCont">
+            <div class="tabItem">火星时代教育是中国艺术教育高端品牌，设有多个热门专业(UI设计、游戏设计、室内设计、影视特效、程序开发、数字艺术学历)等 ，多年来一直与国内外各大企业联合实训，公司CEO携总监亲自授课，配备业界优秀师资，项目实训案例实时更新，每年为业界输送大量专业人才。</div>
+        </div>
+    </div>
+
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+@charset "utf-8";
+/* CSS Document */
+.popBox{ position:absolute; min-width:300px; max-width:600px; border:1px solid #555; background:#fff; z-index:80; box-shadow:1px 1px 5px 0px #666 }
+.popBox h4{ height:40px; line-height:40px; background:#444; color:#fff; text-indent:1em; cursor:move}
+.popBox .closeBtn{ position:absolute; height:40px; line-height:40px; width:40px; background:#666; top:0; right:0; text-align:center; color:#fff;}
+.popBox .popCont{ padding:20px; line-height:24px}
+.popBox .btnBar{text-align:center; padding-bottom:20px}
+.popBox .btnBar button{ height:35px; width:80px; margin:0 5px; background:#ddd; border:1px solid #ccc}
+.alertBox p{ text-align:center}
+.promptBox textarea{ width:400px; height:60px; margin-top:10px}
+

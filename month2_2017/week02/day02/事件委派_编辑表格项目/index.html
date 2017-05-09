@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0; font-size:14px}
+table{ margin:100px auto}
+table,th,td{ border:1px solid #000; border-collapse:collapse}
+td,th{ width:100px; height:30px; padding:10px}
+input{ display:none; height:24px; width:60px; border:1px solid #ccc;}
+.editBtn{ color:#666}
+.delBtn{ color:red}
+.okBtn,.cancelBtn{ display:none}
+
+.edit span{ display:none}
+.edit input{ display:inline-block}
+.edit .editBtn,.edit .delBtn{ display:none}
+.edit .okBtn,.edit .cancelBtn{ display:inline}
+</style>
+
+</head>
+
+<body>
+<table id="myTable">
+	<tr>
+    	<th>姓名</th>
+        <th>年龄</th>
+        <th>城市</th>
+        <th>编辑</th>
+    </tr>
+	<tr>
+    	<td><span>张三</span><input type="text"></td>
+        <td><span>18</span><input type="text"></td>
+        <td><span>北京</span><input type="text"></td>
+        <td><a href="javascript:;" class="editBtn">编辑</a><a href="javascript:;" class="okBtn">确定</a> <a href="javascript:;" class="cancelBtn">取消</a><a href="javascript:;" class="delBtn">删除</a></td>
+    
+    </tr>
+    <tr>
+    	<td><span>李四</span><input type="text"></td>
+        <td><span>25</span><input type="text"></td>
+        <td><span>上海</span><input type="text"></td>
+        <td><a href="javascript:;" class="editBtn">编辑</a><a href="javascript:;" class="okBtn">确定</a> <a href="javascript:;" class="cancelBtn">取消</a><a href="javascript:;" class="delBtn">删除</a></td>
+    
+    </tr>
+    <tr>
+    	<td><span>小强</span><input type="text"></td>
+        <td><span>22</span><input type="text"></td>
+        <td><span>广州</span><input type="text"></td>
+        <td><a href="javascript:;" class="editBtn">编辑</a><a href="javascript:;" class="okBtn">确定</a> <a href="javascript:;" class="cancelBtn">取消</a><a href="javascript:;" class="delBtn">删除</a></td>
+    
+    </tr>
+    <tr>
+    	<td><span>小明</span><input type="text"></td>
+        <td><span>16</span><input type="text"></td>
+        <td><span>深圳</span><input type="text"></td>
+        <td><a href="javascript:;" class="editBtn">编辑</a><a href="javascript:;" class="okBtn">确定</a> <a href="javascript:;" class="cancelBtn">取消</a><a href="javascript:;" class="delBtn">删除</a></td>
+    
+    </tr>
+
+</table>
+</body>
+</html>
+<script src="jquery-1.11.3.min.js"></script>
+
+<script>
+$(function(){
+
+	$('#myTable').on('click',function(ev){
+		var elm=ev.target;
+		if(elm.tagName=="TD"){
+			return;
+		};
+		
+		//找到tr
+		var p_tr=$(elm).parents('tr');	
+		var aTd=$(p_tr).children();
+		
+				
+		//交互数值
+		function toggleVal(boolean){
+			for(var j=0; j<aTd.length-1; j++){
+				var span=aTd[j].children[0];
+				var input=aTd[j].children[1];
+				boolean ? input.value=span.innerHTML : span.innerHTML=input.value;
+			};
+		};
+		
+		
+		switch(elm.className){//判断目标元素class
+			case "editBtn"://编辑
+			p_tr.addClass("edit");
+			toggleVal(true);
+			break;
+			
+			case "okBtn"://确定
+			p_tr.removeClass("edit");
+			toggleVal()
+			break;
+			
+			case "cancelBtn"://取消
+			p_tr.removeClass("edit");
+			break;
+			
+			case "delBtn"://删除
+			if(confirm("确定要删除本行吗?")){
+				p_tr.remove();
+			}
+			break;
+			
+			default:
+			return;
+		}
+	})
+});
+
+
+
+//-------------------------------------------------------
+
+/*
+var oTable=document.getElementsByTagName('table')[0];
+
+oTable.onclick=function(ev){
+	ev=ev||event;
+	var elm=ev.target ||ev.srcElement;
+	if(elm.tagName="TD"){
+		return;
+	};
+	
+	var p_tr=elm.parentNode.parentNode;	
+	var aTd=p_tr.children;
+	
+	//交互数值
+	function toggleVal(boolean){
+		for(var j=0; j<aTd.length-1; j++){
+			var span=aTd[j].children[0];
+			var input=aTd[j].children[1];
+			boolean ? input.value=span.innerHTML : span.innerHTML=input.value;
+		};
+	};
+	
+	switch(elm.className){
+		case "editBtn":
+		p_tr.className="edit";
+		toggleVal(true);
+		break;
+		
+		case "okBtn":
+		p_tr.className="";
+		toggleVal()
+		break;
+		
+		case "cancelBtn":
+		p_tr.className="";
+		break;
+		
+		case "delBtn":
+		if(confirm("确定要删除本行吗?")){
+			this.children[0].removeChild(p_tr);//tbody 内删除
+		}
+		break;
+		
+		default:
+		return;
+	}
+};
+*/
+</script>

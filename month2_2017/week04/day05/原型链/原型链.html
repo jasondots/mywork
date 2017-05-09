@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+
+//构造函数
+function Foo(y){ 
+	this.y = y ; 
+} 
+
+//在构造函数的原型上定义x属性
+Foo.prototype.x = 10; 
+
+//在构造函数的原型上定义calculate方法
+Foo.prototype.calculate = function(z){ 
+	return this.x+this.y+z; 
+}; 
+
+//实例化一个对象
+var b = new Foo(20); 
+
+var c= new Foo(30);
+
+//调用原型上个的方法
+alert(b.calculate(100));  //130
+
+alert(c.calculate(200)); //240
+
+</script>

@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>jQuery抛物线动画代码</title>
+    <style type="text/css">
+        .btns{text-align:center;}
+        .btns a{
+            color:#fff;padding:5px 10px;font-family:Arial;
+            background-color:#f90;text-decoration:none;
+        }
+        .boll {
+            width: 50px;
+            height: 50px;
+            background-color: #ff3333;
+            position: absolute;
+            top: 380px;
+            left: 100px;
+            border-radius: 50px;
+        }
+
+        .target {
+            width: 80px;
+            height: 80px;
+            background-color: #CDCDCD;
+            position: absolute;
+            top: 180px;
+            left: 100%;
+			margin-left:-80px;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/parabola.js"></script>
+</head>
+
+<body>
+ <div class="btns" style="margin-top:20px">
+    <a href="##" id="run">测试</a>
+    <a href="##" id="reset">reset</a>    
+    <a href="##" id="stop">stop</a>
+    <a href="##" id="setOptions">购物车</a>
+</div>
+<div id="boll" class="boll"></div>
+<div id="target" class="target">购物车</div>
+<script type="text/javascript">
+    var bool = new Parabola({
+        el: "#boll",
+        offset: [500, 100],
+        curvature: 0.005,
+        duration: 2000,
+        callback:function(){
+            alert("完成后回调")
+        },
+		
+        stepCallback:function(x,y){
+            console.log(x,y);
+            $("<div>").appendTo("body").css({
+                "position": "absolute",
+                "top": this.elOriginalTop + y,
+                "left":this.elOriginalLeft + x,
+                "background-color":"#CDCDCD",
+                "width":"5px",
+                "height":"5px",
+                "border-radius": "5px"
+            });
+        }
+    });
+    $("#reset").click(function () {
+        bool.reset()
+    });
+    $("#run").click(function () {
+        bool.start();
+    });
+    $("#stop").click(function () {
+        bool.stop();
+    });
+    $("#setOptions").click(function () {
+        bool.setOptions({
+            targetEl: $("#target"),
+            curvature: 0.0002,
+            duration: 2000
+        });
+		bool.start();
+    });
+</script>
+</body>
+</html>

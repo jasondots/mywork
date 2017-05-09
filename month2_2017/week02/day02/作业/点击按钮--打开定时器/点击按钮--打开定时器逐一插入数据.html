@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{  margin:0; padding:0}
+ul{ list-style:none}
+li{ width:200px; height:40px; line-height:40px; background:red; margin-bottom:20px; color:#fff; padding-left:20px;}
+button{height:30px; padding:0 20px; border:none}
+
+</style>
+</head>
+
+<body>
+<ul>
+	<li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<button type="button">插入菜品</button>
+
+</body>
+</html>
+<script src="jquery-1.11.3.min.js"></script>
+<script>
+	var arr=['鱼香肉丝','宫保鸡丁','糖醋鲤鱼','红烧肉','尖椒肉丝','麻辣鸡丝','葱爆羊肉'];
+	$(function(){
+		$("button").click(function(){
+			var i=0// 计数器
+			var num=$("li").size();
+			var timer=setInterval(function(){
+				if(i<num){
+					$("li:eq("+i+")").html(arr[i]);
+					i++;
+					if(i==num){
+						clearInterval(timer);
+						alert('添加完毕');
+					}
+				};
+			},1000);
+		
+		});
+	})
+	
+	
+	
+	
+	
+	/*var aLi=document.getElementsByTagName('li');
+	var oBtn=document.getElementsByTagName('button')[0];
+	var i=0// 计数器
+	
+	//按钮添加点击事件
+	oBtn.onclick=function(){
+		var timer=setInterval(function(){
+			if(i<aLi.length){
+				aLi[i].innerHTML=arr[i];
+				i++;
+				if(i==aLi.length){
+					clearInterval(timer);
+					alert('添加完毕');
+				}
+			};
+		},1000);
+	};*/
+	
+	
+	
+
+
+</script>

@@ -1,0 +1,197 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery Validation Engine 表单验证 &raquo; 多种输入控件的验证 &raquo; 在线演示 - 前端开发仓库</title>
+<link rel="stylesheet" href="base.css" tppabs="http://code.ciaoca.com/static/css/base.css">
+<link rel="stylesheet" href="demo.css" tppabs="http://code.ciaoca.com/static/css/demo.css"><link rel="stylesheet" href="validationEngine.jquery.css" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/css/validationEngine.jquery.css">
+<link rel="stylesheet" href="layout.css" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/css/layout.css">
+</head>
+<body>
+<div class="wrap">
+  <div class="side">
+    <div class="logo">
+  <a href="javascript:if(confirm(%27http://code.ciaoca.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://code.ciaoca.com/%27" tppabs="http://code.ciaoca.com/" target="_blank">前端开发仓库</a>
+  <em>在线演示</em>
+</div>    <dl class="about"><dt>关于</dt><dd><a target="_blank" href="javascript:if(confirm(%27http://www.position-absolute.com/articles/jquery-form-validator-because-form-validation-is-a-mess/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://www.position-absolute.com/articles/jquery-form-validator-because-form-validation-is-a-mess/%27" tppabs="http://www.position-absolute.com/articles/jquery-form-validator-because-form-validation-is-a-mess/">作者</a></dd><dd><a target="_blank" href="javascript:if(confirm(%27https://github.com/posabsolute/jQuery-Validation-Engine  \n\nThis file was not retrieved by Teleport Pro, because it is addressed using an unsupported protocol (e.g., gopher).  \n\nDo you want to open it from the server?%27))window.location=%27https://github.com/posabsolute/jQuery-Validation-Engine%27" tppabs="https://github.com/posabsolute/jQuery-Validation-Engine">Github</a></dd><dd><a target="_blank" href="javascript:if(confirm(%27http://code.ciaoca.com/jquery/validation_engine/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://code.ciaoca.com/jquery/validation_engine/%27" tppabs="http://code.ciaoca.com/jquery/validation_engine/">中文文档</a></dd></dl>    <div id="nav" class="nav">
+  <dl class="mini">
+    <dt>示例</dt>
+    <dd><a href="index.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/" title="validators">综合示例</a></dd>
+    <dd><a href="demoRequired.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoRequired" title="required">扩展必填验证</a></dd>
+    <dd><a href="demoDate.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoDate" title="date">日期类型验证</a></dd>
+    <dd><a href="demoRegExp.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoRegExp" title="regexp">正则验证</a></dd>
+    <dd><a href="demoFieldTypes.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoFieldTypes" title="field types">多种输入控件的验证</a></dd>
+    <!--<dd><a href="./demoAttr" title="attr">attr</a></dd>-->
+    <dd><a href="demoCheckBox.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoCheckBox" title="checkbox">单选框、复选框的验证</a></dd>
+    <dd><a href="demoMultipleForms.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoMultipleForms" title="multiple forms">多表单验证</a></dd>
+    <dd><a href="demoDivContainer.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoDivContainer" title="div container">DIV 容器</a></dd>
+    <dd><a href="demoWithoutId.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoWithoutId" title="without id">不再需要 ID 属性</a></dd>
+    <dd><a href="demoForm-cn.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoForm-cn" title="chinese">较好体验的中文表单</a></dd>
+  </dl>
+  <dl class="mini">
+    <dt>参数配置</dt>
+    <dd><a href="demoGlobalSettings.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoGlobalSettings" title="global settings">全局设置</a></dd>
+    <dd><a href="demoAutoHide.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoAutoHide" title="auto hide">自动隐藏提示信息</a></dd>
+    <dd><a href="demoCustomErrorMessages.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoCustomErrorMessages" title="custom error messages">自定义提示信息内容</a></dd>
+    <dd><a href="demoErrorLimit.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoErrorLimit" title="error limit">提示信息的数量</a></dd>
+    <dd><a href="demoOneMessage.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoOneMessage" title="one message">只显示一个提示信息</a></dd>
+    <dd><a href="demoSilent.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoSilent" title="silent">静默处理</a></dd>
+    <dd><a href="demoOverflown.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoOverflown" title="overflown">显示溢出限制</a></dd>
+    <dd><a href="demoValidationComplete.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoValidationComplete" title="validation complete">验证回调函数（阻断提交）</a></dd>
+    <dd><a href="demoOnForm.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoOnForm" title="on form">验证回调函数（不阻断提交）</a></dd>
+  </dl>
+  <dl class="mini">
+    <dt>data 属性</dt>
+    <dd><a href="demoInlineMessages.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoInlineMessages" title="inline messages">自定义提示信息内容</a></dd>
+    <dd><a href="demoPerFieldPromptDirection.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoPerFieldPromptDirection" title="perfield prompt direction">提示层的位置</a></dd>
+    <dd><a href="demoAdjustments.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoAdjustments" title="adjustments">调整提示层的位置</a></dd>
+  </dl>
+  <dl class="mini">
+    <dt>API 接口</dt>
+    <dd><a href="demoShowPrompt.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoShowPrompt" title="show prompt">显示提示信息</a></dd>
+    <dd><a href="demoPositioning.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoPositioning" title="positioning">改变提示层位置</a></dd>
+    <dd><a href="demoLiveEvent.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoLiveEvent" title="live event">动态绑定</a></dd>
+    <dd><a href="demoHooks.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoHooks" title="hooks">自定义事件</a></dd>
+  </dl>
+  <dl class="mini">
+    <dt>Ajax 验证</dt>
+    <dd><a href="demoAjaxInlinePHP.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoAjaxInlinePHP" title="ajax inline php">AJAX PHP 验证</a></dd>
+    <dd><a href="demoAjaxSubmitPHP.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoAjaxSubmitPHP" title="ajax submit php">AJAX PHP 验证及提交</a></dd>
+  </dl>
+  <dl class="mini">
+    <dt>其他</dt>
+    <!--<dd><a href="./demoChosenLibrary" title="chosen library">[插件支持] chosen</a></dd>-->
+    <dd><a href="demoSelectBoxLibrary.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoSelectBoxLibrary" title="select box library">[插件支持] selectbox</a></dd>
+    <dd><a href="demoDatepicker.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoDatepicker" title="datepicker">[插件支持] datepicker</a></dd>
+    <dd><a href="demoValidators-ja.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoValidators-ja" title="validators jan">[多语言] 日文</a></dd>
+  </dl>
+</div>  </div>
+  <div class="main">
+    <div class="inwrap">
+      <h1>jQuery Validation Engine 表单验证</h1>
+      <h2>多种输入控件的验证</h2>
+      
+      <div class="detail">
+        <p>除简单的必填验证外，还提供有占位符、群组、条件等扩展必填的方式。</p>
+      </div>
+      
+      <div class="example">
+        <form id="formID" class="formular" method="post">
+          <fieldset>
+            <legend>Required!</legend>
+            
+            <label>必填项：</label>
+            <input value="" class="validate[required] text-input" type="text" name="req" id="req">
+            
+            <label>最喜欢的运动：</label>
+            <select name="sport" id="sport" class="validate[required]">
+              <option value="">选择一项运动</option>
+              <option value="option1">网球</option>
+              <option value="option2">足球</option>
+              <option value="option3">高尔夫</option>
+            </select>
+            
+            <br>
+            <div><input class="validate[required] checkbox" type="checkbox" id="agree" name="agree"/>我同意服务协议</div>
+            
+            <br>
+            <label>单选组：</label>
+            <div><input class="validate[required] radio" type="radio" name="group0" id="radio1" value="5"/>选项 1</div>
+            <div><input class="validate[required] radio" type="radio" name="group0" id="radio2" value="3"/>选项 2</div>
+            <div><input class="validate[required] radio" type="radio" name="group0" id="radio3" value="9"/>选项 3</div>
+            
+            <br>
+            <label>单选组：</label>
+            <div><input class="validate[required] checkbox" type="checkbox" name="group1" id="checkbox1"/>选项 1</div>
+            <div><input class="validate[required] checkbox" type="checkbox" name="group1" id="checkbox2"/>选项 2</div>
+            <div><input class="validate[required] checkbox" type="checkbox" name="group1" id="checkbox3"/>其他：</div>
+            
+            <br>
+            <code>validate[required]</code>
+          </fieldset>
+          
+          <fieldset>
+            <legend>Placeholder</legend>
+            <label>占位符 &amp; 必填（输入内容不能为占位符内容）：</label>
+            <input value="占位符" data-validation-placeholder="占位符" class="validate[required] text-input" type="text" name="reqplaceholder" id="reqplaceholder">
+            <code>data-validation-placeholder="占位符"</code>
+            <code>validate[required]</code>
+          </fieldset>
+          
+          <fieldset>
+            <legend>Group required</legend>
+            <p class="tips">群组中，至少有一个值是不为空的</p>
+            
+            <label>输入信用卡号码：</label>
+            <input value="" class="validate[groupRequired[payments]] text-input" type="text" name="creditcard1" id="creditcard1">
+            
+            <strong>或者</strong>
+            <label>输入 paypal 账号：</label>
+            <input value="" class="validate[groupRequired[payments],custom[email]] text-input" type="text" name="paypal" id="paypal">
+            
+            
+            <strong>或者</strong>
+            <label>输入银行卡号：</label>
+            <input value="" class="validate[groupRequired[payments],custom[integer]] text-input" type="text" name="bank" id="bank">
+            
+            
+            <strong>或者</strong>
+            <label>选择付款选项：</label>
+            <select class="validate[groupRequired[payments]] text-input" type="text" name="bank2" id="bank2">
+              <option value="">请选择</option>
+              <option value="Paypal">Paypal</option>
+              <option value="Bank">银行账户</option>
+            </select>
+      
+            <code>validate[groupRequired[payments]]</code>
+          </fieldset>
+            
+          <fieldset>
+            <legend>Conditional required</legend>
+            <p class="tips">按条件必填</p>
+            <label>依赖项：</label>
+            <input value="" class="text-input" type="text" name="dep1" id="dep1">
+            
+            <label>关联项，如果填写依赖项，那么也需要填写：</label>
+            <input class="validate[condRequired[dep1]] text-input" type="text" name="conditionalrequired1" id="conditionalrequired1">
+            
+            <code>validate[condRequired[dep1]]</code>
+            
+            <p><strong>依赖 2 个字段</strong></p>
+            <label>依赖项（a）：</label>
+            <input value="" class="text-input" type="text" name="dep2a" id="dep2a">
+            
+            <label>依赖项（b）：</label>
+            <input value="" class="text-input" type="text" name="dep2b" id="dep2b">
+            
+            <label>关联项，如果填写以上任意一个依赖项，那么也需要填写：</label>
+            <input class="validate[condRequired[dep2a,dep2b]] text-input" type="text" name="conditionalrequired2" id="conditionalrequired2">
+            
+            <code>validate[condRequired[dep2a,dep2b]]</code>
+            
+            按条件必填同样适用于 checkbox 和 radio 控件，可参考<a href="demoCheckBox.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoCheckBox"> [Demo]</a>
+          </fieldset>
+      
+          <input class="submit" type="submit" value="验证 & 提交表单">
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="highlight.pack.js" tppabs="http://code.ciaoca.com/static/js/highlight/highlight.pack.js"></script>
+<script src="demo.js" tppabs="http://code.ciaoca.com/static/js/controller/demo.js"></script><script src="jquery-1.7.2.min.js" tppabs="http://code.ciaoca.com/static/js/jquery/jquery-1.7.2.min.js"></script>
+<script src="jquery.validationEngine-zh-CN.js" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/js/languages/jquery.validationEngine-zh-CN.js"></script>
+<script src="jquery.validationEngine.min.js" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/js/jquery.validationEngine.min.js"></script>
+<script>
+jQuery(document).ready(function(){
+  // binds form submission and fields to the validation engine
+  jQuery('#formID').validationEngine();
+});
+</script>
+
+<div style="display:none;">
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cdiv id='cnzz_stat_icon_5076009' style='display:none;'%3E%3C/div%3E%3Cscript src='" + cnzz_protocol + "s25.cnzz.com/stat.php%3Fid%3D5076009' type='text/javascript'%3E%3C/script%3E"));</script>
+</div></body>
+</html>

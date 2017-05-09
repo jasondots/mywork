@@ -1,0 +1,80 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>checkbox全选</title>
+</head>
+
+<body>
+<input type="checkbox" id="btn" >全选
+
+<div id="box">
+	<input type="checkbox" >
+	<input type="checkbox" >
+	<input type="checkbox" >
+</div>
+
+
+
+</body>
+</html>
+<script src="jquery-1.11.3.min.js"></script>
+
+<script>
+
+$('#btn').click(function(){
+	var this_checked=$(this).prop('checked');//读取自己的属性
+	$('#box input').prop('checked',this_checked);//赋值属性
+	this_checked==true ? n=$('#box input').length :n=0;
+});
+
+var n=0;
+$('#box input').click(function(){
+	$(this).prop('checked')==true ?	n++:n--;
+	$('#btn').prop("checked", n==$('#box input').length? true :false);
+});
+
+
+
+
+
+/*// text radio button  password submit file  checkbox  image  hidden  reset
+var chkAll=document.getElementById('btn');
+var oBox=document.getElementById('box');
+var inputs=oBox.getElementsByTagName('input');
+
+
+//点击全选  三个都被选中
+chkAll.onclick=function(){
+	for(var i=0; i<inputs.length; i++){
+		inputs[i].checked=this.checked;
+	};
+	this.checked ? n=inputs.length :n=0;
+	//console.log(n);
+};
+
+//------------------------------------------------
+	//点击下面三个，如果三个都被选中，全选也被选中 如果有一个没选中，全选也不选中
+	
+	var n=0;
+	
+	for( var j=0; j<inputs.length;j++){
+		
+		inputs[j].onclick=function(){
+			//如果三个都选上
+			if(this.checked){
+				n++;
+			}else{
+				n--;
+			};
+			console.log(n);
+			
+			//n==inputs.length ? chkAll.checked=true :chkAll.checked=false;
+			//判断n
+			chkAll.checked=  n==inputs.length? true :false;
+			
+		};
+	}
+*/
+</script>
+

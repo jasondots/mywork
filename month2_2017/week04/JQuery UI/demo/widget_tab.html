@@ -1,0 +1,89 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>tabs widget</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+<link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css">
+
+<style>
+*{ margin:0; padding:0}
+ul{ list-style:none}
+a{ text-decoration:none}
+.hide{ display:none;}
+.wrap{ width:500px; margin:50px}
+</style>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+
+<script>
+$(function(){
+	var i=0;
+	var timer;
+	var tabs = $( "#tab1" ).tabs({
+		//active:2,//默认显示第2个
+		//event: "mouseover",
+		create: function( event, ui ) {
+			function autoRun(){
+				timer=setInterval(function(){
+					i++;
+					if(i>3) i=0;
+					$( "#tab1" ).tabs({active:i});
+				},1000);
+			};
+			autoRun();
+			$( "#tab1" ).mouseenter(function(){
+				clearInterval(timer)
+			});
+			$( "#tab1" ).mouseleave(function(){
+				autoRun();
+			});
+		},
+		activate:function(){
+			var active = $( "#tab1" ).tabs( "option", "active" );
+			i=active;
+		},
+		
+	});
+	
+	//重新排序
+    /*tabs.find( ".ui-tabs-nav" ).sortable({
+      axis: "x",
+      stop: function() {
+        tabs.tabs( "refresh" );
+      }
+    });*/
+
+
+});
+
+</script>
+</head>
+
+<body>
+<div class="wrap">
+    <div id="tab1" class="tab">
+        <ul>
+            <li><a href="#tabs-1">itemA</a></li>
+            <li><a href="#tabs-2">itemB</a></li>
+            <li><a href="#tabs-3">itemC</a></li>
+            <li><a href="#tabs-4">itemD</a></li>
+        </ul>
+        <div id="tabs-1">火星时代教育是中国艺术教育高端品牌，设有多个热门专业(UI设计、游戏设计、室内设计、影视特效、程序开发、数字艺术学。
+        </div>
+        <div id="tabs-2">火星时代教育是中国艺术教育高端品牌，设有多个热门专业(UI设计、游戏设计、室内设计、影视特效、程序开发、数字艺术学历)等 ，多年来一直与国内外各大企业联合实训。
+        </div>
+        <div id="tabs-3">火星时代教育是中国艺术教育高端品牌。
+        </div>
+        <div id="tabs-4">火星时代教育是中国艺术教育高端品牌，设有多个热门专业(UI设计、游戏设计、室内设计、影视特效、程序开发、数字艺术学历)等 ，多年来一直与国内外各大企业联合实训，公司CEO携总监亲自授课，配备业界优秀师资，项目实训案例实时更新，每年为业界输送大量专业人才。
+        </div>
+       
+   </div>
+    
+
+
+
+
+
+</body>
+</html>

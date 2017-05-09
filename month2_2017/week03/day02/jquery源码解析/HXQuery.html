@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0}
+.box{ width:200px; height:200px; background:red; margin-bottom:10px}
+</style>
+
+<script src="HXQuery.js"></script>
+
+<script>
+
+
+$(function(){
+
+	$("div").click(function(){
+		$(this).html("sdfsdfsdfsfs");
+		$(this).animate({"width":500});
+	});
+	
+	$(".box").hover(
+		function(){
+			$(this).height(300);
+		},
+		
+		function(){
+			$(this).height(200)
+		}
+	
+	
+	);
+
+
+})
+
+
+
+
+</script>
+
+
+</head>
+
+<body>
+<div id="box1" class="box"></div>
+<div id="box2" class="box"></div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+Blind		消失
+
+bounce 		反弹
+
+clip		削减
+
+drop		落下
+
+explode		爆炸
+
+fade		淡出
+
+fold		折叠
+
+highlight	高亮
+
+puff		膨胀
+
+pulsate		跳动
+
+scale		比例
+
+shake		摇动
+
+size		尺寸
+
+slide		滑动
+
+transfer	转移

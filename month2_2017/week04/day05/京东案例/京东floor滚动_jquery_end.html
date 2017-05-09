@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>京东floor滚动</title>
+<style>
+*{ margin:0; padding:0}
+ul{ list-style:none}
+.LocationFloorList{ position:fixed; top:100px; left:50%; margin-left:-520px; display:none}
+.LocationFloorList li{ height:30px; line-height:30px; width:30px; font-size:12px; text-align:center; border-bottom:1px dashed #ccc; cursor:pointer;}
+.LocationFloorList li b{ font-weight:normal}
+.LocationFloorList li span{ display:none; font-size:12px;}
+.LocationFloorList li.ac{ color:#fff; background:red}
+.LocationFloorList li.ac b{ display:none;}
+.LocationFloorList li.ac span{ display:inline}
+
+.main{ width:960px; margin:0 auto;}
+.floor{ margin-bottom:20px; height:600px;}
+.floor h3{ background:#333; height:30px; line-height:30px; text-indent:1em; color:#fff; font-size:20px}
+.floor h3.ac{ background:red}
+.floorA{ background:#ccc;}
+.floorB{ background:#eee;}
+.floorC{ background:#ddd;}
+.floorD{ background:#bbb;}
+.floorE{ background:#aaa;}
+.floorF{ background:#ccc;}
+</style>
+<script src="jquery-1.11.3.min.js"></script>
+<script>
+$(function(){
+	
+	//初始滚动
+	function init(){
+		$(window).scroll(function(){
+			var scrollTop=$(window).scrollTop();
+			scrollTop>300 ? $('.LocationFloorList').show():$('.LocationFloorList').hide();
+			
+			$('.floor').each(function(index, element) {
+				var t=$(this).offset().top-$(window).scrollTop();
+				var index=$(this).index();
+				if(t<200){
+					$('.LocationFloorList li').removeClass('ac').eq(index).addClass('ac');
+				};
+			});
+		});
+	};
+	init();
+	
+	
+	//点击滚动到对应楼层
+	$('.LocationFloorList li').click(function(){
+		var index=$(this).index();
+		var top=$('.floor:eq('+index+')').offset().top;//对应楼层的top
+		$(window).unbind('scroll');
+		
+		$('body,html').animate({'scrollTop':top},1000,function(){
+			init();
+			var scrollTop=$(window).scrollTop();
+			scrollTop>300 ? $('.LocationFloorList').show():$('.LocationFloorList').hide();
+			$('.LocationFloorList li').removeClass('ac').eq(index).addClass('ac');
+		})
+	});
+
+});
+
+
+
+</script>
+
+
+
+</head>
+
+<body>
+<div class="main">
+	<div class="floor floorA"><h3>1服装</h3></div>
+    <div class="floor floorB"><h3>2电器</h3></div>
+    <div class="floor floorC"><h3>3手机</h3></div>
+    <div class="floor floorD"><h3>4美妆</h3></div>
+    <div class="floor floorE"><h3>5运动</h3></div>
+    <div class="floor floorF"><h3>6汽车</h3></div>
+    <div class="floor floorA"><h3>7玩具</h3></div>
+    <div class="floor floorB"><h3>8食品</h3></div>
+    <div class="floor floorC"><h3>9家具</h3></div>
+    <div class="floor floorD"><h3>10游戏</h3></div>
+    <div class="floor floorE"><h3>11图书</h3></div>
+    <div class="floor floorF"><h3>12手表</h3></div>
+</div>
+
+<ul class="LocationFloorList">
+	<li class="ac"><b>1F</b><span>服装</span></li>
+    <li><b>2F</b><span>电器</span></li>
+    <li><b>3F</b><span>手机</span></li>
+    <li><b>4F</b><span>美妆</span></li>
+    <li><b>5F</b><span>运动</span></li>
+    <li><b>6F</b><span>汽车</span></li>
+    <li><b>7F</b><span>玩具</span></li>
+    <li><b>8F</b><span>食品</span></li>
+    <li><b>9F</b><span>家具</span></li>
+    <li><b>10F</b><span>游戏</span></li>
+    <li><b>11F</b><span>图书</span></li>
+    <li><b>12F</b><span>手表</span></li>
+</ul>
+
+</body>
+</html>

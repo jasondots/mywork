@@ -1,0 +1,155 @@
+﻿<!doctype html>
+<html>
+<head>
+<title>手风琴</title>
+<link href="CSS/mainCSS.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/jQuery.iAccordion.js"></script>
+<script type="text/javascript" src="js/jQuery.easing.min.js"></script>
+<script>
+$(function(){
+	/*手风琴*/
+	$('.iaccordion').iAccordion({
+		Select:'.item',
+		Interval:1000,
+		Easing:'easeOutElastic'
+	});
+});	
+
+</script>
+</head>
+
+<body>
+<div class="wrap">
+<!-------------------------------------------------------------------->	
+    <div id="lesson">
+        <ul class="iaccordion">
+        	<li class="item">
+            	<h6>第一天</h6>
+            	<div>
+                	<p><strong>上午：</strong></p>
+                    <p>WEB前端主要包含的技术（结构、表现、行为）</p>
+                    <p>W3C标准简介、常用工具简介、Dreamweaver基本使用方法</p>
+                    <p>HTML基本结构、语义化</p>
+                    <p>标签结构化，详解常用块元素、行内块元素、行内元素</p>
+                    <p><strong>下午：</strong></p>
+                    <p>CSS与HTML的关系，CSS书写、保存、命名规范</p>
+                    <p>CSS选择器、CSS迭代、权重</p>
+                    <p>CSS设置-----文本（字体、大小、颜色、行距、字距、缩进、对齐等）</p>
+                    <p>详解盒子模型</p>
+                    <p>盒子内容溢出与滚动条</p>
+                    <p>边框（颜色、边框样式、粗细）</p>
+                </div>
+            </li>
+            <li class="item">
+            	<h6>第二天</h6>
+                <div>
+                	<p><strong>上午：</strong></p>
+                    <p>详解Float（浮动）</p>
+                    <p>详解表单（文本框、单选、多选、按钮等）</p>
+                    <p>表单的行内块元素特性 </p>
+                    <p>CSS修饰表单</p>
+                    <p>详解表格（表格的合理应用） </p>
+                    <p><strong>下午：</strong></p>
+                    <p>a标签(伪类)、Img标签、Iframe标签、Framset标签</p>
+                    <p>CSS绝对定位</p>
+                    <p>CSS相对定位 </p>
+                    <p>定位的z-index层级关系 </p>
+                </div>
+            
+            </li>
+            <li class="item">
+            	<h6>第三天</h6>
+            	<div>
+                    <p><strong>上午：</strong></p>
+                    <p>CSS背景：</p>
+                    <p>网页图片格式、网页分辨率</p>
+                    <p>CSS背景与图片的使用规范</p>
+                    <p>CSS sprite图片原理</p>
+                    <p>Sprite图片制作与使用技巧 </p>
+                    <p><strong>下午：</strong> </p>
+                    <p>Photoshop强化：</p>
+                    <p>ps常用工具</p>
+                    <p>ps图层、通道、路径、滤镜</p>
+                    <p>ps图层样式、色板</p>
+                    <p>960布局、网页切片与图片制作技巧</p>
+                </div>
+            </li>
+            <li class="item">
+            	<h6>第四天</h6>
+                <div>
+                	<p><strong>上午：</strong></p>
+                    <p>CSS简写、优化与编写技巧</p>
+                    <p>CSS基本框架</p>
+                    <p>浏览器兼容性与CSS的基本hack技术</p>
+                    <p>详解IE兼容性</p>
+                    <p>网页调试工具</p>
+                    <p><strong>下午：</strong></p>
+                    <p>分析UI设计图，构建网页结构 </p>
+                    <p>复杂页面切片分析</p>
+                    <p>制作网页用切片</p>
+                    </div>
+            <li class="item">
+            	<h6>第五天</h6>
+            	<div>
+                	<p><strong>上午：</strong></p>
+                    <p>Javascript基础 A：</p>
+                    <p>基本语法 </p>
+                    <p>逻辑运算</p>
+                    <p>控制CSS样式</p>
+                    <p>DOM结构、方法</p>
+                    <p><strong>下午：</strong></p>
+                    <p>Javascript基础 B：</p>
+                    <p>函数</p>
+                    <p>事件</p>
+                    <p>基本动画</p>
+                    <p>面向对象</p>
+                    
+                </div>
+            <li class="item">
+            	<h6>第六天</h6>
+            	<div>
+                	<p><strong>上午：</strong></p>
+                    <p>Javascript与jQuery</p>
+                    <p>jQuery基本选择器</p>
+                    <p>jQuery筛选、过滤、查找</p>
+                    <p>jQuery 操作属性</p>
+                    <p>jQuery 操作CSS</p>
+                    <p><strong>下午：</strong></p>
+                    <p>详解jQuery常用事件 </p>
+                    <p>详解jQuery文档处理 </p>
+                </div>
+            </li>
+            </li>
+            <li class="item">
+            	<h6>第七天</h6>
+            	<div>
+                	<p><strong>上午：</strong></p>
+                    <p>JQuery基本动画应用 </p>
+                    <p>jQuery自定义动画 </p>
+                    <p><strong>下午：</strong> </p>
+                    <p>编写jQuery插件</p>
+                    <p>第三方插件的解读与应用 </p>
+                    <p>实战JQuery插件移植 </p>
+                </div>
+            </li>
+            </li>
+            <li class="item">
+            	<h6>第八天</h6>
+                <div>
+                	<p><strong>上午：</strong></p>
+                    <p>JQuery常用交互案例：</p>
+                    <p>轮播图、复选框、隔行变色、下拉菜单、悬浮框等</p>
+                    <p><strong>下午：</strong></p>
+                    <p>整体网站布局设计 </p>
+                    <p>CSS模块化设计 </p>
+                    <p>团队协同开发</p>
+                    <p>大型商业网站布局</p>
+                    <p>前端开发规范书 </p>
+                    <p>常用开发工具简介（SVN、Bugfree）</p>
+                </div>
+            </li>
+    	</ul>
+    </div>
+</body>
+</html>

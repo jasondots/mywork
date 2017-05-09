@@ -1,0 +1,16 @@
+@charset "utf-8";
+/* CSS Document */
+*{ margin:0; padding:0}
+ul {list-style:none}
+.wrap{ width:300px;}
+.years{ margin-left:100px; border-left:3px solid #99DCF4;padding-bottom:50px;}
+.years h3{ border-radius:50%; height:60px; line-height:60px; text-align:center; width:60px; background:#42B4D7; position:relative; top:20px; left:-35px; margin-bottom:50px; color:#fff; border:5px solid #fff }
+.years h4{position:relative; top:20px; left:-26px; margin-bottom:50px;height:40px; line-height:40px; text-align:center; width:40px; background:#89E9E5;border-radius:50%; color:#fff; border:5px solid #fff}
+.years .month dl{ position:relative; margin-top:20px; margin-left:20px;}
+.years .month dl dt{ position:absolute; left:-60px; top:10px}
+.years .month dl dt i{ position:absolute; top:0; left:29px; width:15px; height:15px; background:#34ADF0;border-radius:50%; border:2px solid #fff }
+.years .month dl dd{ padding:10px; background:#ddd; border-radius:5px;}
+.years .month dl dd p{ overflow:hidden; padding:10px}
+.years .month dl dd p img{ width:50px; float:left; margin-right:10px; margin-bottom:10px}
+
+

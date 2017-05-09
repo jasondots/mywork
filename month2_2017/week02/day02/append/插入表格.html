@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+table{ border:1px solid #333; border-collapse:collapse}
+td{ border:1px solid #333; padding:10px}
+</style>
+
+<script src="jquery-1.11.3.min.js"></script>
+<script>
+
+var arr=['张三','李四','王五','赵六','小明','小红','小强','小王','小彤','小李']	
+
+$(function(){
+	var table=$('<table>');
+	for(var i=0; i<5; i++){
+		var tr=$('<tr>');
+		for(var j=0; j<10;j++){
+			var td=$('<td>');
+			td.html(arr[j]);
+			tr.append(td);
+		}
+		table.append(tr);
+	};
+	$('body').append(table);
+})
+
+
+
+
+/*
+window.onload=function(){
+	var table=document.createElement('table');
+	for(var i=0; i<5; i++){
+		var tr=document.createElement('tr');
+		for(var j=0; j<10;j++){
+			var td=document.createElement('td');
+			td.innerHTML=arr[j];
+			tr.appendChild(td);
+		}
+		table.appendChild(tr);
+	};
+	document.body.appendChild(table);
+}
+*/
+
+</script>
+</head>
+
+<body>
+</body>
+</html>

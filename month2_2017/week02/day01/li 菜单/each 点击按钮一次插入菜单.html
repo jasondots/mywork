@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{  margin:0; padding:0}
+ul{ list-style:none}
+li{ width:200px; height:40px; line-height:40px; background:red; margin-bottom:20px; color:#fff; padding-left:20px;}
+button{height:30px; padding:0 20px; border:none}
+</style>
+
+</head>
+
+<body>
+<ul>
+	<li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<button type="button">插入菜品</button>
+
+</body>
+</html>
+<script src="jquery-1.11.3.min.js"></script>
+<script>
+	var arr=['鱼香肉丝','宫保鸡丁','糖醋鲤鱼','红烧肉','尖椒肉丝','麻辣鸡丝','葱爆羊肉'];
+	$('button').click(function(){
+		
+		/*var aLi=$('li');
+		for(var i=0;i<aLi.length; i++){
+			$(aLi[i]).html(arr[i]);
+		};*/
+		
+		
+		for(var i=0;i<$('li').length; i++){
+			$('li:eq('+i+')').html(arr[i]);
+		};
+		
+		
+		/*$('li').each(function(index, element) {
+			$(this).html(arr[index]);
+		});
+		*/
+	});
+
+
+</script>

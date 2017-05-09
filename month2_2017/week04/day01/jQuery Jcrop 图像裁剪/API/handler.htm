@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery Jcrop 图像裁剪 &raquo; 事件处理 &raquo; 在线演示 - 前端开发仓库</title>
+<link rel="stylesheet" href="base.css" tppabs="http://code.ciaoca.com/static/css/base.css">
+<link rel="stylesheet" href="demo.css" tppabs="http://code.ciaoca.com/static/css/demo.css"><link rel="stylesheet" href="layout.css" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/css/layout.css">
+<link rel="stylesheet" href="jquery.Jcrop.css" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/css/jquery.Jcrop.css">
+</head>
+<body>
+<div class="wrap">
+  <div class="side">
+    <div class="logo">
+  <a href="javascript:if(confirm(%27http://code.ciaoca.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://code.ciaoca.com/%27" tppabs="http://code.ciaoca.com/" target="_blank">前端开发仓库</a>
+  <em>在线演示</em>
+</div>    <dl class="about"><dt>关于</dt><dd><a target="_blank" href="javascript:if(confirm(%27http://deepliquid.com/content/Jcrop.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://deepliquid.com/content/Jcrop.html%27" tppabs="http://deepliquid.com/content/Jcrop.html">作者</a></dd><dd><a target="_blank" href="javascript:if(confirm(%27https://github.com/tapmodo/Jcrop  \n\nThis file was not retrieved by Teleport Pro, because it is addressed using an unsupported protocol (e.g., gopher).  \n\nDo you want to open it from the server?%27))window.location=%27https://github.com/tapmodo/Jcrop%27" tppabs="https://github.com/tapmodo/Jcrop">Github</a></dd><dd><a target="_blank" href="javascript:if(confirm(%27http://code.ciaoca.com/jquery/jcrop/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://code.ciaoca.com/jquery/jcrop/%27" tppabs="http://code.ciaoca.com/jquery/jcrop/">中文文档</a></dd></dl>    <div id="nav" class="nav">
+  <dl>
+    <dt>示例</dt>
+    <dd><a href="index.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/" title="基础示例">hello world</a></dd>
+    <dd><a href="handler.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/handler" title="事件处理">basic handler</a></dd>
+    <dd><a href="preview.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/preview" title="按高宽比例预览裁剪效果">aspect ratio with preview pane</a></dd>
+    <dd><a href="animation.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/animation" title="动画、过度效果">Animation / Transitions</a></dd>
+    <dd><a href="api.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/api" title="api 接口">api interface</a></dd>
+    <dd><a href="styling.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/styling" title="css 样式">styling example</a></dd>
+    <dd><a href="non-image.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/non-image" title="非图片裁剪">non-image elements</a></dd>
+  </dl>
+  <dl>
+    <dt>配合后端语言</dt>
+    <dd><a href="crop.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/crop" title="PHP 裁剪示例">PHP cropping demo</a></dd>
+  </dl>
+</div>  </div>
+  <div class="main">
+    <div class="inwrap">
+      <h1>jQuery Jcrop 图像裁剪</h1>
+      <h2>事件处理</h2>
+      
+      <div class="detail">
+        <p>一个基本事件处理的示例</p>
+        <p>这个示例里，我们使用 Jcrop 的 <code>onChange</code> 事件，实时更新在图像上裁剪的一些数值，这些数值可提供给服务端程序（例如：PHP）进行真实的裁剪。</p>
+        <p>将 Jcrop 集成到表单中是多么的容易！</p>
+      </div>
+
+      <div class="example">
+        <!-- This is the image we're attaching Jcrop to -->
+        <img src="sago.jpg" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/demo_files/sago.jpg" id="target" alt="[Jcrop Example]">
+      </div>
+  
+      <div class="example">
+        <!-- This is the form that our event handler fills -->
+        <form id="coords" class="coords" onsubmit="return false;" action="http://example.com/post.php">
+          <label>X1 <input type="text" class="input" size="6" id="x1" name="x1" /></label>
+          <label>Y1 <input type="text" class="input" size="6" id="y1" name="y1" /></label>
+          <label>X2 <input type="text" class="input" size="6" id="x2" name="x2" /></label>
+          <label>Y2 <input type="text" class="input" size="6" id="y2" name="y2" /></label>
+          <label>W <input type="text" class="input" size="6" id="w" name="w" /></label>
+          <label>H <input type="text" class="input" size="6" id="h" name="h" /></label>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<script src="highlight.pack.js" tppabs="http://code.ciaoca.com/static/js/highlight/highlight.pack.js"></script>
+<script src="demo.js" tppabs="http://code.ciaoca.com/static/js/controller/demo.js"></script><script src="jquery-1.5.2.min.js" tppabs="http://code.ciaoca.com/static/js/jquery/jquery-1.5.2.min.js"></script>
+<script src="jquery.Jcrop.min.js" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/js/jquery.Jcrop.min.js"></script>
+<script>
+jQuery(function($){
+  var jcrop_api;
+  
+  $('#target').Jcrop({
+    onChange: showCoords,
+    onSelect: showCoords,
+    onRelease: clearCoords
+  }, function(){
+    jcrop_api = this;
+  });
+  
+  $('#coords').on('change','input',function(e){
+    var x1 = $('#x1').val(),
+    x2 = $('#x2').val(),
+    y1 = $('#y1').val(),
+    y2 = $('#y2').val();
+
+    jcrop_api.setSelect([x1, y1, x2, y2]);
+  });
+});
+  
+// Simple event handler, called from onChange and onSelect
+// event handlers, as per the Jcrop invocation above
+function showCoords(c){
+  $('#x1').val(c.x);
+  $('#y1').val(c.y);
+  $('#x2').val(c.x2);
+  $('#y2').val(c.y2);
+  $('#w').val(c.w);
+  $('#h').val(c.h);
+};
+  
+function clearCoords(){
+  $('#coords input').val('');
+};
+</script>
+
+<div style="display:none;">
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cdiv id='cnzz_stat_icon_5076009' style='display:none;'%3E%3C/div%3E%3Cscript src='" + cnzz_protocol + "s25.cnzz.com/stat.php%3Fid%3D5076009' type='text/javascript'%3E%3C/script%3E"));</script>
+</div></body>
+</html>

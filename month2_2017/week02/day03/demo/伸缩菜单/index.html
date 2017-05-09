@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link href="base.css" rel="stylesheet" type="text/css">
+<script src="jquery-1.11.3.min.js"></script>
+<script>
+$(function(){
+
+	$('.setupMenu .subMenu .ac').parents('ul').show().prev('a').addClass('close');
+	
+	$(".setupMenu li:has('.subMenu')").children('a').click(function(){
+		$(this).toggleClass('close').next('ul').stop().slideToggle();
+		$(this).parent('li').siblings().children('a').removeClass('close');
+		$(this).parent('li').siblings().children('.subMenu').slideUp();
+	});
+
+
+
+});
+
+
+</script>
+
+
+</head>
+
+<body>
+<div class="item l_asideMenu">
+    <ul class="setupMenu">
+        <li><a class="lisA" href="javascript:;"><i></i>学校设置</a>
+            <ul class="subMenu hide">
+                <li><a class="ac" href="#">资料设置</a></li>
+                <li><a href="#">密码管理</a></li>
+                <li><a href="#">邮箱管理</a></li>
+                <li><a href="#">账号绑定</a></li>
+                <li><a href="#">邀请好友</a></li>
+            </ul>
+        </li>
+        <li><a class="lisB" href="javascript:;"><i></i>学习中心</a>
+            <ul class="subMenu hide">
+                <li><a href="#">模板管理</a></li>
+                <li><a href="#">新建课程模板</a></li>
+                <li><a href="#">创建虚报课程模板</a></li>
+                <li><a href="#">班级管理</a></li>
+                <li><a href="#">新建班级</a></li>
+                <li><a href="#">创建完成的班级</a></li>
+                <li><a href="#">创建视频课（已结课班）</a></li>
+                <li><a href="#">创建点播课程</a></li>
+                <li><a href="#">创建学霸讲堂</a></li>
+                <li><a href="#">试卷管理</a></li>
+                <li><a href="#">资料管理</a></li>
+                <li><a href="#">新建资料</a></li>
+            </ul>
+        </li>
+        <li><a class="lisC" href="javascript:;"><i></i>销售记录</a>
+            <ul class="subMenu hide">
+                <li><a href="#">销售记录</a></li>
+                <li><a href="#">讲课记录</a></li>
+                <li><a href="#">调课记录</a></li>
+                <li><a href="#">退课记录</a></li>
+                <li><a href="#">换老师记录</a></li>
+                <li><a href="#">学生续保申请</a></li>
+            </ul>
+        </li>
+        <li><a class="lisD" href="javascript:;"><i></i>财务管理</a>
+            <ul class="subMenu hide">
+                <li><a href="#">收人记录</a></li>
+                <li><a href="#">台时费管理</a></li>
+                <li><a href="#">信用盾管理</a></li>
+                <li><a href="#">工资管理</a></li>
+            </ul>
+        </li>
+        <li><a class="lisE" href="javascript:;"><i></i>广告位管理</a>
+            <ul class="subMenu hide">
+                <li><a href="#">广告位使用记录</a></li>
+            </ul>
+        </li>
+        <li><a class="lisF" href="javascript:;"><i></i>人员管理</a>
+            <ul class="subMenu hide">
+                <li><a href="#">师资管理</a></li>
+                <li><a href="#">学生管理</a></li>
+            </ul>
+        </li>
+        <li><a class="lisG" href="javascript:;"><i></i>私信管理</a>
+            <ul class="subMenu hide">
+                <li><a href="#">对话列表</a></li>
+                <li><a href="#">对话详情</a></li>
+            </ul>
+        </li>
+        <li><a class="lisH" href="javascript:;"><i></i>评论管理</a>
+            <ul class="subMenu hide">
+                <li><a href="#">我收到的评论</a></li>
+                <li><a href="#">我发表的评论</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>

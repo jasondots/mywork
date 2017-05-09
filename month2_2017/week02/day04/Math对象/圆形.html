@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0}
+div{ position:absolute; height:20px; width:20px;; background:red;border-radius:50%; }
+#center{top:500px; left:500px}
+
+</style>
+</head>
+
+<body>
+<div id="center"></div>
+
+
+</body>
+</html>
+
+<script>
+var cX=300;
+var cY=300;
+
+var oDiv1=document.getElementById('center');
+
+oDiv1.style.left=cX+'px';
+oDiv1.style.top=cY+'px';
+
+var arc=2*Math.PI/360;
+
+	/*
+	//半径200
+	var t=Math.sin(arc*60)*200;//Y方向  sin取的是对边
+	var l=Math.cos(arc*60)*200;//X方向  cos取临边
+	oDiv2.style.left=cX+l+'px';
+	oDiv2.style.top=cY-t+'px';
+	*/
+
+
+
+for(var i=0; i<12; i++){
+	var oDiv2=document.createElement('div');
+	document.body.appendChild(oDiv2);
+	//半径200
+	var t=Math.sin(arc*30*i)*200;//Y方向  sin取的是对边
+	var l=Math.cos(arc*30*i)*200;//X方向  cos取临边
+	oDiv2.style.left=cX+l+'px';
+	oDiv2.style.top=cY+t+'px';
+};
+
+
+var oDiv3=document.createElement('div');
+oDiv3.style.background="green";
+document.body.appendChild(oDiv3);
+
+var j=-90;
+setInterval(function(){
+	var t=Math.sin(arc*j)*160;//Y方向  sin取的是对边
+	var l=Math.cos(arc*j)*160;//X方向  cos取临边
+	oDiv3.style.left=cX+l+'px';
+	oDiv3.style.top=cY+t+'px';
+	j+=6;
+	if(j==276) j=-84;
+	console.log(j)
+
+},500)
+
+
+
+
+
+
+
+
+
+</script>

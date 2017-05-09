@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0}
+ul{ list-style:none}
+table,th,td{ border: 1px solid #ccc; border-collapse:collapse}
+
+.wrap{ width:500px;font-size:14px; margin:50px auto}
+.countTxt{ display:block; text-align:right; padding-bottom:10px;}
+.countTxt em{ font-size: 16px; font-weight: bold; font-style: normal; padding: 0 5px}
+.countTxt .red{ color: red;}
+textarea{ padding:10px; display:block; width:480px; resize:none; height:100px; border:1px solid #ccc; font-size:14px}
+.commonBtn{ height:40px; width:100px; border:1px solid #ccc; margin:10px 0 0 380px}
+hr{ margin:20px 0}
+.talkList li{ border:1px solid #ccc; padding:25px 20px 20px; border-radius:10px; position:relative; margin-bottom:20px}
+.talkList li p{margin-bottom:10px; word-break:break-all}
+.talkList li .toolsBar{ text-align:right}
+.talkList li .toolsBar span{ margin-left:20px; cursor:pointer}
+.talkList li time{ position:absolute; top:10px; right:15px; color:#ccc;}
+</style>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script  src="js/ueditor.config.js"></script>
+<script  src="js/editor_api.js"></script>
+
+<script>
+
+$(function(){
+	
+	var editor=UE.getEditor('myEditor');
+	
+	//------------------------------------------------------------------------
+	
+	$('.commonBtn').click(function(){
+		var txtVal=editor.getContent();
+		
+		if(txtVal!=""){
+			var oDate=new Date();
+			var time=oDate.getFullYear()+'-'+(oDate.getMonth()+1)+'-'+oDate.getDate();
+			var html='<li><p>'+txtVal+'</p>'+
+				'<div class="toolsBar" onselectstart="return false" style="-moz-user-select:none">'+
+					'<span class="ding">顶 <b>0</b></span>'+
+					'<span class="cai">踩 <b>0</b></span>'+
+				'</div>'+
+				'<time>'+time+'</time></li>';
+			
+			var has_child=$('.talkList li').length;//是否有子元素
+			
+			//如果有子元素，插入在最前面
+			has_child==0 ? $('.talkList').append(html):$('.talkList').prepend(html);
+		};
+		
+		editor.setContent('');
+		
+	});
+	
+	//----------------------------------------------------------------
+	//事件委派 顶 踩
+	$('.talkList').on('click','.ding,.cai',function(){
+		var oEm=$(this).children('b');
+		switch( $(this).prop('class') ){
+			case "ding":
+				var num=parseInt(oEm.text());
+				oEm.text(num+1);
+			break;
+			case "cai":
+			oEm.text(oEm.text()-0+1); //隐性转换类型
+			break;
+		}
+	});
+
+
+});
+
+
+</script>
+</head>
+
+<body>
+<div class="wrap">
+    <form>
+        <textarea id="myEditor"></textarea>
+        <button class="commonBtn" type="button">发表说说</button>
+    </form>
+    <hr>
+    <ul class="talkList">
+        <!--<li>
+            <p>adsfa asdf asdf asdf</p>
+            <div class="toolsBar">
+                <span>顶 <b>0</b></span>
+                <span>踩 <b>0</b></span>
+            </div>
+            <time></time>
+        </li>-->
+    
+    </ul>
+
+</div>
+
+
+
+</body>
+</html>

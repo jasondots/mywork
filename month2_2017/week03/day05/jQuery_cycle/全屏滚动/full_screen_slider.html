@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>全屏slider</title>
+<style>
+*{ margin:0;  padding:0; list-style:none}
+a{ text-decoration:none}
+.sliderWrap{height:700px; overflow:hidden; position:relative}
+.sliderWrap ul{ height:700px; left:50%; width:1920px; margin-left:-960px; position:relative; left:50%; z-index:1}
+.sliderWrap ul li img{ display:block}
+.sliderWrap .prevBtn{ height:80px; width:30px; background:#ccc; position:absolute; left:10%; top:50%; margin-top:-40px; z-index:10}
+.sliderWrap .nextBtn{ height:80px; width:30px;background:#ccc; position:absolute; right:10% ;top:50%; margin-top:-40px; z-index:10}
+.sliderWrap .sliderBtn{ text-align:center; position:relative; bottom:10%; z-index:10;}
+.sliderWrap .sliderBtn a{ display:inline-block;height:20px; margin:0 10px; width:20px; border:1px solid #222;  text-align:center}
+.sliderWrap .sliderBtn .activeSlide{ background:red; color:#fff}
+
+</style>
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/jQuery_cycle.js"></script>
+<script type="text/javascript" src="js/jquery.easing.min.js"></script>
+<script>
+$(function(){
+	$('.slider').cycle({ 
+		fx:'scrollLeft',
+		speed:1000,
+		timeout:4000,
+		prev:".prevBtn",
+		next:".nextBtn",
+		pager:".sliderBtn",
+		showSlideNum:true,
+		//easing:"easeOutBack",
+		after:function(){
+			console.log("轮播回调")
+		}
+	});	
+
+
+})
+
+</script>
+</head>
+
+<body>
+<div class="sliderWrap">
+	<ul class="slider">
+    	<li><img src="images/banner01.png"></li>
+        <li><img src="images/banner02.png"></li>
+        <li><img src="images/banner03.png"></li>
+    </ul>
+    <span class="prevBtn">上一页</span>
+    <span class="nextBtn">下一页</span>
+    <div class="sliderBtn"></div>
+</div>
+</body>
+</html>

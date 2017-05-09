@@ -1,0 +1,308 @@
+
+知识点:
+
+●宿主--window对象
+
+● DOM 
+
+● 获取DOM对象的方法
+
+● "."点语法
+
+● DOM属性
+
+● 附录
+
+======================================================================================
+
+Window对象
+
+表示浏览器中打开的窗口（没有应用于window对象的公开标准，不过所有浏览器都支持该对象）
+
+Window 对象表示一个浏览器窗口或一个框架。
+
+在客户端 JavaScript 中，Window 对象是全局对象，所有的表达式都在当前的环境中计算。
+
+也就是说，要引用当前窗口根本不需要特殊的语法，可以把那个窗口的属性作为全局变量来使用。
+
+例如，可以只写 document，而不必写 window.document。
+
+同样，可以把当前窗口对象的方法当作函数来使用，如只写 alert()，而不必写 Window.alert()。
+
+除了上面列出的属性和方法，Window 对象还实现了核心 JavaScript 所定义的所有全局属性和方法。
+
+------------------------------------------------------------------------------------------------
+
+DOM  (document object model 文档对象模型)
+
+DOM定义了表示和修改文档所需的对象、行为和属性，以及这些对象之间的关系。
+
+DOM历史：
+
+DOM 0级：0级DOM被认为是在IE 4.0 与Netscape Navigator4.0支持的最早的DHTML（早期原始版本，所有浏览器都支持）
+
+DOM 1级：1998年，W3C 发布了第1级的 DOM 规范。这个规范允许访问和操作 HTML 页面中的每一个单独的元素（所有浏览器都支持）。
+
+DOM 2级: 对DOM 1 做了扩展（所有浏览器所有支持）
+
+DOM 3级: 对DOM l、2 做了进一步的扩展（火狐、谷歌、IE9以上浏览器支持）
+
+-----------------------------------------------------------------------------------------
+
+获取DOM对象（元素)：
+
+getElementById(id名）            通过id获取DOM对象（唯一对象）
+
+getElementsByTagName(标签)       通过标签获取DOM对象（对象集合）
+
+getElementsByName(name)          通过name获取DOM对象（对象集合）
+
+getElementsByIdClassName(class)  通过class获取DOM对象（对象集合		DOM3新增方法 IE8以下不支持）
+
+
+★注意:
+
+1. 对象集合不是单个对象，可以通过索引找到单个对象：
+
+例:
+
+var aLi=document.getElementsByTagName('li');   //aLi是一个对象集合
+
+aLi[0].onclick=function(){……}  //第一个li
+
+
+2. 对象集合的length属性是只读的
+
+------------------------------------------------------
+
+点语法
+
+js中的“.”有特别的作用，可以通过“.”语法读取对象属性
+
+例： oDiv.id  //读取oDiv.id属性
+
+---------------------------------------------------------------
+
+DOM属性
+
+style属性
+style属性包含着元素的样式，查询这个属性返回的是一个对象而不是一个简单的字符串。样式都存放在这个style对象的属性里
+
+★注意：
+style属性只能读取到标签的行内样式 (使用 window.getComputedStyle方法读取CSS样式);
+
+
+
+
+className属性
+className用于读取/设置对象的class（class作为js语言的保留字 所以用className）
+
+
+
+
+对象的offset系列属性  （offset：偏移）
+offsetWidth  宽度
+offsetHeight 高度
+offsetLeft   左    计算到有定位（position）属性的父级
+offsetTop    上    计算到有定位（position）属性的父级
+offsetParent 父级  有定位（position）属性的父级
+
+★注意：
+元素隐藏(display:none)无法读取以上属性
+
+
+
+
+innerHTML属性
+DOM对象的属性，是一个元素的内部html内容
+innerHTML很多情况下都优于document.write，其原因在于其允许更精确的控制要刷新页面的那一个部分
+
+
+
+
+表单属性：
+表单是一类特殊标签，可以通过操作表单的特有属性，完成数据提交等功能，例：
+value属性	text radio checkbox select等读取/设定值
+disabled属性	禁用元素（例如，禁用按钮）
+其他（略）
+
+
+
+其他属性：
+还可以通过 " . "语法，操作对象的其他属性，例：
+oDiv.id		id属性
+oDiv.title	标题属性
+其他（略）
+
+
+===============================================================
+
+附录:
+
+JavaScript保留字: 
+
+break	do	instanceof	typeof
+case	else	new	var
+catch	finally	return	void
+continue	for	switch	while
+debugger*	function	this	with
+default	if	throw	delete
+in	try	 
+
+ECMA-262 还描述了另外一组不能用作标识符的保留字：
+
+abstract	enum		int		short
+boolean		export		interface	static
+byte		extends		long		super
+char		final		native		synchronized
+class		float		package		throws
+const		goto		private		transient
+debugger	implements	protected	volatile
+double		import		public
+
+
+
+
+常用变量命名前缀：
+
+类型                  前缀      示例
+
+数组 array	        a	aValues
+
+布尔型	boolean         b	bFound
+
+浮点型（数字）float	f	fValue
+
+函数 function	        fn	fnMethod
+
+整型（数字）int         i	iValue
+
+对象 object             o	oType
+
+正则表达式 RegExp	re	rePattern
+
+字符串 string	        s	sValue
+
+
+
+函数命名规范：
+
+统一使用动词或者动词+名词形式 ---- fnInit()
+
+对象方法命名使用fn+对象类名+动词+名词形式   fnAnimateDoRun() 
+
+某事件响应函数命名方式为fn+触发事件对象名+事件名或者模块名  fnDivClick()
+
+
+常用的动词列表：
+
+get获取/set设置
+
+add 增加/remove 删除
+
+create 创建/destory 移除 
+
+start 启动/stop 停止
+
+open 打开/close 关闭
+
+read 读取/write 写入
+
+load 载入/save 保存
+
+create 创建/destroy 销毁
+
+begin 开始/end 结束
+
+backup 备份/restore 恢复
+
+import 导入/export 导出
+
+split 分割/merge 合并
+
+inject 注入/extract 提取
+
+attach 附着/detach 脱离
+
+bind 绑定/separate 分离
+
+view 查看/browse 浏览
+
+edit 编辑/modify 修改
+
+select 选取/mark 标记
+
+copy 复制/paste 粘贴
+
+undo 撤销/redo 重做
+
+insert 插入/delete 移除
+
+add 加入/append 添加
+
+clean 清理/clear 清除
+
+index 索引/sort 排序
+
+find 查找/search 搜索
+
+increase 增加/decrease 减少
+
+play 播放/pause 暂停
+
+launch 启动/run 运行
+
+compile 编译/execute 执行
+
+debug 调试/trace 跟踪
+
+observe 观察/listen 监听
+
+build 构建/publish 发布
+
+input 输入/output 输出
+
+encode 编码/decode 解码
+
+encrypt 加密/decrypt 解密
+
+compress 压缩/decompress 解压缩
+
+pack 打包/unpack 解包
+
+parse 解析/emit 生成
+
+connect 连接/disconnect 断开
+
+send 发送/receive 接收
+
+download 下载/upload 上传
+
+refresh 刷新/synchronize 同步
+
+update 更新/revert 复原
+
+lock 锁定/unlock 解锁
+
+check out 签出/check in 签入
+
+submit 提交/commit 交付
+
+push 推/pull 拉
+
+expand 展开/collapse 折叠
+
+begin 起始/end 结束
+
+start 开始/finish 完成
+
+enter 进入/exit 退出
+
+abort 放弃/quit 离开
+
+obsolete 废弃/depreciate 废旧
+
+collect 收集/aggregate 聚集
+
+
+

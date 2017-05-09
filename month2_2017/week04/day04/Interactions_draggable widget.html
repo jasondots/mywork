@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>draggable 拖拽</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+<link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css">
+<style>
+.box { width: 200px; height: 200px;background:red;}
+h4{ height:30px; background:#333; color:#fff;}
+
+.wrap{ width:500px; height:300px; border:1px solid #ccc; position:relative}
+
+</style>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script>
+$(function(){
+	$('#box1').draggable({ 
+		opacity: 0.35,
+		handle: "h4",
+		revert: true,//回到原位
+		cancel:'input',//阻止冒泡
+		containment: "parent", //限制范围
+	});
+	$('#box2').draggable({ 
+		containment: "parent", //限制范围
+		helper:'clone',
+		appenTo:'.wrap',
+		stop:function(){
+			$(this).appendTo('.wrap')
+		}
+	});
+	
+	
+	
+})
+</script>
+
+</head>
+<body>
+	<div id="box1" class="box">
+    	<h4>title</h4>
+        <input type="text">
+    </div>
+    <div id="box2" class="box" style="background:blue">
+    </div>
+    <div class="wrap"></div>
+   
+</body>
+</html>

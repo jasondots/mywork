@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Methods 方法</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+<link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css">
+<style>
+#box{ height:200px; width:200px; border:1px solid #000}
+</style>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script>
+$(function(){
+	//.disableSelection()禁止圈选元素内的文本内容。
+	$('#box').disableSelection(); 
+	
+	//enableSelection()恢复选取
+	$('#btn').click(function(){
+		$('#box').text('解除禁用，可以圈选文字啦！！')
+		$('#box').enableSelection(); 
+	})
+})
+</script>
+
+</head>
+<body>
+    <div id="box">文字不能圈选</div>
+    <button type="button" id="btn">解除</button>
+</body>
+</html>

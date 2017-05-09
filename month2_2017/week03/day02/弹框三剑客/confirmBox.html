@@ -1,0 +1,30 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>confirmBox</title>
+<link href="css/base.css" type="text/css" rel="stylesheet">
+<link href="css/popBox.css" type="text/css" rel="stylesheet">
+
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/hxsd_plugin.js"></script>
+<script>
+
+$(function(){
+	$('#btn').click(function(){
+		var _this=$(this);
+		$.confirmBox("确定要删除本按钮吗？",function(){
+			_this.remove();
+		});
+	});
+	
+});
+
+</script>
+</head>
+
+<body>
+<button id="btn" type="button">删除本按钮</button>
+
+</body>
+</html>

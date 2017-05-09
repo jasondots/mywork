@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>树形菜单</title>
+<style>
+*{ margin:0; padding:0}
+ul{ list-style:none}
+a{ text-decoration:none}
+li a{ display:block; height:30px;line-height:30px; font-size:14px; color:#999; padding-left:2em}
+.subMenu{ display:none; margin-left:1em}
+.hasSub>a{ display:block; background-image:url(a1.png); background-repeat:no-repeat; background-position:10px center;color:#666}
+.showSubmenu>a{ background-image:url(a2.png); background-position:11px center; background-repeat:no-repeat}
+.ac{ color:#000 !important; background-color:#efefef;}
+#objTree{ margin:100px; width:260px; padding:10px; border:1px solid #777}
+.showSubmenu>.subMenu{ display:block;}
+</style>
+
+<script src="jquery-1.11.3.min.js"></script>
+<script>
+$(function(){
+	$('li').each(function(index, element) {
+        var _this=$(this);
+		var subMenu=_this.children('ul');
+		if(subMenu.size()){
+			subMenu.addClass('subMenu');
+			_this.addClass('hasSub');
+		};
+		_this.click(function(){
+			if($(this).hasClass('hasSub')){
+				$(this).toggleClass('showSubmenu');
+			};
+			$('#objTree a').removeClass('ac');
+			$(this).children('a').addClass('ac');
+			return false;
+		
+		});
+		
+    });
+	
+	
+});
+
+
+</script>
+</head>
+
+<body>
+<div id="objTree">
+	<ul class="tree">
+        <li>
+            <a href="javascript:;"><i></i>一级菜单</a>
+            <ul>
+                <li><a href="javascript:;">二级菜单</a></li>
+                <li><a href="javascript:;">二级菜单</a></li>
+                <li><a href="javascript:;">二级菜单</a></li>
+                <li>
+                    <a href="javascript:;">二级菜单</a>
+                    <ul>
+                        <li><a href="javascript:;">三级菜单</a>
+                            <ul>
+                                <li><a href="javascript:;">四级菜单</a></li>
+                                <li><a href="javascript:;">四级菜单</a></li>
+                                <li><a href="javascript:;">四级菜单</a>
+                                    <ul>
+                                        <li><a href="javascript:;">五级菜单</a></li>
+                                        <li><a href="javascript:;">五级菜单</a></li>
+                                        <li><a href="javascript:;">五级菜单</a></li>
+                                        <li><a href="javascript:;">五级菜单</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="javascript:;">三级菜单</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="javascript:;">三级菜单</a></li>
+                        <li><a href="javascript:;">三级菜单</a></li>
+                        <li><a href="javascript:;">三级菜单</a></li>
+                    </ul>
+                
+                </li>
+                <li><a href="javascript:;">二级菜单</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;"><i></i>一级菜单</a>
+            <ul>
+                <li><a href="javascript:;">二级菜单</a></li>
+                <li><a href="javascript:;">二级菜单</a></li>
+                <li><a href="javascript:;">二级菜单</a></li>
+                <li>
+                    <a href="javascript:;">二级菜单</a>
+                    <ul>
+                        <li><a href="javascript:;">三级菜单</a></li>
+                        <li><a href="javascript:;">三级菜单</a></li>
+                        <li><a href="javascript:;">三级菜单</a></li>
+                        <li><a href="javascript:;">三级菜单</a></li>
+                    </ul>
+                
+                </li>
+                <li><a href="javascript:;">二级菜单</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;">一级菜单</a>
+            <ul>
+                <li><a href="javascript:;">二级菜单</a></li>
+                <li><a href="javascript:;">二级菜单</a></li>
+                <li><a href="javascript:;">二级菜单</a></li>
+                <li>
+                    <a href="javascript:;">二级菜单</a>
+                    <ul class="subMenu">
+                        <li><a href="javascript:;">三级菜单</a></li>
+                        <li><a href="javascript:;">三级菜单</a></li>
+                        <li><a href="javascript:;">三级菜单</a></li>
+                        <li><a href="javascript:;">三级菜单</a></li>
+                    </ul>
+                
+                </li>
+                <li><a href="javascript:;">二级菜单</a></li>
+            </ul>
+        </li>
+        <li><a href="javascript:;">一级菜单</a></li>
+    </ul>
+</div>
+</body>
+</html>

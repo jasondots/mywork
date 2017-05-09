@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Methods 方法</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+<link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css">
+<style>
+#box1{ height:200px; width:200px; border:1px solid #000}
+#box2{height:200px; width:200px; background:blue; display:none}
+</style>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script>
+$(function(){
+	//.effect()添加动画效果--------------------------------------
+	$('#box1').click(function(){
+		$(this).effect( "bounce","slow",function(){
+			alert('回调');
+		});
+	});
+	$('#btn').click(function(){
+		//$('#box2').show("fold","slow"); //如果用于显示/隐藏，效果作为参数用
+		$('#box2').toggle("fold","slow");
+	});
+	
+})
+</script>
+
+</head>
+<body>
+    <div id="box1"></div>
+    <button type="button" id="btn">显示box2</button>
+    <div id="box2"></div>
+</body>
+</html>

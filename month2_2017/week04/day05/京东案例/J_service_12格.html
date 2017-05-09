@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0}
+a{ text-decoration:none; font-size:12px}
+a:hover{ color:red}
+.service{ width:200px; height:200px; overflow:hidden; border:1px solid #ccc; margin:100px auto; position:relative}
+.service_list{ width:210px; height:200px}
+.service_list li{ list-style:none; height:80px; line-height:80px; text-align:center; width:50px; float:left; position:relative; top:0;border-top: 1px solid #e7e7e7;border-left: 1px solid #e7e7e7;border-bottom: 1px solid #e7e7e7;}
+.service_list .service_lk{ display:block; height:100%; width:100%;transition: all .15s ease-in-out;}
+.service_expand .service_frame .service_lk {transform: translate3d(0,-25px,0);}
+.service_expand .service_frame_on .service_txt{ color:red}
+.service_pop{position:relative;transition: all .2s ease-in-out;	position: absolute;left: 0;top: 210px; width: 190px;height: 185px;background-color: #fff;border:1px solid #ccc;width:199px}
+.service_pop .closeBtn{ position:absolute; top:10px; right:10px; font-size:20px; color:#e01121; text-decoration:none;}
+.service_expand .service_pop {top: 220px;transform: translate3d(0,-100%,0);}
+</style>
+<script src="jquery-1.11.3.min.js"></script>
+<script>
+$(function(){
+	var show=true;
+	$('.mod_tab_head_item').hover(
+		function(){
+			if(show){
+				$(this).addClass('service_frame_on').siblings().removeClass('service_frame_on');
+				$('.service').addClass('service_expand');
+			}
+		},
+		function(){
+			show=true;
+		}
+	);
+		
+	$('.closeBtn').click(function(){
+		$('.service').removeClass('service_expand');
+		$('.service_list li').removeClass('service_frame_on');
+		$('.service_list li:last').addClass('service_frame_on');
+		show=false;
+	});
+	
+
+})
+
+</script>
+</head>
+
+<body>
+<div id="J_service" class="service">
+    <div class="service_entry">
+        <ul class="J_tab_head service_list">
+            <li class="service_item service_frame mod_tab_head_item">
+                <a href="##" class="service_lk" >
+                	<i class="service_ico service_ico_huafei"></i>
+                    <span class="service_txt">话费</span>
+                </a>
+            </li>
+            <li class="service_item service_frame mod_tab_head_item">
+                <a  href="##" class="service_lk" >
+                    <i class="service_ico service_ico_jipiao"></i>
+                    <span class="service_txt">机票</span>
+                </a>
+            </li>
+            <li class="service_item service_frame mod_tab_head_item">
+                <a href="##" class="service_lk">
+                    <i class="service_ico service_ico_jiudian"></i>
+                    <span class="service_txt">酒店</span>
+                </a>
+            </li>
+            <li class="service_item service_frame mod_tab_head_item">
+                <a href="##" class="service_lk">
+                	<i class="service_ico service_ico_youxi"></i>
+                    <span class="service_txt">游戏</span>
+                </a>
+            </li>
+            <li class="service_item">
+                <a href="##" class="service_lk">
+                	<i class="service_ico service_ico_youxi"></i>
+                    <span class="service_txt">企业购</span>
+                </a>
+            </li>
+            <li class="service_item">
+                <a href="##" class="service_lk">
+                	<i class="service_ico service_ico_youxi"></i>
+                    <span class="service_txt">加油卡</span>
+                </a>
+            </li>
+            <li class="service_item">
+                <a href="##" class="service_lk">
+                	<i class="service_ico service_ico_youxi"></i>
+                    <span class="service_txt">电影票</span>
+                </a>
+            </li>
+            <li class="service_item">
+                <a href="##" class="service_lk">
+                	<i class="service_ico service_ico_youxi"></i>
+                    <span class="service_txt">火车票</span>
+                </a>
+            </li>
+		</ul>
+	</div>
+    <div class="J_tab_content service_pop">
+   		<a href="##" class="closeBtn">×</a>
+    </div>
+    
+</div>
+
+</body>
+</html>

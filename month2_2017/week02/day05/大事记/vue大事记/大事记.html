@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0}
+ul,ol{ list-style:none}
+
+.wrap{ width:400px}
+.year{ margin-left:100px;  border-left:5px solid #1BBBE4}
+.year h3{ width:80px; height:80px; background:#54C5ED; color:#fff; text-align:center; line-height:80px; font-size:20px; border-radius:50%; position:relative;left:-40px; margin-bottom:50px}
+.year ol h4{width:50px; height:50px; background:#67CEF3; color:#fff; text-align:center; line-height:50px; font-size:16px; border-radius:50%; position:relative;left:-31px; border:3px solid #fff; margin-bottom:50px }
+.year ol dl{ margin-left:50px; position:relative; margin-bottom:30px;}
+.year ol dl dt{ position:absolute; left:-100px}
+.year ol dl dt::after{ content:""; position:absolute; width:12px; height:12px; background:#1899E1; border-radius:50%; left:39px; border:3px solid #E1F2FB}
+.year ol dl dd{ background:#D1CBCB; padding:20px; border-radius:10px;;}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+ <div class="year" id="box">
+    	<h3>{{ year }}</h3>
+        <ol>
+        	<li v-for="mth in month_arr">
+            	<h4>{{ mth.month }}月</h4>
+                <dl v-for="key in mth.day_arr">
+                	<dt>{{ key.day }}日</dt>
+                    <dd>{{ key.cont }}</dd>
+                </dl>
+            </li>
+        </ol>
+    </div>
+</div>
+
+
+
+</body>
+</html>
+<script src="jquery-1.11.3.min.js"></script>
+<script src="vue.min.js"></script>
+<script>
+var app = new Vue({
+  el: '#box',
+  data: {
+    "year":2027,
+	"month_arr":[
+		{
+			"month":1,
+			"day_arr":[
+				{
+					"day":20,
+					"cont":"1111容内容内容内容内容内容",
+				},
+				{
+					"day":21,
+					"cont":"2222容内容内容内容内容内容",
+				},
+				{
+					"day":22,
+					"cont":"3333内容内容内容内容",
+				}
+			],
+		},
+		{
+			"month":2,
+			"day_arr":[
+				{
+					"day":20,
+					"cont":"1111容内容内容内容内容内容",
+				},
+				{
+					"day":21,
+					"cont":"2222容内容内容内容内容内容",
+				},
+				{
+					"day":22,
+					"cont":"3333内容内容内容内容",
+				}
+			],
+		},
+		{
+			"month":3,
+			"day_arr":[
+				{
+					"day":1,
+					"cont":"1111容内容内容内容内容内容",
+				},
+				{
+					"day":2,
+					"cont":"2222容内容内容内容内容内容",
+				},
+				{
+					"day":3,
+					"cont":"3333内容内容内容内容",
+				}
+			],
+		}
+	]
+  }
+  
+  
+  
+})
+
+
+
+
+
+</script>
+
+
+
+

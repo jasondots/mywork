@@ -1,0 +1,295 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery Jcrop 图像裁剪 &raquo; API 接口 &raquo; 在线演示 - 前端开发仓库</title>
+<link rel="stylesheet" href="base.css" tppabs="http://code.ciaoca.com/static/css/base.css">
+<link rel="stylesheet" href="demo.css" tppabs="http://code.ciaoca.com/static/css/demo.css"><link rel="stylesheet" href="layout.css" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/css/layout.css">
+<link rel="stylesheet" href="jquery.Jcrop.css" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/css/jquery.Jcrop.css">
+</head>
+<body>
+<div class="wrap">
+  <div class="side">
+    <div class="logo">
+  <a href="javascript:if(confirm(%27http://code.ciaoca.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://code.ciaoca.com/%27" tppabs="http://code.ciaoca.com/" target="_blank">前端开发仓库</a>
+  <em>在线演示</em>
+</div>    <dl class="about"><dt>关于</dt><dd><a target="_blank" href="javascript:if(confirm(%27http://deepliquid.com/content/Jcrop.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://deepliquid.com/content/Jcrop.html%27" tppabs="http://deepliquid.com/content/Jcrop.html">作者</a></dd><dd><a target="_blank" href="javascript:if(confirm(%27https://github.com/tapmodo/Jcrop  \n\nThis file was not retrieved by Teleport Pro, because it is addressed using an unsupported protocol (e.g., gopher).  \n\nDo you want to open it from the server?%27))window.location=%27https://github.com/tapmodo/Jcrop%27" tppabs="https://github.com/tapmodo/Jcrop">Github</a></dd><dd><a target="_blank" href="javascript:if(confirm(%27http://code.ciaoca.com/jquery/jcrop/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://code.ciaoca.com/jquery/jcrop/%27" tppabs="http://code.ciaoca.com/jquery/jcrop/">中文文档</a></dd></dl>    <div id="nav" class="nav">
+  <dl>
+    <dt>示例</dt>
+    <dd><a href="index.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/" title="基础示例">hello world</a></dd>
+    <dd><a href="handler.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/handler" title="事件处理">basic handler</a></dd>
+    <dd><a href="preview.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/preview" title="按高宽比例预览裁剪效果">aspect ratio with preview pane</a></dd>
+    <dd><a href="animation.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/animation" title="动画、过度效果">Animation / Transitions</a></dd>
+    <dd><a href="api.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/api" title="api 接口">api interface</a></dd>
+    <dd><a href="styling.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/styling" title="css 样式">styling example</a></dd>
+    <dd><a href="non-image.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/non-image" title="非图片裁剪">non-image elements</a></dd>
+  </dl>
+  <dl>
+    <dt>配合后端语言</dt>
+    <dd><a href="crop.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/crop" title="PHP 裁剪示例">PHP cropping demo</a></dd>
+  </dl>
+</div>  </div>
+  <div class="main">
+    <div class="inwrap">
+      <h1>jQuery Jcrop 图像裁剪</h1>
+      <h2>API 接口</h2>
+      
+      <div class="example">
+        <div class="clearfix">
+          <div class="left">
+            <img src="sago.jpg" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/demo_files/sago.jpg" id="target" alt="[Jcrop Example]">
+          </div>
+          <div class="left ml">
+            <fieldset>
+              <div class="button_group clearfix">
+                <button id="setSelect" class="button green">设置裁剪框</button>
+                <button id="animateTo" class="button green">动画效果设置</button>
+                <button id="release" class="button green">释放裁剪框</button>
+              </div>
+              <div class="button_group clearfix">
+                <button id="disable" class="button green">禁用裁剪框</button>
+                <button id="enable" class="button green">启用裁剪框</button>
+              </div>
+              <div class="button_group clearfix">
+                <button id="unhook" class="button green">销毁 Jcrop</button>
+                <button id="rehook" class="button green">使用 Jcrop</button>
+              </div>
+            </fieldset>
+            
+            <fieldset>
+              <legend>选项</legend>
+              <div>
+                <input type="checkbox" class="checkbox" id="can_click">
+                <label for="can_click">允许新的裁剪框</label>
+              </div>
+              <div>
+                <input type="checkbox" class="checkbox" id="can_move">
+                <label for="can_move">允许移动裁剪框</label>
+              </div>
+              <div>
+                <input type="checkbox" class="checkbox" id="can_size">
+                <label for="can_size">允许调整裁剪框尺寸</label>
+              </div>
+              <div>
+                <input type="checkbox" class="checkbox" id="ar_lock">
+                <label for="ar_lock">设置比例</label>
+              </div>
+              <div>
+                <input type="checkbox" class="checkbox" id="size_lock">
+                <label for="size_lock">设置最大尺寸和最小尺寸</label>
+              </div>
+            </fieldset>
+            
+            <fieldset>
+              <legend>更换图片</legend>
+              <div class="btn-group button_box">
+                <button class="button orange" id="img2">Pool</button>
+                <button class="button orange active" id="img1">Sago</button>
+                <button class="button orange" id="img3">Sago w/ outerImage</button>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<script src="highlight.pack.js" tppabs="http://code.ciaoca.com/static/js/highlight/highlight.pack.js"></script>
+<script src="demo.js" tppabs="http://code.ciaoca.com/static/js/controller/demo.js"></script><script src="jquery-1.5.2.min.js" tppabs="http://code.ciaoca.com/static/js/jquery/jquery-1.5.2.min.js"></script>
+<script src="jquery.Jcrop.min.js" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/js/jquery.Jcrop.min.js"></script>
+<script>
+jQuery(function($){
+
+  // The variable jcrop_api will hold a reference to the
+  // Jcrop API once Jcrop is instantiated.
+  var jcrop_api;
+
+  // In this example, since Jcrop may be attached or detached
+  // at the whim of the user, I've wrapped the call into a function
+  initJcrop();
+  
+  // The function is pretty simple
+  function initJcrop()//{{{
+  {
+    // Hide any interface elements that require Jcrop
+    // (This is for the local user interface portion.)
+    // $('.requiresjcrop').hide();
+
+    // Invoke Jcrop in typical fashion
+    $('#target').Jcrop({
+      onRelease: releaseCheck
+    },function(){
+      jcrop_api = this;
+      jcrop_api.animateTo([100, 100, 400, 300]);
+
+      // Setup and dipslay the interface for "enabled"
+      $('#can_click,#can_move,#can_size').attr('checked', 'checked');
+      $('#ar_lock,#size_lock,#bg_swap').attr('checked', false);
+      // $('.requiresjcrop').show();
+    });
+
+  };
+  //}}}
+
+  // Use the API to find cropping dimensions
+  // Then generate a random selection
+  // This function is used by setSelect and animateTo buttons
+  // Mainly for demonstration purposes
+  function getRandom() {
+    var dim = jcrop_api.getBounds();
+    return [
+      Math.round(Math.random() * dim[0]),
+      Math.round(Math.random() * dim[1]),
+      Math.round(Math.random() * dim[0]),
+      Math.round(Math.random() * dim[1])
+    ];
+  };
+
+  // This function is bound to the onRelease handler...
+  // In certain circumstances (such as if you set minSize
+  // and aspectRatio together), you can inadvertently lose
+  // the selection. This callback re-enables creating selections
+  // in such a case. Although the need to do this is based on a
+  // buggy behavior, it's recommended that you in some way trap
+  // the onRelease callback if you use allowSelect: false
+  function releaseCheck()
+  {
+    jcrop_api.setOptions({
+      allowSelect: true
+    });
+    //$('#can_click').attr('checked', false);
+  };
+
+  // Attach interface buttons
+  // This may appear to be a lot of code but it's simple stuff
+  $('#setSelect').click(function(e){
+    // Sets a random selection
+    jcrop_api.setSelect(getRandom());
+  });
+  $('#animateTo').click(function(e){
+    // Animates to a random selection
+    jcrop_api.animateTo(getRandom());
+  });
+  $('#release').click(function(e){
+    // Release method clears the selection
+    jcrop_api.release();
+  });
+  $('#disable').click(function(e){
+    // Disable Jcrop instance
+    jcrop_api.disable();
+    // Update the interface to reflect disabled state
+    // $('#enable').show();
+    // $('.requiresjcrop').hide();
+  });
+  $('#enable').click(function(e){
+    // Re-enable Jcrop instance
+    jcrop_api.enable();
+    // Update the interface to reflect enabled state
+    // $('#enable').hide();
+    // $('.requiresjcrop').show();
+  });
+  $('#rehook').click(function(e){
+    // This button is visible when Jcrop has been destroyed
+    // It performs the re-attachment and updates the UI
+    // $('#rehook,#enable').hide();
+    initJcrop();
+    // $('#unhook,.requiresjcrop').show();
+    return false;
+  });
+  $('#unhook').click(function(e){
+    // Destroy Jcrop widget, restore original state
+    jcrop_api.destroy();
+    // Update the interface to reflect un-attached state
+    // $('#unhook,#enable,.requiresjcrop').hide();
+    // $('#rehook').show();
+    return false;
+  });
+
+  // Hook up the three image-swapping buttons
+  $('#img1').click(function(e){
+    $(this).addClass('active').closest('.btn-group')
+      .find('button.active').not(this).removeClass('active');
+
+    jcrop_api.setImage('sago.jpg'/*tpa=http://code.ciaoca.com/jquery/jcrop/demo/demo_files/sago.jpg*/);
+    jcrop_api.setOptions({
+      bgOpacity: .6
+    });
+    return false;
+  });
+  $('#img2').click(function(e){
+    $(this).addClass('active').closest('.btn-group')
+      .find('button.active').not(this).removeClass('active');
+
+    jcrop_api.setImage('pool.jpg'/*tpa=http://code.ciaoca.com/jquery/jcrop/demo/demo_files/pool.jpg*/);
+    jcrop_api.setOptions({
+      bgOpacity: .6
+    });
+    return false;
+  });
+  $('#img3').click(function(e){
+    $(this).addClass('active').closest('.btn-group')
+      .find('button.active').not(this).removeClass('active');
+
+    jcrop_api.setImage('sago.jpg'/*tpa=http://code.ciaoca.com/jquery/jcrop/demo/demo_files/sago.jpg*/, function(){
+      this.setOptions({
+        bgOpacity: 1,
+        outerImage: 'sagomod.jpg'/*tpa=http://code.ciaoca.com/jquery/jcrop/demo/demo_files/sagomod.jpg*/
+      });
+      this.animateTo(getRandom());
+    });
+    return false;
+  });
+
+  // The checkboxes simply set options based on it's checked value
+  // Options are changed by passing a new options object
+
+  // Also, to prevent strange behavior, they are initially checked
+  // This matches the default initial state of Jcrop
+
+  $('#can_click').change(function(e){
+    jcrop_api.setOptions({
+      allowSelect: !!this.checked
+    });
+    jcrop_api.focus();
+  });
+  $('#can_move').change(function(e){
+    jcrop_api.setOptions({
+      allowMove: !!this.checked
+    });
+    jcrop_api.focus();
+  });
+  $('#can_size').change(function(e) {
+    jcrop_api.setOptions({
+      allowResize: !!this.checked
+    });
+    jcrop_api.focus();
+  });
+  $('#ar_lock').change(function(e) {
+    jcrop_api.setOptions(this.checked ? {
+      aspectRatio: 4/3
+    } : {
+      aspectRatio: 0
+    });
+    jcrop_api.focus();
+  });
+  $('#size_lock').change(function(e) {
+    jcrop_api.setOptions(this.checked ? {
+      minSize: [80, 80],
+      maxSize: [350, 350]
+    } : {
+      minSize: [0, 0],
+      maxSize: [0, 0]
+    });
+    jcrop_api.focus();
+  });
+
+});
+</script>
+
+<div style="display:none;">
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cdiv id='cnzz_stat_icon_5076009' style='display:none;'%3E%3C/div%3E%3Cscript src='" + cnzz_protocol + "s25.cnzz.com/stat.php%3Fid%3D5076009' type='text/javascript'%3E%3C/script%3E"));</script>
+</div></body>
+</html>
+

@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+* {margin:0; padding:0; list-style:none;}
+
+#div1 {width:600px; height:260px; margin:10px auto; overflow:hidden; position:relative; border:2px solid red; z-index:10}
+#div1 ul {position:relative; z-index:1; left:0}
+#div1 ul li {float:left; width:400px; height:260px;}
+img{ width:400px; height:260px}
+</style>
+<script src="jquery-1.11.3.min.js"></script>
+<script>
+$(function(){
+	var old_w=$('ul li').size()*$('ul li:first').width();
+	$('ul').append($('ul').html());
+	$('ul').width($('ul li').size()*$('ul li:first').width());
+	var l=0;
+	var timer;
+	function move(){
+		timer=setInterval(function(){
+			l-=5;
+			if(l<=-old_w) l=0;
+			$('ul').css('left',l);
+		},30);
+	};
+	move();
+	
+	$('#div1').hover(
+		function(){
+			clearInterval(timer);
+		},
+		function(){
+			move();
+		}
+	);
+});
+
+
+/*window.onload=function (){
+	
+	var oDiv=document.getElementById('div1');
+	var oUl=oDiv.children[0];
+	var aLi=oUl.children;
+	var timer;
+	var l=0;
+	
+	var W=aLi.length*400;//一套图片的宽度
+
+	oUl.innerHTML+=oUl.innerHTML;//ul里面放入 两套同样的li
+	
+	oUl.style.width=W*2+'px';//计算ul的总宽度
+	
+	function move(){
+		timer=setInterval(function(){
+			l-=5;
+			if(l<=-W) l=0;
+			oUl.style.left=l+'px';
+		
+		},30);
+	};
+	move();
+	
+	
+	oDiv.onmouseover=function (){
+		clearInterval(timer);
+	};
+	oDiv.onmouseout=function (){
+		move();
+	};
+};
+*/
+</script>
+</head>
+
+<body>
+<div id="div1">
+	<ul>
+    	<li><img src="images/01.jpg" /></li>
+    	<li><img src="images/02.jpg" /></li>
+    	<li><img src="images/03.jpg" /></li>
+    	<li><img src="images/04.jpg" /></li>
+    </ul>
+</div>
+</body>
+</html>

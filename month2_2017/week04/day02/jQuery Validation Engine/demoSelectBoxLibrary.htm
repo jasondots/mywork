@@ -1,0 +1,412 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery Validation Engine 表单验证 &raquo; 插件支持：SelectBox &raquo; 在线演示 - 前端开发仓库</title>
+<link rel="stylesheet" href="base.css" tppabs="http://code.ciaoca.com/static/css/base.css">
+<link rel="stylesheet" href="demo.css" tppabs="http://code.ciaoca.com/static/css/demo.css"><link rel="stylesheet" href="validationEngine.jquery.css" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/css/validationEngine.jquery.css">
+<link rel="stylesheet" href="layout.css" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/css/layout.css">
+<link rel="stylesheet" href="jquery.selectBox.css" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/css/jquery.selectBox.css">
+</head>
+<body>
+<div class="wrap">
+  <div class="side">
+    <div class="logo">
+  <a href="javascript:if(confirm(%27http://code.ciaoca.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://code.ciaoca.com/%27" tppabs="http://code.ciaoca.com/" target="_blank">前端开发仓库</a>
+  <em>在线演示</em>
+</div>    <dl class="about"><dt>关于</dt><dd><a target="_blank" href="javascript:if(confirm(%27http://www.position-absolute.com/articles/jquery-form-validator-because-form-validation-is-a-mess/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://www.position-absolute.com/articles/jquery-form-validator-because-form-validation-is-a-mess/%27" tppabs="http://www.position-absolute.com/articles/jquery-form-validator-because-form-validation-is-a-mess/">作者</a></dd><dd><a target="_blank" href="javascript:if(confirm(%27https://github.com/posabsolute/jQuery-Validation-Engine  \n\nThis file was not retrieved by Teleport Pro, because it is addressed using an unsupported protocol (e.g., gopher).  \n\nDo you want to open it from the server?%27))window.location=%27https://github.com/posabsolute/jQuery-Validation-Engine%27" tppabs="https://github.com/posabsolute/jQuery-Validation-Engine">Github</a></dd><dd><a target="_blank" href="javascript:if(confirm(%27http://code.ciaoca.com/jquery/validation_engine/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://code.ciaoca.com/jquery/validation_engine/%27" tppabs="http://code.ciaoca.com/jquery/validation_engine/">中文文档</a></dd></dl>    <div id="nav" class="nav">
+  <dl class="mini">
+    <dt>示例</dt>
+    <dd><a href="index.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/" title="validators">综合示例</a></dd>
+    <dd><a href="demoRequired.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoRequired" title="required">扩展必填验证</a></dd>
+    <dd><a href="demoDate.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoDate" title="date">日期类型验证</a></dd>
+    <dd><a href="demoRegExp.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoRegExp" title="regexp">正则验证</a></dd>
+    <dd><a href="demoFieldTypes.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoFieldTypes" title="field types">多种输入控件的验证</a></dd>
+    <!--<dd><a href="./demoAttr" title="attr">attr</a></dd>-->
+    <dd><a href="demoCheckBox.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoCheckBox" title="checkbox">单选框、复选框的验证</a></dd>
+    <dd><a href="demoMultipleForms.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoMultipleForms" title="multiple forms">多表单验证</a></dd>
+    <dd><a href="demoDivContainer.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoDivContainer" title="div container">DIV 容器</a></dd>
+    <dd><a href="demoWithoutId.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoWithoutId" title="without id">不再需要 ID 属性</a></dd>
+    <dd><a href="demoForm-cn.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoForm-cn" title="chinese">较好体验的中文表单</a></dd>
+  </dl>
+  <dl class="mini">
+    <dt>参数配置</dt>
+    <dd><a href="demoGlobalSettings.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoGlobalSettings" title="global settings">全局设置</a></dd>
+    <dd><a href="demoAutoHide.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoAutoHide" title="auto hide">自动隐藏提示信息</a></dd>
+    <dd><a href="demoCustomErrorMessages.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoCustomErrorMessages" title="custom error messages">自定义提示信息内容</a></dd>
+    <dd><a href="demoErrorLimit.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoErrorLimit" title="error limit">提示信息的数量</a></dd>
+    <dd><a href="demoOneMessage.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoOneMessage" title="one message">只显示一个提示信息</a></dd>
+    <dd><a href="demoSilent.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoSilent" title="silent">静默处理</a></dd>
+    <dd><a href="demoOverflown.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoOverflown" title="overflown">显示溢出限制</a></dd>
+    <dd><a href="demoValidationComplete.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoValidationComplete" title="validation complete">验证回调函数（阻断提交）</a></dd>
+    <dd><a href="demoOnForm.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoOnForm" title="on form">验证回调函数（不阻断提交）</a></dd>
+  </dl>
+  <dl class="mini">
+    <dt>data 属性</dt>
+    <dd><a href="demoInlineMessages.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoInlineMessages" title="inline messages">自定义提示信息内容</a></dd>
+    <dd><a href="demoPerFieldPromptDirection.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoPerFieldPromptDirection" title="perfield prompt direction">提示层的位置</a></dd>
+    <dd><a href="demoAdjustments.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoAdjustments" title="adjustments">调整提示层的位置</a></dd>
+  </dl>
+  <dl class="mini">
+    <dt>API 接口</dt>
+    <dd><a href="demoShowPrompt.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoShowPrompt" title="show prompt">显示提示信息</a></dd>
+    <dd><a href="demoPositioning.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoPositioning" title="positioning">改变提示层位置</a></dd>
+    <dd><a href="demoLiveEvent.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoLiveEvent" title="live event">动态绑定</a></dd>
+    <dd><a href="demoHooks.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoHooks" title="hooks">自定义事件</a></dd>
+  </dl>
+  <dl class="mini">
+    <dt>Ajax 验证</dt>
+    <dd><a href="demoAjaxInlinePHP.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoAjaxInlinePHP" title="ajax inline php">AJAX PHP 验证</a></dd>
+    <dd><a href="demoAjaxSubmitPHP.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoAjaxSubmitPHP" title="ajax submit php">AJAX PHP 验证及提交</a></dd>
+  </dl>
+  <dl class="mini">
+    <dt>其他</dt>
+    <!--<dd><a href="./demoChosenLibrary" title="chosen library">[插件支持] chosen</a></dd>-->
+    <dd><a href="demoSelectBoxLibrary.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoSelectBoxLibrary" title="select box library">[插件支持] selectbox</a></dd>
+    <dd><a href="demoDatepicker.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoDatepicker" title="datepicker">[插件支持] datepicker</a></dd>
+    <dd><a href="demoValidators-ja.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoValidators-ja" title="validators jan">[多语言] 日文</a></dd>
+  </dl>
+</div>  </div>
+  <div class="main">
+    <div class="inwrap">
+      <h1>jQuery Validation Engine 表单验证</h1>
+      <h2>插件支持：SelectBox</h2>
+      
+      <div class="detail">
+        <p>支持下拉框美化插件 <a href="javascript:if(confirm(%27https://github.com/claviska/jquery-selectBox  \n\nThis file was not retrieved by Teleport Pro, because it is addressed using an unsupported protocol (e.g., gopher).  \n\nDo you want to open it from the server?%27))window.location=%27https://github.com/claviska/jquery-selectBox%27" tppabs="https://github.com/claviska/jquery-selectBox">jQuery SelectBox plugin</a></p>
+      </div>
+      
+      <div class="example">
+        <form id="formID" class="formular" method="post" action="">
+          <fieldset>
+            <legend>Select single</legend>
+            <select name="country" id="country" class="validate[required]">
+              <option value="">- Please Select -</option>
+              <option value="United States">United States</option>
+              <option value="United Kingdom">United Kingdom</option>
+              <option value="Afghanistan">Afghanistan</option>
+              <option value="Albania">Albania</option>
+              <option value="Algeria">Algeria</option>
+              <option value="American Samoa">American Samoa</option>
+              <option value="Andorra">Andorra</option>
+              <option value="Angola">Angola</option>
+              <option value="Anguilla">Anguilla</option>
+              <option value="Antarctica">Antarctica</option>
+              <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+              <option value="Argentina">Argentina</option>
+              <option value="Armenia">Armenia</option>
+              <option value="Aruba">Aruba</option>
+              <option value="Australia">Australia</option>
+              <option value="Austria">Austria</option>
+              <option value="Azerbaijan">Azerbaijan</option>
+              <option value="Bahamas">Bahamas</option>
+              <option value="Bahrain">Bahrain</option>
+              <option value="Bangladesh">Bangladesh</option>
+              <option value="Barbados">Barbados</option>
+              <option value="Belarus">Belarus</option>
+              <option value="Belgium">Belgium</option>
+              <option value="Belize">Belize</option>
+              <option value="Benin">Benin</option>
+              <option value="Bermuda">Bermuda</option>
+              <option value="Bhutan">Bhutan</option>
+              <option value="Bolivia">Bolivia</option>
+              <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+              <option value="Botswana">Botswana</option>
+              <option value="Bouvet Island">Bouvet Island</option>
+              <option value="Brazil">Brazil</option>
+              <option value="British Indian Ocean Territory">British Indian Ocean Territory</option>
+              <option value="Brunei Darussalam">Brunei Darussalam</option>
+              <option value="Bulgaria">Bulgaria</option>
+              <option value="Burkina Faso">Burkina Faso</option>
+              <option value="Burundi">Burundi</option>
+              <option value="Cambodia">Cambodia</option>
+              <option value="Cameroon">Cameroon</option>
+              <option value="Canada">Canada</option>
+              <option value="Cape Verde">Cape Verde</option>
+              <option value="Cayman Islands">Cayman Islands</option>
+              <option value="Central African Republic">Central African Republic</option>
+              <option value="Chad">Chad</option>
+              <option value="Chile">Chile</option>
+              <option value="China">China</option>
+              <option value="Christmas Island">Christmas Island</option>
+              <option value="Cocos (Keeling) Islands">Cocos (Keeling) Islands</option>
+              <option value="Colombia">Colombia</option>
+              <option value="Comoros">Comoros</option>
+              <option value="Congo">Congo</option>
+              <option value="Congo, The Democratic Republic of The">Congo, The Democratic Republic of The</option>
+              <option value="Cook Islands">Cook Islands</option>
+              <option value="Costa Rica">Costa Rica</option>
+              <option value="Cote D'ivoire">Cote D'ivoire</option>
+              <option value="Croatia">Croatia</option>
+              <option value="Cuba">Cuba</option>
+              <option value="Cyprus">Cyprus</option>
+              <option value="Czech Republic">Czech Republic</option>
+              <option value="Denmark">Denmark</option>
+              <option value="Djibouti">Djibouti</option>
+              <option value="Dominica">Dominica</option>
+              <option value="Dominican Republic">Dominican Republic</option>
+              <option value="Ecuador">Ecuador</option>
+              <option value="Egypt">Egypt</option>
+              <option value="El Salvador">El Salvador</option>
+              <option value="Equatorial Guinea">Equatorial Guinea</option>
+              <option value="Eritrea">Eritrea</option>
+              <option value="Estonia">Estonia</option>
+              <option value="Ethiopia">Ethiopia</option>
+              <option value="Falkland Islands (Malvinas)">Falkland Islands (Malvinas)</option>
+              <option value="Faroe Islands">Faroe Islands</option>
+              <option value="Fiji">Fiji</option>
+              <option value="Finland">Finland</option>
+              <option value="France">France</option>
+              <option value="French Guiana">French Guiana</option>
+              <option value="French Polynesia">French Polynesia</option>
+              <option value="French Southern Territories">French Southern Territories</option>
+              <option value="Gabon">Gabon</option>
+              <option value="Gambia">Gambia</option>
+              <option value="Georgia">Georgia</option>
+              <option value="Germany">Germany</option>
+              <option value="Ghana">Ghana</option>
+              <option value="Gibraltar">Gibraltar</option>
+              <option value="Greece">Greece</option>
+              <option value="Greenland">Greenland</option>
+              <option value="Grenada">Grenada</option>
+              <option value="Guadeloupe">Guadeloupe</option>
+              <option value="Guam">Guam</option>
+              <option value="Guatemala">Guatemala</option>
+              <option value="Guinea">Guinea</option>
+              <option value="Guinea-bissau">Guinea-bissau</option>
+              <option value="Guyana">Guyana</option>
+              <option value="Haiti">Haiti</option>
+              <option value="Heard Island and Mcdonald Islands">Heard Island and Mcdonald Islands</option>
+              <option value="Holy See (Vatican City State)">Holy See (Vatican City State)</option>
+              <option value="Honduras">Honduras</option>
+              <option value="Hong Kong">Hong Kong</option>
+              <option value="Hungary">Hungary</option>
+              <option value="Iceland">Iceland</option>
+              <option value="India">India</option>
+              <option value="Indonesia">Indonesia</option>
+              <option value="Iran, Islamic Republic of">Iran, Islamic Republic of</option>
+              <option value="Iraq">Iraq</option>
+              <option value="Ireland">Ireland</option>
+              <option value="Israel">Israel</option>
+              <option value="Italy">Italy</option>
+              <option value="Jamaica">Jamaica</option>
+              <option value="Japan">Japan</option>
+              <option value="Jordan">Jordan</option>
+              <option value="Kazakhstan">Kazakhstan</option>
+              <option value="Kenya">Kenya</option>
+              <option value="Kiribati">Kiribati</option>
+              <option value="Korea, Democratic People's Republic of">Korea, Democratic People's Republic of</option>
+              <option value="Korea, Republic of">Korea, Republic of</option>
+              <option value="Kuwait">Kuwait</option>
+              <option value="Kyrgyzstan">Kyrgyzstan</option>
+              <option value="Lao People's Democratic Republic">Lao People's Democratic Republic</option>
+              <option value="Latvia">Latvia</option>
+              <option value="Lebanon">Lebanon</option>
+              <option value="Lesotho">Lesotho</option>
+              <option value="Liberia">Liberia</option>
+              <option value="Libyan Arab Jamahiriya">Libyan Arab Jamahiriya</option>
+              <option value="Liechtenstein">Liechtenstein</option>
+              <option value="Lithuania">Lithuania</option>
+              <option value="Luxembourg">Luxembourg</option>
+              <option value="Macao">Macao</option>
+              <option value="Macedonia, The Former Yugoslav Republic of">Macedonia, The Former Yugoslav Republic of</option>
+              <option value="Madagascar">Madagascar</option>
+              <option value="Malawi">Malawi</option>
+              <option value="Malaysia">Malaysia</option>
+              <option value="Maldives">Maldives</option>
+              <option value="Mali">Mali</option>
+              <option value="Malta">Malta</option>
+              <option value="Marshall Islands">Marshall Islands</option>
+              <option value="Martinique">Martinique</option>
+              <option value="Mauritania">Mauritania</option>
+              <option value="Mauritius">Mauritius</option>
+              <option value="Mayotte">Mayotte</option>
+              <option value="Mexico">Mexico</option>
+              <option value="Micronesia, Federated States of">Micronesia, Federated States of</option>
+              <option value="Moldova, Republic of">Moldova, Republic of</option>
+              <option value="Monaco">Monaco</option>
+              <option value="Mongolia">Mongolia</option>
+              <option value="Montenegro">Montenegro</option>
+              <option value="Montserrat">Montserrat</option>
+              <option value="Morocco">Morocco</option>
+              <option value="Mozambique">Mozambique</option>
+              <option value="Myanmar">Myanmar</option>
+              <option value="Namibia">Namibia</option>
+              <option value="Nauru">Nauru</option>
+              <option value="Nepal">Nepal</option>
+              <option value="Netherlands">Netherlands</option>
+              <option value="Netherlands Antilles">Netherlands Antilles</option>
+              <option value="New Caledonia">New Caledonia</option>
+              <option value="New Zealand">New Zealand</option>
+              <option value="Nicaragua">Nicaragua</option>
+              <option value="Niger">Niger</option>
+              <option value="Nigeria">Nigeria</option>
+              <option value="Niue">Niue</option>
+              <option value="Norfolk Island">Norfolk Island</option>
+              <option value="Northern Mariana Islands">Northern Mariana Islands</option>
+              <option value="Norway">Norway</option>
+              <option value="Oman">Oman</option>
+              <option value="Pakistan">Pakistan</option>
+              <option value="Palau">Palau</option>
+              <option value="Palestinian Territory, Occupied">Palestinian Territory, Occupied</option>
+              <option value="Panama">Panama</option>
+              <option value="Papua New Guinea">Papua New Guinea</option>
+              <option value="Paraguay">Paraguay</option>
+              <option value="Peru">Peru</option>
+              <option value="Philippines">Philippines</option>
+              <option value="Pitcairn">Pitcairn</option>
+              <option value="Poland">Poland</option>
+              <option value="Portugal">Portugal</option>
+              <option value="Puerto Rico">Puerto Rico</option>
+              <option value="Qatar">Qatar</option>
+              <option value="Reunion">Reunion</option>
+              <option value="Romania">Romania</option>
+              <option value="Russian Federation">Russian Federation</option>
+              <option value="Rwanda">Rwanda</option>
+              <option value="Saint Helena">Saint Helena</option>
+              <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+              <option value="Saint Lucia">Saint Lucia</option>
+              <option value="Saint Pierre and Miquelon">Saint Pierre and Miquelon</option>
+              <option value="Saint Vincent and The Grenadines">Saint Vincent and The Grenadines</option>
+              <option value="Samoa">Samoa</option>
+              <option value="San Marino">San Marino</option>
+              <option value="Sao Tome and Principe">Sao Tome and Principe</option>
+              <option value="Saudi Arabia">Saudi Arabia</option>
+              <option value="Senegal">Senegal</option>
+              <option value="Serbia">Serbia</option>
+              <option value="Seychelles">Seychelles</option>
+              <option value="Sierra Leone">Sierra Leone</option>
+              <option value="Singapore">Singapore</option>
+              <option value="Slovakia">Slovakia</option>
+              <option value="Slovenia">Slovenia</option>
+              <option value="Solomon Islands">Solomon Islands</option>
+              <option value="Somalia">Somalia</option>
+              <option value="South Africa">South Africa</option>
+              <option value="South Georgia and The South Sandwich Islands">South Georgia and The South Sandwich Islands</option>
+              <option value="South Sudan">South Sudan</option>
+              <option value="Spain">Spain</option>
+              <option value="Sri Lanka">Sri Lanka</option>
+              <option value="Sudan">Sudan</option>
+              <option value="Suriname">Suriname</option>
+              <option value="Svalbard and Jan Mayen">Svalbard and Jan Mayen</option>
+              <option value="Swaziland">Swaziland</option>
+              <option value="Sweden">Sweden</option>
+              <option value="Switzerland">Switzerland</option>
+              <option value="Syrian Arab Republic">Syrian Arab Republic</option>
+              <option value="Taiwan, Republic of China">Taiwan, Republic of China</option>
+              <option value="Tajikistan">Tajikistan</option>
+              <option value="Tanzania, United Republic of">Tanzania, United Republic of</option>
+              <option value="Thailand">Thailand</option>
+              <option value="Timor-leste">Timor-leste</option>
+              <option value="Togo">Togo</option>
+              <option value="Tokelau">Tokelau</option>
+              <option value="Tonga">Tonga</option>
+              <option value="Trinidad and Tobago">Trinidad and Tobago</option>
+              <option value="Tunisia">Tunisia</option>
+              <option value="Turkey">Turkey</option>
+              <option value="Turkmenistan">Turkmenistan</option>
+              <option value="Turks and Caicos Islands">Turks and Caicos Islands</option>
+              <option value="Tuvalu">Tuvalu</option>
+              <option value="Uganda">Uganda</option>
+              <option value="Ukraine">Ukraine</option>
+              <option value="United Arab Emirates">United Arab Emirates</option>
+              <option value="United Kingdom">United Kingdom</option>
+              <option value="United States">United States</option>
+              <option value="United States Minor Outlying Islands">United States Minor Outlying Islands</option>
+              <option value="Uruguay">Uruguay</option>
+              <option value="Uzbekistan">Uzbekistan</option>
+              <option value="Vanuatu">Vanuatu</option>
+              <option value="Venezuela">Venezuela</option>
+              <option value="Viet Nam">Viet Nam</option>
+              <option value="Virgin Islands, British">Virgin Islands, British</option>
+              <option value="Virgin Islands, U.S.">Virgin Islands, U.S.</option>
+              <option value="Wallis and Futuna">Wallis and Futuna</option>
+              <option value="Western Sahara">Western Sahara</option>
+              <option value="Yemen">Yemen</option>
+              <option value="Zambia">Zambia</option>
+              <option value="Zimbabwe">Zimbabwe</option>
+            </select>
+          </fieldset>
+          
+          <fieldset>
+            <legend>Hidden Form Sections</legend>
+            <select name="hidden_samples" id="hidden_samples" class="validate[required]">
+              <option value="">- Please Select -</option>
+              <option value="1">Show Option 1</option>
+              <option value="2">Show Option 2</option>
+            </select>
+            
+            <div id="hidden_elements">
+              <div id="section_1" style="display:none">
+                <label>This is the hidden option for "Show Option 1"</label>
+                <select name="hidden_samples" id="hidden_samples_1" class="validate[required]">
+                  <option value="">- Please Select -</option>
+                  <option value="1">Show Option 1</option>
+                  <option value="2">Show Option 2</option>
+                </select>
+              </div>
+              
+              <div id="section_2" style="display:none">
+                <label>This is the hidden option for "Show Option 2"</label>
+                <select name="hidden_samples" id="hidden_samples_2" class="validate[required]">
+                  <option value="">- Please Select -</option>
+                  <option value="1">Show Option 1</option>
+                  <option value="2">Show Option 2</option>
+                </select>
+              </div>
+            </div>          
+          </fieldset>
+    
+          <input class="submit" type="submit" value="验证 & 提交表单">
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="highlight.pack.js" tppabs="http://code.ciaoca.com/static/js/highlight/highlight.pack.js"></script>
+<script src="demo.js" tppabs="http://code.ciaoca.com/static/js/controller/demo.js"></script><script src="jquery-1.7.2.min.js" tppabs="http://code.ciaoca.com/static/js/jquery/jquery-1.7.2.min.js"></script>
+<script src="jquery.validationEngine-zh-CN.js" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/js/languages/jquery.validationEngine-zh-CN.js"></script>
+<script src="jquery.validationEngine.min.js" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/js/jquery.validationEngine.min.js"></script>
+<script src="jquery.selectBox.min.js" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/js/jquery.selectBox.min.js"></script>
+<script>
+jQuery(document).ready(function(){
+
+  var prefix = 'selectBox_';
+
+  // binds form submission and fields to the validation engine
+  jQuery('#formID').validationEngine({
+    prettySelect: true,
+    usePrefix: prefix
+  });
+
+  $('select').selectBox();
+
+  // By default, selectBox does not create an id to the newly created element - We need to add this manually
+  $('select').each(function(){ 
+    // The jquery validation engine needs an id on the 'a' element created by selectBox plugin
+    $(this).next('a.selectBox')
+    // Since id needs to be unique, we use a prefix here (can use suffix - up to you)
+    .attr('id', prefix + this.id)
+    // By default, all classes are passed on to the new element - Important: We need to remove it
+    .removeClass('validate[required]');    
+  })
+  
+  // This demo is for hidden elements in the form
+  $('#hidden_samples').change(function(){
+    var value = $(this).val();
+    if (value != '') {
+      $('#section_'+value).show().siblings().hide();
+    } else {
+      $('#hidden_elements').children().hide();
+    };
+  });
+  
+});
+</script>
+
+<div style="display:none;">
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cdiv id='cnzz_stat_icon_5076009' style='display:none;'%3E%3C/div%3E%3Cscript src='" + cnzz_protocol + "s25.cnzz.com/stat.php%3Fid%3D5076009' type='text/javascript'%3E%3C/script%3E"));</script>
+</div></body>
+</html>

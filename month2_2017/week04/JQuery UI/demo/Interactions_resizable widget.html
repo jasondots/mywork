@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>resizable改变尺寸</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+<link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css">
+<style>
+.box{ height:300px; width:300px; background:red; position:absolute; top:100px; left:100px}
+.sub{ height:150px; width:150px; background:blue}
+.resizable-helper{ border:2px dashed #000;}
+</style>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script>
+$(function(){
+	$('#box1').resizable({
+		//alsoResize: "#sub1",
+		//animate: true,
+		//animateDuration: "fast",
+		//aspectRatio: true,//限制比例
+		helper: "resizable-helper",
+		handles: "n, e, s, w" ,//四边
+		ghost: true,
+		delay: 100,//延迟时间，防止误操作
+		grid: [ 50, 30 ],//对齐到网格
+	});
+	
+	$('button').click(function(){
+		//$('#box1').resizable( "destroy" );
+		var widget = $('#box1').resizable( "widget" );
+		widget.css({'background':'green'})
+	
+	});
+})
+</script>
+
+</head>
+<body>
+<div id="box1" class="box">
+	<div id="sub1" class="sub"></div>
+</div>
+
+<button type="button">取消调整尺寸</button>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Methods 方法</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+<link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css">
+<style>
+div {width: 100px;height: 100px; border: 1px solid #000;float: left;margin-right:10px}
+</style>
+  <script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script>
+$(function(){
+	$( "#one" ).data( {"color":"red"} );
+	$( "#two" ).data( {"color":"green","otherColor":"black"} );
+	$( "#three" ).data( "color", "blue" );
+
+	$( ":data(color)" ).each(function() {
+ 		var element = $( this );
+  		element.css( "backgroundColor", element.data( "color" ) );
+	});
+	
+	/*$( ":data(otherColor)" ).each(function() {
+ 		var element = $( this );
+  		element.css( "backgroundColor", element.data( "otherColor" ) );
+	});*/
+})
+</script>
+
+</head>
+<body>
+    <div id="one"></div>
+    <div id="two"></div>
+    <div id="three"></div>
+</body>
+</html>

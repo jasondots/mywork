@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0}
+div{ width:200px; height:200px; background:red; position:absolute; left:100px}
+button{width:100px; height:40px; position:absolute; top:240px;}
+</style>
+
+<script>
+
+
+//哪些可以进行动画？？---凡是可以设定数值的样式，都可以动画，（颜色）也可以根据RGB值进行改变
+
+//读取样式
+function getStyle(obj,styleName){
+	/*var myStyle=window.getComputedStyle(obj,null);
+	var value=myStyle[styleName];
+	return parseInt(value);*/
+	return parseInt(getComputedStyle(obj,null)[styleName]);
+};
+
+
+
+function animate(obj,mode,end,speed){//对象 运动模式  终点  速度：像素
+	//起点
+	var start=0;//读取样式---初始值
+	
+	clearInterval(obj.timer);//开定时器之前，先清除定时器  对象增加了一个自定义属性timer作为定时器id
+	obj.timer=setInterval(function(){
+		start+=speed;
+		
+		obj.style[mode]=start+"px";//运动
+		
+		if(start>=end){
+			clearInterval(obj.timer);
+			obj.style[mode]=end+"px";//强制结束点
+		}
+	
+	},30)
+	
+};
+
+
+
+window.onload=function(){
+	var oDiv=document.getElementById('box');
+	var btn=document.getElementById('btn');
+	
+	btn.onclick=function(){
+		animate(oDiv,"left",1000,20);
+	};
+	
+}
+
+
+</script>
+</head>
+
+<body>
+<div id="box"></div>
+<button id="btn" type="button">move</button>
+
+</body>
+</html>

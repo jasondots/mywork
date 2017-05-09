@@ -1,0 +1,50 @@
+支持CSS3选择器（CSS 3 Selector support）
+		
+支持全部unicode编码字符（Full Unicode support）
+		
+
+支持特殊字符转义（Escaped selector support）
+例：
+<div id="#box1"></div>
+var oDiv=Sizzle("#"+Sizzle.escape("#box1"));
+
+
+内容选择器（Contains text）	
+:contains(text)
+
+
+复杂选择器（Complex ）
+:not(a#id)
+
+
+多重选择（Multiple）
+例：
+sizzle(div,p)
+
+
+属性选择（attribute value）
+例：			
+[name!=value]
+
+含有某元素（Has selector）
+:has(div)
+
+
+位置选择器（Position selectors）
+:first, :last, 
+:even, :odd, 
+:gt, :lt, 
+:eq
+
+
+表单选择（Easy Form selectors）
+:input,:text, :checkbox, 
+:file, :password, :submit, 
+:image, :reset, :button
+
+
+标题选择器（Header selector）
+:header
+
+
+

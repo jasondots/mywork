@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+
+//声明正则表达式--------------------------------------
+
+//var re=new RegExp('ab'); //new 运算符 实例化
+
+/*
+var txt="ab aabb abababab";
+var re=/ab/;  
+alert(re.test(txt));//true
+
+//方括号 内部任意匹配
+var txt="a b c defg";
+var re=/[ab]/;  //[]a或者b
+alert(re.test(txt));//true
+
+//大括号 内放量词
+var txt="ab aabb";
+var re=/[ab]{2}/; //a或者b 必须有2个
+alert(re.test(txt));//true
+
+//小括号 分组
+var txt="abcd";
+var re=/(ab|cd){2}/; //abab cdcd abcd cdab
+alert(re.test(txt));//true
+
+// 竖线 或者
+var txt="ac cdcd";
+var re=/(ab)|(cd){2}/; // ab 或者 cdcd
+alert(re.test(txt));//true
+
+
+// 元字符 
+var txt="ac cdcd";
+var re=/\d/; // 匹配数字
+alert(re.test(txt));//false
+
+
+//^字符串开始  $字符串结尾
+var txt="123cdcdcd3";
+var re=/^\d\w*\d$/; //  开头为数字 中间任意多个\w  结尾为1个数字 
+alert(re.test(txt));//true
+
+//^在[]内  排除
+var txt="abaabb";
+var re=/[^ab]/; // 不匹配[]内的字符 
+alert(re.test(txt));//false
+*/
+
+//----------------------------------------------------
+/*
+1.	字母开头
+2.	@hxsd.com结尾
+3.	用户名不能超过8位
+*/
+var txt="r34s3d5ss@hxsd.com";
+var re=/^[A-z]\w{0,7}@hxsd\.com$/;
+
+/*
+var arr=txt.split('@')[0];
+if(!re.test(txt) || arr.length>8){
+	alert("用户名格式错误或者用户名超过8位")
+}else{
+	alert('ok')
+};
+
+*/
+/*
+if(!re.test(txt) || txt.length>17){
+	alert("用户名格式错误或者用户名超过8位")
+}else{
+	alert('ok')
+};
+
+*/
+
+//---------------------------------------------
+
+/*
+//g修饰符 与字符串的match方法
+var txt="ab aab abab abb aabb aaabbb";
+var re=/ab{2,3}/g; //abb abbb 
+var arr=txt.match(re);
+alert(arr);
+
+*/
+
+/*
+//g修饰符 与字符串的match方法
+var txt="ababaaaaabbbbbaabbaaabbbaabaa";
+var re=/[ab]{2,3}/g; // ab的组合最少2个，最多3个
+var arr=txt.match(re); //aba baa aaa
+alert(arr);
+
+*/
+
+/*
+var txt="43nqwemy5n7m6n7mgfmjnmmm";
+var re=/[\dm]{2,4}/g; // 43 7m6 7m mmm
+var arr=txt.match(re);
+alert(arr);
+*/
+
+/*
+var txt="sdfsdmem74334m4sdgmtsfm7m8m9900mm311mfmh";
+var re=/[\dm]{2,4}/g; // m743 34m4 m7m8 m990 0mm3 11m
+var arr=txt.match(re);
+alert(arr);
+*/
+
+
+
+/*
+//---------------------------------------------------------
+//m修饰符 多行查找（必须与g一起使用,并且,当使用^和$模式时才会起作用）
+var txt="hxsdweb2016hxsd\nhxsd2017\nhxsdweb1612";
+
+
+var re=/^hxsd/gm;
+var arr=txt.match(re);
+
+alert(arr);
+//没有m: hxsd
+//有m:	hxsd,hxsd,hxsd
+*/
+
+</script>

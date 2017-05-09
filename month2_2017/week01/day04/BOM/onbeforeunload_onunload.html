@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script type="text/javascript">    
+/*
+onunload，onbeforeunload都是在刷新或关闭时调用，可以在<script>脚本中通过 window.onunload来调用。区别在于onbeforeunload在onunload之前执行，它还可 以阻止onunload的执行。
+
+onbeforeunload 是正要去服务器读 取新的页面时调用，此时还没开始读取；而onunload则已经从服务器上读到了需要加载的新的页面，在即将替换掉当前页面时调用。
+*/ 
+    window.onbeforeunload =function(){     
+        return "确认退出?";     
+    }      
+/*
+return 的值 为你需要告诉用户的提示信息如上面demo的话浏览器的提示是这样(firefox 并不支持文字提醒)：
+
+值得注意的是，网上流传说 可以通过检查 e.clientX e.clientY 判断 用户是否点击 右上角关闭浏览器的，但是实践发现 只有 IE6，IE7，IE8 能获取得到具体数值，其他浏览器均为 undefined。
+
+浏览器兼容情况
+IE、Chrome、Safari 完美支持
+Firefox 不支持文字提醒信息
+Opera 不支持
+IE6,IE7 使用 onbeforeunload 遇到的bug
+
+凡是 <a> 标签 都会触发 onbeforeunload事件 包括 href=”javascript:void(0)” 这种。
+在IE6，IE7 下面 点击 里面的 a 标签，蛋疼的事情就发生了。
+
+解决方法：给这 a标签的 父级 添加 onclick=function(){return false} 即可，不过添加了这个之后要确保父级里面没有 input type=”checkbox” 的标签，否则会导致其无效不可点击。
+
+*/    
+//---------------------------------------------------------------------------	
+	window.onunload = function(){     
+        alert("谢谢光临");  
+    } ;
+	
+/*
+IE6，IE7，IE8 中 刷新页面、关闭浏览器之后、页面跳转之后都会执行；
+IE9 刷新页面 会执行，页面跳转、关闭浏览器不能执行；
+firefox(包括firefox3.6) 关闭标签之后、页面跳转之后、刷新页面之后能执行，但关闭浏览器不能执行；
+Safari 刷新页面、页面跳转之后会执行，但关闭浏览器不能执行；
+Opera、Chrome 任何情况都不执行。
+	
+*/      
+</script>     
+
+
+</script>
+
+
+</head>
+
+<body>
+</body>
+</html>

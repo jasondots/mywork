@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0}
+.box{ width:200px; height:200px; background:red; margin-bottom:20px;}
+
+</style>
+</head>
+
+<body>
+<div class="box"></div>
+<div class="box"></div>
+</body>
+</html>
+<script>
+var aBox=document.getElementsByClassName('box');
+
+/*
+//函数方式
+function myBox(obj,w){
+	
+	//over变色
+	obj.onmouseover=function(){
+		this.style.background="blue";
+	};
+	
+	//点击变宽
+	obj.onclick=function(){
+		this.style.width=w+'px';
+	};	
+};
+
+myBox(aBox[0],100);
+myBox(aBox[1],300);
+
+*/
+
+//-------------------------------------------------------
+//构造函数方式
+function MyBox(obj){
+	this.box=obj;
+};
+//添加点击变宽方法
+
+MyBox.prototype.changeWidth=function(w){
+	this.box.onclick=function(){
+		this.style.width=w+'px';
+	};
+	return this;
+};
+
+var oBox1=new MyBox(aBox[0]);
+oBox1.changeWidth(400);
+
+
+//添加over变色方法
+MyBox.prototype.changeColor=function(color){
+	this.box.onmouseover=function(){
+		this.style.background=color;
+	};
+	return this;
+};
+
+
+new MyBox(aBox[1]).changeWidth(100).changeColor('green');
+
+//oBox1.changeColor('blue');
+
+
+
+
+
+
+
+
+
+</script>

@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>鼠标响应图片滚动</title>
+<style>
+*{ margin:0; padding:0}
+ul{ list-style:none}
+.clip{ width:482px;height:80px; margin:100px auto;}
+.clip .clipCont{ height:80px;border:1px solid #ccc; overflow:hidden;}
+.imgList{ position: relative;top:0; left:0}
+.clip img{ width:120px; height:80px; float:left}
+.clip .prevBtn,.clip .nextBtn{ position:absolute; top:50%; width:30px; height:50px; line-height:50px; text-decoration:none; font-size:30px; text-align:center; margin-top:-25px; left:10px;  color:#333}
+.clip .nextBtn{ right:10px; left:auto;}
+
+.clip2{width:722px;}
+.clip2 img{ width:180px; height:120px;}
+.clip2 .clipCont{ height:120px}
+</style>
+<script src="jquery-1.11.3.min.js"></script>
+<script>
+$(function(){
+	function Clip(obj,img_w){ //duix
+		this.clipBox=obj;
+		this.img_w=img_w;
+		this.imgList=obj.find('.imgList:eq(0)');
+		this.imgList.css('width',this.imgList.children().length*img_w);
+	};
+
+	Clip.prototype.move=function(){
+		var _this=this;
+		this.clipBox.mousemove(function(ev){
+			var m_l=ev.pageX-_this.clipBox.offset().left;
+			
+			//计算移动比例
+			var m_rate=(m_l-50)/(_this.clipBox.width()-100);//两端各偏移50px
+			
+			var max_l=_this.imgList.width()-_this.img_w*4;//最大移动距离--4张图片宽度
+			
+			var l=-max_l*m_rate;
+			if(l>=0){
+				 l=0;
+			};
+			if(l<=-max_l ){//最大移动距离
+				l=-max_l;
+			};
+			_this.imgList.css('left',l);
+		});
+	};
+	
+	new Clip($('.clip1'),120).move();
+	new Clip($('.clip2'),180).move();
+
+
+});
+
+</script>
+</head>
+
+<body>
+<div class="clip clip1">
+	<div class="clipCont">
+    	<ul class="imgList">
+            <li><img src="01.jpg"></li>
+            <li><img src="02.jpg"></li>
+            <li><img src="03.jpg"></li>
+            <li><img src="04.jpg"></li>
+            <li><img src="05.jpg"></li>
+            <li><img src="03.jpg"></li>
+            <li><img src="04.jpg"></li>
+            <li><img src="05.jpg"></li>
+            <li><img src="01.jpg"></li>
+            <li><img src="02.jpg"></li>
+            <li><img src="03.jpg"></li>
+            <li><img src="04.jpg"></li>
+            <li><img src="05.jpg"></li>
+            <li><img src="03.jpg"></li>
+            <li><img src="04.jpg"></li>
+            <li><img src="05.jpg"></li>
+        </ul>
+    </div>
+</div>
+<div class="clip clip2">
+	<div class="clipCont">
+    	<ul class="imgList">
+            <li><img src="01.jpg"></li>
+            <li><img src="02.jpg"></li>
+            <li><img src="03.jpg"></li>
+            <li><img src="04.jpg"></li>
+            <li><img src="05.jpg"></li>
+            <li><img src="03.jpg"></li>
+            <li><img src="04.jpg"></li>
+            <li><img src="05.jpg"></li>
+            <li><img src="01.jpg"></li>
+            <li><img src="02.jpg"></li>
+            <li><img src="03.jpg"></li>
+            <li><img src="04.jpg"></li>
+            <li><img src="05.jpg"></li>
+            <li><img src="03.jpg"></li>
+            <li><img src="04.jpg"></li>
+            <li><img src="05.jpg"></li>
+        </ul>
+    </div>
+</div>
+
+
+</body>
+</html>

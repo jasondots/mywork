@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0}
+div{ width:200px; height:200px; background:red; position:absolute; line-height:30px}
+button{width:100px; height:40px; position:absolute; top:240px;}
+</style>
+
+<script>
+
+
+//哪些可以进行动画？？---凡是可以设定数值的样式，都可以动画，（颜色）也可以根据RGB值进行改变
+
+//读取样式
+function getStyle(obj,styleName){
+	/*var myStyle=window.getComputedStyle(obj,null);
+	var value=myStyle[styleName];
+	return parseInt(value);*/
+	return parseInt(getComputedStyle(obj,null)[styleName]);
+};
+
+
+
+function animate(obj,mode,end,speed,fn){//对象 运动模式  终点  速度：时间（秒）
+	//起点
+	var start=getStyle(obj,mode);//读取样式---初始值
+	
+	var dis=end-start;//移动的距离
+	
+	var count=parseInt(speed/30);//时间分段
+	
+	var step=dis/count;  //每一步距离
+	
+	var i=0;//计步器
+	
+	clearInterval(obj.timer);//开定时器之前，先清除定时器  对象增加了一个自定义属性timer作为定时器id
+	
+	obj.timer=setInterval(function(){
+		i++;
+		
+		if(mode=="opacity"){//判断是不是透明
+			obj.style[mode]=start+step*i;//运动
+		}else{
+			obj.style[mode]=start+step*i+"px";//运动
+		};
+		
+		
+		if(i==count){
+			clearInterval(obj.timer);
+			fn && fn();
+		}
+	
+	},30);
+	
+};
+
+
+
+window.onload=function(){
+	var oDiv=document.getElementById('box');
+	var btn=document.getElementById('btn');
+	
+	
+	//alert(getStyle(oDiv,"lineHeight"))
+	
+	btn.onclick=function(){
+		animate(oDiv,"opacity",0,1000);
+	};
+	
+}
+
+
+</script>
+</head>
+
+<body>
+<div id="box"></div>
+<button id="btn" type="button">move</button>
+
+</body>
+</html>

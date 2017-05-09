@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>数字按键反馈</title>
+<style>
+select{ margin-right:10px; height:24px; width:80px}
+
+</style>
+</head>
+<body>
+</body>
+</html>
+<script>
+var city_arr=[
+	{
+		"city":"北京",
+		"value":"beijing",
+		"area":[
+			{"name":"朝阳","value":"chaoyang"},
+			{"name":"东城","value":"dongcheng"},
+			{"name":"海淀","value":"haidian"},
+		]
+	},
+	{
+		"city":"上海",
+		"value":"shanghai",
+		"area":[
+			{"name":"浦东","value":"pudong"},
+			{"name":"徐汇","value":"xuhui"},
+			{"name":"普陀","value":"putuo"},
+		]
+	}
+];
+
+//插入
+var sel=document.createElement('select');
+var html='';
+for(var i=0; i<city_arr.length; i++){
+	html+='<option value="'+city_arr[i].value+'">'+city_arr[i].city+'</option>';
+};
+sel.innerHTML=html;
+
+var sel2=document.createElement('select');
+var html2="";
+for(var j=0; j<city_arr[0].area.length; j++){
+	html2+='<option value="'+city_arr[0].area[j].value+'">'+city_arr[0].area[j].name+'</option>';
+};
+sel2.innerHTML=html2;
+
+document.body.appendChild(sel);
+document.body.appendChild(sel2);
+
+
+//切换
+sel.onchange=function(){
+	for(var k=0; k<city_arr.length; k++){
+		if(this.value==city_arr[k].value){
+			sel2.innerHTML="";
+			var html3="";
+			for(var j=0; j<city_arr[k].area.length; j++){
+				html3+='<option value="'+city_arr[k].area[j].value+'">'+city_arr[k].area[j].name+'</option>';
+			};
+			sel2.innerHTML=html3;
+		}
+	};
+};
+
+</script>

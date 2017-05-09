@@ -1,0 +1,43 @@
+﻿@charset "utf-8";
+html{height:100%}
+body{height:100%}
+body,p,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,hr,blockquote,object,iframe,fieldset,input,legend,form,th,td{margin:0;padding:0}
+body,input,textarea,keygen,select,button,isindex,pre,a{font:14px/24px Verdana,"\5FAE\8F6F\96C5\9ED1";color:#333;word-wrap:break-word}
+h1,h2,h3,h4,h5,h6{font-weight:normal}
+h1{font-size:24px}h2{font-size:20px}h3{font-size:18px}h4{font-size:16px}h5{font-size:14px}h6{font-size:14px}
+ul,ol,li{list-style:none;}
+img{vertical-align:middle;border: none 0}
+i,b,em,strong{font-style:normal;font-weight:normal}
+a{cursor:pointer;text-decoration:none;color:#666}
+#html a:hover{color:#FF6600}/*全站鼠标hover*/
+
+/*表&表单*/
+table{border-collapse:collapse;border-spacing:0;}
+table,th,td{border:1px solid #CCC; padding:10px}
+input,select{vertical-align:middle}
+select{height:22px;line-height:18px;padding:2px 0; border-radius:3px; border:1px #999 solid}
+.checkbox{border:none}
+textarea{resize:none;vertical-align:top;padding:5px;border:1px solid #CCC; border-radius:3px}
+label{vertical-align:middle}
+input:focus,textarea:focus{outline:none}    
+.text{height:20px;line-height:20px;vertical-align:middle;padding-left:5px;border:1px solid #CCC;_heght:10px; border-radius:3px}
+.radio{vertical-align:baseline;*vertical-align:-1px;border:none 0;border-top-width:0}
+
+.tl{text-align:left}
+.tc{text-align:center}
+.tr{text-align:right}
+
+.fl{float:left}
+.fr{float:right}
+.cb{clear:both}
+.cl{clear:left}
+.cr{clear:right}
+.clearfix:before,.clearfix:after{content:"";display:block;overflow:hidden;visibility:hidden;font-size:0;line-height:0;width:0;height:0}
+.clearfix:after{clear:both}
+.clearfix{zoom:1}
+.pr{position:relative}
+.pa{position:absolute}
+.hide{display:none}
+.mc{margin:0 auto}
+
+

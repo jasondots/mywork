@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery Jcrop 图像裁剪 &raquo; 按高宽比例预览裁剪效果 &raquo; 在线演示 - 前端开发仓库</title>
+<link rel="stylesheet" href="base.css" tppabs="http://code.ciaoca.com/static/css/base.css">
+<link rel="stylesheet" href="demo.css" tppabs="http://code.ciaoca.com/static/css/demo.css"><link rel="stylesheet" href="layout.css" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/css/layout.css">
+<link rel="stylesheet" href="jquery.Jcrop.css" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/css/jquery.Jcrop.css">
+</head>
+<body>
+<div class="wrap">
+  <div class="side">
+    <div class="logo">
+  <a href="javascript:if(confirm(%27http://code.ciaoca.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://code.ciaoca.com/%27" tppabs="http://code.ciaoca.com/" target="_blank">前端开发仓库</a>
+  <em>在线演示</em>
+</div>    <dl class="about"><dt>关于</dt><dd><a target="_blank" href="javascript:if(confirm(%27http://deepliquid.com/content/Jcrop.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://deepliquid.com/content/Jcrop.html%27" tppabs="http://deepliquid.com/content/Jcrop.html">作者</a></dd><dd><a target="_blank" href="javascript:if(confirm(%27https://github.com/tapmodo/Jcrop  \n\nThis file was not retrieved by Teleport Pro, because it is addressed using an unsupported protocol (e.g., gopher).  \n\nDo you want to open it from the server?%27))window.location=%27https://github.com/tapmodo/Jcrop%27" tppabs="https://github.com/tapmodo/Jcrop">Github</a></dd><dd><a target="_blank" href="javascript:if(confirm(%27http://code.ciaoca.com/jquery/jcrop/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://code.ciaoca.com/jquery/jcrop/%27" tppabs="http://code.ciaoca.com/jquery/jcrop/">中文文档</a></dd></dl>    <div id="nav" class="nav">
+  <dl>
+    <dt>示例</dt>
+    <dd><a href="index.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/" title="基础示例">hello world</a></dd>
+    <dd><a href="handler.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/handler" title="事件处理">basic handler</a></dd>
+    <dd><a href="preview.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/preview" title="按高宽比例预览裁剪效果">aspect ratio with preview pane</a></dd>
+    <dd><a href="animation.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/animation" title="动画、过度效果">Animation / Transitions</a></dd>
+    <dd><a href="api.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/api" title="api 接口">api interface</a></dd>
+    <dd><a href="styling.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/styling" title="css 样式">styling example</a></dd>
+    <dd><a href="non-image.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/non-image" title="非图片裁剪">non-image elements</a></dd>
+  </dl>
+  <dl>
+    <dt>配合后端语言</dt>
+    <dd><a href="crop.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/crop" title="PHP 裁剪示例">PHP cropping demo</a></dd>
+  </dl>
+</div>  </div>
+  <div class="main">
+    <div class="inwrap">
+      <h1>jQuery Jcrop 图像裁剪</h1>
+      <h2>按高宽比例预览裁剪效果</h2>
+      
+      <div class="detail">
+        <p>模拟实时预览裁剪效果的示例</p>
+        <p>很直观的例子，使用 Jcrop 的 <code>onChange</code> 事件，实时更新裁剪后的图像预览。这种形式适合用于创建略缩图或头像。</p>
+      </div>
+
+      <div class="example">
+        <img src="sago.jpg" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/demo_files/sago.jpg" id="target" alt="[Jcrop Example]">
+
+        <div id="preview-pane">
+          <div class="preview-container">
+            <img src="sago.jpg" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/demo_files/sago.jpg" class="jcrop-preview" alt="Preview">
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<script src="highlight.pack.js" tppabs="http://code.ciaoca.com/static/js/highlight/highlight.pack.js"></script>
+<script src="demo.js" tppabs="http://code.ciaoca.com/static/js/controller/demo.js"></script><script src="jquery-1.5.2.min.js" tppabs="http://code.ciaoca.com/static/js/jquery/jquery-1.5.2.min.js"></script>
+<script src="jquery.Jcrop.min.js" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/js/jquery.Jcrop.min.js"></script>
+<script>
+jQuery(function($){
+  // Create variables (in this scope) to hold the API and image size
+  var jcrop_api,
+  boundx,
+  boundy,
+  
+  // Grab some information about the preview pane
+  $preview = $('#preview-pane'),
+  $pcnt = $('#preview-pane .preview-container'),
+  $pimg = $('#preview-pane .preview-container img'),
+  
+  xsize = $pcnt.width(),
+  ysize = $pcnt.height();
+  
+  console.log('init',[xsize,ysize]);
+
+  $('#target').Jcrop({
+    onChange: updatePreview,
+    onSelect: updatePreview,
+    aspectRatio: xsize / ysize
+  },function(){
+    // Use the API to get the real image size
+    var bounds = this.getBounds();
+    boundx = bounds[0];
+    boundy = bounds[1];
+    // Store the API in the jcrop_api variable
+    jcrop_api = this;
+    
+    // Move the preview into the jcrop container for css positioning
+    $preview.appendTo(jcrop_api.ui.holder);
+  });
+  
+  function updatePreview(c){
+    if (parseInt(c.w) > 0) {
+      var rx = xsize / c.w;
+      var ry = ysize / c.h;
+      
+      $pimg.css({
+        width: Math.round(rx * boundx) + 'px',
+        height: Math.round(ry * boundy) + 'px',
+        marginLeft: '-' + Math.round(rx * c.x) + 'px',
+        marginTop: '-' + Math.round(ry * c.y) + 'px'
+      });
+    }
+  };
+});
+</script>
+
+<div style="display:none;">
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cdiv id='cnzz_stat_icon_5076009' style='display:none;'%3E%3C/div%3E%3Cscript src='" + cnzz_protocol + "s25.cnzz.com/stat.php%3Fid%3D5076009' type='text/javascript'%3E%3C/script%3E"));</script>
+</div></body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+* {margin:0; padding:0; list-style:none;}
+
+#div1 {width:800px; height:260px; margin:10px auto; overflow:hidden; position:relative; border:2px solid red; z-index:10}
+#div1 ul {position:absolute; z-index:1; left:0}
+#div1 ul li {float:left; width:400px; height:260px;}
+img{ width:400px; height:260px}
+.prev,.next{ width:30px; height:50px; position:absolute;left:20px; top:100px; background:#ddd; z-index:10}
+.next{ left:auto;right:20px}
+</style>
+<script src="move.js"></script>
+<script>
+window.onload=function (){
+	
+	var oDiv=document.getElementById('div1');
+	var oUl=oDiv.children[0];
+	var aLi=oUl.children;
+	var li_w=aLi[0].offsetWidth;
+	var prev=document.getElementsByClassName('prev')[0];
+	var next=document.getElementsByClassName('next')[0];
+	
+	oUl.innerHTML+=oUl.innerHTML;
+	oUl.innerHTML+=oUl.innerHTML;
+	
+	oUl.style.width=li_w*aLi.length+'px';
+	oUl.style.left='-1600px';
+	var l=-1600;
+	var n=0;
+	prev.onclick=function(){
+		n++;
+		if(n==3){
+		n=1;
+		oUl.style.left=l+'px';
+		}
+		move(oUl,{'left':l+n*-800});
+	};
+	next.onclick=function(){
+		n--;
+		if(n==-3){
+			n=-1;
+			oUl.style.left=l+'px';
+		};
+		move(oUl,{'left':l+n*-800});
+		
+	}
+	
+	
+	/*setInterval(function(){
+		n++;
+		move(oUl,'left',n*800)
+	
+	},2000)*/
+	
+	
+	
+};
+</script>
+</head>
+
+<body>
+<div id="div1">
+	
+	<ul>
+    	<li><img src="images/01.jpg" /></li>
+    	<li><img src="images/02.jpg" /></li>
+    	<li><img src="images/03.jpg" /></li>
+    	<li><img src="images/04.jpg" /></li>
+    </ul>
+    <a class="prev" href="javascript:;">p</a>
+    <a class="next" href="javascript:;">N</a>
+</div>
+</body>
+</html>

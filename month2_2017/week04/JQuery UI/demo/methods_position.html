@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Methods 方法</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+<link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css">
+<style>
+#targetElement{ width:500px; border:1px solid #000; height:200px;}
+.positionDiv {position: absolute;width: 120px;height: 60px;background: pink; line-height:60px; text-align:center}
+#position4{width: 150px;height: 60px;background: red; line-height:60px; color:#fff; text-align:center; cursor:move}
+</style>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script>
+$(function(){
+	$( "#position1" ).position({
+		my: "center",
+		at: "center",
+		of: "#targetElement"
+	});
+ 
+	$( "#position2" ).position({
+		my: "left top",
+		at: "left top",
+		of: "#targetElement"
+	});
+ 
+	$( "#position3" ).position({
+		my: "right center-25",
+		at: "right top",
+		of: "#targetElement",
+		collision: "none"//不进行浏览器窗口碰撞检测
+	});
+	
+	//拖拽
+	$( "#position4" ).mousedown(function(){
+		$( document ).mousemove(function( event ) {
+			$( "#position4" ).position({
+				my: "left+3 bottom-3",
+				of: event,
+				collision: "flip"//相对于浏览器窗口
+			});
+		});
+		$( document).mouseup(function(){
+			$( document).off('mousemove')
+		});
+	});
+ 
+	
+	
+		
+})
+</script>
+
+</head>
+<body>
+    <div id="targetElement">
+      <div class="positionDiv" id="position1">position1</div>
+      <div class="positionDiv" id="position2">position2</div>
+      <div class="positionDiv" id="position3">position3</div>
+    </div>
+    <div id="position4">与浏览器窗口碰撞</div>
+</body>
+</html>

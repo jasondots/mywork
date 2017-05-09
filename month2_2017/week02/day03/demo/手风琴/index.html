@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/move.js"></script>
+
+<script type="text/javascript">
+window.onload=function(){
+	
+	var oDiv=document.getElementById('main1');
+	var aLi=oDiv.getElementsByTagName('li');
+	for(var i=0; i<aLi.length; i++){
+		aLi[i].onmouseover=function(){
+			move(this,{"width":320})
+		};
+		
+		aLi[i].onmouseout=function(){
+			move(this,{"width":80})
+		};
+	};
+};
+
+//---------------------------------------------------
+
+$(function(){
+	
+	$('#main2 li').hover(
+	function(){
+		$(this).stop().animate({width:"320px"},1000);
+	},
+	
+	function(){
+		$(this).stop().animate({width:'80px'},1000);
+	})
+})
+
+</script>
+
+<style>
+
+*{margin:0;padding:0}
+ul{list-style:none;}
+.box{width:640px;height:200px;margin:50px 0 0 50px; overflow:hidden}
+.box>ul{width:1600px; height:200px; background:#ccc}
+.box>ul>li{float:left;width:80px;height:200px;cursor:pointer;}
+
+.a_1{background:url(images/abstract.jpg);}
+.a_2{background:url(images/landscapes.jpg);}
+.a_3{background:url(images/nature.jpg);}
+.a_4{background:url(images/people.jpg);}
+.a_5{background:url(images/urban.jpg); min-width:320px}
+
+</style>
+
+</head>
+
+<body>
+<h3>move.js</h3>
+<div id="main1" class="box">
+    <ul>
+	    <li class="a_1"></li>
+		<li class="a_2"></li>
+		<li class="a_3"></li>
+		<li class="a_4"></li>
+		<li class="a_5"></li>
+	</ul>
+</div>
+<br />
+<br />
+<br />
+<br />
+<h3>jquery.js</h3>
+<div id="main2" class="box">
+    <ul>
+	    <li class="a_1"></li>
+		<li class="a_2"></li>
+		<li class="a_3"></li>
+		<li class="a_4"></li>
+		<li class="a_5"></li>
+	</ul>
+</div>
+
+</body>
+</html>

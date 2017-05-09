@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery Jcrop 图像裁剪 &raquo; PHP 裁剪 &raquo; 在线演示 - 前端开发仓库</title>
+<link rel="stylesheet" href="base.css" tppabs="http://code.ciaoca.com/static/css/base.css">
+<link rel="stylesheet" href="demo.css" tppabs="http://code.ciaoca.com/static/css/demo.css"><link rel="stylesheet" href="layout.css" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/css/layout.css">
+<link rel="stylesheet" href="jquery.Jcrop.css" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/css/jquery.Jcrop.css">
+<style>
+#target{display:block;width:500px;height:330px;background-color:#ccc;font-size:24px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="side">
+    <div class="logo">
+  <a href="javascript:if(confirm(%27http://code.ciaoca.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://code.ciaoca.com/%27" tppabs="http://code.ciaoca.com/" target="_blank">前端开发仓库</a>
+  <em>在线演示</em>
+</div>    <dl class="about"><dt>关于</dt><dd><a target="_blank" href="javascript:if(confirm(%27http://deepliquid.com/content/Jcrop.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://deepliquid.com/content/Jcrop.html%27" tppabs="http://deepliquid.com/content/Jcrop.html">作者</a></dd><dd><a target="_blank" href="javascript:if(confirm(%27https://github.com/tapmodo/Jcrop  \n\nThis file was not retrieved by Teleport Pro, because it is addressed using an unsupported protocol (e.g., gopher).  \n\nDo you want to open it from the server?%27))window.location=%27https://github.com/tapmodo/Jcrop%27" tppabs="https://github.com/tapmodo/Jcrop">Github</a></dd><dd><a target="_blank" href="javascript:if(confirm(%27http://code.ciaoca.com/jquery/jcrop/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://code.ciaoca.com/jquery/jcrop/%27" tppabs="http://code.ciaoca.com/jquery/jcrop/">中文文档</a></dd></dl>    <div id="nav" class="nav">
+  <dl>
+    <dt>示例</dt>
+    <dd><a href="index.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/" title="基础示例">hello world</a></dd>
+    <dd><a href="handler.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/handler" title="事件处理">basic handler</a></dd>
+    <dd><a href="preview.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/preview" title="按高宽比例预览裁剪效果">aspect ratio with preview pane</a></dd>
+    <dd><a href="animation.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/animation" title="动画、过度效果">Animation / Transitions</a></dd>
+    <dd><a href="api.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/api" title="api 接口">api interface</a></dd>
+    <dd><a href="styling.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/styling" title="css 样式">styling example</a></dd>
+    <dd><a href="non-image.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/non-image" title="非图片裁剪">non-image elements</a></dd>
+  </dl>
+  <dl>
+    <dt>配合后端语言</dt>
+    <dd><a href="crop.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/crop" title="PHP 裁剪示例">PHP cropping demo</a></dd>
+  </dl>
+</div>  </div>
+  <div class="main">
+    <div class="inwrap">
+      <h1>jQuery Jcrop 图像裁剪</h1>
+      <h2>PHP 裁剪</h2>
+      
+      <div class="detail">
+        <p><strong>一个服务端程序裁剪的示例</strong></p>
+        <p>裁剪的一些相关数值存放在 hidden 的文本框中，如果你点击 <strong>裁剪图像</strong> 按钮，将裁剪出一张 150x150 的图像，并由浏览器输出。赶紧试试吧！</p>
+        <p>注：如果你需要将裁剪后的图像保存到服务端的某个文件夹里，更改一下 PHP 的一些代码即可。</p>
+      </div>
+      
+      <div class="example">
+        <!-- This is the image we're attaching Jcrop to -->
+        <img src="pool.jpg" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/demo_files/pool.jpg" id="cropbox">
+      </div>
+
+      <div class="example">
+        <!-- This is the form that our event handler fills -->
+        <form action="crop--x=裁剪图像&y=&w=&h=.htm" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/crop??x=裁剪图像&y=&w=&h=" method="post" onsubmit="return checkCoords();">
+          <input type="hidden" id="x" name="x">
+          <input type="hidden" id="y" name="y">
+          <input type="hidden" id="w" name="w">
+          <input type="hidden" id="h" name="h">
+          <input class="button blue" type="submit" value="裁剪图像">
+        </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<script src="highlight.pack.js" tppabs="http://code.ciaoca.com/static/js/highlight/highlight.pack.js"></script>
+<script src="demo.js" tppabs="http://code.ciaoca.com/static/js/controller/demo.js"></script><script src="jquery-1.5.2.min.js" tppabs="http://code.ciaoca.com/static/js/jquery/jquery-1.5.2.min.js"></script>
+<script src="jquery.Jcrop.min.js" tppabs="http://code.ciaoca.com/jquery/jcrop/demo/js/jquery.Jcrop.min.js"></script>
+<script>
+$(function(){
+  $('#cropbox').Jcrop({
+    aspectRatio: 1,
+    onSelect: updateCoords
+  });
+});
+  
+function updateCoords(c){
+  $('#x').val(c.x);
+  $('#y').val(c.y);
+  $('#w').val(c.w);
+  $('#h').val(c.h);
+};
+  
+function checkCoords(){
+  if (parseInt($('#w').val())) {
+    return true;
+  };
+  alert('请先选择要裁剪的区域后，再提交。');
+  return false;
+};
+</script>
+
+<div style="display:none;">
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cdiv id='cnzz_stat_icon_5076009' style='display:none;'%3E%3C/div%3E%3Cscript src='" + cnzz_protocol + "s25.cnzz.com/stat.php%3Fid%3D5076009' type='text/javascript'%3E%3C/script%3E"));</script>
+</div></body>
+</html>

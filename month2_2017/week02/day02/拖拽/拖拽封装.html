@@ -1,0 +1,75 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0}
+div{ position:absolute;top:0;left:200px;width:200px;height:200px; background:red}
+h4{ height:40px; line-height:40px; background:#900; color:#fff; cursor:move}
+.box2{ top:30px; left:400px; background:green}
+.box3{top:80px; left:20px; background:blue}
+</style>
+<script src="jquery-1.11.3.min.js"></script>
+<script src="hxsd_tools.js"></script>
+<script>
+$(function(){
+	var oBox=$('div');
+	var tit=oBox.children('h4');
+	
+	drag(oBox,tit);
+
+})
+
+
+
+
+
+//---------------------------------------------------------------
+
+/*window.onload=function(){
+	var oBox=document.getElementById('box');
+	var aBoxs=document.getElementsByTagName('div');
+
+function drag(elm){
+	elm.onmousedown=function(ev){//得到鼠标与box之间的差
+		ev=ev||window.event;
+		var disX=ev.clientX-elm.offsetLeft;
+		var disY=ev.clientY-elm.offsetTop;
+		
+		document.onmousemove=function(ev){//鼠标移动，进行拖拽
+			ev=ev||window.event;
+			var t=ev.clientY-disY;
+			var l=ev.clientX-disX;
+			
+			elm.style.top=t+'px';
+			elm.style.left=l+'px';
+		};	
+		document.onmouseup=function(){//释放事件
+			document.onmousemove=null;
+		};
+		return false;
+	};
+};
+
+
+	for(var i=0; i<aBoxs.length; i++){
+		drag(aBoxs[i]);
+	}
+
+
+//drag(oBox);
+
+
+	
+	
+	
+};*/
+
+</script>
+</head>
+
+<body>
+<div class="box1"><h4>title</h4></div>
+</body>
+</html>

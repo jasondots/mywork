@@ -1,0 +1,64 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0}
+button{ height:50px; width:100px; display:block; margin:100px auto}
+.popBox_error{ padding:20px; max-width:300px; position:absolute; background:red; color:#fff; box-shadow:1px 1px 1px #000; border-radius:5px; display:none; cursor:move}
+</style>
+
+<script src="hxsd_tools.js"></script>
+<script>
+window.onload=function(){
+	
+	//居中显示  宽度？？ 设定最大宽度
+	
+	//2秒以后，自动消失，从页面移除
+	
+	//可以拖拽
+	
+	//鼠标移入，不消失
+	
+	var  errDiv=document.getElementsByClassName('popBox_error')[0];
+	var oBtn=document.getElementsByTagName('button')[0];
+	var timer;
+	
+	oBtn.onclick=function(){
+		errDiv.innerHTML="afadfsdfasdfds";
+		popShow(errDiv);
+		
+		function delay_del(){
+			timer=setTimeout(function(){
+				errDiv.style.display="none";
+			}, 20000);
+		};
+		
+		
+		//删除
+		delay_del();
+		
+		//拖拽
+		drag(errDiv);
+	
+		errDiv.onmouseover=function(){
+			clearTimeout(timer);
+		};
+		errDiv.onmouseout=function(){
+			delay_del()
+		}
+	
+	}
+	
+	
+};
+</script>
+</head>
+
+<body>
+<button type="button">弹框</button>
+<div class="popBox_error"></div>
+
+</body>
+</html>

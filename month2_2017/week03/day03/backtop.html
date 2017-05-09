@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0}
+body{ height:2001px;}
+</style>
+</head>
+
+<body>
+sdfsd
+
+</body>
+</html>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+
+	/*document.getElementsByTagName('div')[0].onclick=function(){
+		document.getElementsByTagName('html')[0].scrollTop=0;
+	}
+*/
+	var h=$(document).height();
+	if(h>2000){
+		var backtop=$('<div  style="height:50px; width:50px; background:red; position:fixed; bottom:50px; right:50px; display:none">top</div>');
+		$(document.body).append(backtop);
+		$(window).scroll(function(){
+			if($(window).scrollTop()>1200){
+				backtop.show();
+			}else{
+				backtop.hide();
+			}
+		});
+		
+		backtop.click(function(){
+		$('body,html').animate({scrollTop:0},500);
+	})
+	
+	}
+
+	
+
+
+</script>

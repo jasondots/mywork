@@ -1,0 +1,48 @@
+﻿body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{margin:0;padding:0;	list-style:none;font:14px/1.5 "微软雅黑","宋体","Arial","sans-serif","Tahoma";color:#333}
+.fixed{position:fixed;_position:absolute;top:100px;_top:expression(eval(document.documentElement.scrollTop)+100+"px");right:10px;z-index:8000}
+*html{background-image:url(about:blank);background-attachment:fixed}/*iE6 position:fixed*/
+h1{font-size:24px;font-weight: bold}
+h2{font-size:22px;font-weight: bold}
+h3{font-size:20px;font-weight: bold}
+h4{font-size:18px;font-weight: bold}
+h5{font-size:16px;font-weight: bold}
+h6{font-size:14px;font-weight: bold}
+img{vertical-align:middle;border:none 0}
+a{cursor:pointer;text-decoration:none}
+
+/*表&表单*/
+table{border-collapse:collapse;border-spacing:0;border:0}
+input,select{vertical-align:middle}
+select{height:22px;line-height:18px;padding:2px 0}
+.checkbox{border:none 0}
+textarea{resize:none;vertical-align: top}
+label{vertical-align:middle}
+input:focus,textarea:focus{outline:none}    
+.text{height:20px;vertical-align: middle;padding-left:5px;border:1px solid #CCC;_heght:10px;_padding-top:3px}
+.radio{vertical-align:-3px;*vertical-align:-1px;border:none 0;border-top-width:0}
+.btn{border:none 0;text-align:center;vertical-align: middle}
+.tr-over{background-color:#f3f3f3}
+
+/*文本*/
+.tl{text-align:left}
+.tc{text-align:center}
+.tr{text-align:right}
+.vm{vertical-align:middle}
+.green{color:#090}
+#body .red{ color:#f00}
+
+/*定位*/
+.fl{float:left;_display:inline}
+.fr{float:right;_display:inline}
+.cb{clear:both}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+.pr{position:relative}
+.pa{position:absolute}
+.zoom{zoom:1}
+.none{display:none}
+.mc{margin:0 auto}
+a{ color:#666}
+#body a:hover{color:#F00}
+#body .noBG{ background:none;}
+
+

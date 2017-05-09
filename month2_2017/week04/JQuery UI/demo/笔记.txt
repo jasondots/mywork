@@ -1,0 +1,186 @@
+
+Jquery UI
+
+jQuery UI 是一个建立在 jQuery JavaScript 库上的小部件和交互库，您可以使用它创建高度交互的 Web 应用程序。
+
+Query UI 主要由 小部件（Widgets）、交互（Interactions） 和 特效（Effects） 组成，但是还有一些简单的方法，增加了便利性。
+
+
+●Effects 		特效
+  
+  Effects Core		特效核心
+
+●Interactions		交互
+
+  Method Overrides	方法重载（重写）
+
+  Methods		方法
+
+  Selectors		选择器
+
+  Theming		主题
+
+  UI Core		UI核心
+
+  Utilities		实用工具
+
+●Widgets		小部件
+
+-----------------------------------------------------------------------------------------------------
+
+Effects	特效：
+
+blind Effect：		百叶窗特效		通过将元素包裹在一个容器内，采用"拉百叶窗"效果来隐藏或显示元素。
+		
+bounce Effect：		反弹特效		反弹一个元素。当与隐藏或显示一起使用时，最后一次或第一次反弹会呈现淡入/淡出效果。
+
+clip Effect：		剪辑特效		通过垂直或水平方向夹剪元素来隐藏或显示一个元素。
+
+drop Effect：		降落特效		通过单个方向滑动的淡入淡出来隐藏或显示一个元素。
+
+explode Effect：	爆炸特效		通过把元素裂成碎片来隐藏或显示一个元素。
+
+fade Effect：		淡入淡出特效		通过淡入淡出元素来隐藏或显示一个元素。
+
+fold Effect：		折叠特效		通过折叠元素来隐藏或显示一个元素。
+
+highlight Effect：	突出（高亮）特效	通过首先改变背景颜色来隐藏或显示一个元素。
+
+puff Effect：		膨胀特效		通过在缩放元素的同时隐藏元素来创建膨胀特效。
+
+pulsate Effect：	跳动(闪烁)特效		通过跳动来隐藏或显示一个元素。
+
+scale Effect：		缩放特效		按照某个百分比缩放元素。
+
+shake Effect：		震动特效		垂直或水平方向多次震动元素。
+
+size Effect：		尺寸特效		调整元素尺寸到指定宽度和高度。
+
+slide Effect：		滑动特效		把元素滑动出视区。
+
+transfer Effect：	转移特效		把一个元素的轮廓转移到另一个元素。
+
+------------------------------------------------------------------------------
+
+Interactions	交互：
+
+Draggable Widget	可拖拽小部件		允许使用鼠标移动元素。	
+
+Droppable Widget	可放置小部件		为可拖拽小部件创建目标。
+	
+Mouse Interaction	鼠标交互		基本交互层。
+
+Resizable Widget	可调整尺寸小部件	使用鼠标改变元素的尺寸。
+	
+Selectable Widget	可选择小部件		使用鼠标选择单个元素或一组元素。
+	
+Sortable Widget		可排序小部件		使用鼠标调整列表中或者网格中元素的排序。
+
+----------------------------------------------------------------------------------------------
+
+widget	小部件：
+
+Accordion Widget：	折叠面板部件	把一对标题和内容面板转换成折叠面板。
+	
+Autocomplete Widget：	自动完成部件	自动完成功能根据用户输入值进行搜索和过滤，让用户快速找到并从预设值列表中选择。	
+
+Button Widget：		按钮部件	可主题化的按钮和按钮集合。
+	
+Datepicker Widget	日期选择器部件	从弹出框或在线日历选择一个日期。
+
+Dialog Widget		对话框部件	在一个交互覆盖层中打开内容。
+	
+Menu Widget		菜单部件	带有鼠标和键盘交互的用于导航的可主题化菜单。
+
+Progressbar Widget	进度条部件	显示一个确定的或不确定的进程状态。
+
+Slider Widget		滑块部件	拖动手柄可以选择一个数值。
+
+Tabs Widget		标签页部件	一种多面板的单内容区，每个面板与列表中的标题相关。
+
+Tooltip Widget		工具提示框部件	可自定义的、可主题化的工具提示框，替代原生的工具提示框。
+
+Spinner Widget		旋转器部件	通过向上/向下按钮和箭头键处理，为输入数值增强文本输入功能。	
+
+------------------------------------------------------------------------------------
+
+Effects Core	特效核心
+
+API				描述					
+
+.addClass()			当动画样式改变时，为匹配的元素集合内的每个元素添加指定的 Class。
+
+Color Animation			使用 .animate() 实现颜色动画效果。	
+
+.effect()			对一个元素应用动画特效。
+
+.hide()				使用自定义效果来隐藏匹配的元素。
+
+.removeClass()			当动画样式改变时，为匹配的元素集合内的每个元素移除指定的 Class。
+
+.show()				使用自定义效果来显示匹配的元素。
+
+.switchClass()			当动画样式改变时，为匹配的元素集合内的每个元素添加和移除指定的 Class。
+
+.toggle()			使用自定义效果来显示或隐藏匹配的元素。
+
+.toggleClass()			当动画样式改变时，根据 Class 是否存在以及 switch 参数的值，为匹配的元素集合内的每个元素添加或移除一个或多个 Class。
+----------------------------------------------------------------------------------------------
+
+Methods	方法
+
+.disableSelection()	禁用选择匹配的元素集合内的文本内容。
+
+.enableSelection()	启用选择匹配的元素集合内的文本内容。
+
+.effect()		对一个元素应用动画特效。
+
+.focus()		异步聚焦到一个元素。
+
+.hide()			使用自定义效果来隐藏匹配的元素。
+
+.position()		相对另一个元素定位一个元素。
+
+.scrollParent()		获取最近的可滚动的祖先。
+
+.show()			使用自定义效果来显示匹配的元素。
+
+.toggle()		使用自定义效果来显示或隐藏匹配的元素。
+
+.uniqueId()		为匹配的元素集合生成并申请一个唯一的 Id。
+
+.removeUniqueId()	为匹配的元素集合移除由 .uniqueId() 设置的 Id。
+
+----------------------------------------------------------------------------------------
+
+UI Core	UI核心
+
+API				描述
+
+:data() Selector		选择数据已存储在指定的键下的元素。
+
+.disableSelection()		禁用选择匹配的元素集合内的文本内容。
+
+.enableSelection()		启用选择匹配的元素集合内的文本内容。
+
+.focus()			异步聚焦到一个元素。
+
+:focusable Selector		选择可被聚焦的元素。
+
+jQuery.ui.keyCode		一个相对于数字值的关键代码描述的映射。
+
+.removeUniqueId()		为匹配的元素集合移除由 .uniqueId() 设置的 Id。
+
+.scrollParent()			获取最近的可滚动的祖先。
+
+:tabbable Selector		选择用户可通过 tab 键聚焦的元素。
+
+.uniqueId()			为匹配的元素集合生成并申请一个唯一的 Id。
+
+.zIndex()			为元素获取 z-index。
+
+
+	
+
+
+

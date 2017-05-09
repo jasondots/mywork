@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+div{ width:100px; height:100px; background:red; margin-bottom:10px;}
+.blue{ background:blue}
+
+</style>
+</head>
+
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</body>
+</html>
+<script src="jquery-1.11.3.min.js"></script>
+<script>
+$(function(){
+	$("div").click(function(){
+		$(this).toggleClass("blue");
+	});
+})
+
+/*
+var aDiv=document.getElementsByTagName('div');
+
+for(var i=0; i<aDiv.length; i++){
+	aDiv[i].change=true;//独立开关
+	//绑定事件
+	aDiv[i].onclick=function(){
+		if(this.change){
+			this.style.background='blue';
+			this.change=false;
+		}else{
+			this.style.background='red';
+			this.change=true;
+		}
+	}
+};
+*/
+
+</script>

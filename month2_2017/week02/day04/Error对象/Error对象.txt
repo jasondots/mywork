@@ -1,0 +1,40 @@
+
+Error对象的属性
+
+属性		描述
+
+constructor	返回创建该对象的构造函数。
+
+message		返回错误或异常的相关描述信息。
+
+name		返回错误或异常的类型名称。
+
+
+
+Error对象的方法
+
+方法		描述
+
+toString()	返回包含相关错误信息的字符串。
+
+
+
+
+
+Error对象的非标准属性
+
+以下属性是实验性质的、非标准的属性，无法做到主流浏览器的全面兼容，请谨慎使用。
+
+属性		描述
+
+columnNumber	仅FireFox支持发生错误或异常的列号
+
+description	仅IE支持/已过时与message属性相同，该属性只用于向后兼容，请使用message属性替代。
+
+fileName	仅FireFox支持发生错误或异常的文件名
+
+lineNumber	仅FireFox支持发生错误或异常的行号
+
+number		仅IE支持表示与特定错误相关的数字值(相当于错误号)。
+
+stack		FireFox/Chrome/IE10+支持返回错误或异常的代码跟踪信息

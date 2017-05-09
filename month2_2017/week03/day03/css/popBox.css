@@ -1,0 +1,8 @@
+@charset "utf-8";
+/* CSS Document */
+.modal{ height:100%; width:100%; background:#000; opacity:0.3; position:fixed; top:0; left:0}
+
+.promptBox{ position:absolute;border:1px solid #ccc; background:#fbfbfb; padding:10px; box-shadow:2px 2px 2px #ccc; border-radius:10px; width:510px; height:200px}
+.promptBox textarea{ height:100px; width:500px; padding:5px; resize:none; display:block; margin:10px 0}
+.promptBox p{ text-align:right}
+.promptBox button{ width:100px; height:40px; background:#fff; border:1px solid #ccc;}

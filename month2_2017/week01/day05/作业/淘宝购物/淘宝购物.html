@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0}
+ul,ol{ list-style:none}
+h3{ height:40px}
+.shopping{ width:500px; margin:100px auto; padding:20px 20px 20px 240px; border:1px solid #ccc; position:relative}
+.shopping .girlImg{ position:absolute; left:20px; width:200px}
+.imgList{ position:absolute; top:240px; left:20px; width:220px}
+.imgList li{ float:left; margin-right:8px; border:2px solid transparent}
+.imgList .ac{border:2px solid red}
+.imgList li img{ width:30px; display:block}
+.price{ height:50px; font-size:30px; color:red; font-weight:bold}
+.priceList{ overflow:hidden; margin:20px 0}
+.priceList li{ float:left; height:30px; line-height:30px; padding:0 10px; border:2px solid #999; margin-right:10px; cursor:pointer}
+.priceList .ac{ border:2px solid red}
+.changeNum{ position:relative; margin:20px 0}
+.changeNum input{ width:40px; height:41px; text-align:center; line-height:40px;border:1px solid #ccc;}
+.changeNum button{height:22px; width:20px; background:none; border:1px solid #ccc; position:absolute;}
+.changeNum .addBtn{ left:41px; top:0px;}
+.changeNum .subBtn{ left:41px; top:21px;}
+.okBtn{ height:30px; width:100px}
+
+</style>
+</head>
+
+<body>
+<div class="shopping">
+	<img id="girl" class="girlImg" src="0.jpg">
+    <ol id="imgList" class="imgList">
+    	<li><img src="0.jpg"></li>
+    	<li><img src="1.jpg"></li>
+        <li><img src="2.jpg"></li>
+        <li><img src="3.jpg"></li>
+        <li><img src="4.jpg"></li>
+    </ol>
+    <h3>淘宝选女友---不要998,女友带回家!!</h3>
+    <div id="price" class="price"><em></em> 元</div>
+    <ul id="priceList" class="priceList">
+        <li>标准版</li>
+        <li>升级版</li>
+        <li>豪华版</li>
+        <li>定制版</li>
+    </ul>
+    <div id="changeNum" class="changeNum">
+        <input type="text" value="1">
+        <button class="addBtn" type="button">+</button>
+        <button class="subBtn" type="button">-</button>
+    </div>
+    <button id="okBtn" class="okBtn" type="button" disabled>加入购物车</button>
+</div>
+</body>
+</html>
+
+<script>
+
+var arr=[480,1860,5880,99988,"480-99988"];
+
+var priceList=document.getElementById('priceList');
+var p_aLi=priceList.getElementsByTagName('li');
+var oImg=document.getElementById('girl');
+
+var imgList=document.getElementById('imgList');
+var img_li=imgList.getElementsByTagName('li');
+
+var price=document.getElementById('price');
+var price_txt=price.getElementsByTagName('em')[0];
+
+var changeNum=document.getElementById('changeNum');
+var chgBtn=changeNum.getElementsByTagName('button');
+var chgTxt=changeNum.getElementsByTagName('input')[0];
+
+var okBtn=document.getElementById('okBtn');
+
+var choice; //选择
+
+var number=1;  //数量
+
+price_txt.innerHTML=arr[arr.length-1];//初始值
+
+
+
+function clearAc(){
+	for(var j=0; j<p_aLi.length; j++){
+		p_aLi[j].className="";
+	};
+	for(var l=0; l<img_li.length; l++){
+		img_li[l].className="";
+	};
+};
+
+for(var i=0; i<p_aLi.length; i++){
+	p_aLi[i].index=i;
+	p_aLi[i].onclick=function(){
+		
+		if(choice!=this.index){//如果编号不是自己的,就进行更改
+			clearAc();
+			this.className="ac";
+			img_li[this.index+1].className="ac";
+			
+			price_txt.innerHTML=arr[this.index];
+			choice=this.index;
+			
+			oImg.src=this.index+1+".jpg";
+			
+			okBtn.disabled=false;
+		}else{//否则,说明已经选过
+			clearAc();
+			choice=null;//-1也可以 不能为空字符串,因为 alert(""!=0) false
+			price_txt.innerHTML=arr[arr.length-1];
+			oImg.src="0.jpg";
+			okBtn.disabled=true;
+		}
+	};
+};
+//-------------------------------------------
+for(var k=0; k<img_li.length; k++){
+	img_li[k].index=k;
+	img_li[k].onmouseover=function(){
+		for(var j=0; j<img_li.length; j++){
+			img_li[j].className="";
+		};
+		this.className="ac";
+		oImg.src=this.index+".jpg";
+	}
+};
+
+//----------------------------------------
+chgBtn[0].onclick=function(){
+	number++;
+	if(number==4){
+		alert("哥们儿,你太贪心了吧??")
+	};
+	chgTxt.value=number;
+};
+chgBtn[1].onclick=function(){
+	number--;
+	if(number<1){
+		number=1;
+	}
+	chgTxt.value=number;
+};
+
+okBtn.onclick=function(){
+	alert("添加成功!")
+}
+
+
+</script>

@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0}
+ul {list-style:none}
+.years{ margin-left:100px; border-left:3px solid #99DCF4; width:300px; padding-bottom:50px;}
+.years h4{ border-radius:50%; height:60px; line-height:60px; text-align:center; width:60px; background:#42B4D7; position:relative; top:20px; left:-35px; margin-bottom:50px; color:#fff; border:5px solid #fff }
+.years h5{position:relative; top:20px; left:-26px; margin-bottom:50px;height:40px; line-height:40px; text-align:center; width:40px; background:#89E9E5;border-radius:50%; color:#fff; border:5px solid #fff}
+.years .month dl{ position:relative; margin-top:20px; margin-left:20px;}
+.years .month dl dt{ position:absolute; left:-60px; top:10px}
+.years .month dl dt i{ position:absolute; top:0; left:29px; width:15px; height:15px; background:#34ADF0;border-radius:50%; border:2px solid #fff }
+.years .month dl dd{ padding:10px; background:#ddd; border-radius:5px;}
+</style>
+<script src="jquery-1.11.3.min.js"></script>
+
+<script>
+
+$(function(){
+	/*$.ajax({
+		url:"time_line.txt",
+		type:"get",
+		dataType:"JSON",//如果不指定，jQuery 将自动智能判断
+		success: function(data){
+			var html="";
+			for(var i=0;i<data.length;i++){
+				html+='<div class="years">'+
+					'<h4>'+data[i].year+'</h4>'+
+					'<ul class="month_list">';
+				for(var j=0;j<data[i].month_list.length;j++){
+					html+='<li class="month">'+
+							'<h5>'+data[i].month_list[j].month+'月</h5>'
+					for(var k=0;k<data[i].month_list[j].cont.length;k++){
+						html+='<dl>'+
+							'<dt>'+data[i].month_list[j].cont[k].day+'日<i></i></dt>'+
+							'<dd>'+data[i].month_list[j].cont[k].txt+'</dd>'+
+						'</dl>';
+					};
+					html+='</li>';
+				};
+				html+='</ul>'+
+				'</div>';
+			};
+			$('body').append(html);
+		}
+	});*/
+	
+	
+	$.get("time_line.txt",function(data){
+		//data=$.parseJSON(data);
+		var html="";
+		for(var i=0;i<data.length;i++){
+			html+='<div class="years">'+
+				'<h4>'+data[i].year+'</h4>'+
+				'<ul class="month_list">';
+			for(var j=0;j<data[i].month_list.length;j++){
+				html+='<li class="month">'+
+						'<h5>'+data[i].month_list[j].month+'月</h5>';
+				for(var k=0;k<data[i].month_list[j].cont.length;k++){
+					html+='<dl>'+
+						'<dt>'+data[i].month_list[j].cont[k].day+'日<i></i></dt>'+
+						'<dd>'+data[i].month_list[j].cont[k].txt+'</dd>'+
+					'</dl>';
+				};
+				html+='</li>';
+			};
+			html+='</ul>'+
+			'</div>';
+		};
+		$('body').append(html);
+	},"json");
+
+
+
+});
+	
+
+</script>
+
+</head>
+
+<body>
+</body>
+</html>

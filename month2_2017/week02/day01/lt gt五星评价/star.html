@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>五星评价</title>
+<style>
+a{ display:inline-block; height:30px; width:30px; padding:5px;background:url(star.png) no-repeat center -40px}
+.ac{ background-position:center 0}
+
+</style>
+</head>
+
+<body>
+<a></a><a></a><a></a><a></a><a></a>
+
+<script src="jquery-1.11.3.min.js"></script>
+<script>
+$(function(){
+	var num;
+	$('a').hover(
+		function(){
+			var n=$(this).index();		
+			$('a:lt('+(n+1)+')').addClass('ac');
+			$('a:gt('+n+')').removeClass('ac');
+		},
+		function(){
+			$('a:lt('+(num+1)+')').addClass('ac');
+			$('a:gt('+num+')').removeClass('ac');
+		}
+	);
+		
+	$('a').click(function(){
+		num=$(this).index();
+	});
+	
+	
+	
+	
+//	var num;
+//	function change(n){
+//		$('a').each(function(index) {
+//			index<=n ? $(this).addClass("ac") : $(this).removeClass("ac");
+//		});
+//	};
+//	
+//	$('a').hover(
+//		function(){
+//			var this_index=$(this).index();
+//			change(this_index);
+//		},
+//		function(){
+//			change(num);
+//		}
+//	);
+//	$('a').click(function(){
+//		num=$(this).index();
+//	});
+
+
+
+});
+
+
+
+
+	/*var aA=document.getElementsByTagName('a');
+	
+	var num;//选中的位置  不能num=0； 否则，第一个会被选中
+	
+	for(var i=0; i<aA.length; i++){
+		aA[i].index=i;//用“点”语法自定义索引属性
+		
+		aA[i].onmouseover=function(){
+			//比对牌照
+			for(var j=0; j<aA.length; j++){
+				if(j<=this.index){// 相当于 aA[j].index==this.index
+					aA[j].className="ac";
+				}
+				else{
+					aA[j].className="";
+				}
+			}		
+		};
+		//---------------------------------------------
+		aA[i].onclick=function(){
+			num=this.index;
+		};
+		
+		//---------------------------------------------
+		aA[i].onmouseout=function(){
+			for(var i=0; i<aA.length; i++){
+				
+				//按照num分配颜色
+				if(i<=num){
+					aA[i].className="ac";
+				}
+				else{
+					aA[i].className="";
+				}
+			};
+		};
+	}*/
+
+</script>
+
+</body>
+</html>

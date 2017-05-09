@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+<link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css">
+<link href="css/jquery-ui.theme.min.css" rel="stylesheet" type="text/css">
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script>
+$(function(){
+	$('#dialog').dialog({
+		closeOnEscape:true,
+		title:"我的弹框",
+      	autoOpen: false,
+		modal:true,
+		/*buttons: {
+        	ok: function() {
+				$( this ).dialog( "close" );
+				alert(3453);
+        	},
+			cancel:function(){
+				$( this ).dialog( "close" );
+			}
+      	},*/
+		beforeClose: function( ev, ui ) {
+			console.log(123123)
+		},
+		show: {
+        	effect: "drop",
+        	duration: 300,
+			direction :'up'
+      	},
+      	hide: {
+        	effect: "fade",
+        	duration: 500
+      	}
+	});
+	
+
+	
+	$("#showDialog").button().click(function(){
+		$("#dialog").dialog('open');
+		
+		//var opt = $("#dialog").dialog( "option" );
+		//var widget = $("#dialog").dialog( "widget" );
+		//console.log(widget)
+
+	});
+
+
+});
+
+</script>
+</head>
+
+<body>
+<div id="dialog" title="Dialog Title">I'm in a dialog</div>
+
+<div id="box"></div>
+<button type="button" id="showDialog">show dialog</button>
+
+</body>
+</html>
+

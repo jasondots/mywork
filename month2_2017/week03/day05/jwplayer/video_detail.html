@@ -1,0 +1,54 @@
+﻿<!doctype html>
+<html id="html">
+<head>
+<meta charset="utf-8">
+<title>视频详情</title>
+<script src="jquery-1.11.3.min.js"></script>
+<script src="jwplayer/jwplayer.js" type="text/javascript"></script>
+<script src="jwplayer/jwplayer.html5.js" type="text/javascript"></script>
+<script>
+$(function() {
+		jwplayer("sh_video").setup({
+		flashplayer:"jwplayer/jwplayer.swf",
+		width:870,
+		height:640,
+        file: "http://www.banhai.com/res/609174B054AD0E683F0F022C70B79013/C0144EB0D53283D8A2A489954273C241/DDEE3D9836E52AC646724C02C12CBCAF/F029E2DADD941D486B6B1DC6E8ECA550.mp4",
+        image: "jwplayer/player.jpg"
+    });
+	$('#videoList li').click(function(){
+		$(this).addClass('play').siblings().removeClass('play');
+		var video_src=$(this).children('em').attr('title');
+		jwplayer("sh_video").setup({
+			flashplayer:"jwplayer/jwplayer.swf",
+			width:870,
+			height:640,
+			file:video_src,
+			events: {
+                  onReady:function() {this.play()}
+          		}
+			})
+	})
+});
+</script>
+</head>
+
+<body>
+
+
+<div>
+    <div id="sh_video">Loading the player...</div>
+</div>
+
+<div>
+    <h5> 目录</h5>
+    <ul id="videoList" class="menu clearfix">
+        <li class="play"><i></i><span>03</span><em title="http://www.banhai.com/res/609174B054AD0E683F0F022C70B79013/C0144EB0D53283D8A2A489954273C241/DDEE3D9836E52AC646724C02C12CBCAF/98FD24AA3D8237F715B6938D8CDE335D.mp4">身体的变形</em></li>
+        <li><i></i><span>04</span><em title="http://www.banhai.com/res/609174B054AD0E683F0F022C70B79013/C0144EB0D53283D8A2A489954273C241/DDEE3D9836E52AC646724C02C12CBCAF/4EFF11EDB2A1F65DF85DFCF7BD02FF36.mp4">头发的画法以及描绘色彩</em></li>
+        <li><i></i><span>05</span><em title="http://www.banhai.com/res/609174B054AD0E683F0F022C70B79013/C0144EB0D53283D8A2A489954273C241/DDEE3D9836E52AC646724C02C12CBCAF/65FE1859F210DD98698FEAA8E46B1.mp4">画个小羽</em></li>
+        
+    </ul>
+</div>
+
+                
+</body>
+</html>

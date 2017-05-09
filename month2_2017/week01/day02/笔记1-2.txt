@@ -1,0 +1,93 @@
+
+知识点:
+
+● DOM事件
+
+● 事件对象
+
+======================================================================================
+
+DOM事件
+
+我们可以在事件发生时执行 JavaScript，比如当用户在 HTML 元素上点击时。
+
+如需在用户点击某个元素时执行代码，请向一个 HTML 事件属性添加 JavaScript 代码：
+
+DOM事件汇总
+
+表单事件
+onblur	        元素失去焦点
+onfocus	        元素获得焦点
+onchange	内容改变时触发
+
+form事件
+onreset	        表单重置（重置按钮）
+onsubmit	表单提交(form内有text被聚焦，直接回车可触发onsubmit)
+
+
+鼠标事件
+onclick	        鼠标点击
+ondblclick	鼠标双击
+onmousedown	鼠标按键按下
+onmouseup	鼠标按键被松开
+onmouseout	鼠标从某元素移开
+onmouseover	鼠标被移到某元素之上
+onmouseenter    鼠标进入某元素
+onmouseleave    鼠标离开某元素
+onmousemove	鼠标移动
+oncontextmenu   右键菜单
+
+
+键盘事件
+onkeydown	按键按下
+onkeypress	按键按下并释放
+onkeyup	        按键释放
+
+
+window事件
+onload	        加载（某个页面或图像被完成）
+onunload	用户退出页面
+onresize	窗口或框架被调整尺寸
+onscroll	滚动条事件
+
+------------------------------------------------------------
+
+事件对象(Event)
+
+Event对象代表事件的状态，根据输入设备的不同,事件对象代表不同的输入设备
+
+如果是鼠标事件,事件对象就代表鼠标,如果是键盘事件,事件对象就代表键盘
+
+例:
+
+oDiv.onclick=function(ev){
+	ev=ev || event;   //IE8以下事件对象是window.event(window全局对象属性)
+}
+
+★注意:
+
+绑定在事件上的匿名函数,只可以有一个参数,并且,这个参数就是事件对象.
+
+
+事件对象的相关属性:
+
+键盘:
+
+ev.keyCode	键盘编号
+
+ev.ctrlKey	"Ctrl" 键按下 ev.ctrlKey==1
+ 
+ev.altKey	"Alt" 键按下  ev.altKey==1
+
+ev.shiftKey	"Shift"键按下 ev.shiftKey==1
+
+
+鼠标
+
+ev.button	鼠标按钮 0：左键 1：中键  2：右键
+
+ev.clientX	鼠标指针的水平坐标
+
+ev.clientY	鼠标指针的垂直坐标
+
+ev.target	触发事件的目标元素

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>sortable 拖拽排序</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+<link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css">
+<style>
+.imgList { height:100px; width:600px; margin:100px auto}
+.imgList li{ float:left; height:100px; width:160px; background:#ccc; margin-right:10px; margin-bottom:10px}
+.imgList li img{ width:100%; height:100%}
+.imgList .upload{ background:#ddd; font-size:60px; color:#999; text-align:center; line-height:80px; cursor:pointer}
+.imgList .sortable-placeholder{ width:160px; height:100px; background:red}
+</style>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script>
+$(function(){
+	$('.imgList').sortable({
+		//axis: "x",//只可水平方向拖动
+		//opacity: 0.5,
+		revert: true,//动画
+		cancel: '.upload',
+		items: "> li:not('.upload')",
+		helper: "clone",
+		placeholder: "sortable-placeholder",
+		forcePlaceholderSize: true,
+		start:function(){
+			//console.log($(this))
+		},
+		stop:function(){
+			//序列号哈希表
+			var sorted = $('.imgList').sortable( "serialize", { key: "img" } );
+			console.log(sorted)
+			
+			//var sortedIDs =$('.imgList').sortable( "toArray" );//所以li的id放输入一个数组
+			//console.log(sortedIDs)
+		},
+		
+		
+	});
+})
+</script>
+
+</head>
+<body>
+    <ul class="imgList">
+    	<li id="l_A"><img src="images/01.jpg"></li>
+        <li id="l_B"><img src="images/02.jpg"></li>
+        <li id="l_C"><img src="images/03.jpg"></li>
+        <li id="l_D"><img src="images/04.jpg"></li>
+        <li id="l_E"><img src="images/05.jpg"></li>
+        <li class="upload" title="上传图片">+</li>
+    </ul>
+</body>
+</html>

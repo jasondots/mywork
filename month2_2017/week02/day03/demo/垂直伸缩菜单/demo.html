@@ -1,0 +1,111 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>垂直伸缩菜单</title>
+<style>
+* {	margin: 0;	padding: 0; }
+body{ height:4000px;}
+ul{ list-style: none; }
+a{ text-decoration: none;}
+.nav h2 { width: 240px; text-indent:2em; font-size:14px;  cursor: pointer; border-bottom: 1px #666 solid; color:#fff; }
+.nav { margin:100px auto;width: 240px; font-size: 12px; background: #8e9eb1; border: 1px solid #8e9eb1; }
+.nav li { width: 240px;line-height:40px;}
+.nav .ac { background:red }
+.nav ul { width: 240px;overflow:hidden; display:none }
+.nav ul li { width: 240px; background:#D8D6D6}
+.nav ul li a { display: block; width: 200px;padding-left: 40px; color:#6b7f97; border-bottom:1px solid #ccc }
+.nav ul li a:hover { text-decoration: underline; }
+</style>
+
+<script src="jquery-1.11.3.min.js"></script>
+<script>
+$(function(){
+	$('.nav li').click(function(){
+		$('.nav li').not(this).removeClass('ac');
+		$('.nav li ul').stop().slideUp();
+		$(this).toggleClass('ac').children('ul').stop().slideToggle();
+	});
+});
+
+
+
+	/*window.onload=function(){
+		var nav=document.getElementById('nav');
+		var aLi=nav.children;
+		for(var i=0; i<aLi.length; i++){
+			aLi[i].index=i;
+			aLi[i].onclick=function(){
+				if(this.children[0].className=='ac'){
+					this.children[0].className='';
+					move(this.children[1],{'height':0});
+				}else{
+					//删除其他h2的class
+					for(var j=0; j<aLi.length; j++){
+						aLi[j].children[0].className='';
+						move(aLi[j].children[1],{'height':0});
+					};
+					this.children[0].className='ac';
+					move(this.children[1],{'height':160});
+				}
+			};
+		}
+	}*/
+
+
+</script>
+</head>
+
+<body>
+
+<ul id="nav" class="nav">
+	<li>
+    	<h2>火星时代</h2>
+        <ul>
+            <li><a href="javascript:;">JavaScript培训</a></li>
+            <li><a href="javascript:;">HTML5培训</a></li>
+            <li><a href="javascript:;">视频教程</a></li>
+            <li><a href="javascript:;">空中课堂</a></li>
+        </ul>
+    </li>
+	<li>
+    	<h2><span>火星时代</span></h2>
+        <ul>
+            <li><a href="javascript:;">JavaScript培训</a></li>
+            <li><a href="javascript:;">HTML5培训</a></li>
+            <li><a href="javascript:;">视频教程</a></li>
+            <li><a href="javascript:;">空中课堂</a></li>
+        </ul>
+    </li>
+	<li>
+    	<h2><span>火星时代</span></h2>
+        <ul>
+           <li><a href="javascript:;">JavaScript培训</a></li>
+            <li><a href="javascript:;">HTML5培训</a></li>
+            <li><a href="javascript:;">视频教程</a></li>
+            <li><a href="javascript:;">空中课堂</a></li>
+        </ul>
+    </li>
+	<li>
+    	<h2><span>火星时代</span></h2>
+        <ul>
+            <li><a href="javascript:;">JavaScript培训</a></li>
+            <li><a href="javascript:;">HTML5培训</a></li>
+            <li><a href="javascript:;">视频教程</a></li>
+            <li><a href="javascript:;">空中课堂</a></li>
+        </ul>
+    </li>
+</ul>
+</body>
+</html>
+<script>
+window.onscroll=function(){
+	//console.log(document.documentElement.scrollTop||document.body.scrollTop)
+	console.log($(window).scrollTop())
+
+}
+
+//alert(document.documentElement.scrollTop ||document.body.scrollTop);
+//alert($(document).height())
+
+</script>

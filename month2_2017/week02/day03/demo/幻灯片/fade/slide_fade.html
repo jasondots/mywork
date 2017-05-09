@@ -1,0 +1,171 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>幻灯片左右滑动</title>
+<style>
+*{ padding: 0; margin: 0; }
+a{ text-decoration:none}
+ul,ol,li{ list-style: none; }
+.hide{ display:none}
+img { border: none; }
+body{ background: #ecfaff; }
+.slide { width: 400px; height: 260px; overflow: hidden; position: relative; margin: 150px auto 0;}
+.slide ul { position: absolute; top: 0; left: 0;}
+
+/*图片需要定位*/
+.slide ul li { width: 400px; height: 260px; position:absolute; top:0; left:0}
+
+.slide ol { position: absolute;right: 20px; bottom: 20px;}
+.slide ol li { height:20px; line-height:20px; width:20px; float: left; margin-right: 3px;cursor: pointer; background: #fcf2cf; border: 1px solid #f47500;color:#d94b01; font-family: arial; font-size: 12px;text-align:center }
+.slide .ac {font-weight: bold; color: #ffffff; background: #ffb442;}
+
+.slide .prevBtn,.slide .nextBtn{position: absolute; width: 40px; height:40px; line-height:35px; font-size:30px;color: #fff; text-align: center;background: #333; opacity:.4; top: 50%; margin-top:-20px;}
+.slide .prevBtn { left: 10px; }
+.slide .nextBtn { right: 10px; }
+</style>
+
+<script src="move.js"></script>
+<script src="jquery-1.11.3.min.js"></script>
+<script>
+$(function(){
+	var li_num=$('.slide ul li').size();
+	var n=0;
+	var aLi=$('.slide ul li');
+	
+	//淡出淡入
+	function fade(a,b){
+		aLi.eq(a).css({'display':'block','opacity':1});
+		aLi.eq(b).css({'display':'block','opacity':0});
+		aLi.eq(a).animate({'opacity':0});
+		aLi.eq(b).animate({'opacity':1},function(){
+			aLi.eq(a).hide();
+		});
+		$('.slide ol li:eq('+b+')').addClass('ac').siblings().removeClass('ac');
+	};
+	
+	$('.slide ol li').click(function(){
+		fade(n,$(this).index());
+		n=$(this).index();
+	});
+	
+	$('.slide .prevBtn').click(function(){
+		
+		//这样不行
+		/*n--;
+		if(n<1)n=li_num;
+		fade(n,n-1);*/
+		
+		if(n<1){
+			n=li_num;
+			fade(0,li_num-1);
+		}else{
+			fade(n,n-1);
+		};
+		n--;
+	});
+	
+	$('.slide .nextBtn').click(function(){
+		
+		//这样不行
+		/*n++;
+		if(n>=li_num)n=0;
+		fade(n-1,n);*/
+		
+		n++;
+		if(n>li_num-1){
+			n=0;
+			fade(li_num-1,0);
+		}else{
+			fade(n-1,n);
+		};
+	});
+});
+
+
+/*
+window.onload=function(){
+	var oDiv=document.getElementById('slideA');
+	var aBtn=oDiv.getElementsByTagName('ol')[0].children;
+	var oUl=oDiv.getElementsByTagName('ul')[0];
+	var aLi=oUl.children;
+	aLi[0].style.opacity=1;
+	var pBtn=document.getElementsByClassName('prevBtn')[0];
+	var nBtn=document.getElementsByClassName('nextBtn')[0];
+	var n=0;//当前显示图片索引
+	//添加点击事件
+	for(var i=0; i<aBtn.length; i++){
+		aBtn[i].index=i;//发拍照
+		aBtn[i].onclick=function(){
+			if(n!=this.index){
+				slideItem(n,this.index);
+				n=this.index;
+				changeAc();
+			}
+		};
+	};
+	pBtn.onclick=function(){
+		if(n<1){
+			n=aLi.length;
+			slideItem(0,aLi.length-1);
+		}else{
+			slideItem(n,n-1);
+		};
+		n--;
+		changeAc();
+	};
+	nBtn.onclick=function(){
+		n++;
+		if(n>aLi.length-1){
+			n=0;
+			slideItem(aLi.length-1,0);
+		}else{
+			slideItem(n-1,n);
+		};
+		changeAc();
+	};
+	function slideItem(a,b){
+		aLi[a].style.display='block';
+		aLi[a].style.opacity=1;;
+		aLi[b].style.display='block';
+		aLi[b].style.opacity=0;
+		move(aLi[a],{'opacity':0});
+		move(aLi[b],{'opacity':1},function(){
+			aLi[a].style.display='none';
+		});
+	};
+	function changeAc(){
+		for(var j=0; j<aBtn.length; j++){
+			aBtn[j].className='';
+		};
+		aBtn[n].className='ac';
+	};
+};
+
+*/
+</script>
+</head>
+
+<body>
+
+<div id="slideA" class="slide">
+    <ul>
+        <li><a href="javascript:;"><img src="images/01.jpg" alt="广告一" /></a></li>
+        <li class="hide"><a href="javascript:;"><img src="images/02.jpg" alt="广告二" /></a></li>
+        <li class="hide"><a href="javascript:;"><img src="images/03.jpg" alt="广告三" /></a></li>
+        <li class="hide"><a href="javascript:;"><img src="images/04.jpg" alt="广告四" /></a></li>
+        <li class="hide"><a href="javascript:;"><img src="images/05.jpg" alt="广告五" /></a></li>
+    </ul>
+     <ol>
+        <li class="ac">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ol>
+    <a href="javascript:;" class="prevBtn">&laquo;</a>
+    <a href="javascript:;" class="nextBtn">&raquo;</a>
+</div>
+
+</body>
+</html>

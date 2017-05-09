@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+
+//对象
+function Cat(){
+	this.name="猫";
+};
+
+var cat1=new Cat();
+
+alert(cat1 instanceof Cat);//true
+
+var oDate=new Date();
+alert(oDate instanceof Date);
+
+var arr= [32423,45345,56];
+alert(arr instanceof Array );//ture
+
+var obj={};
+alert(obj instanceof Object );//ture
+
+function run(){};
+alert(run instanceof Function); //ture
+
+
+
+//instanceof不认为原始类型值的变量是对象
+var txt="hxsd";
+alert(txt instanceof String );  //false
+
+var num=123123;
+alert(num instanceof Number); //false
+
+
+
+
+</script>

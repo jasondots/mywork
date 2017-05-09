@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+var oDate=new Date;//实例化 日期对象
+
+//alert(oDate);
+var year=oDate.getFullYear();
+var month=oDate.getMonth(); // 0-11
+var week=oDate.getDay(); // 0-6  0:周日
+var toDay=oDate.getDate();
+var hour=oDate.getHours();
+var time=oDate.getTime();//1970--今天  所有毫秒数
+
+
+oDate.setFullYear(2018);//调整了时间
+oDate.setMonth(15);
+oDate.setDate(0);
+
+oDate.setFullYear(2016);
+
+alert(oDate)
+
+
+
+</script>

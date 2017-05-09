@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+<link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css">
+<link href="css/jquery-ui.theme.min.css" rel="stylesheet" type="text/css">
+
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script>
+$(function(){
+	
+	
+	
+	$( "#showDialog" ).button({ icons: {secondary: "ui-icon-folder-open" }})
+	
+	$('a').button({ label: "展开目录",icons:{ primary:"ui-icon-folder-open"}});
+	
+	//$('.spanBtn').button();
+	//$('.spanBtn').button('option','disabled',true);
+
+	$('#btn').button().click(function(){
+		$( "#showDialog" ).button('option','disabled',true)
+		$("a").button('option','icons',{ primary:"ui-icon-arrow-4"});
+		//$("a").button("destroy" );
+	});
+	
+	$('#radio').buttonset();
+	
+	$('#radio').children('input').click(function(){
+		alert($(this).val())
+	});
+	
+
+});
+
+</script>
+</head>
+
+<body>
+<button type="button" id="showDialog">button</button>
+<a href="javascript:;">aBtn</a>
+<span class="spanBtn">spanBtn</span>
+
+<br>
+<br>
+
+<input type="button" id="btn" value="inputBtn">
+
+ <div id="radio">
+    <input type="radio" id="sizzle" name="project" value="sizzle">
+    <label for="sizzle">Sizzle</label>
+    
+    <input type="radio" id="qunit" name="project" value="qunit" checked>
+    <label for="qunit">QUnit</label>
+    
+    <input type="radio" id="color" name="project" value="color">
+    <label for="color">Color</label>
+</div>
+
+
+
+</body>
+</html>
+

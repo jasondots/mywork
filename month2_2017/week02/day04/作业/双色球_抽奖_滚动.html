@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+*{ margin:0; padding:0}
+ul{ list-style:none}
+.lucky_box{ width:500px; height:300px; border:1px solid red; border-radius:5px; padding:20px; margin:100px auto}
+h2{ text-align:center; height:60px; color:red}
+#lucky_ball_list{ height:50px; padding-left:65px; margin-bottom:30px;}
+#lucky_ball_list li{ float:left; height:40px; line-height:40px; width:40px; text-align:center; font-size:24px; border:2px solid red; margin-right:20px; color:red}
+button{ height:40px; width:100px}
+p{ word-break:break-all; font-size:20px; padding:10px; color:#333;}
+</style>
+
+<title>双色球</title>
+<script src="jquery-1.11.3.min.js"></script>
+<script> 
+$(function(){
+	
+	
+	$('#btn').click(function(){
+		var all_ball=[];
+		for(var i=1; i<=33; i++){
+			all_ball.push(i<10 ? "0"+i : i);
+		};
+		var j=0;
+		var timer2;//滚动用定时器
+		
+		var aLi=$('li');
+		
+		function run(n){
+			clearInterval(timer2);
+			timer2=setInterval(function(){
+				for(var i=n; i<aLi.length; i++){//从第n个开始滚动
+					var num=parseInt(Math.random()*all_ball.length);//抽出随机数
+					aLi.eq(i).html(all_ball[num]);
+				};
+			},50);
+		};
+		
+		run(j);
+		
+		var timer=setInterval(function(){
+			var num=parseInt(Math.random()*all_ball.length);//抽出随机数
+			
+			$('li').eq(j).html(  all_ball.splice(num,1)   );//删除并返回抽中的球
+			j++;
+			
+			run(j);//重新开始滚动
+			
+			if(j==6){
+				clearInterval(timer);
+				$('#info').html(all_ball.toString())
+			}
+		},1000);
+		
+	
+	});
+
+
+});
+
+
+
+</script>
+
+</head>
+
+<body>
+	<div id="box" class="lucky_box">
+    
+    	<h2>双色球大开奖</h2>
+        <ul id="lucky_ball_list">
+        	<li>祝</li><li>你</li><li>发</li><li>大</li><li>财</li><li>!</li>
+        </ul>
+        
+        <div style=" text-align:center"><button id="btn" type="button">开始</button></div>
+        <p id="info"></p>
+    </div>
+	
+</body>
+</html>

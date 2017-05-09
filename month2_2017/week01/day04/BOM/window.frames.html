@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+window.onload=function(){
+	alert(window.frames.length)
+};
+</script>
+
+</head>
+<!--实用框架-->
+<frameset rows="150,*,150" cols="*" frameborder="2" border="2" framespacing="0">
+  <frame src="http://www.hxsd.com" name="topFrame" scrolling="No" noresize="noresize" id="topFrame" title="topFrame"  />
+
+  <frameset rows="*" cols="200,300,*" framespacing="5" frameborder="yes" border="2" id="mainframe" name="MainFrame" >
+    <frame src="http://www.jingdong.com" name="leftFrame" frameborder="2" scrolling="yes" noresize="noresize" id="leftFrame" title="leftFrame" />
+    <frame src="http://www.sina.com" name="midFrame" frameborder="2" scrolling="yes" noresize="noresize" id="midFrame" title="midFrame" />
+    <frame src="http://www.sohu.com" name="rightFrame" frameborder="2" id="rightFrame" title="rightFrame" />
+  </frameset>
+
+  <frame src="http://taobao.com" name="bottomFrame" frameborder="2" scrolling="yes" noresize="noresize" id="bottomFrame" />
+</frameset>
+
+<!--不使用框架-->
+<noframes>
+<body>
+</body>
+</noframes>
+
+</html>

@@ -1,0 +1,74 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>事件委托_添加个性标签</title>
+<style>
+*{ margin:0; padding:0}
+.main{ width:540px; margin:100px auto;}
+h4{ padding-bottom:5px;}
+#box{height:200px;border:1px solid #000; padding:5px;}
+button{ width:100px; height:40px; margin-top:10px}
+#box p{width:100px; border:1px solid #ccc; float:left; padding:10px; margin:5px;position:relative}
+span{ position:absolute; top:10px; right:5px; font-size:16px; cursor:pointer}
+</style>
+
+<script>
+window.onload=function(){
+	var aBtn=document.getElementsByTagName('button');
+	var oBox=document.getElementById('box');
+	
+	for(var i=0; i<aBtn.length; i++){
+		
+		aBtn[i].onclick=function(){
+			
+			//获取自己的属性
+			var thisType=this.getAttribute('data-type');
+			
+			var aP=oBox.getElementsByTagName('p');
+			
+			//取出所有标签，与自己属性进行比对
+			for( var j=0; j<aP.length; j++){
+				if(aP[j].getAttribute('data-label-type')==thisType){
+					alert('标签已经存在！');
+					return;
+				}
+			};
+			//如果没有，插入新标签
+			oBox.innerHTML+='<p data-label-type="'+thisType+'" >'+this.innerHTML+'<span class="delBtn">×</span></p>';	
+		};	
+	};
+	
+	
+	
+	//事件绑定在盒子上
+	oBox.onclick=function(ev){
+		ev=ev||event;
+		var oEl=ev.target||ev.srcElement;
+		if(oEl==this)return;
+		if(oEl.nodeName=='SPAN'){
+			oBox.removeChild(oEl.parentNode);
+		};
+	};
+	
+	
+};
+</script>
+</head>
+
+<body>
+	<div class="main">
+    	<h4>我的标签</h4>
+    	<div id="box"></div>
+        <p style="text-align:center">
+            <button type="button" data-type="type1">宅男</button>
+            <button type="button" data-type="type2">吃货</button>
+            <button type="button" data-type="type3">驴友</button>
+            <button type="button" data-type="type4">IT达人</button>
+            <button type="button" data-type="type5">麦霸</button>
+        </p>
+    </div>
+    
+    
+</body>
+</html>

@@ -1,0 +1,71 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>自动播放的选项卡</title>
+<style>
+*{ margin:0; padding:0}
+ul{ list-style:none}
+a{ text-decoration:none}
+.clearfix:after{content:"";display:block;height:0;clear:both;visibility:hidden}
+.clearfix{*zoom:1;}
+.hide{ display:none}
+.fl{ float:left}
+.wrap{ width:500px;}
+.tab{ margin-bottom:30px}
+.tab .tabList li{ float:left; }
+.tab .tabList .ac a{ background:#333; color:#fff}
+.tab .tabList li a{ display:block; height:40px; line-height:40px; padding:0 20px;}
+.tab .tabItem{ border:1px solid #ccc; padding:20px}
+</style>
+<script src="jquery-1.11.3.min.js"></script>
+<script src="jquery-plugin-tab.js"></script>
+<script>
+$(function(){
+	$('#tab1').tab({speed:2000});
+	$('#tab2').tab({autoRun:false});
+
+
+});
+
+
+
+</script>
+</head>
+
+<body>
+<div class="wrap">
+    <div id="tab1" class="tab">
+        <ul class="tabList clearfix">
+            <li class="ac"><a href="javascript:;">itemA</a></li>
+            <li><a href="javascript:;">itemB</a></li>
+            <li><a href="javascript:;">itemC</a></li>
+            <li><a href="javascript:;">itemD</a></li>
+            <li><a href="javascript:;">itemD</a></li>
+        </ul>
+        <div class="tabCont">
+            <div class="tabItem">111111</div>
+            <div class="tabItem hide">222222</div>
+            <div class="tabItem hide">333333</div>
+            <div class="tabItem hide">444444</div>
+            <div class="tabItem hide">444444</div>
+       </div>
+   </div>
+   <div id="tab2" class="tab">
+        <ul class="tabList clearfix">
+            <li class="ac"><a href="javascript:;">itemA</a></li>
+            <li><a href="javascript:;">itemB</a></li>
+            <li><a href="javascript:;">itemC</a></li>
+            <li><a href="javascript:;">itemD</a></li>
+        </ul>
+        <div class="tabCont">
+            <div class="tabItem">111111</div>
+            <div class="tabItem hide">222222</div>
+            <div class="tabItem hide">333333</div>
+            <div class="tabItem hide">444444</div>
+       </div>
+   </div>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>工具提示框Tooltip</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+<link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css">
+<style>
+.ui-tooltip{ background:red; color:#fff; font-size:12px; padding:3px 10px}
+
+</style>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script>
+$(function() {
+    $( document ).tooltip({ 
+		position: { my: "left+15 center", at: "right center" }
+	});
+});
+</script>
+
+</head>
+<body>
+ 
+<p><a href="#" title="部件的名称">Tooltips</a> 可被绑定到任意的元素上。当您的鼠标悬停在元素上时，title 属性会显示在元素旁边的一个小框中，就像原生的工具提示框一样。</p>
+
+<p>工具提示框也可以用于表单元素，来显示每个区域中的一些额外的信息。</p>
+<p><label for="age">您的姓名：</label><input id="name" title="请输入中文"></p>
+<br>
+<p><label for="age">您的年龄：</label><input id="age" title="年龄仅用于统计。"></p>
+<p>悬停在相应的区域上查看工具提示框。</p>
+ 
+ 
+</body>
+</html>

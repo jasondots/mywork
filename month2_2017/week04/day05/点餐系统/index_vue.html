@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0}
+body{font-size:14px}
+h1,h2,h3,h4,h5,h6{ font-weight:normal}
+ul{ list-style:none}
+i,strong,em{ font-style:normal; font-weight:normal}
+p,dt,dd{ padding:5px 0}
+button{ padding:5px 10px}
+.wrap{ width:500px; padding:20px}
+li{ padding:10px; margin-bottom:20px; background:#efefef; position:relative}
+hr{ margin:50px 0}
+h2,dt{ font-size:24px; font-weight:bold; padding:10px 0}
+h5{ font-size:16px; font-weight:bold}
+h6{font-size:14px; padding:5px 0}
+.cateList p{ font-size:12px; margin-right:80px}
+.cateList .orderBtn{ position:absolute; top:20px; right:20px}
+.shopping_cart{ position:relative}
+.shopping_cart .price{ position:absolute; top:10px; right:10px; font-size:18px;}
+.shopping_cart em{ font-size:24px}
+.clearBtn{ position:absolute; top:10px; right:0;}
+
+</style>
+</head>
+
+<body>
+<div class="wrap" id="box">
+	<h2>菜单</h2>
+	<ul class="cateList">
+        <li v-for="(cate, $index) in cate_arr">
+            <h5>{{cate.name}}</h5>
+            <p>{{cate.describe}}</p>
+            <h6>价格:<em>{{cate.price}}</em></h6>
+            <!-- <button  v-bind:id="cate.id"  v-on:click="order(cate.id,cate.name,cate.price,cate.num)" type="button" class="orderBtn">点餐</button> -->
+            <button v-on:click="order($index)" type="button" class="orderBtn" :disabled=cate.checked>点餐</button>
+        </li>
+    </ul>
+    <hr>
+    
+    <div class="shopping_cart">
+        
+        <dl>
+            <dt>购物车</dt>
+            <dd id="total_count">总数:<em v-text=totalNum></em>个</dd>
+            <dd id="total_price">总额:<em v-text=totalPrice></em>元</dd>
+            <dd><button type="button" class="clearBtn" @click='clear'>清空购物车</button></dd>
+        </dl>
+        
+        
+        
+        <ul id="shippingList" class="shippingList">
+             
+                 <li v-for="(key,$index) in arr">
+                    <h5>{{key.name}}</h5>
+                    <p class="price">价格:<em>{{key.price}}</em></p>
+                    <!-- <p><button v-bind:id="cate.id" type="button">-</button> 数量:<em>{{key.num}}</em> <button type="button">+</button></p> -->
+                    <p><button v-bind:id="key.id" type="button" @click='sub($index)'>-</button> 数量:<em>{{key.num}}</em> <button type="button" @click='add($index)'>+</button></p>
+                </li>
+        </ul>
+    
+    </div>
+
+</div>
+
+</body>
+</html>
+<script src="jquery-1.11.3.min.js"></script>
+<script src="vue.min.js"></script>
+<script>
+
+var app = new Vue({
+	el: '#box',
+	data:{
+		cate_arr:[
+			{	
+				"id":"cate1",
+				"name":"宫保鸡丁",
+				"describe":"是一道闻名中外的特色传统名菜。",
+				"price":22,
+				"checked":false,
+				'num':1,
+				'mark':0
+			},
+			{	
+				"id":"cate2",
+				"name":"鱼香肉丝",
+				"describe":"是一道闻名中外的特色传统名菜。",
+				"price":18,
+				"checked":false,
+				'num':1,
+				'mark':1
+			},
+			{	
+				"id":"cate3",
+				"name":"红烧茄子",
+				"describe":"是一道闻名中外的特色传统名菜。",
+				"price":15,
+				"checked":false,
+				'num':1,
+				'mark':2
+			}
+		],
+		arr: [],
+		totalNum: 0,
+		totalPrice: 0
+		
+	},
+	methods: {
+		order: function (i) {
+			// 选中
+			this.cate_arr[i].checked = true;
+			this.arr.push({'id':this.cate_arr[i].id, 'name':this.cate_arr[i].name, 'num':this.cate_arr[i].num, 'price':this.cate_arr[i].price, 'mark':this.cate_arr[i].mark});
+			this.totalNum++;
+			this.totalPrice += this.cate_arr[i].price;
+		},
+		add(i){
+			console.log(i);
+			this.arr[i].num++;
+			this.totalPrice += this.arr[i].price;
+			this.totalNum++;
+		},
+		sub(i){
+			this.arr[i].num--;
+			if (this.arr[i].num==0){
+				this.totalPrice -= this.arr[i].price;
+				this.totalNum--;
+				// this.arr[i].checked = false;
+				this.cate_arr[this.arr[i].mark].checked = false;
+				this.arr.splice(i,1);
+				return;
+			}
+			this.totalPrice -= this.arr[i].price;
+			this.totalNum--;
+		},
+		clear(){
+			this.arr = [];
+			this.totalNum = 0;
+			this.totalPrice = 0;
+			this.cate_arr.forEach(function (item) {
+				item.checked = false;
+			});
+		}
+	}
+	
+	
+		
+	
+	
+  
+  
+  
+})
+
+
+
+	
+	
+	
+	
+	
+
+</script>

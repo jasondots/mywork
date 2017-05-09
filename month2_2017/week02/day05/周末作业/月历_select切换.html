@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>月历月份跳转</title>
+<style>
+*{margin:0;padding:0;}
+li{list-style:none;}
+a{text-decoration:none;}
+select{ height:24px; vertical-align:middle}
+#calendar{width:220px;margin:100px auto;border:1px solid #421C1D;overflow:hidden;text-align:center;position:relative; padding:10px}
+#calendar h4{text-align:center;line-height:50px;}
+#calendar .turn{text-align:center; padding-bottom:10px}
+#calendar .week{height:30px;line-height:20px;border-bottom:1px solid #000;}
+#calendar .week li{width:30px;float:left;height:30px;text-align:center;line-height:30px;}
+#calendar .dateList{overflow:hidden;clear:both;margin:10px 0;}
+#calendar .dateList li{float:left;width:30px;height:30px;;text-align:center;line-height:30px;}
+#calendar .dateList li.ccc{color:#ccc;}
+#calendar .dateList li.red{background:#F90;color:#fff;}
+#calendar .dateList li.sun{color:#f00;}
+
+</style>
+
+<script src="jquery-1.11.3.min.js"></script>
+<script>
+
+$(function(){
+	
+	//定义必要的数据
+	var oDate=new Date();
+	var m_now=oDate.getMonth();//本月
+	var y_now=oDate.getFullYear();//本年
+	
+	
+	//设定select值
+	var sel_year=$('select:eq(0)');
+	var sel_month=$('select:eq(1)')
+	
+	sel_year.val(y_now);
+	sel_month.val(m_now);
+	
+	//判断是否为本年本月
+	function iNow(Y,M){  //年 月
+		if(Y==y_now && M==m_now){//本年本月
+			return 0;
+		}else if(Y<y_now  || Y==y_now && M<m_now){// 前年  || 本年前月
+			return -1;
+		}
+	};
+	//-------------------------------------------------------
+	
+	function run(year,month){
+		
+		var oDate=new Date();
+		
+		var today=oDate.getDate();//今天
+		
+		oDate.setFullYear(year,month,1);//把日期设置到第一天
+
+		var first_week=oDate.getDay();//本月第一天星期几
+	
+		//计算本月有多少天
+		oDate.setMonth(oDate.getMonth()+1,0);//日期调整到下月的第0天，自动跳回到本月最后一天
+		var all_day=oDate.getDate();
+	
+		//每次进来前清空
+		$('.dateList').empty();
+	
+		//塞到1号之前的星期中空白
+		for(var i=0;i<first_week;i++){
+			$('.dateList').append('<li></li>');
+		};
+		for(var i=0;i<all_day;i++){
+			$('.dateList').append('<li>'+(i+1)+'</li>');
+		};
+	
+		//声明所有的li,并上色
+		$('.dateList li').each(function(index, element) { //index 索引  element原生对象
+			var inner=$(this).text();
+			
+			var n=iNow(sel_year.val(),sel_month.val());//判断是不是本月
+			
+			if(n<0){//前月
+				$(this).addClass('ccc');
+			}else if(n==0){//本月
+				if(inner<today){
+					$(this).addClass('ccc')
+				}else if(inner==today){
+					$(this).addClass('red')
+				}else if(index%7==0 || index%7==6){
+					$(this).addClass('sun')	
+				}
+			}else{//后月
+				if(index%7==0 || index%7==6){
+					$(this).addClass('sun')	
+				}
+			};
+		});
+		
+		$('#calendar h4').text(year+"年"+(month+1)+"月");	
+	};
+	
+	//---------------------------------------------------
+	//调用
+	run(y_now,m_now);
+	
+	//---------------------------------------------------
+	//切换
+	sel_year.change(function(){
+		run(sel_year.val(),sel_month.val());
+	});
+	
+	sel_month.change(function(){
+		run(sel_year.val(),sel_month.val());
+	});
+
+});
+
+</script>
+</head>
+
+<body>
+
+
+<div id="calendar">
+	<h4>2013年10月</h4>
+    <div class="turn">
+        <select>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+        </select> 年
+        <select>
+            <option value="0">1</option>
+            <option value="1">2</option>
+            <option value="2">3</option>
+            <option value="3">4</option>
+            <option value="4">5</option>
+            <option value="5">6</option>
+            <option value="6" selected>7</option>
+            <option value="7">8</option>
+            <option value="8">9</option>
+            <option value="9">10</option>
+            <option value="10">11</option>
+            <option value="11">12</option>
+        </select> 月
+    </div>
+    <ul class="week">
+    	<li>日</li>
+    	<li>一</li>
+        <li>二</li>
+        <li>三</li>
+        <li>四</li>
+        <li>五</li>
+        <li>六</li>
+    </ul>
+    <ul class="dateList"></ul>
+</div>
+</body>
+</html>

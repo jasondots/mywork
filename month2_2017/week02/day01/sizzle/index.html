@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script src="sizzle.min.js"></script>
+<script>
+var $s=window.Sizzle;
+
+
+window.onload=function(){
+var oDD=$s('#我是一个div');
+console.log(oDD);	
+	
+var oDiv=$s("#"+$s.escape("#box1"));
+oDiv[0].innerHTML="adfasdf"
+
+
+var oP=$s('p:has(#ss)');
+console.log(oP);
+
+
+var aP=$s('.itemA');
+console.log(aP.constructor==Array);
+
+oDD.forEach(function(elm){
+	elm.innerHTML="sssss"
+})
+
+};
+
+
+</script>
+
+</head>
+
+<body>
+<div id="我是一个div"></div>
+<div id="#box1"></div>
+<div id="box">
+	<p class="itemA">hxsd</p>
+    <p class="itemA">hxsd</p>
+    <p class="itemA">hxsd</p>
+	<p class="itemB"><span id="ss">hxsd</span></p>
+	<p class="itemC"><span class="txt">hxsd</span></p>
+    <ul>
+    	<li class="item ac">1111</li>
+        <li class="item">2222</li>
+        <li class="item">3333</li>
+        <li class="item itemA">4444</li>
+        <li class="item">5555</li>
+        <li class="item">6666</li>
+        <li class="item itemA">7777</li>
+        <li class="item">8888</li>
+        <li class="item">9999</li>
+        <li class="item itemA">0000</li>
+    </ul>
+</div>
+
+</body>
+</html>

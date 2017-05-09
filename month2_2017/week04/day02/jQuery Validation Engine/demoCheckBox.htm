@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery Validation Engine 表单验证 &raquo; 单选框、复选框的验证 &raquo; 在线演示 - 前端开发仓库</title>
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="demo.css">
+<link rel="stylesheet" href="validationEngine.jquery.css">
+<link rel="stylesheet" href="layout.css">
+</head>
+<body>
+<div class="wrap">
+  <div class="side">
+    <div class="logo">
+  <a href="http://code.ciaoca.com/" target="_blank">前端开发仓库</a>
+  <em>在线演示</em>
+</div>    <dl class="about"><dt>关于</dt><dd><a target="_blank" href="http://www.position-absolute.com/articles/jquery-form-validator-because-form-validation-is-a-mess/">作者</a></dd><dd><a target="_blank" href="https://github.com/posabsolute/jQuery-Validation-Engine">Github</a></dd><dd><a target="_blank" href="http://code.ciaoca.com/jquery/validation_engine/">中文文档</a></dd></dl>    <div id="nav" class="nav">
+  <dl class="mini">
+    <dt>示例</dt>
+    <dd><a href="index.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/" title="validators">综合示例</a></dd>
+    <dd><a href="demoRequired.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoRequired" title="required">扩展必填验证</a></dd>
+    <dd><a href="demoDate.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoDate" title="date">日期类型验证</a></dd>
+    <dd><a href="demoRegExp.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoRegExp" title="regexp">正则验证</a></dd>
+    <dd><a href="demoFieldTypes.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoFieldTypes" title="field types">多种输入控件的验证</a></dd>
+    <!--<dd><a href="./demoAttr" title="attr">attr</a></dd>-->
+    <dd><a href="demoCheckBox.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoCheckBox" title="checkbox">单选框、复选框的验证</a></dd>
+    <dd><a href="demoMultipleForms.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoMultipleForms" title="multiple forms">多表单验证</a></dd>
+    <dd><a href="demoDivContainer.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoDivContainer" title="div container">DIV 容器</a></dd>
+    <dd><a href="demoWithoutId.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoWithoutId" title="without id">不再需要 ID 属性</a></dd>
+    <dd><a href="demoForm-cn.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoForm-cn" title="chinese">较好体验的中文表单</a></dd>
+  </dl>
+  <dl class="mini">
+    <dt>参数配置</dt>
+    <dd><a href="demoGlobalSettings.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoGlobalSettings" title="global settings">全局设置</a></dd>
+    <dd><a href="demoAutoHide.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoAutoHide" title="auto hide">自动隐藏提示信息</a></dd>
+    <dd><a href="demoCustomErrorMessages.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoCustomErrorMessages" title="custom error messages">自定义提示信息内容</a></dd>
+    <dd><a href="demoErrorLimit.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoErrorLimit" title="error limit">提示信息的数量</a></dd>
+    <dd><a href="demoOneMessage.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoOneMessage" title="one message">只显示一个提示信息</a></dd>
+    <dd><a href="demoSilent.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoSilent" title="silent">静默处理</a></dd>
+    <dd><a href="demoOverflown.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoOverflown" title="overflown">显示溢出限制</a></dd>
+    <dd><a href="demoValidationComplete.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoValidationComplete" title="validation complete">验证回调函数（阻断提交）</a></dd>
+    <dd><a href="demoOnForm.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoOnForm" title="on form">验证回调函数（不阻断提交）</a></dd>
+  </dl>
+  <dl class="mini">
+    <dt>data 属性</dt>
+    <dd><a href="demoInlineMessages.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoInlineMessages" title="inline messages">自定义提示信息内容</a></dd>
+    <dd><a href="demoPerFieldPromptDirection.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoPerFieldPromptDirection" title="perfield prompt direction">提示层的位置</a></dd>
+    <dd><a href="demoAdjustments.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoAdjustments" title="adjustments">调整提示层的位置</a></dd>
+  </dl>
+  <dl class="mini">
+    <dt>API 接口</dt>
+    <dd><a href="demoShowPrompt.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoShowPrompt" title="show prompt">显示提示信息</a></dd>
+    <dd><a href="demoPositioning.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoPositioning" title="positioning">改变提示层位置</a></dd>
+    <dd><a href="demoLiveEvent.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoLiveEvent" title="live event">动态绑定</a></dd>
+    <dd><a href="demoHooks.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoHooks" title="hooks">自定义事件</a></dd>
+  </dl>
+  <dl class="mini">
+    <dt>Ajax 验证</dt>
+    <dd><a href="demoAjaxInlinePHP.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoAjaxInlinePHP" title="ajax inline php">AJAX PHP 验证</a></dd>
+    <dd><a href="demoAjaxSubmitPHP.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoAjaxSubmitPHP" title="ajax submit php">AJAX PHP 验证及提交</a></dd>
+  </dl>
+  <dl class="mini">
+    <dt>其他</dt>
+    <!--<dd><a href="./demoChosenLibrary" title="chosen library">[插件支持] chosen</a></dd>-->
+    <dd><a href="demoSelectBoxLibrary.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoSelectBoxLibrary" title="select box library">[插件支持] selectbox</a></dd>
+    <dd><a href="demoDatepicker.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoDatepicker" title="datepicker">[插件支持] datepicker</a></dd>
+    <dd><a href="demoValidators-ja.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoValidators-ja" title="validators jan">[多语言] 日文</a></dd>
+  </dl>
+</div>  </div>
+  <div class="main">
+    <div class="inwrap">
+      <h1>jQuery Validation Engine 表单验证</h1>
+      <h2>单选框、复选框的验证</h2>
+      
+      <div class="example">
+        <form id="formID" class="formular" method="post" action="">
+          <fieldset>
+            <legend>单/复选框</legend>
+            
+            <label>单选组：</label>
+            <div><input class="validate[required] radio" type="radio" name="group0" id="radio1" value="5"/>选项 1</div>
+            <div><input class="validate[required] radio" type="radio" name="group0" id="radio2" value="3"/>选项 2</div>
+            <div><input class="validate[required] radio" type="radio" name="group0" id="radio3" value="9"/>选项 3</div>
+            <br/>
+            <label>最少选择 2 项：</label>
+            <div><input class="validate[minCheckbox[2]] checkbox" type="checkbox" name="group[group]" id="maxcheck1" value="5"/>选项 A</div>
+            <div><input class="validate[minCheckbox[2]] checkbox" type="checkbox" name="group[group]" id="maxcheck2" value="3"/>选项 B</div>
+            <div><input class="validate[minCheckbox[2]] checkbox" type="checkbox" name="group[group]" id="maxcheck3" value="9"/>选项 C</div>
+            <br/>
+            <label><strong>最多</strong>选择 2 项：</label>
+            <div><input class="validate[maxCheckbox[2]] checkbox" type="checkbox" name="group2" id="maxcheck4" value="5"/>选项 D</div>
+            <div><input class="validate[maxCheckbox[2]] checkbox" type="checkbox" name="group2" id="maxcheck5" value="3"/>选项 E</div>
+            <div><input class="validate[maxCheckbox[2]] checkbox" type="checkbox" name="group2" id="maxcheck6" value="9"/>选项 F</div>
+    
+          </fieldset>
+          <fieldset>
+            <legend>按条件必填（Checkbox）</legend>
+            <div class="tips">“其他”的文本输入框，仅在选择“其他”后，才为必填项</div>
+            <div><input class="checkbox" type="checkbox" name="group3" id="group3-1"/>选项 1</div>
+            <div><input class="checkbox" type="checkbox" name="group3" id="group3-2"/>选项 2</div>
+            <div><input class="checkbox" type="checkbox" name="group3" id="group3-3"/>其他：</div>
+            <input class="validate[condRequired[group3-3]] text-input"/>
+          </fieldset>
+          <fieldset>
+            <legend>按条件必填（Radio）</legend>
+            <div class="tips">“其他”的文本输入框，仅在选择“其他”后，才为必填项</div>
+            <div><input class="radio" type="radio" name="group4" id="group4-1"/>选项 1</div>
+            <div><input class="radio" type="radio" name="group4" id="group4-2"/>选项 2</div>
+            <div><input class="radio" type="radio" name="group4" id="group4-3"/>其他：</div>
+            <input class="validate[condRequired[group4-3]] text-input"/>
+          </fieldset>
+          <fieldset>
+            <legend>必选项</legend>
+            <div class="infos">注册前请先阅读服务协议</div>
+            <div><input class="validate[required] checkbox" type="checkbox" id="agree" name="agree"/>我同意服务协议</div>
+          </fieldset><input class="submit" type="submit" value="验证 & 提交表单"/><hr/>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="highlight.pack.js" tppabs="http://code.ciaoca.com/static/js/highlight/highlight.pack.js"></script>
+<script src="demo.js" tppabs="http://code.ciaoca.com/static/js/controller/demo.js"></script><script src="jquery-1.7.2.min.js" tppabs="http://code.ciaoca.com/static/js/jquery/jquery-1.7.2.min.js"></script>
+<script src="jquery.validationEngine-zh-CN.js" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/js/languages/jquery.validationEngine-zh-CN.js"></script>
+<script src="jquery.validationEngine.min.js" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/js/jquery.validationEngine.min.js"></script>
+<script>
+jQuery(document).ready(function(){
+  // binds form submission and fields to the validation engine
+  jQuery('#formID').validationEngine();
+});
+</script>
+
+<div style="display:none;">
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cdiv id='cnzz_stat_icon_5076009' style='display:none;'%3E%3C/div%3E%3Cscript src='" + cnzz_protocol + "s25.cnzz.com/stat.php%3Fid%3D5076009' type='text/javascript'%3E%3C/script%3E"));</script>
+</div></body>
+</html>

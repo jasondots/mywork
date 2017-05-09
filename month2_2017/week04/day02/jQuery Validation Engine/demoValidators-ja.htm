@@ -1,0 +1,257 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery Validation Engine 表单验证 &raquo; 多语言支持：日文 &raquo; 在线演示 - 前端开发仓库</title>
+<link rel="stylesheet" href="base.css" tppabs="http://code.ciaoca.com/static/css/base.css">
+<link rel="stylesheet" href="demo.css" tppabs="http://code.ciaoca.com/static/css/demo.css"><link rel="stylesheet" href="validationEngine.jquery.css" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/css/validationEngine.jquery.css">
+<link rel="stylesheet" href="layout.css" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/css/layout.css">
+</head>
+<body>
+<div class="wrap">
+  <div class="side">
+    <div class="logo">
+  <a href="javascript:if(confirm(%27http://code.ciaoca.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://code.ciaoca.com/%27" tppabs="http://code.ciaoca.com/" target="_blank">前端开发仓库</a>
+  <em>在线演示</em>
+</div>    <dl class="about"><dt>关于</dt><dd><a target="_blank" href="javascript:if(confirm(%27http://www.position-absolute.com/articles/jquery-form-validator-because-form-validation-is-a-mess/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://www.position-absolute.com/articles/jquery-form-validator-because-form-validation-is-a-mess/%27" tppabs="http://www.position-absolute.com/articles/jquery-form-validator-because-form-validation-is-a-mess/">作者</a></dd><dd><a target="_blank" href="javascript:if(confirm(%27https://github.com/posabsolute/jQuery-Validation-Engine  \n\nThis file was not retrieved by Teleport Pro, because it is addressed using an unsupported protocol (e.g., gopher).  \n\nDo you want to open it from the server?%27))window.location=%27https://github.com/posabsolute/jQuery-Validation-Engine%27" tppabs="https://github.com/posabsolute/jQuery-Validation-Engine">Github</a></dd><dd><a target="_blank" href="javascript:if(confirm(%27http://code.ciaoca.com/jquery/validation_engine/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://code.ciaoca.com/jquery/validation_engine/%27" tppabs="http://code.ciaoca.com/jquery/validation_engine/">中文文档</a></dd></dl>    <div id="nav" class="nav">
+  <dl class="mini">
+    <dt>示例</dt>
+    <dd><a href="index.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/" title="validators">综合示例</a></dd>
+    <dd><a href="demoRequired.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoRequired" title="required">扩展必填验证</a></dd>
+    <dd><a href="demoDate.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoDate" title="date">日期类型验证</a></dd>
+    <dd><a href="demoRegExp.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoRegExp" title="regexp">正则验证</a></dd>
+    <dd><a href="demoFieldTypes.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoFieldTypes" title="field types">多种输入控件的验证</a></dd>
+    <!--<dd><a href="./demoAttr" title="attr">attr</a></dd>-->
+    <dd><a href="demoCheckBox.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoCheckBox" title="checkbox">单选框、复选框的验证</a></dd>
+    <dd><a href="demoMultipleForms.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoMultipleForms" title="multiple forms">多表单验证</a></dd>
+    <dd><a href="demoDivContainer.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoDivContainer" title="div container">DIV 容器</a></dd>
+    <dd><a href="demoWithoutId.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoWithoutId" title="without id">不再需要 ID 属性</a></dd>
+    <dd><a href="demoForm-cn.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoForm-cn" title="chinese">较好体验的中文表单</a></dd>
+  </dl>
+  <dl class="mini">
+    <dt>参数配置</dt>
+    <dd><a href="demoGlobalSettings.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoGlobalSettings" title="global settings">全局设置</a></dd>
+    <dd><a href="demoAutoHide.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoAutoHide" title="auto hide">自动隐藏提示信息</a></dd>
+    <dd><a href="demoCustomErrorMessages.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoCustomErrorMessages" title="custom error messages">自定义提示信息内容</a></dd>
+    <dd><a href="demoErrorLimit.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoErrorLimit" title="error limit">提示信息的数量</a></dd>
+    <dd><a href="demoOneMessage.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoOneMessage" title="one message">只显示一个提示信息</a></dd>
+    <dd><a href="demoSilent.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoSilent" title="silent">静默处理</a></dd>
+    <dd><a href="demoOverflown.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoOverflown" title="overflown">显示溢出限制</a></dd>
+    <dd><a href="demoValidationComplete.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoValidationComplete" title="validation complete">验证回调函数（阻断提交）</a></dd>
+    <dd><a href="demoOnForm.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoOnForm" title="on form">验证回调函数（不阻断提交）</a></dd>
+  </dl>
+  <dl class="mini">
+    <dt>data 属性</dt>
+    <dd><a href="demoInlineMessages.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoInlineMessages" title="inline messages">自定义提示信息内容</a></dd>
+    <dd><a href="demoPerFieldPromptDirection.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoPerFieldPromptDirection" title="perfield prompt direction">提示层的位置</a></dd>
+    <dd><a href="demoAdjustments.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoAdjustments" title="adjustments">调整提示层的位置</a></dd>
+  </dl>
+  <dl class="mini">
+    <dt>API 接口</dt>
+    <dd><a href="demoShowPrompt.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoShowPrompt" title="show prompt">显示提示信息</a></dd>
+    <dd><a href="demoPositioning.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoPositioning" title="positioning">改变提示层位置</a></dd>
+    <dd><a href="demoLiveEvent.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoLiveEvent" title="live event">动态绑定</a></dd>
+    <dd><a href="demoHooks.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoHooks" title="hooks">自定义事件</a></dd>
+  </dl>
+  <dl class="mini">
+    <dt>Ajax 验证</dt>
+    <dd><a href="demoAjaxInlinePHP.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoAjaxInlinePHP" title="ajax inline php">AJAX PHP 验证</a></dd>
+    <dd><a href="demoAjaxSubmitPHP.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoAjaxSubmitPHP" title="ajax submit php">AJAX PHP 验证及提交</a></dd>
+  </dl>
+  <dl class="mini">
+    <dt>其他</dt>
+    <!--<dd><a href="./demoChosenLibrary" title="chosen library">[插件支持] chosen</a></dd>-->
+    <dd><a href="demoSelectBoxLibrary.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoSelectBoxLibrary" title="select box library">[插件支持] selectbox</a></dd>
+    <dd><a href="demoDatepicker.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoDatepicker" title="datepicker">[插件支持] datepicker</a></dd>
+    <dd><a href="demoValidators-ja.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoValidators-ja" title="validators jan">[多语言] 日文</a></dd>
+  </dl>
+</div>  </div>
+  <div class="main">
+    <div class="inwrap">
+      <h1>jQuery Validation Engine 表单验证</h1>
+      <h2>多语言支持：日文</h2>
+      
+      <div class="detail mb">
+        <p>This demonstration shows the different validators available</p>
+      </div>
+
+      <div class="button_box">
+        <a class="button green" href="javascript://" onclick="alert('is the form valid? '+jQuery('#formID').validationEngine('validate'))">Evaluate form</a>
+        <a class="button green" href="javascript://" onclick="jQuery('#formID').validationEngine('showPrompt', 'This is an example', 'pass')">Build a prompt on a div</a>
+        <a class="button green" href="javascript://" onclick="jQuery('#formID').validationEngine('hide')">Close all prompts</a>
+      </div>
+      
+      <div class="example">
+      <form id="formID" class="formular" method="post" action="">
+        <fieldset>
+          <legend>Required</legend>
+          <label>
+            <span>Field is required : </span>
+            <input value="" class="validate[required] text-input" type="text" name="req" id="req" />
+          </label>
+          <label>
+            <span>Favorite sport 1:</span>
+            <select name="sport" id="sport" class="validate[required]">
+              <option value="">Choose a sport</option>
+              <option value="option1">Tennis</option>
+              <option value="option2">Football</option>
+              <option value="option3">Golf</option>
+            </select>
+          </label>
+          <label>
+            <span>Favorite sport 2:</span>
+            <select name="sport2" id="sport2" multiple class="validate[required]">
+              <option value="">Choose a sport</option>
+              <option value="option1">Tennis</option>
+              <option value="option2">Football</option>
+              <option value="option3">Golf</option>
+            </select>
+          </label>
+          <br/>
+          validate[required]
+        </fieldset>
+        <fieldset>
+          <legend>Custom</legend>
+          <label>
+            Comes with many predifined regex (phone, url, ip, email..etc) <a href="demoRegExp.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoRegExp">[Demo]</a>
+            <br/>
+            <span>Enter a URL : </span>
+            <input value="http://" class="validate[required,custom[url]] text-input" type="text" name="url" id="url" />
+            <br/>
+            validate[required,custom[url]]
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend>Equals</legend>
+          <label>
+            <span>Password : </span>
+            <input value="karnius" class="validate[required] text-input" type="password" name="password" id="password" />
+          </label>
+          <label>
+            <span>Confirm password : </span>
+            <input value="kaniusBAD" class="validate[required,equals[password]] text-input" type="password" name="password2" id="password2" />
+            <br/>
+            validate[required,equals[password]]
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend>Function</legend>
+          <label>
+            <span>Write 'HELLO' : </span>
+            <input value="" class="validate[required,funcCall[checkHELLO]] text-input" type="text" id="lastname" name="lastname" />
+            <br/>
+            validate[required,funcCall[checkHELLO]]
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend>MinSize</legend>
+          <label>
+            Minimum field size
+            <br/>
+            <input value="" class="validate[required,minSize[6]] text-input" type="text" name="minsize" id="minsize" />
+            <br/>
+            validate[required,minSize[6]]
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend>MaxSize</legend>
+          <label>
+            Maximum field size
+            <br/>
+            <input value="0123456789" class="validate[required,maxSize[6]] text-input" type="text" name="maxsize" id="maxsize" />
+            <br/>
+            validate[required,maxSize[6]]
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend>Min</legend>
+          <label>
+            integer >= -5
+            <br/>
+            <input value="-7" class="validate[required,custom[integer],min[-5]] text-input" type="text" name="min" id="min" />
+            <br/>
+            validate[required,custom[integer],min[-5]]
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend>Max</legend>
+          <label>
+            integer ,50]
+            <br/>
+            <input value="55" class="validate[required,custom[integer],max[50]] text-input" type="text" name="max" id="max" />
+            <br/>
+            validate[required,custom[integer],max[50]]
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend>Past</legend>
+          <label>
+            Checks that the value is a date in the past
+            <br/>
+            <span>Please enter a date ealier than 2010/01/01</span>
+            <input value="2009/06/30" class="validate[custom[date],past[2010/01/01]] text-input" type="text" name="past" id="past" />
+            <br/>
+            validate[custom[date],past[2010/01/01]]
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend>Future</legend>
+          <label>
+            Checks that the value is a date in the future
+            <br/>
+            <span>Please enter a date older than today's date</span>
+            <input value="2011-01-" class="validate[custom[date],future[NOW]] text-input" type="text" name="future" id="future" />
+            <br/>
+            validate[custom[date],future[NOW]]
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend>Checkbox</legend>
+          <label>
+            Check this <a href="demoCheckBox.htm" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoCheckBox">[Demo]</a>
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend>Ajax</legend>
+          <label>
+            Check this <a href="javascript:if(confirm(%27http://code.ciaoca.com/jquery/validation-engine/demo/demoAjax  \n\nThis file was not retrieved by Teleport Pro, because the server reports that this file cannot be found.  \n\nDo you want to open it from the server?%27))window.location=%27http://code.ciaoca.com/jquery/validation-engine/demo/demoAjax%27" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/demoAjax">[Demo]</a>
+          </label>
+        </fieldset>
+        <input class="submit" type="submit" value="验证 & 提交表单">
+      </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="highlight.pack.js" tppabs="http://code.ciaoca.com/static/js/highlight/highlight.pack.js"></script>
+<script src="demo.js" tppabs="http://code.ciaoca.com/static/js/controller/demo.js"></script><script src="jquery-1.7.2.min.js" tppabs="http://code.ciaoca.com/static/js/jquery/jquery-1.7.2.min.js"></script>
+<script src="jquery.validationEngine-zh-CN.js" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/js/languages/jquery.validationEngine-zh-CN.js"></script>
+<script src="jquery.validationEngine.min.js" tppabs="http://code.ciaoca.com/jquery/validation-engine/demo/js/jquery.validationEngine.min.js"></script>
+<script>
+jQuery(document).ready(function(){
+  // binds form submission and fields to the validation engine
+  jQuery('#formID').validationEngine();
+});
+  
+/**
+*
+* @param {jqObject} the field where the validation applies
+* @param {Array[String]} validation rules for this field
+* @param {int} rule index
+* @param {Map} form options
+* @return an error string if validation failed
+*/
+function checkHELLO(field, rules, i, options){
+  if(field.val() != 'HELLO'){
+    // this allows to use i18 for the error msgs
+    return options.allrules.validate2fields.alertText;
+  };
+}
+</script>
+
+<div style="display:none;">
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cdiv id='cnzz_stat_icon_5076009' style='display:none;'%3E%3C/div%3E%3Cscript src='" + cnzz_protocol + "s25.cnzz.com/stat.php%3Fid%3D5076009' type='text/javascript'%3E%3C/script%3E"));</script>
+</div></body>
+</html>

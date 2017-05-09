@@ -1,0 +1,10 @@
+*{ margin:0; padding:0}
+ul{ list-style:none}
+
+.iaccordion{position:relative;width:900px;height:300px;margin:0 auto;overflow:hidden}
+.iaccordion li{width:580px;height:300px;border-left:5px solid #333;background-color:#f5f5f5}
+.iaccordion li h6{float:left;width:40px;height:300px;text-align:center;padding-top:20px;font-size:24px;color:#999}
+.iaccordion li div{float:left;height:300px;padding:20px 10px}
+.iaccordion li div strong{color:#000;font-size:16px}
+
+

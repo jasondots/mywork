@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link rel="stylesheet" href="css/base.css">
+<style>
+*{ margin:0; padding:0}
+form{ margin:50px}
+p{ height:60px; line-height:60px}
+input[type="text"],input[type="password"]{ height:30px; width:200px; margin-right:10px}
+
+
+</style>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/jquery.validationEngine.min.js"></script>
+<script src="js/jquery.validationEngine-zh-CN.js" ></script>
+<script src="js/jquery.validationEngine-zh-CN-ciaoca.js" ></script>
+
+<script>
+jQuery(document).ready(function(){
+  jQuery('#formA').validationEngine();
+});
+</script>
+
+
+</head>
+
+<body>
+<form id="formA" method="post" action="">
+	<p><input type="text" class="validate[required]">必填</p>
+    <p><input type="text" class="validate[required,custom[url]]"> 验证URL格式</p>
+    <p>
+        <input value="1234" class="validate[required]" type="text" name="password" id="pwd1">
+        <input value="3456" class="validate[required,equals[pwd1]] text-input" type="text" name="password2" id="pwd2">比较两次输入密码是否相同
+    </p>
+    
+    <p><input type="text" class="validate[minSize[2],maxSize[6]]">最少2位，最多6位</p>
+    <p><input type="text" class="validate[required,custom[email]] text-input">Email地址</p> 
+    <p><input type="text" class="validate[custom[chinese]]">只能输入中文</p> 
+</form>
+</body>
+</html>

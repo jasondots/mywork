@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+* { margin: 0; padding: 0 }
+ul { list-style: none }
+.box { width: 500px; height: 280px; border: 1px solid #ccc; margin: 100px auto; position: relative; overflow: hidden; font-size:14px; }
+.newsList { position: absolute; top: 0; left: 20px }
+.newsList li a { display: block; height: 40px; line-height: 40px }
+</style>
+<script src="move.js"></script>
+<script src="jquery-1.11.3.min.js"></script>
+<script>
+$(function(){
+	$('ul').append($('ul').html());
+	var timer;
+	var i=0;
+	
+	function run(){
+		timer=setInterval(function(){
+			i++;
+			if(i>$('ul li').length/2){//滚动超过一套  aLi在此时才赋值，所以要取一半
+				$('ul').css('top',0);
+				i=1;//从第一条开始
+			};
+			$('ul').animate({'top':-i*40})
+		},2000);
+	};
+	
+	run();
+	
+	$('#box').hover(
+		function(){
+			clearInterval(timer);
+		},
+		function(){
+			run();
+		}
+	)
+});
+
+
+
+/*window.onload=function(){
+	var oBox=document.getElementById('box');
+	var newsList =document.getElementById('newsList');
+	
+	var aLi=newsList.children;//新闻条目
+	
+	newsList.innerHTML+=newsList.innerHTML;//复制一套
+	
+	var timer;
+	var i=0;
+	
+	function run(){
+		timer=setInterval(function(){
+			i++;
+			if(i>aLi.length/2){//滚动超过一套  aLi在此时才赋值，所以要取一半
+				newsList.style.top='0px';
+				i=1;//从第一条开始
+			};
+			move(newsList,{"top":-i*40})
+		},2000);
+	};
+	
+	run();
+	
+	oBox.onmouseover=function(){
+		clearInterval(timer);
+	};
+	
+	oBox.onmouseout=function(){
+		run();
+	};
+};
+*/
+
+</script>
+</head>
+<body>
+<div id="box" class="box">
+  <ul id="newsList" class="newsList">
+    <li><a href="javascript:;">知名导演亲自指导，8位学员参与G20节目制作</a></li>
+    <li><a href="javascript:;">火星学员斩获国家级剪辑大赛多项大奖</a></li>
+    <li><a href="javascript:;">火星与超凡视幻达成深入合作，VR实训再升级</a></li>
+    <li><a href="javascript:;">百度“皮肤设计大赛” 15强榜单出炉</a></li>
+    <li><a href="javascript:;">百度高级设计经理、FDC负责人火星开讲</a></li>
+    <li><a href="javascript:;">G20节目一炮打响，火星与盛视云图深入合作</a></li>
+    <li><a href="javascript:;">林志远先生带你了解网红的台前幕后</a></li>
+    <li><a href="javascript:;">超凡视幻CTO朱昱地VR经验分享</a></li>
+    <li><a href="javascript:;">【总结】即将过去的2016年的5大平面设计趋势 </a></li>
+    <li><a href="javascript:;">万合新作《异能家庭》给万星人的成人礼</a></li>
+  </ul>
+</div>
+</body>
+</html>

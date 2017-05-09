@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>toggle demo</title>
+<link href="css/base.css" rel="stylesheet" type="text/css">
+<link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css">
+  <style>
+  div {
+    width: 100px;
+    height: 100px;
+    background: #ccc;
+    border: 1px solid #000;
+  }
+  </style>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+
+<script>
+$(function(){
+	$( "button" ).click(function() {
+	  $( "div" ).toggle( "explode", 1000 );
+	});
+
+
+})
+</script>
+
+</head>
+<body>
+ 
+<button>toggle the div</button>
+<div></div>
+</body>
+</html>

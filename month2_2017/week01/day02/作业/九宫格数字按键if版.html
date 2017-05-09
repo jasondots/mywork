@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>数字按键反馈</title>
+<style>
+.wrap{margin:200px auto; width: 400px; }
+.box{width:100px;height:100px;position:relative; vertical-align:middle; font:20px/100px arial; background: #7f30c7; color: #fff; text-align: center; border-radius:50px; float: left; margin:10px; }
+.box:hover{position:relative;background: #6e4fc7; transform:scale(1.5);box-shadow: 0 0 15px #000; z-index: 3;display: block}
+
+.btn{position:relative;background: #6e4fc7; transform:scale(1.5);box-shadow: 0 0 15px #000; z-index: 3}
+</style>
+<script>
+	window.onload=function() {
+		var box = document.getElementsByClassName("box");
+		var index=0;
+
+		function ac(index) {
+			for (var i = 0; i < 9; i++) {
+				box[i].className = "box";
+			}
+			box[index].className = "box btn";
+		}
+		
+		document.onkeydown = function (ev) {
+			var oEv = ev || window.event;
+			index =oEv.keyCode>60? oEv.keyCode - 97:oEv.keyCode -49;
+			ac(index);
+		};
+		
+		document.onkeyup = function(){
+		   for (var i = 0; i < 9; i++) {
+				box[i].className = "box";
+			}
+		};
+	};
+
+</script>
+</head>
+<body>
+<div class="wrap">
+    <a class="box">1</a>
+    <a class="box">2</a>
+    <a class="box">3</a>
+    <a class="box">4</a>
+    <a class="box">5</a>
+    <a class="box">6</a>
+    <a class="box">7</a>
+    <a class="box">8</a>
+    <a class="box">9</a>
+</div>
+</body>
+</html>
